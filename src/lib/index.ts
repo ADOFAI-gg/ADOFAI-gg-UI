@@ -17,3 +17,5 @@ export { default as Nav } from './components/organisms/Nav.svelte'
 
 // Types
 export * from './types.js'
+
+export * from './assets/index.js'
