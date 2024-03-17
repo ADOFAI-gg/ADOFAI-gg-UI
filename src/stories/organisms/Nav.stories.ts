@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte'
 import { Nav } from '$lib'
-import { dummyUser } from '../dummyData.js'
+import { dummyAdminUser, dummyUser } from '../dummyData.js'
 
 const meta = {
 	// @ts-expect-error type issue
@@ -21,5 +21,11 @@ export const Default: Story = {
 export const SignedIn: Story = {
 	args: {
 		user: dummyUser
+	}
+}
+
+export const SignedInAsAdmin: Story = {
+	args: {
+		user: dummyAdminUser
 	}
 }

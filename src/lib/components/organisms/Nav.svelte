@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { NavSignArea, type User } from '$lib'
 	import Logo from '../atoms/Logo.svelte'
+	import TextButton from '../atoms/button/TextButton.svelte'
 	import Icon from '../atoms/icon/Icon.svelte'
 
 	export let user: User | null
@@ -11,9 +12,14 @@
 	<div class="spacer"></div>
 	<NavSignArea {user} />
 	<div class="nav-divider"></div>
-	<button class="expand-icon">
+	{#if user && user.isAdmin}
+		<TextButton>
+			<Icon icon="cogs" size={16} alt="Manage Icon" />
+		</TextButton>
+	{/if}
+	<TextButton>
 		<Icon icon="expand" size={16} alt="Expand Icon" />
-	</button>
+	</TextButton>
 </nav>
 
 <style lang="scss">
@@ -31,17 +37,6 @@
 
 	.spacer {
 		flex-grow: 1;
-	}
-
-	.expand-icon {
-		opacity: 0.6;
-		cursor: pointer;
-		transition: opacity 0.2s ease-out;
-
-		&:hover,
-		&:focus {
-			opacity: 1;
-		}
 	}
 
 	.nav-divider {
