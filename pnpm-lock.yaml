@@ -25,9 +25,15 @@ devDependencies:
   '@storybook/addon-links':
     specifier: ^8.0.0
     version: 8.0.0(react@18.2.0)
+  '@storybook/addon-svelte-csf':
+    specifier: ^4.1.2
+    version: 4.1.2(@storybook/svelte@8.0.0)(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
   '@storybook/blocks':
     specifier: ^8.0.0
     version: 8.0.0(@types/react@18.2.66)(react-dom@18.2.0)(react@18.2.0)
+  '@storybook/manager-api':
+    specifier: ^8.0.0
+    version: 8.0.0(react-dom@18.2.0)(react@18.2.0)
   '@storybook/svelte':
     specifier: ^8.0.0
     version: 8.0.0(svelte@4.2.12)
@@ -37,6 +43,9 @@ devDependencies:
   '@storybook/test':
     specifier: ^8.0.0
     version: 8.0.0
+  '@storybook/theming':
+    specifier: ^8.0.0
+    version: 8.0.0(react-dom@18.2.0)(react@18.2.0)
   '@sveltejs/adapter-auto':
     specifier: ^3.0.0
     version: 3.1.1(@sveltejs/kit@2.5.4)
@@ -2111,6 +2120,34 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
+  /@storybook/addon-svelte-csf@4.1.2(@storybook/svelte@8.0.0)(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6):
+    resolution: {integrity: sha512-4aNlI8tdzkNyUK4fxRgAGTtgYLT97KBAqaiJLu5YtXI4YFarDcmUgLnPet0oj4QxQAfbcId+vGWhSIMG6q6lNg==}
+    peerDependencies:
+      '@storybook/svelte': ^7.0.0 || ^8.0.0 || ^8.0.0-beta.0
+      '@sveltejs/vite-plugin-svelte': ^2.0.0 || ^3.0.0
+      svelte: ^4.0.0
+      svelte-loader: ^3.1.2
+      vite: ^4.0.0 || ^5.0.0
+    peerDependenciesMeta:
+      '@sveltejs/vite-plugin-svelte':
+        optional: true
+      svelte-loader:
+        optional: true
+      vite:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.24.0
+      '@storybook/svelte': 8.0.0(svelte@4.2.12)
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.1.6)
+      dedent: 1.5.1
+      fs-extra: 11.2.0
+      magic-string: 0.30.8
+      svelte: 4.2.12
+      vite: 5.1.6(sass@1.72.0)
+    transitivePeerDependencies:
+      - babel-plugin-macros
+    dev: true
+
   /@storybook/addon-toolbars@8.0.0:
     resolution: {integrity: sha512-+nNe52DAs42VIJxJnsg3d3BAVf+svR9lvaf3dD/HgS9vBWtp2wIumDM6b05umnVuR/dXviSpdpy+gm/cCdIQGQ==}
     dev: true
@@ -3990,6 +4027,15 @@ packages:
 
   /dedent-js@1.0.1:
     resolution: {integrity: sha512-OUepMozQULMLUmhxS95Vudo0jb0UchLimi3+pQ2plj61Fcy8axbP9hbiD4Sz6DPqn6XG3kfmziVfQ1rSys5AJQ==}
+    dev: true
+
+  /dedent@1.5.1:
+    resolution: {integrity: sha512-+LxW+KLWxu3HW3M2w2ympwtqPrqYRzU8fqi6Fhd18fBALe15blJPI/I4+UHveMVG6lJqB4JNd4UG0S5cnVHwIg==}
+    peerDependencies:
+      babel-plugin-macros: ^3.1.0
+    peerDependenciesMeta:
+      babel-plugin-macros:
+        optional: true
     dev: true
 
   /deep-eql@4.1.3:
