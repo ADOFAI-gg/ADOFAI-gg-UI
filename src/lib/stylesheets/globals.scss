@@ -1,0 +1,22 @@
+@import 'base.scss';
+@import 'fonts.scss';
+
+:root {
+	--color-yellow: 255, 231, 110;
+	--color-red: 245, 79, 81;
+	--color-blue: 77, 147, 252;
+	--color-cyan: 47, 186, 175;
+	--color-darkblue: 0, 2, 15;
+	--color-dropdown: 11, 24, 35;
+	--color-bg-solid: 35, 43, 90;
+
+	--font-normal: 'QuicksandVariable', 'Quicksand', 'M PLUS Rounded 1c', 'NanumSquareRound',
+		sans-serif;
+
+	color-scheme: dark;
+}
+
+body {
+	font-family: var(--font-normal);
+	background-color: rgba(var(--color-bg-solid), 1);
+}

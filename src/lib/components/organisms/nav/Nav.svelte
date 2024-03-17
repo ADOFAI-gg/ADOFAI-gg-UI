@@ -1,0 +1,41 @@
+<script>
+	import Logo from '../../atoms/Logo.svelte'
+	import Icon from '../../atoms/icon/Icon.svelte'
+</script>
+
+<nav class="nav">
+	<Logo height={20} width={140} />
+	<div class="spacer"></div>
+	<button class="expand-icon">
+		<Icon icon="expand" size={16} alt="Expand Icon" />
+	</button>
+</nav>
+
+<style lang="scss">
+	.nav {
+		background-color: rgba(0, 0, 0, 0.25);
+		height: 54px;
+		display: flex;
+		align-items: center;
+		padding: 0 24px;
+		position: sticky;
+		top: 0;
+		left: 0;
+		gap: 16px;
+	}
+
+	.spacer {
+		flex-grow: 1;
+	}
+
+	.expand-icon {
+		opacity: 0.6;
+		cursor: pointer;
+		transition: opacity 0.2s ease-out;
+
+		&:hover,
+		&:focus {
+			opacity: 1;
+		}
+	}
+</style>
