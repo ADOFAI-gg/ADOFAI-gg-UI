@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/svelte'
-import { Logo } from '$lib'
+import { Logo } from '$lib/index.js'
 
 const meta = {
 	// @ts-expect-error type issue

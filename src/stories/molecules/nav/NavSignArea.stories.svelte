@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { NavSignArea } from '$lib'
+	import { NavSignArea } from '$lib/index.js'
 
 	export const meta = {
 		title: 'Molecules/Nav/Nav Sign Area',

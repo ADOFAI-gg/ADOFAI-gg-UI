@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { Avatar } from '$lib'
+	import { Avatar } from '$lib/index.js'
 	import GanjangFactory from '../assets/ganjangfactory.png'
 
 	export const meta = {

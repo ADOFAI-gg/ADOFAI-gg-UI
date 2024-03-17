@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/svelte'
-import { Nav } from '$lib'
+import { Nav } from '$lib/index.js'
 import { dummyAdminUser, dummyUser } from '../dummyData.js'
 
 const meta = {

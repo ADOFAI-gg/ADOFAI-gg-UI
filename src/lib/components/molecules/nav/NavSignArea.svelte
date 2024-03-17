@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { RoundedOutlineButton, TextButton, type User } from '$lib'
+	import { RoundedOutlineButton, TextButton, type User } from '$lib/index.js'
 	import Avatar from '../../atoms/Avatar.svelte'
 
 	export let user: User | null

@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { Avatar, Icon, iconNames } from '$lib'
+	import { Avatar, Icon, iconNames } from '$lib/index.js'
 
 	export const meta = {
 		title: 'Atoms/Icon',
