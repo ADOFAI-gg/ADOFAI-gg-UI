@@ -19,4 +19,8 @@
 body {
 	font-family: var(--font-normal);
 	background-color: rgba(var(--color-bg-solid), 1);
+	background-image: url(../assets/images/background.webp);
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 }

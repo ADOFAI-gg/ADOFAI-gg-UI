@@ -1,8 +1,11 @@
-<button class="button"> asdf </button>
+<button class="button" on:click {...$$restProps}>
+	<slot />
+</button>
 
 <style lang="scss">
 	.button {
-		padding: 8px 16px;
+		height: 32px;
+		padding: 0 16px;
 		font-size: 14px;
 		background-color: rgba(255, 255, 255, 0.02);
 		border: 1px solid white;

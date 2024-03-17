@@ -3,7 +3,8 @@ import { Logo } from '$lib'
 
 const meta = {
 	// @ts-expect-error type issue
-	component: Logo
+	component: Logo,
+	title: 'Atoms/Logo'
 } satisfies Meta<typeof Logo>
 
 export default meta

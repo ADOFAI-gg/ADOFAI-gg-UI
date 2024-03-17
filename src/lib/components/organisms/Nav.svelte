@@ -1,11 +1,16 @@
-<script>
-	import Logo from '../../atoms/Logo.svelte'
-	import Icon from '../../atoms/icon/Icon.svelte'
+<script lang="ts">
+	import { NavSignArea, type User } from '$lib'
+	import Logo from '../atoms/Logo.svelte'
+	import Icon from '../atoms/icon/Icon.svelte'
+
+	export let user: User | null
 </script>
 
 <nav class="nav">
 	<Logo height={20} width={140} />
 	<div class="spacer"></div>
+	<NavSignArea {user} />
+	<div class="nav-divider"></div>
 	<button class="expand-icon">
 		<Icon icon="expand" size={16} alt="Expand Icon" />
 	</button>
@@ -37,5 +42,12 @@
 		&:focus {
 			opacity: 1;
 		}
+	}
+
+	.nav-divider {
+		height: 18px;
+		width: 1px;
+		background-color: white;
+		opacity: 0.4;
 	}
 </style>
