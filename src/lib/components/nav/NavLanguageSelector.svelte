@@ -9,7 +9,7 @@
 </script>
 
 {#each langs as lang (lang.code)}
-	<NavPopupItem selected={$currentLang === lang.code} on:click={() => ctx.setLanguage(lang.code)}
-		>{lang.name}</NavPopupItem
-	>
+	<NavPopupItem selected={$currentLang === lang.code} on:click={() => ctx.setLanguage(lang.code)}>
+		{lang.name}
+	</NavPopupItem>
 {/each}
