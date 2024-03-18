@@ -33,6 +33,7 @@ export { default as NavPopupLink } from './components/nav/NavPopupLink.svelte'
 export { default as NavPopupSection } from './components/nav/NavPopupSection.svelte'
 export { default as NavSignArea } from './components/nav/NavSignArea.svelte'
 export { default as NavLanguageSelector } from './components/nav/NavLanguageSelector.svelte'
+export { default as NavAccessibilitySettings } from './components/nav/NavAccessibilitySettings.svelte'
 
 // Footer
 export { default as Footer } from './components/footer/Footer.svelte'

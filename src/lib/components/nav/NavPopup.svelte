@@ -7,14 +7,16 @@
 		NavPopupSection,
 		Popover,
 		TextButton,
-		getGlobalContext
+		getGlobalContext,
+		NavAccessibilitySettings
 	} from '$lib/index.js'
 	import Translation from '$lib/utils/Translation.svelte'
 	import { fly } from 'svelte/transition'
 
 	enum TabType {
 		Main,
-		Language
+		Language,
+		AccessibilitySettings
 	}
 
 	let tab: TabType = TabType.Main
@@ -47,7 +49,7 @@
 						<NavPopupItem on:click={() => (tab = TabType.Language)}>
 							<Translation key="nav:setting-language-international" />
 						</NavPopupItem>
-						<NavPopupItem>
+						<NavPopupItem on:click={() => (tab = TabType.AccessibilitySettings)}>
 							<Translation key="nav:setting-accessibility" />
 						</NavPopupItem>
 					</NavPopupSection>
@@ -74,6 +76,15 @@
 					<NavPopupSection title="nav:setting-language" back on:back={() => (tab = TabType.Main)}>
 						<NavLanguageSelector />
 					</NavPopupSection>
+				</div>
+			{:else if tab === TabType.AccessibilitySettings}
+				<div
+					in:fly={{ x: '100%', opacity: 1 }}
+					out:fly={{ x: '100%', opacity: 1 }}
+					bind:clientHeight={height}
+					class="nav-popup-group"
+				>
+					<NavAccessibilitySettings on:back={() => (tab = TabType.Main)} />
 				</div>
 			{/if}
 		</div>

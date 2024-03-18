@@ -12,6 +12,7 @@
 		font-size: 16px;
 		display: flex;
 		padding: 0 8px;
+		width: 100%;
 		align-items: center;
 
 		transition: background ease 0.2s;
