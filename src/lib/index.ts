@@ -13,9 +13,13 @@ export { default as FooterLink } from './components/atoms/footer/FooterLink.svel
 
 export { default as Popover } from './components/atoms/popover/Popover.svelte'
 
+export { default as NavPopupSection } from './components/atoms/nav/NavPopupSection.svelte'
+
 // Molecules
-export { default as NavSignArea } from './components/molecules/nav/NavSignArea.svelte'
 export { default as FooterSection } from './components/molecules/footer/FooterSection.svelte'
+
+export { default as NavSignArea } from './components/molecules/nav/NavSignArea.svelte'
+export { default as NavPopup } from './components/molecules/nav/NavPopup.svelte'
 
 // Organisms
 export { default as Nav } from './components/organisms/Nav.svelte'

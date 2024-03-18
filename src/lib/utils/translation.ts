@@ -12,7 +12,7 @@ export const fallbackLang = 'en'
 
 let _currentLang = 'en'
 
-const langSections = ['common', 'footer'] as const
+const langSections = ['common', 'footer', 'nav'] as const
 
 export type LangSection = (typeof langSections)[number]
 export type LangData = Record<LangSection, FluentBundle>

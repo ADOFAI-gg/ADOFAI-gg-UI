@@ -1,5 +1,6 @@
 <script lang="ts">
 	import 'tippy.js/dist/tippy.css'
+	import 'tippy.js/animations/shift-away.css'
 
 	import tippy, { type Placement, type Props } from 'tippy.js'
 	import type { Action } from 'svelte/action'
@@ -25,6 +26,7 @@
 				content,
 				trigger: 'click',
 				placement,
+				arrow: false,
 				popperOptions: {
 					strategy: 'absolute',
 					modifiers: [
@@ -36,6 +38,7 @@
 					...options.popperOptions
 				},
 				hideOnClick: 'toggle',
+				animation: 'shift-away',
 				onClickOutside: () => {
 					instance.hide()
 				},
@@ -67,12 +70,6 @@
 
 <slot name="button" {buttonRef} />
 
-<div bind:this={content} role="menu" class="popover-content">
+<div bind:this={content} role="menu">
 	<slot />
 </div>
-
-<style lang="scss">
-	.popover-content {
-		padding: 16px;
-	}
-</style>
