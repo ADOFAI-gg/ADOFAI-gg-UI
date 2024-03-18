@@ -1,5 +1,5 @@
 {
-	"name": "adofai-gg-ui",
+	"name": "@adofaigg-dev/ui",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
