@@ -7,7 +7,11 @@
 
 	setGlobalContext({
 		language: lang,
-		setLanguage: (v) => lang.set(v)
+		setLanguage: (v) => lang.set(v),
+		urls: {
+			levels: 'https://adofai.gg/levels',
+			rankings: 'https://adofai.gg/rankings'
+		}
 	})
 </script>
 

@@ -6,7 +6,8 @@
 		NavPopupLink,
 		NavPopupSection,
 		Popover,
-		TextButton
+		TextButton,
+		getGlobalContext
 	} from '$lib/index.js'
 	import Translation from '$lib/utils/Translation.svelte'
 	import { fly } from 'svelte/transition'
@@ -19,6 +20,8 @@
 	let tab: TabType = TabType.Main
 
 	let height = 0
+
+	const { urls } = getGlobalContext()
 </script>
 
 <Popover
@@ -44,12 +47,18 @@
 						<NavPopupItem on:click={() => (tab = TabType.Language)}>
 							<Translation key="nav:setting-language-international" />
 						</NavPopupItem>
-						<NavPopupItem>button2</NavPopupItem>
+						<NavPopupItem>
+							<Translation key="nav:setting-accessibility" />
+						</NavPopupItem>
 					</NavPopupSection>
 
 					<NavPopupSection title="nav:group-pages">
-						<NavPopupLink href="/">link1</NavPopupLink>
-						<NavPopupLink href="/">link2</NavPopupLink>
+						<NavPopupLink href={urls.levels}>
+							<Translation key="nav:levels" />
+						</NavPopupLink>
+						<NavPopupLink href={urls.rankings}>
+							<Translation key="nav:rankings" />
+						</NavPopupLink>
 					</NavPopupSection>
 				</div>
 			{:else if tab === TabType.Language}

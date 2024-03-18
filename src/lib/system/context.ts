@@ -6,6 +6,11 @@ export const globalContextName = 'adofaigg-ui-global-context'
 export type GlobalContext = {
 	language: Readable<string>
 	setLanguage: (lang: string) => void
+
+	urls: {
+		levels: string
+		rankings: string
+	}
 }
 
 export const setGlobalContext = (context: GlobalContext) => setContext(globalContextName, context)
