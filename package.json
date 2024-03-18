@@ -76,9 +76,6 @@
 		"svelte-component-actions": "^1.1.0",
 		"tippy.js": "^6.3.7"
 	},
-	"publishConfig": {
-		"@adofai-gg:registry": "https://git.adofai.gg/api/v4/projects/9/packages/npm/"
-	},
 	"release": {
 		"branches": [
 			"+([0-9])?(.{+([0-9]),x}).x",
