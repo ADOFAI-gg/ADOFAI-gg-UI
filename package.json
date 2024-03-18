@@ -29,7 +29,6 @@
 		"svelte": "^4.0.0"
 	},
 	"devDependencies": {
-		"@semantic-release/gitlab": "^13.0.3",
 		"@storybook/addon-essentials": "^8.0.0",
 		"@storybook/addon-interactions": "^8.0.0",
 		"@storybook/addon-links": "^8.0.0",
@@ -94,17 +93,6 @@
 				"name": "alpha",
 				"prerelease": true
 			}
-		],
-		"plugins": [
-			"@semantic-release/commit-analyzer",
-			"@semantic-release/release-notes-generator",
-			"@semantic-release/npm",
-			[
-				"@semantic-release/gitlab",
-				{
-					"gitlabUrl": "https://git.adofai.gg"
-				}
-			]
 		]
 	}
 }
