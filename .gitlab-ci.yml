@@ -3,6 +3,7 @@ default:
     - arm64
 
 pages:
+  image: node:20
   script:
     - corepack enable
     - pnpm i
