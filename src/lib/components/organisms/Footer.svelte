@@ -17,22 +17,22 @@
 				</div>
 
 				<FooterSection title="footer:section-contact">
-					<FooterLink href="mailto:support@adofai.gg">
+					<FooterLink href="mailto:support@adofai.gg" target="_blank" rel="noreferrer">
 						<Translation key="footer:link-email" />
 					</FooterLink>
-					<FooterLink href="https://adofai.gg/discord">
+					<FooterLink href="https://adofai.gg/discord" target="_blank" rel="noreferrer">
 						<Translation key="footer:link-discord" />
 					</FooterLink>
 				</FooterSection>
 
 				<FooterSection title="footer:section-legal">
-					<FooterLink href="https://adofai.gg/docs/legal-notice">
+					<FooterLink href="https://adofai.gg/docs/legal-notice" target="_blank" rel="noreferrer">
 						<Translation key="footer:link-legal-notice" />
 					</FooterLink>
-					<FooterLink href="https://adofai.gg/docs/terms">
+					<FooterLink href="https://adofai.gg/docs/terms" target="_blank" rel="noreferrer">
 						<Translation key="footer:link-terms" />
 					</FooterLink>
-					<FooterLink href="https://adofai.gg/docs/privacy">
+					<FooterLink href="https://adofai.gg/docs/privacy" target="_blank" rel="noreferrer">
 						<Translation key="footer:link-privacy" />
 					</FooterLink>
 				</FooterSection>

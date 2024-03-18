@@ -3,7 +3,7 @@
 </script>
 
 <div>
-	<a {href} class="footer-link"><slot /></a>
+	<a {href} {...$$restProps} class="footer-link"><slot /></a>
 </div>
 
 <style lang="ts">
