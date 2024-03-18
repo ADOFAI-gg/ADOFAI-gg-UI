@@ -7,6 +7,7 @@ pages:
   script:
     - corepack enable
     - pnpm i
+    - pnpm build
     - pnpm build-storybook
   artifacts:
     paths:
