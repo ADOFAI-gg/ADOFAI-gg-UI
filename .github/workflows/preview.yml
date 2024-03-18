@@ -31,7 +31,7 @@ jobs:
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
       - name: Upload Pages artifact
-        uses: actions/build-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3
         with:
           path: storybook-static/
   # Deploy job
