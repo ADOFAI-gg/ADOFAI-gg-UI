@@ -1,0 +1,2 @@
+sign-in = 로그인
+sign-up = 회원가입

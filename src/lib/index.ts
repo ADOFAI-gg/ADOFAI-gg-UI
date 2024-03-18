@@ -4,6 +4,11 @@
 export * from './system/context.js'
 export * from './assets/index.js'
 
+// Localization
+export { default as languages } from './localization/langs.json'
+export * from './utils/translation.js'
+export { default as Translation } from './utils/Translation.svelte'
+
 // Types
 export * from './types.js'
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Avatar, RoundedOutlinedButton, TextButton, type User } from '$lib/index.js'
+	import { Avatar, RoundedOutlinedButton, TextButton, Translation, type User } from '$lib/index.js'
 
 	export let user: User | null
 </script>
@@ -11,8 +11,12 @@
 	</div>
 {:else}
 	<div class="nav-sign-area">
-		<TextButton>Sign Up</TextButton>
-		<RoundedOutlinedButton>Sign In</RoundedOutlinedButton>
+		<TextButton>
+			<Translation key="common:sign-up" />
+		</TextButton>
+		<RoundedOutlinedButton>
+			<Translation key="common:sign-in" />
+		</RoundedOutlinedButton>
 	</div>
 {/if}
 
