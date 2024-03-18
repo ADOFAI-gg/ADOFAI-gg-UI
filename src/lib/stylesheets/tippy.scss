@@ -1,0 +1,16 @@
+.tippy-box {
+	border-radius: var(--tippy-corner-radius, 4px) !important;
+	background-color: rgba(var(--color-dropdown), 100) !important;
+
+	.tippy-arrow {
+		color: rgba(var(--color-dropdown), 100) !important;
+	}
+
+	.tippy-content {
+		padding: 0 !important;
+	}
+}
+
+:root {
+	--tippy-corner-radius: 12px;
+}

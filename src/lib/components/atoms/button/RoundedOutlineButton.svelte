@@ -1,4 +1,10 @@
-<button class="button" on:click {...$$restProps}>
+<script lang="ts">
+	import { useActions, type ActionArray } from 'svelte-component-actions'
+
+	export let use: ActionArray = []
+</script>
+
+<button class="button" use:useActions={use} on:click {...$$restProps}>
 	<slot />
 </button>
 

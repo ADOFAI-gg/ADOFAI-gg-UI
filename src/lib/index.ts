@@ -11,6 +11,8 @@ export { default as TextButton } from './components/atoms/button/TextButton.svel
 
 export { default as FooterLink } from './components/atoms/footer/FooterLink.svelte'
 
+export { default as Popover } from './components/atoms/popover/Popover.svelte'
+
 // Molecules
 export { default as NavSignArea } from './components/molecules/nav/NavSignArea.svelte'
 export { default as FooterSection } from './components/molecules/footer/FooterSection.svelte'
