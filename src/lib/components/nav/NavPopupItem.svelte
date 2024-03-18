@@ -18,6 +18,7 @@
 		border-radius: 4px;
 
 		&:hover,
+		&:focus,
 		&.selected {
 			background-color: rgba(255, 255, 255, 0.2);
 		}

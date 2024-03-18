@@ -17,7 +17,8 @@
 		transition: background ease 0.2s;
 		border-radius: 4px;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			background-color: rgba(255, 255, 255, 0.2);
 		}
 	}
