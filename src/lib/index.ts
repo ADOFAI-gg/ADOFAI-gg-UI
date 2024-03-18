@@ -13,6 +13,7 @@ export { default as FooterLink } from './components/atoms/footer/FooterLink.svel
 
 // Molecules
 export { default as NavSignArea } from './components/molecules/nav/NavSignArea.svelte'
+export { default as FooterSection } from './components/molecules/footer/FooterSection.svelte'
 
 // Organisms
 export { default as Nav } from './components/organisms/Nav.svelte'

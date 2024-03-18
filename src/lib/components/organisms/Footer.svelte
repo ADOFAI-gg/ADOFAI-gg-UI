@@ -1,20 +1,45 @@
 <script lang="ts">
+	import { FooterLink, FooterSection } from '$lib/index.js'
+	import Translation from '$lib/utils/Translation.svelte'
+
 	export let minimal = false
 </script>
 
 <footer class="footer">
 	<div class="footer-content">
-		<h2 class="footer-title">ADOFAI.gg</h2>
+		<h2 class="footer-title">
+			<Translation key="footer:title" />
+		</h2>
 		{#if !minimal}
 			<section class="footer-details">
-				<div class="test"></div>
-				<div class="test"></div>
-				<div class="test"></div>
+				<div class="footer-description">
+					<Translation key="footer:description" />
+				</div>
+
+				<FooterSection title="footer:section-contact">
+					<FooterLink href="mailto:support@adofai.gg">
+						<Translation key="footer:link-email" />
+					</FooterLink>
+					<FooterLink href="https://adofai.gg/discord">
+						<Translation key="footer:link-discord" />
+					</FooterLink>
+				</FooterSection>
+
+				<FooterSection title="footer:section-legal">
+					<FooterLink href="https://adofai.gg/docs/legal-notice">
+						<Translation key="footer:link-legal-notice" />
+					</FooterLink>
+					<FooterLink href="https://adofai.gg/docs/terms">
+						<Translation key="footer:link-terms" />
+					</FooterLink>
+					<FooterLink href="https://adofai.gg/docs/privacy">
+						<Translation key="footer:link-privacy" />
+					</FooterLink>
+				</FooterSection>
 			</section>
 		{/if}
 		<p class="footer-copyright">
-			© 2022. ADOFAI.gg Development Team. 이 사이트에 대한 디자인(타사 제공 이미지, 폰트 제외)과
-			아이콘, 소스 코드(라이브러리 제외)에 대한 모든 권리 보유.
+			&copy; <Translation key="footer:copyright" />
 		</p>
 	</div>
 </footer>
@@ -61,8 +86,7 @@
 		}
 	}
 
-	.test {
-		height: 40px;
-		background-color: red;
+	.footer-description {
+		font-size: 14px;
 	}
 </style>
