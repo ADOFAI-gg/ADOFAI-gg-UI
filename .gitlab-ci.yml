@@ -11,3 +11,4 @@ pages:
   artifacts:
     paths:
       - 'storybook-static'
+  publish: storybook-static
