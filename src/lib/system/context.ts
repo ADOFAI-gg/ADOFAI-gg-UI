@@ -10,6 +10,7 @@ export type GlobalContext = {
 	urls: {
 		levels: string
 		rankings: string
+		references: string
 	}
 }
 

@@ -59,6 +59,9 @@
 						<NavPopupLink href={urls.rankings}>
 							<Translation key="nav:rankings" />
 						</NavPopupLink>
+						<NavPopupLink href={urls.references}>
+							<Translation key="nav:references" />
+						</NavPopupLink>
 					</NavPopupSection>
 				</div>
 			{:else if tab === TabType.Language}

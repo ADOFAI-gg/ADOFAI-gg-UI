@@ -10,7 +10,8 @@
 		setLanguage: (v) => lang.set(v),
 		urls: {
 			levels: 'https://adofai.gg/levels',
-			rankings: 'https://adofai.gg/rankings'
+			rankings: 'https://adofai.gg/rankings',
+			references: 'https://adofai.gg/references'
 		}
 	})
 </script>
