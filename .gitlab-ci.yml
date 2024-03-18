@@ -1,0 +1,8 @@
+pages:
+  script:
+    - corepack enable
+    - pnpm i
+    - pnpm build-storybook
+  artifacts:
+    paths:
+      - 'storybook-static'

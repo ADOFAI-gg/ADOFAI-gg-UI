@@ -1,4 +1,8 @@
-<button on:click class="nav-popup-item">
+<script lang="ts">
+	export let selected = false
+</script>
+
+<button on:click class="nav-popup-item" class:selected>
 	<slot />
 </button>
 
@@ -13,7 +17,8 @@
 		transition: background ease 0.2s;
 		border-radius: 4px;
 
-		&:hover {
+		&:hover,
+		&.selected {
 			background-color: rgba(255, 255, 255, 0.2);
 		}
 	}

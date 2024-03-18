@@ -1,14 +1,26 @@
 <script lang="ts">
 	import Translation from '$lib/utils/Translation.svelte'
 	import type { TranslationKey } from '$lib/utils/translation.js'
+	import { Icon, TextButton } from '$lib/index.js'
+	import { createEventDispatcher } from 'svelte'
 
 	export let title: TranslationKey
+	export let back = false
+
+	const dispatch = createEventDispatcher()
 </script>
 
 <section class="nav-popup-section">
-	<h4 class="title">
-		<Translation key={title} />
-	</h4>
+	<div class="title-container">
+		{#if back}
+			<TextButton on:click={() => dispatch('back')}>
+				<Icon icon="chevronLeft" size={16} alt="back" />
+			</TextButton>
+		{/if}
+		<h4 class="title">
+			<Translation key={title} />
+		</h4>
+	</div>
 	<hr class="divider" />
 
 	<div class="content">
@@ -24,7 +36,6 @@
 	}
 
 	.title {
-		padding: 0 8px;
 		font-weight: 700;
 		font-size: 14px;
 	}
@@ -39,5 +50,12 @@
 		display: flex;
 		flex-direction: column;
 		gap: 6px;
+	}
+
+	.title-container {
+		display: flex;
+		padding: 0 8px;
+		gap: 8px;
+		align-items: center;
 	}
 </style>

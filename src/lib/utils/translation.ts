@@ -1,7 +1,7 @@
-import { writable } from 'svelte/store'
+import { writable, type Readable, derived } from 'svelte/store'
 
 import langs from '../localization/langs.json'
-import { browser } from '$app/environment'
+import { BROWSER } from 'esm-env'
 import Cookies from 'js-cookie'
 
 import { FluentBundle, FluentResource, type FluentVariable } from '@fluent/bundle'
@@ -9,8 +9,6 @@ import { FluentBundle, FluentResource, type FluentVariable } from '@fluent/bundl
 export const availableLanguages: LangResponse[] = langs
 
 export const fallbackLang = 'en'
-
-let _currentLang = 'en'
 
 const langSections = ['common', 'footer', 'nav'] as const
 
@@ -65,13 +63,8 @@ export const getLangCode = (code: string) => {
 }
 
 export const currentLang = writable<string>(
-	getLangCode(browser ? Cookies.get('_adofaigg-lang') || window.navigator.language : 'en')
+	getLangCode(BROWSER ? Cookies.get('_adofaigg-lang') || window.navigator.language : 'en')
 )
-
-currentLang.subscribe((v) => {
-	Cookies.set('_adofaigg-lang', v, { expires: 365 * 10 })
-	_currentLang = v
-})
 
 type LangResponse = {
 	code: string
@@ -88,28 +81,57 @@ const escapeHtmlTags = (str: string) =>
 		.replace(/'/g, '&#039;')
 
 export const translate = (
+	language: Readable<string>,
 	rawKey: TranslationKey,
-	args: Record<string, FluentVariable> = {},
-	escape = true,
-	l: string = _currentLang
+	args: Record<string, FluentVariable>,
+	escape = true
 ) => {
-	let key: string
-	let sectionName: LangSection
+	return derived(language, (l) => {
+		let key: string
+		let sectionName: LangSection
 
-	if (typeof rawKey === 'string') {
-		;[sectionName, key] = rawKey.split(':') as ArrayTranslationKey
-	} else {
-		;[sectionName, key] = rawKey
-	}
+		if (typeof rawKey === 'string') {
+			;[sectionName, key] = rawKey.split(':') as ArrayTranslationKey
+		} else {
+			;[sectionName, key] = rawKey
+		}
 
-	if (!l) return key
-	const lang = langData[l]
-	if (!lang) return key
-	const section = lang[sectionName]
-	if (!section) return key
-	const message = section.getMessage(key)
-	if (!message?.value) return key
-	const result = section.formatPattern(message.value, args)
-	if (escape) escapeHtmlTags(result)
-	return result
+		if (!l) return key
+		const lang = langData[l]
+		if (!lang) return key
+		const section = lang[sectionName]
+		if (!section) return key
+		const message = section.getMessage(key)
+		if (!message?.value) return key
+		const result = section.formatPattern(message.value, args)
+		if (escape) escapeHtmlTags(result)
+		return result
+	})
 }
+
+// export const translate = (
+// 	rawKey: TranslationKey,
+// 	args: Record<string, FluentVariable> = {},
+// 	escape = true,
+// 	l: string
+// ) => {
+// 	let key: string
+// 	let sectionName: LangSection
+
+// 	if (typeof rawKey === 'string') {
+// 		;[sectionName, key] = rawKey.split(':') as ArrayTranslationKey
+// 	} else {
+// 		;[sectionName, key] = rawKey
+// 	}
+
+// 	if (!l) return key
+// 	const lang = langData[l]
+// 	if (!lang) return key
+// 	const section = lang[sectionName]
+// 	if (!section) return key
+// 	const message = section.getMessage(key)
+// 	if (!message?.value) return key
+// 	const result = section.formatPattern(message.value, args)
+// 	if (escape) escapeHtmlTags(result)
+// 	return result
+// }

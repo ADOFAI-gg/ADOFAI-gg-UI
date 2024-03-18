@@ -4,7 +4,7 @@
 	export let use: ActionArray = []
 </script>
 
-<button use:useActions={use} class="button">
+<button on:click use:useActions={use} class="button">
 	<slot />
 </button>
 
