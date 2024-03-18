@@ -1,8 +1,5 @@
 <script lang="ts">
-	import { NavPopup, NavSignArea, type User } from '$lib/index.js'
-	import Logo from '../atoms/Logo.svelte'
-	import TextButton from '../atoms/button/TextButton.svelte'
-	import Icon from '../atoms/icon/Icon.svelte'
+	import { Icon, Logo, NavPopup, NavSignArea, TextButton, type User } from '$lib/index.js'
 
 	export let user: User | null
 </script>

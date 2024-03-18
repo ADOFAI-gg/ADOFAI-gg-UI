@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getIconClass } from '../../../assets/index.js'
+	import { getIconClass } from '$lib/assets/index.js'
 
 	export let icon: string
 	export let size = 24

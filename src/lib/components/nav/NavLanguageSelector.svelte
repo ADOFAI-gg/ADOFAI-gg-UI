@@ -1,7 +1,7 @@
 <script lang="ts">
-	import NavPopupItem from '$lib/components/atoms/nav/NavPopupItem.svelte'
+	import NavPopupItem from '$lib/components/nav/NavPopupItem.svelte'
 	import { getGlobalContext } from '$lib/index.js'
-	import langs from '../../../localization/langs.json'
+	import langs from '../../localization/langs.json'
 
 	const ctx = getGlobalContext()
 

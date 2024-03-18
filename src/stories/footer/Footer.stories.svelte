@@ -4,7 +4,7 @@
 
 	export const meta = {
 		component: Footer,
-		title: 'Organisms/Footer'
+		title: 'Components/Footer'
 	}
 </script>
 

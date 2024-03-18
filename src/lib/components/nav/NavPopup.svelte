@@ -1,13 +1,15 @@
 <script lang="ts">
-	import NavPopupItem from '$lib/components/atoms/nav/NavPopupItem.svelte'
-	import NavPopupLink from '$lib/components/atoms/nav/NavPopupLink.svelte'
+	import {
+		Icon,
+		NavLanguageSelector,
+		NavPopupItem,
+		NavPopupLink,
+		NavPopupSection,
+		Popover,
+		TextButton
+	} from '$lib/index.js'
 	import Translation from '$lib/utils/Translation.svelte'
 	import { fly } from 'svelte/transition'
-	import NavLanguageSelector from './NavLanguageSelector.svelte'
-	import TextButton from '$lib/components/atoms/button/TextButton.svelte'
-	import Popover from '$lib/components/atoms/popover/Popover.svelte'
-	import NavPopupSection from '$lib/components/atoms/nav/NavPopupSection.svelte'
-	import Icon from '$lib/components/atoms/icon/Icon.svelte'
 
 	enum TabType {
 		Main,

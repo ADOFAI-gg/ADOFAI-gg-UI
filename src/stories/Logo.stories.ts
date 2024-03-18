@@ -4,7 +4,7 @@ import { Logo } from '$lib/index.js'
 const meta = {
 	// @ts-expect-error type issue
 	component: Logo,
-	title: 'Atoms/Logo'
+	title: 'Components/Logo'
 } satisfies Meta<typeof Logo>
 
 export default meta

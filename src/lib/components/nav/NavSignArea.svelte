@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { RoundedOutlineButton, TextButton, type User } from '$lib/index.js'
-	import Avatar from '../../atoms/Avatar.svelte'
+	import { Avatar, RoundedOutlinedButton, TextButton, type User } from '$lib/index.js'
 
 	export let user: User | null
 </script>
@@ -13,7 +12,7 @@
 {:else}
 	<div class="nav-sign-area">
 		<TextButton>Sign Up</TextButton>
-		<RoundedOutlineButton>Sign In</RoundedOutlineButton>
+		<RoundedOutlinedButton>Sign In</RoundedOutlinedButton>
 	</div>
 {/if}
 

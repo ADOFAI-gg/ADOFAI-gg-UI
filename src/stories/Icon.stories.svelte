@@ -2,7 +2,7 @@
 	import { Avatar, Icon, iconNames } from '$lib/index.js'
 
 	export const meta = {
-		title: 'Atoms/Icon',
+		title: 'Components/Icon',
 		component: Icon
 	}
 </script>

@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
 	import { Avatar } from '$lib/index.js'
-	import GanjangFactory from '../assets/ganjangfactory.png'
+	import GanjangFactory from './assets/ganjangfactory.png'
 
 	export const meta = {
-		title: 'Atoms/Avatar',
+		title: 'Components/Avatar',
 		component: Avatar
 	}
 </script>

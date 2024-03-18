@@ -2,21 +2,21 @@
 	import { Popover } from '$lib/index.js'
 
 	export const meta = {
-		title: 'Atoms/Popover',
+		title: 'Components/Popover',
 		components: Popover
 	}
 </script>
 
 <script lang="ts">
-	import { RoundedOutlineButton } from '$lib/index.js'
+	import { RoundedOutlinedButton } from '$lib/index.js'
 	import { Story } from '@storybook/addon-svelte-csf'
 </script>
 
 <Story name="Default">
 	<Popover placement="bottom-start">
-		<RoundedOutlineButton slot="button" let:buttonRef use={[buttonRef]}>
+		<RoundedOutlinedButton slot="button" let:buttonRef use={[buttonRef]}>
 			Click me!
-		</RoundedOutlineButton>
+		</RoundedOutlinedButton>
 		Content
 	</Popover>
 </Story>

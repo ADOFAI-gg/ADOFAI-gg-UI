@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { generateIconStyles } from '../../../assets/index.js'
+	import { generateIconStyles } from '$lib/assets/index.js'
 
 	const css = generateIconStyles()
 </script>

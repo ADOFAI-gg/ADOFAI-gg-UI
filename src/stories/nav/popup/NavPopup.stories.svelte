@@ -2,7 +2,7 @@
 	import { NavPopup } from '$lib/index.js'
 
 	export const meta = {
-		title: 'Molecules/Nav/Nav Popup',
+		title: 'Components/Nav/Popup/Nav Popup',
 		component: NavPopup
 	}
 </script>

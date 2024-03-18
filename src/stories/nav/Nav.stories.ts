@@ -5,7 +5,7 @@ import { dummyAdminUser, dummyUser } from '../dummyData.js'
 const meta = {
 	// @ts-expect-error type issue
 	component: Nav,
-	title: 'Organisms/Nav'
+	title: 'Components/Nav'
 } satisfies Meta<typeof Nav>
 
 export default meta

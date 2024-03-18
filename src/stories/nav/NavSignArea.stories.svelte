@@ -2,14 +2,14 @@
 	import { NavSignArea } from '$lib/index.js'
 
 	export const meta = {
-		title: 'Molecules/Nav/Nav Sign Area',
+		title: 'Components/Nav/Nav Sign Area',
 		component: NavSignArea
 	}
 </script>
 
 <script lang="ts">
 	import { Story, Template } from '@storybook/addon-svelte-csf'
-	import { dummyUser } from '../../dummyData.js'
+	import { dummyUser } from '../dummyData.js'
 </script>
 
 <Template let:args>

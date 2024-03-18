@@ -1,8 +1,8 @@
 <script lang="ts" context="module">
-	import { RoundedOutlineButton } from '$lib/index.js'
+	import { RoundedOutlinedButton } from '$lib/index.js'
 
 	export const meta = {
-		title: 'Atoms/Button'
+		title: 'Components/Button'
 	}
 </script>
 
@@ -11,8 +11,8 @@
 	import { Story } from '@storybook/addon-svelte-csf'
 </script>
 
-<Story name="Rounded Outline">
-	<RoundedOutlineButton>Button</RoundedOutlineButton>
+<Story name="Rounded Outlined">
+	<RoundedOutlinedButton>Button</RoundedOutlinedButton>
 </Story>
 
 <Story name="Text">
