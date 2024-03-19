@@ -4,6 +4,7 @@
 
 	import tippy, { type Placement, type Props } from 'tippy.js'
 	import type { Action } from 'svelte/action'
+	import { BROWSER } from 'esm-env'
 
 	export let placement: Placement = 'auto'
 
@@ -66,10 +67,12 @@
 	const buttonRef: Action = (node) => {
 		button = node
 	}
+
+	const display = BROWSER ? 'block' : 'none'
 </script>
 
 <slot name="button" {buttonRef} />
 
-<div bind:this={content} role="menu">
+<div bind:this={content} role="menu" style="width: {display};">
 	<slot />
 </div>

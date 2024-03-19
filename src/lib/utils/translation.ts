@@ -5,6 +5,7 @@ import { BROWSER } from 'esm-env'
 import Cookies from 'js-cookie'
 
 import { FluentBundle, FluentResource, type FluentVariable } from '@fluent/bundle'
+import { translationData } from '$lib/localization/translations/index.js'
 
 export const availableLanguages: LangResponse[] = langs
 
@@ -19,16 +20,8 @@ export type StringTranslationKey = `${LangSection}:` | (`${LangSection}:${string
 export type ArrayTranslationKey = [LangSection, string]
 export type TranslationKey = StringTranslationKey | ArrayTranslationKey
 
-const rawFluentFiles = import.meta.glob('../localization/translations/**/*.ftl', {
-	eager: true,
-	query: '?raw',
-	import: 'default'
-}) as Record<string, string>
 const sourceResources = Object.fromEntries(
-	langSections.map((x) => [
-		x,
-		new FluentResource(rawFluentFiles[`../localization/translations/en/${x}.ftl`])
-	])
+	langSections.map((x) => [x, new FluentResource(translationData[`en/${x}`])])
 )
 
 const buildLangBundle = (lang: string): LangData => {
@@ -39,7 +32,7 @@ const buildLangBundle = (lang: string): LangData => {
 		setupFunctions(bundle)
 
 		bundle.addResource(sourceResources[section])
-		const rawData = rawFluentFiles[`../localization/translations/${lang}/${section}.ftl`]
+		const rawData = translationData[`${lang}/${section}`]
 		const errors = bundle.addResource(new FluentResource(rawData), { allowOverrides: true })
 		for (const error of errors) {
 			console.warn('Fluent resource load error:', error)
