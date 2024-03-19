@@ -2,7 +2,8 @@ export const getIconClass = (name: string) => `icon__${name}`
 
 const icons = import.meta.glob('./icons/*.svg', {
 	eager: true,
-	as: 'url'
+	query: '?url',
+	import: 'default'
 })
 
 const iconPrefix = './icons/'
@@ -13,7 +14,7 @@ export const generateIconStyles = () => {
 	for (const key in icons) {
 		const name = key.slice(iconPrefix.length, key.length - 4)
 		const url = icons[key]
-		const element = `.${getIconClass(name)} { --icon-url: url('${url.replace(/'/g, '%27')}') }`
+		const element = `.${getIconClass(name)} { --icon-url: url('${(url as string).replace(/'/g, '%27')}') }`
 
 		css.push(element)
 	}
