@@ -13,3 +13,6 @@ vite.config.ts.timestamp-*
 *storybook.log
 storybook-static
 .direnv
+
+src/lib/assets/icons/index.ts
+src/lib/localization/translations/index.ts

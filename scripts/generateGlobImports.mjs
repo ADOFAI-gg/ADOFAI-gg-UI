@@ -1,5 +1,5 @@
 import { globIterate } from 'glob'
-import { writeFile } from 'fs/promises'
+import { readFile, writeFile } from 'fs/promises'
 import { format, resolveConfig } from 'prettier'
 
 const prettierConfig = await resolveConfig()
@@ -39,11 +39,11 @@ const generateTranslations = async () => {
 
 	for await (const i of globIterate('src/lib/localization/translations/*/*.ftl')) {
 		const name = i.slice(prefix.length, i.length - 4)
-		const importName = name.replace(/\//g, '_')
+		// const importName = name.replace(/\//g, '_')
 
-		lines.push(`import ${importName} from './${name}.ftl?raw'`)
+		// lines.push(`import ${importName} from './${name}.ftl?raw'`)
 
-		translationData.push(`${JSON.stringify(name)}: ${importName}`)
+		translationData.push(`${JSON.stringify(name)}: ${JSON.stringify(await readFile(i, 'utf-8'))}`)
 	}
 
 	lines.push('')
