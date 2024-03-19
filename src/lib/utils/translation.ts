@@ -21,8 +21,9 @@ export type TranslationKey = StringTranslationKey | ArrayTranslationKey
 
 const rawFluentFiles = import.meta.glob('../localization/translations/**/*.ftl', {
 	eager: true,
-	as: 'raw'
-})
+	query: '?raw',
+	import: 'default'
+}) as Record<string, string>
 const sourceResources = Object.fromEntries(
 	langSections.map((x) => [
 		x,
