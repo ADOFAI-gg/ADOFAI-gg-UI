@@ -67,12 +67,12 @@
 	const buttonRef: Action = (node) => {
 		button = node
 	}
-
-	const display = BROWSER ? 'block' : 'none'
 </script>
 
 <slot name="button" {buttonRef} />
 
-<div bind:this={content} role="menu" style="width: {display};">
-	<slot />
-</div>
+{#if BROWSER}
+	<div bind:this={content} role="menu">
+		<slot />
+	</div>
+{/if}
