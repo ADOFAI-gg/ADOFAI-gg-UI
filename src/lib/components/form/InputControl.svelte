@@ -6,8 +6,6 @@
 	const ctx = getGlobalContext()
 
 	$: translatedPlaceholder = placeholder ? translate(ctx.language, placeholder, {}, false) : null
-
-	$: console.log($translatedPlaceholder)
 </script>
 
 <div class="input-control">

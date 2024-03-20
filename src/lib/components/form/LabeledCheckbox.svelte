@@ -1,13 +1,16 @@
 <script lang="ts">
-	import { Checkbox, type TranslationKey } from '$lib/index.js'
+	import { Checkbox, Translation, type TranslationKey } from '$lib/index.js'
 
 	export let label: TranslationKey
+	export let checked: boolean = false
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->
 <label class="label">
-	<Checkbox />
-	<span>{label}</span>
+	<Checkbox bind:checked />
+	<span>
+		<Translation key={label} />
+	</span>
 </label>
 
 <style lang="scss">
