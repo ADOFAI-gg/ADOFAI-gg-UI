@@ -6,19 +6,28 @@
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->
-<label class="label">
+<label class="labeled-checkbox-container">
 	<Checkbox bind:checked />
-	<span>
+	<span class="label" class:checked>
 		<Translation key={label} />
 	</span>
 </label>
 
 <style lang="scss">
-	.label {
+	.labeled-checkbox-container {
 		display: flex;
 		gap: 8px;
 		align-items: center;
 		font-size: 14px;
 		line-height: 14px;
+	}
+
+	.label {
+		opacity: 0.6;
+		transition: opacity ease 0.2s;
+
+		&.checked {
+			opacity: 1;
+		}
 	}
 </style>
