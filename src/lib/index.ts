@@ -40,3 +40,10 @@ export { default as NavAccessibilitySettings } from './components/nav/NavAccessi
 export { default as Footer } from './components/footer/Footer.svelte'
 export { default as FooterLink } from './components/footer/FooterLink.svelte'
 export { default as FooterSection } from './components/footer/FooterSection.svelte'
+
+// Form
+export { default as FormField } from './components/form/FormField.svelte'
+export { default as HorizontalFormField } from './components/form/HorizontalFormField.svelte'
+export { default as InputControl } from './components/form/InputControl.svelte'
+export { default as Checkbox } from './components/form/Checkbox.svelte'
+export { default as LabeledCheckbox } from './components/form/LabeledCheckbox.svelte'

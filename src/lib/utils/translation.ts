@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-types */
+
 import { writable, type Readable, derived } from 'svelte/store'
 
 import langs from '../localization/langs.json'
@@ -17,8 +19,11 @@ const langSections = ['common', 'footer', 'nav'] as const
 
 export type LangSection = (typeof langSections)[number] | ADOFAIGG_UI.ExtraLangSections[number]
 export type LangData = Record<string, FluentBundle>
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type StringTranslationKey = `${LangSection}:` | (`${LangSection}:${string & {}}` & {})
+export type StringTranslationKey =
+	| `${LangSection}:`
+	| (`${LangSection}:${string & {}}` & {})
+	| (`${string}:${string}` & {})
+
 export type ArrayTranslationKey = [LangSection, string]
 export type TranslationKey = StringTranslationKey | ArrayTranslationKey
 
