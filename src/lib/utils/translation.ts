@@ -11,12 +11,11 @@ export const availableLanguages: LangResponse[] = langs
 
 export const fallbackLang = 'en'
 
-export type ExtraLangSections = []
 const registeredLangSections: string[] = []
 
 const langSections = ['common', 'footer', 'nav'] as const
 
-export type LangSection = (typeof langSections)[number] | ExtraLangSections[number]
+export type LangSection = (typeof langSections)[number] | ADOFAIGG_UI.ExtraLangSections[number]
 export type LangData = Record<string, FluentBundle>
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type StringTranslationKey = `${LangSection}:` | (`${LangSection}:${string & {}}` & {})
