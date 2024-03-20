@@ -7,7 +7,7 @@
 
 <!-- svelte-ignore a11y-label-has-associated-control -->
 <label class="labeled-checkbox-container">
-	<Checkbox bind:checked />
+	<Checkbox bind:checked {...$$restProps} />
 	<span class="label" class:checked>
 		<Translation key={label} />
 	</span>
