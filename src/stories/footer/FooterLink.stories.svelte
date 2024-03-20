@@ -13,5 +13,3 @@
 </Template>
 
 <Story name="Default" args={{}} />
-
-<Story name="Minimal" args={{ minimal: true }} />
