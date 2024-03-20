@@ -3,6 +3,8 @@
 
 	export let placeholder: TranslationKey | null = null
 
+	export let value: string = ''
+
 	const ctx = getGlobalContext()
 
 	$: translatedPlaceholder = placeholder ? translate(ctx.language, placeholder, {}, false) : null
@@ -10,6 +12,7 @@
 
 <div class="input-control">
 	<input
+		bind:value
 		{...$$restProps}
 		placeholder={translatedPlaceholder ? $translatedPlaceholder : null}
 		class="input"
