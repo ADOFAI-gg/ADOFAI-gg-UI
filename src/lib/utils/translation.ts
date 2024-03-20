@@ -32,10 +32,6 @@ export const registerTranslations = (data: Record<string, string>, sections: str
 		const result: LangData = {} as LangData
 
 		for (const section of sections) {
-			if (registeredLangSections.includes(section)) {
-				throw new Error(`Section ${section} is already registered`)
-			}
-
 			const bundle = new FluentBundle(lang)
 			setupFunctions(bundle)
 
