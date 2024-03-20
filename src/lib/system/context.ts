@@ -11,6 +11,8 @@ export type GlobalContext = {
 		levels: string
 		rankings: string
 		references: string
+		signIn: string
+		signUp: string
 	}
 }
 
