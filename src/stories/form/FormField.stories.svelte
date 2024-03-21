@@ -19,4 +19,6 @@
 
 <Story name="Labeled" args={{ label: 'custom:Label' }} />
 
+<Story name="Required" args={{ label: 'custom:Label', required: true }} />
+
 <Story name="With Error" args={{ label: 'custom:Label', error: 'custom:Wow this is error' }} />

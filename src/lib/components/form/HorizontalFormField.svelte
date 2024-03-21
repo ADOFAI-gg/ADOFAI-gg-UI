@@ -5,6 +5,7 @@
 
 	export let label: TranslationKey | null = null
 	export let error: TranslationKey | null = null
+	export let required: boolean = false
 </script>
 
 <div class="form-field">
@@ -12,6 +13,10 @@
 		{#if label}
 			<p class="label">
 				<Translation key={label} />
+
+				{#if required}
+					<span class="required-sign">*</span>
+				{/if}
 			</p>
 		{/if}
 		<slot />
@@ -29,6 +34,10 @@
 		font-weight: 500;
 		line-height: 16px;
 		flex-grow: 1;
+	}
+
+	.required-sign {
+		color: rgba(var(--color-red), 1);
 	}
 
 	.form-field {
