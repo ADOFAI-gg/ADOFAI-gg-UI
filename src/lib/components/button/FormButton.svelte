@@ -19,7 +19,6 @@
 	.button {
 		height: 48px;
 		display: flex;
-		width: 100%;
 		justify-content: center;
 		align-items: center;
 
