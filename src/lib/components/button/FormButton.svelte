@@ -21,6 +21,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		padding: 0 24px;
 
 		font-size: 16px;
 		font-weight: 500;
