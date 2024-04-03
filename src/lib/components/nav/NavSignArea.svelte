@@ -16,7 +16,7 @@
 {#if user}
 	<div class="nav-user-area">
 		<Avatar size={24} src={user.avatarURL} />
-		<div class="username">{user.username}</div>
+		<div class="username">{user.displayName || user.username}</div>
 	</div>
 {:else}
 	<div class="nav-sign-area">
