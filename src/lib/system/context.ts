@@ -13,6 +13,7 @@ export type GlobalContext = {
 		references: string
 		signIn: string
 		signUp: string
+		userSettings: string
 	}
 }
 

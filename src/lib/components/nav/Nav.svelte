@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { Icon, Logo, NavPopup, NavSignArea, TextButton, type User } from '$lib/index.js'
+	import { getGlobalContext, Icon, Logo, NavPopup, NavSignArea, TextButton, type User } from '$lib/index.js'
 
 	export let user: User | null
+
+	const ctx = getGlobalContext()
 </script>
 
 <nav class="nav">
@@ -9,9 +11,9 @@
 	<div class="spacer"></div>
 	<NavSignArea {user} />
 	<div class="nav-divider"></div>
-	{#if user && user.isAdmin}
-		<TextButton>
-			<Icon icon="cogs" size={16} alt="Manage Icon" />
+	{#if user}
+		<TextButton href={ctx.urls.userSettings}>
+			<Icon icon="cogs" size={16} alt="Settings" />
 		</TextButton>
 	{/if}
 	<NavPopup />

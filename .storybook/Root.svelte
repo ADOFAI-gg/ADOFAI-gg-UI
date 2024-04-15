@@ -13,7 +13,8 @@
 			rankings: 'https://adofai.gg/rankings',
 			references: 'https://adofai.gg/references',
 			signIn: 'https://accounts.adofai.gg/auth/signin',
-			signUp: 'https://accounts.adofai.gg/autn/signup'
+			signUp: 'https://accounts.adofai.gg/autn/signup',
+			userSettings: 'https://accounts.adofai.gg/settings'
 		}
 	})
 </script>
