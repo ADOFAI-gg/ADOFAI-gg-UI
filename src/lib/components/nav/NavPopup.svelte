@@ -1,12 +1,10 @@
 <script lang="ts">
 	import {
-		Icon,
 		NavLanguageSelector,
 		NavPopupItem,
 		NavPopupLink,
 		NavPopupSection,
 		Popover,
-		TextButton,
 		getGlobalContext,
 		NavAccessibilitySettings
 	} from '$lib/index.js'
@@ -32,10 +30,6 @@
 		offset: [0, 32]
 	}}
 >
-	<TextButton slot="button" let:buttonRef use={[buttonRef]}>
-		<Icon icon="expand" size={16} alt="Expand Icon" />
-	</TextButton>
-
 	<div class="nav-popup-container">
 		<div class="nav-popup-content" style="--content-height: {height}px;">
 			{#if tab === TabType.Main}

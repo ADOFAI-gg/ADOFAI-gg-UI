@@ -1,16 +1,7 @@
 <script lang="ts">
-	import {
-		Avatar,
-		RoundedOutlinedButton,
-		TextButton,
-		Translation,
-		getGlobalContext,
-		type User
-	} from '$lib/index.js'
+	import { Avatar, type User } from '$lib/index.js'
 
 	export let user: User | null
-
-	const ctx = getGlobalContext()
 </script>
 
 {#if user}
@@ -19,14 +10,7 @@
 		<div class="username">{user.displayName || user.username}</div>
 	</div>
 {:else}
-	<div class="nav-sign-area">
-		<TextButton href={ctx.urls.signUp} rel="noreferrer">
-			<Translation key="common:sign-up" />
-		</TextButton>
-		<RoundedOutlinedButton href={ctx.urls.signIn} rel="noreferrer">
-			<Translation key="common:sign-in" />
-		</RoundedOutlinedButton>
-	</div>
+	<div class="nav-sign-area">TODO</div>
 {/if}
 
 <style lang="scss">

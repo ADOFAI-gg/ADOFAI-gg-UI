@@ -23,9 +23,7 @@ export { default as Logo } from './components/Logo.svelte'
 export { default as Popover } from './components/Popover.svelte'
 
 // Buttons
-export { default as RoundedOutlinedButton } from './components/button/RoundedOutlinedButton.svelte'
-export { default as TextButton } from './components/button/TextButton.svelte'
-export { default as FormButton } from './components/button/FormButton.svelte'
+export { default as Button } from './components/Button.svelte'
 
 // Nav
 export { default as Nav } from './components/nav/Nav.svelte'
