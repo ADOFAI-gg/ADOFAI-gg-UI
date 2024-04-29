@@ -3,7 +3,7 @@
 
 	export let icon: string
 	export let size = 24
-	export let style = 'color: white;'
+	export let style = ''
 
 	export let alt: string
 </script>

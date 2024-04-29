@@ -12,64 +12,56 @@
 <Template let:args>
 	<div class="buttons">
 		<section>
-			<div class="style-name">Primary</div>
+			<div class="style-name">Default</div>
 			<div class="button-row">
-				<Button size="lg" style="primary" {...args} disabled>Disabled</Button>
-				<Button size="lg" style="primary" {...args}>Large</Button>
-				<Button size="md" style="primary" {...args}>Medium</Button>
-				<Button size="sm" style="primary" {...args}>Small</Button>
+				<Button size="lg" {...args} disabled>Disabled</Button>
+				<Button size="lg" {...args}>Large</Button>
+				<Button size="md" {...args}>Medium</Button>
+				<Button size="sm" {...args}>Small</Button>
 			</div>
 		</section>
 
 		<section>
-			<div class="style-name">Danger</div>
+			<div class="style-name">Left Icon</div>
 			<div class="button-row">
-				<Button size="lg" style="danger" {...args} disabled>Disabled</Button>
-				<Button size="lg" style="danger" {...args}>Large</Button>
-				<Button size="md" style="danger" {...args}>Medium</Button>
-				<Button size="sm" style="danger" {...args}>Small</Button>
+				<Button size="lg" {...args} disabled leftIcon="profile">Disabled</Button>
+				<Button size="lg" {...args} leftIcon="profile">Large</Button>
+				<Button size="md" {...args} leftIcon="profile">Medium</Button>
+				<Button size="sm" {...args} leftIcon="profile">Small</Button>
 			</div>
 		</section>
 
 		<section>
-			<div class="style-name">Ghost/Light</div>
+			<div class="style-name">Right Icon</div>
 			<div class="button-row">
-				<Button size="lg" style="ghost-light" {...args} disabled>Disabled</Button>
-				<Button size="lg" style="ghost-light" {...args}>Large</Button>
-				<Button size="md" style="ghost-light" {...args}>Medium</Button>
-				<Button size="sm" style="ghost-light" {...args}>Small</Button>
+				<Button size="lg" {...args} disabled rightIcon="profile">Disabled</Button>
+				<Button size="lg" {...args} rightIcon="profile">Large</Button>
+				<Button size="md" {...args} rightIcon="profile">Medium</Button>
+				<Button size="sm" {...args} rightIcon="profile">Small</Button>
 			</div>
 		</section>
 
 		<section>
-			<div class="style-name">Ghost/Dark</div>
+			<div class="style-name">Icon Only</div>
 			<div class="button-row">
-				<Button size="lg" style="ghost-dark" {...args} disabled>Disabled</Button>
-				<Button size="lg" style="ghost-dark" {...args}>Large</Button>
-				<Button size="md" style="ghost-dark" {...args}>Medium</Button>
-				<Button size="sm" style="ghost-dark" {...args}>Small</Button>
-			</div>
-		</section>
-
-		<section>
-			<div class="style-name">Outlined</div>
-			<div class="button-row">
-				<Button size="lg" style="outlined" {...args} disabled>Disabled</Button>
-				<Button size="lg" style="outlined" {...args}>Large</Button>
-				<Button size="md" style="outlined" {...args}>Medium</Button>
-				<Button size="sm" style="outlined" {...args}>Small</Button>
+				<Button size="lg" {...args} disabled iconOnly leftIcon="profile" />
+				<Button size="lg" {...args} iconOnly leftIcon="profile" />
+				<Button size="md" {...args} iconOnly leftIcon="profile" />
+				<Button size="sm" {...args} iconOnly leftIcon="profile" />
 			</div>
 		</section>
 	</div>
 </Template>
 
-<Story name="Default" />
+<Story name="Primary" args={{ style: 'primary' }} />
 
-<Story name="Left Icon" />
+<Story name="Danger" args={{ style: 'danger' }} />
 
-<Story name="Right Icon" />
+<Story name="Light Ghost" args={{ style: 'ghost-light' }} />
 
-<Story name="Icon Only" />
+<Story name="Dark Ghost" args={{ style: 'ghost-dark' }} />
+
+<Story name="Outlined" args={{ style: 'outlined' }} />
 
 <style lang="scss">
 	.style-name {

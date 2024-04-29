@@ -8,15 +8,13 @@
 </script>
 
 <script lang="ts">
-	import { RoundedOutlinedButton } from '$lib/index.js'
+	import { Button } from '$lib/index.js'
 	import { Story } from '@storybook/addon-svelte-csf'
 </script>
 
 <Story name="Default">
 	<Popover placement="bottom-start">
-		<RoundedOutlinedButton slot="button" let:buttonRef use={[buttonRef]}>
-			Click me!
-		</RoundedOutlinedButton>
+		<Button style="outlined" slot="button" let:buttonRef use={[buttonRef]}>Click me!</Button>
 		Content
 	</Popover>
 </Story>

@@ -1,12 +1,32 @@
 <script lang="ts">
 	import type { ButtonSize, ButtonStyle } from '$lib/types.js'
+	import { useActions, type ActionArray } from 'svelte-component-actions'
+	import Icon from './Icon.svelte'
+
+	export let use: ActionArray = []
 
 	export let style: ButtonStyle = 'primary'
 	export let size: ButtonSize = 'lg'
+
+	export let leftIcon: string | null = null
+	export let rightIcon: string | null = null
+	export let iconOnly: boolean = false
 </script>
 
-<button class="button button-style-{style} button-size-{size}" on:click {...$$restProps}>
+<button
+	use:useActions={use}
+	class="button button-style-{style} button-size-{size}"
+	class:icon-only={iconOnly}
+	on:click
+	{...$$restProps}
+>
+	{#if leftIcon}
+		<Icon alt="icon" icon={leftIcon} size={24} />
+	{/if}
 	<slot />
+	{#if rightIcon}
+		<Icon alt="icon" icon={rightIcon} size={24} />
+	{/if}
 </button>
 
 <style lang="scss">
@@ -16,6 +36,7 @@
 		align-items: center;
 		border-radius: 8px;
 		font-weight: 600;
+		display: flex;
 	}
 
 	/* Styles */
@@ -97,7 +118,7 @@
 			background-color ease 0.2s,
 			color ease 0.2s;
 
-		border: 1px solid rgba(255, 255, 255, 0.2);
+		box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 
 		&:disabled {
 			background-color: rgba(255, 255, 255, 0);
@@ -124,15 +145,30 @@
 	.button-size-lg {
 		padding: 12px 24px;
 		font-size: 16px;
+		gap: 16px;
+
+		&.icon-only {
+			padding: 12px;
+		}
 	}
 
 	.button-size-md {
 		padding: 8px 16px;
 		font-size: 14px;
+		gap: 8px;
+
+		&.icon-only {
+			padding: 8px;
+		}
 	}
 
 	.button-size-sm {
 		padding: 6px 12px;
 		font-size: 12px;
+		gap: 6px;
+
+		&.icon-only {
+			padding: 6px;
+		}
 	}
 </style>
