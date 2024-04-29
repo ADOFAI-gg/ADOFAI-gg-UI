@@ -8,6 +8,9 @@ dependencies:
   '@fluent/bundle':
     specifier: ^0.18.0
     version: 0.18.0
+  '@fontsource/ibm-plex-sans-kr':
+    specifier: ^5.0.13
+    version: 5.0.13
   '@fontsource/m-plus-rounded-1c':
     specifier: ^5.0.12
     version: 5.0.12
@@ -1722,6 +1725,10 @@ packages:
   /@fluent/bundle@0.18.0:
     resolution: {integrity: sha512-8Wfwu9q8F9g2FNnv82g6Ch/E1AW1wwljsUOolH5NEtdJdv0sZTuWvfCM7c3teB9dzNaJA8rn4khpidpozHWYEA==}
     engines: {node: '>=14.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /@fontsource/ibm-plex-sans-kr@5.0.13:
+    resolution: {integrity: sha512-iHUjByW5LEw/ojWeqBr11bjyJcYAtfrCw5i7C5oji0Hs/k6r30a6oBZ6zh3kTrDSrGZxHZ9cCpOsfOlpXEpUzQ==}
     dev: false
 
   /@fontsource/m-plus-rounded-1c@5.0.12:
