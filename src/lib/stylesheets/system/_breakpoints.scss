@@ -1,14 +1,15 @@
 $breakpoints: (
-	'xs': (
-		'min-width': 360px,
-		'col-spacing': 12px,
-		'gutters': 24px
-	),
-	'sm': (
-		'min-width': 640px,
-		'col-spacing': 20px,
-		'gutters': 24px
-	),
+	// 'xs': (
+	// 	'min-width': 360px,
+	// 	'col-spacing': 12px,
+	// 	'gutters': 24px
+	// ),
+	'sm':
+		(
+			'min-width': 640px,
+			'col-spacing': 20px,
+			'gutters': 24px
+		),
 	'md': (
 		'min-width': 768px,
 		'col-spacing': 24px,
