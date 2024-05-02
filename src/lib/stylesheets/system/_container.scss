@@ -5,8 +5,8 @@
 	margin: 0 auto;
 
 	@each $name, $data in $breakpoints {
-		@include breakpoint($name) {
-			max-width: map-get($data, 'min-width');
+		@media screen and (min-width: calc(#{inspect(map-get($data, 'min-width'))} + 24px * 2)) {
+			max-width: calc(map-get($data, 'min-width'));
 		}
 	}
 }
