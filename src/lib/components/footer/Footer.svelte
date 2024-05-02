@@ -64,12 +64,15 @@
 	}
 
 	.footer-links {
-		display: flex;
-		flex-direction: column;
+		display: grid;
 		gap: 16px;
 
 		@include breakpoint('sm') {
 			gap: 4px;
+		}
+
+		@include breakpoint('lg') {
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 </style>
