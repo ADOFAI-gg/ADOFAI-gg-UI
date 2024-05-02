@@ -1,0 +1,35 @@
+$breakpoints: (
+	'xs': (
+		'min-width': 360px,
+		'col-spacing': 12px,
+		'gutters': 24px
+	),
+	'sm': (
+		'min-width': 640px,
+		'col-spacing': 20px,
+		'gutters': 24px
+	),
+	'md': (
+		'min-width': 768px,
+		'col-spacing': 24px,
+		'gutters': 24px
+	),
+	'lg': (
+		'min-width': 1024px,
+		'col-spacing': 20px,
+		'gutters': 24px
+	),
+	'xl': (
+		'min-width': 1200px,
+		'col-spacing': 24px,
+		'gutters': 24px
+	)
+);
+
+@mixin breakpoint($name) {
+	$breakpoint: map-get($breakpoints, $name);
+
+	@media screen and (min-width: #{inspect(map-get($breakpoint, 'min-width'))}) {
+		@content;
+	}
+}

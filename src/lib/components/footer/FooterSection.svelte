@@ -14,14 +14,20 @@
 	</div>
 </section>
 
-<style lang="ts">
+<style lang="scss">
 	.footer-section {
 		display: flex;
-		flex-direction: column;
+		width: 100%;
+		gap: 8px;
+		align-items: center;
 	}
 
 	.title {
-		font-size: 16px;
-		opacity: 0.6;
+		font-size: 14px;
+	}
+
+	.content {
+		display: flex;
+		gap: 12px;
 	}
 </style>

@@ -1,60 +1,51 @@
 <script lang="ts">
 	import { FooterLink, FooterSection } from '$lib/index.js'
 	import Translation from '$lib/utils/Translation.svelte'
-
-	export let minimal = false
+	import Container from '../Container.svelte'
 </script>
 
 <footer class="footer">
-	<div class="footer-content">
-		<h2 class="footer-title">
-			<Translation key="footer:title" />
-		</h2>
-		{#if !minimal}
-			<section class="footer-details">
-				<div class="footer-description">
-					<Translation key="footer:description" />
-				</div>
-
-				<FooterSection title="footer:section-contact">
+	<Container>
+		<div class="footer-content">
+			<h2 class="footer-title">
+				<Translation key="footer:title" />
+			</h2>
+			<section class="footer-links">
+				<FooterSection title="footer:contact">
 					<FooterLink href="mailto:support@adofai.gg" target="_blank" rel="noreferrer">
-						<Translation key="footer:link-email" />
+						<Translation key="footer:contact-email" />
 					</FooterLink>
 					<FooterLink href="https://adofai.gg/discord" target="_blank" rel="noreferrer">
-						<Translation key="footer:link-discord" />
+						<Translation key="footer:contact-discord" />
 					</FooterLink>
 				</FooterSection>
-
-				<FooterSection title="footer:section-legal">
+				<FooterSection title="footer:legal">
 					<FooterLink href="https://adofai.gg/docs/legal-notice" target="_blank" rel="noreferrer">
-						<Translation key="footer:link-legal-notice" />
+						<Translation key="footer:legal-notice" />
 					</FooterLink>
 					<FooterLink href="https://adofai.gg/docs/terms" target="_blank" rel="noreferrer">
-						<Translation key="footer:link-terms" />
+						<Translation key="footer:legal-terms" />
 					</FooterLink>
 					<FooterLink href="https://adofai.gg/docs/privacy" target="_blank" rel="noreferrer">
-						<Translation key="footer:link-privacy" />
+						<Translation key="footer:legal-privacy" />
 					</FooterLink>
 				</FooterSection>
 			</section>
-		{/if}
-		<p class="footer-copyright">
-			&copy; <Translation key="footer:copyright" />
-		</p>
-	</div>
+			<p class="footer-copyright">
+				&copy; <Translation key="footer:copyright" />
+			</p>
+		</div>
+	</Container>
 </footer>
 
 <style lang="scss">
 	.footer {
 		background-color: rgba(0, 0, 0, 0.2);
 		padding: 24px;
-		display: flex;
-		justify-content: center;
 	}
 
 	.footer-content {
 		width: 100%;
-		max-width: 1100px;
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
@@ -70,23 +61,8 @@
 		opacity: 0.6;
 	}
 
-	.footer-details {
+	.footer-links {
 		display: grid;
-		grid-template-columns: repeat(var(--footer-columns), 1fr);
-		gap: 24px;
-
-		--footer-columns: 1;
-
-		@media screen and (min-width: 768px) {
-			--footer-columns: 2;
-		}
-
-		@media screen and (min-width: 1100px) {
-			--footer-columns: 3;
-		}
-	}
-
-	.footer-description {
-		font-size: 14px;
+		gap: 4px;
 	}
 </style>

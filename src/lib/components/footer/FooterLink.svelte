@@ -6,17 +6,15 @@
 	<a {href} {...$$restProps} class="footer-link"><slot /></a>
 </div>
 
-<style lang="ts">
+<style lang="scss">
 	.footer-link {
 		font-size: 14px;
-		&::before {
-			content: '›';
-			padding-right: 4px;
-			transition: padding-right ease 0.2s;
-		}
+		opacity: 0.8;
 
-		&:hover::before {
-			padding-right: 8px;
+		transition: opacity ease 0.2s;
+
+		&:hover {
+			opacity: 1;
 		}
 	}
 </style>

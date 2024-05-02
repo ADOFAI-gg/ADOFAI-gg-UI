@@ -2,6 +2,9 @@
 @import 'fonts.scss';
 @import 'tippy.scss';
 
+@import 'components/button';
+@import 'system/container';
+
 :root {
 	--color-yellow: 255, 231, 110;
 	--color-red: 245, 79, 81;

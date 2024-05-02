@@ -1,0 +1,13 @@
+@import '../system/breakpoints';
+
+.container {
+	width: 100%;
+	background-color: black;
+	margin: 0 auto;
+
+	@each $name, $data in $breakpoints {
+		@include breakpoint($name) {
+			max-width: map-get($data, 'min-width');
+		}
+	}
+}

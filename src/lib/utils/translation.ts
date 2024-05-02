@@ -11,7 +11,7 @@ import { translationData } from '$lib/localization/translations/index.js'
 
 export const availableLanguages: LangResponse[] = langs
 
-export const fallbackLang = 'en'
+export const fallbackLang = 'ko'
 
 const registeredLangSections: string[] = []
 
@@ -69,7 +69,7 @@ const setupFunctions = (bundle: FluentBundle) => {
 
 export const getLangCode = (code: string) => {
 	const lang = availableLanguages.find((x) => x.code === code || x.aliases.includes(code))
-	return lang?.code || 'en'
+	return lang?.code || 'ko'
 }
 
 export const currentLang = writable<string>(
@@ -111,7 +111,8 @@ export const translate = (
 		if (!lang) return key
 		const section = lang[sectionName]
 		if (!section) return key
-		const message = section.getMessage(key)
+		let message = section.getMessage(key)
+		if (!message?.value) message = langData[fallbackLang][sectionName].getMessage(key)
 		if (!message?.value) return key
 		const result = section.formatPattern(message.value, args)
 		if (escape) escapeHtmlTags(result)
