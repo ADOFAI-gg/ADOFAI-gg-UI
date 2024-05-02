@@ -15,11 +15,18 @@
 </section>
 
 <style lang="scss">
+	@import '../../stylesheets/system/breakpoints';
+
 	.footer-section {
 		display: flex;
 		width: 100%;
-		gap: 8px;
-		align-items: center;
+		flex-direction: column;
+
+		@include breakpoint('sm') {
+			flex-direction: row;
+			align-items: center;
+			gap: 8px;
+		}
 	}
 
 	.title {
@@ -28,6 +35,11 @@
 
 	.content {
 		display: flex;
-		gap: 12px;
+		flex-direction: column;
+
+		@include breakpoint('sm') {
+			gap: 12px;
+			flex-direction: row;
+		}
 	}
 </style>

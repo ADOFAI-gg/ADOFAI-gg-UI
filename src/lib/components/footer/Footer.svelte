@@ -39,9 +39,10 @@
 </footer>
 
 <style lang="scss">
+	@import '../../stylesheets/system/breakpoints';
+
 	.footer {
 		background-color: rgba(0, 0, 0, 0.2);
-		padding: 24px;
 	}
 
 	.footer-content {
@@ -49,6 +50,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
+		padding: 24px;
 	}
 
 	.footer-title {
@@ -62,7 +64,12 @@
 	}
 
 	.footer-links {
-		display: grid;
-		gap: 4px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		@include breakpoint('sm') {
+			gap: 4px;
+		}
 	}
 </style>

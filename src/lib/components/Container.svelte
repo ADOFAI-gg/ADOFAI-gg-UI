@@ -1,1 +1,5 @@
-<div class="container">Container</div>
+<div class="container" {...$$restProps}>
+  <slot />
+</div>
+
+
