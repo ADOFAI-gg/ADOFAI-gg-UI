@@ -2,6 +2,7 @@
 	import type { TranslationKey } from '$lib/index.js'
 	import Translation from '$lib/utils/Translation.svelte'
 	import FormHint from './FormHint.svelte'
+	import FormHintArea from './FormHintArea.svelte'
 
 	export let label: TranslationKey | null = null
 	export let error: TranslationKey | null = null
@@ -14,16 +15,21 @@
 			<p class="label">
 				<Translation key={label} />
 				{#if required}
-					<span class="required-sign">*</span>
+					<span class="required-sign">
+						<Translation key="common:form-required" />
+					</span>
 				{/if}
 			</p>
 		{/if}
 		<slot />
 	</label>
+
 	{#if error}
-		<FormHint>
-			<Translation key={error} />
-		</FormHint>
+		<FormHintArea>
+			<FormHint type="error">
+				<Translation key={error} />
+			</FormHint>
+		</FormHintArea>
 	{/if}
 </div>
 
@@ -36,12 +42,14 @@
 
 	.required-sign {
 		color: rgba(var(--color-red), 1);
+		font-size: 12px;
+		font-weight: 500;
+		margin-left: 4px;
 	}
 
 	.form-field {
 		display: flex;
 		flex-direction: column;
-		gap: 4px;
 	}
 
 	.form-field-content {

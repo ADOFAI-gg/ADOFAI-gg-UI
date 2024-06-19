@@ -1,2 +1,2 @@
-sign-in = Sign In
-sign-up = Sign Up
+sign-in = Login
+sign-up = Register

@@ -28,9 +28,15 @@
 		border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 	}
 
+	.input::placeholder {
+		color: rgba(255, 255, 255, 0.6);
+	}
+
 	.input {
 		flex-grow: 1;
 		background: transparent;
+		padding: 8px 0;
+
 		&:focus {
 			outline: none;
 		}

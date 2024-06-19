@@ -9,23 +9,10 @@
 
 <script lang="ts">
 	import { Story, Template } from '@storybook/addon-svelte-csf'
-	import { dummyUser } from '../dummyData.js'
 </script>
 
 <Template let:args>
 	<NavSignArea {...args} />
 </Template>
 
-<Story
-	name="Default"
-	args={{
-		user: null
-	}}
-/>
-
-<Story
-	name="Signed In"
-	args={{
-		user: dummyUser
-	}}
-/>
+<Story name="Default" />

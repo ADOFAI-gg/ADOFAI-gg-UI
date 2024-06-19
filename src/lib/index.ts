@@ -42,7 +42,5 @@ export { default as FooterSection } from './components/footer/FooterSection.svel
 
 // Form
 export { default as FormField } from './components/form/FormField.svelte'
-export { default as HorizontalFormField } from './components/form/HorizontalFormField.svelte'
 export { default as InputControl } from './components/form/InputControl.svelte'
 export { default as Checkbox } from './components/form/Checkbox.svelte'
-export { default as LabeledCheckbox } from './components/form/LabeledCheckbox.svelte'
