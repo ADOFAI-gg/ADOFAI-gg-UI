@@ -25,8 +25,10 @@ import heart from './heart.svg?url'
 import fire from './fire.svg?url'
 import filter from './filter.svg?url'
 import expand from './expand.svg?url'
+import envelope from './envelope.svg?url'
 import downloadFile from './downloadFile.svg?url'
 import download from './download.svg?url'
+import discord from './discord.svg?url'
 import copy from './copy.svg?url'
 import cogs from './cogs.svg?url'
 import close from './close.svg?url'
@@ -65,8 +67,10 @@ export const iconUrls: Record<string, string> = {
 	fire,
 	filter,
 	expand,
+	envelope,
 	downloadFile,
 	download,
+	discord,
 	copy,
 	cogs,
 	close,
@@ -106,8 +110,10 @@ export const iconNames: string[] = [
 	'fire',
 	'filter',
 	'expand',
+	'envelope',
 	'downloadFile',
 	'download',
+	'discord',
 	'copy',
 	'cogs',
 	'close',
