@@ -27,6 +27,8 @@
 
 <Story name="Checked" args={{ checked: true }} />
 
+<Story name="Required" args={{ required: true }} />
+
 <style lang="scss">
 	.labeled-checkboxes {
 		display: flex;
