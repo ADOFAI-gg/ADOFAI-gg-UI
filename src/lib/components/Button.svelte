@@ -5,7 +5,7 @@
 
 	export let use: ActionArray = []
 
-	export let style: ButtonStyle = 'primary'
+	export let variant: ButtonStyle = 'primary'
 	export let size: ButtonSize = 'lg'
 
 	export let leftIcon: string | null = null
@@ -15,7 +15,7 @@
 
 <button
 	use:useActions={use}
-	class="button button-style-{style} button-size-{size}"
+	class="button button-style-{variant} button-size-{size}"
 	class:icon-only={iconOnly}
 	on:click
 	{...$$restProps}

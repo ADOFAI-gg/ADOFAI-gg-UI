@@ -53,15 +53,15 @@
 	</div>
 </Template>
 
-<Story name="Primary" args={{ style: 'primary' }} />
+<Story name="Primary" args={{ variant: 'primary' }} />
 
-<Story name="Danger" args={{ style: 'danger' }} />
+<Story name="Danger" args={{ variant: 'danger' }} />
 
-<Story name="Light Ghost" args={{ style: 'ghost-light' }} />
+<Story name="Light Ghost" args={{ variant: 'ghost-light' }} />
 
-<Story name="Dark Ghost" args={{ style: 'ghost-dark' }} />
+<Story name="Dark Ghost" args={{ variant: 'ghost-dark' }} />
 
-<Story name="Outlined" args={{ style: 'outlined' }} />
+<Story name="Outlined" args={{ variant: 'outlined' }} />
 
 <style lang="scss">
 	.style-name {

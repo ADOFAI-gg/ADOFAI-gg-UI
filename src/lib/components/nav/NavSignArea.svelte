@@ -6,13 +6,13 @@
 
 <div class="nav-sign-area">
 	<a href={ctx.urls.signIn}>
-		<Button style="ghost-light" size="md">
+		<Button variant="ghost-light" size="md">
 			<Translation key="common:sign-in" />
 		</Button>
 	</a>
 
 	<a href={ctx.urls.signUp}>
-		<Button style="outlined" size="md">
+		<Button variant="outlined" size="md">
 			<Translation key="common:sign-up" />
 		</Button>
 	</a>
