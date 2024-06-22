@@ -10,9 +10,20 @@
 </script>
 
 <Template let:args>
-	<Checkbox {...args} />
+	<div class="checkboxes">
+		<Checkbox {...args} size="sm" />
+		<Checkbox {...args} size="md" />
+		<Checkbox {...args} size="lg" />
+	</div>
 </Template>
 
 <Story name="Default" args={{}} />
 
 <Story name="Checked" args={{ checked: true }} />
+
+<style lang="scss">
+	.checkboxes {
+		display: flex;
+		gap: 12px;
+	}
+</style>
