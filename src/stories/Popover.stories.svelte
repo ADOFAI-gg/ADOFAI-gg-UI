@@ -14,7 +14,7 @@
 
 <Story name="Default">
 	<Popover placement="bottom-start">
-		<Button style="outlined" slot="button" let:buttonRef use={[buttonRef]}>Click me!</Button>
+		<Button variant="outlined" slot="button" let:buttonRef use={[buttonRef]}>Click me!</Button>
 		Content
 	</Popover>
 </Story>
