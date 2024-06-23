@@ -10,7 +10,7 @@
 </script>
 
 <div class="form-field">
-	<label class="form-field-content">
+	<div class="form-field-content">
 		{#if label}
 			<p class="label">
 				<Translation key={label} />
@@ -22,7 +22,7 @@
 			</p>
 		{/if}
 		<slot />
-	</label>
+	</div>
 
 	<slot name="hints">
 		{#if error}
