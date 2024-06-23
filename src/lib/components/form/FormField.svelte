@@ -24,13 +24,15 @@
 		<slot />
 	</label>
 
-	{#if error}
-		<FormHintArea>
-			<FormHint type="error">
-				<Translation key={error} />
-			</FormHint>
-		</FormHintArea>
-	{/if}
+	<slot name="hints">
+		{#if error}
+			<FormHintArea>
+				<FormHint type="error">
+					<Translation key={error} />
+				</FormHint>
+			</FormHintArea>
+		{/if}
+	</slot>
 </div>
 
 <style lang="scss">
