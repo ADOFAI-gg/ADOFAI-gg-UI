@@ -5,6 +5,7 @@ import speed from './speed.svg?url'
 import sort from './sort.svg?url'
 import shuffle from './shuffle.svg?url'
 import show from './show.svg?url'
+import shield from './shield.svg?url'
 import sheet from './sheet.svg?url'
 import share from './share.svg?url'
 import search from './search.svg?url'
@@ -47,6 +48,7 @@ export const iconUrls: Record<string, string> = {
 	sort,
 	shuffle,
 	show,
+	shield,
 	sheet,
 	share,
 	search,
@@ -90,6 +92,7 @@ export const iconNames: string[] = [
 	'sort',
 	'shuffle',
 	'show',
+	'shield',
 	'sheet',
 	'share',
 	'search',
