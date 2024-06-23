@@ -5,7 +5,8 @@ export const dummyUser: User = {
 	id: 'test',
 	avatarURL: GanjangFactory,
 	username: 'GanjangFactory',
-	isAdmin: false
+	isAdmin: false,
+	displayName: 'GanjangFactory'
 }
 
 export const dummyAdminUser: User = {

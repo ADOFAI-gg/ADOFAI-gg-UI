@@ -13,7 +13,7 @@
 
 	export let options: Partial<Props> = {}
 
-	let show = false
+	let close: () => void = () => {}
 
 	$: subscriber = {
 		subscribe: () => {
@@ -46,15 +46,16 @@
 				interactive: true,
 				...options,
 				onShow: (i) => {
-					show = true
 					if (options.onShow) options.onShow(i)
 				},
 				onHidden: (i) => {
-					show = false
-
 					if (options.onHidden) options.onHidden(i)
 				}
 			})
+
+			close = () => {
+				instance.hide()
+			}
 
 			return () => {
 				instance?.destroy?.()
@@ -73,6 +74,6 @@
 
 {#if BROWSER}
 	<div bind:this={content} role="menu">
-		<slot />
+		<slot {close} />
 	</div>
 {/if}

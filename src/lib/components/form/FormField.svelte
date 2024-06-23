@@ -7,22 +7,39 @@
 	export let label: TranslationKey | null = null
 	export let error: TranslationKey | null = null
 	export let required: boolean = false
+	export let noLabel: boolean = false
 </script>
 
 <div class="form-field">
-	<label class="form-field-content">
-		{#if label}
-			<p class="label">
-				<Translation key={label} />
-				{#if required}
-					<span class="required-sign">
-						<Translation key="common:form-required" />
-					</span>
-				{/if}
-			</p>
-		{/if}
-		<slot />
-	</label>
+	{#if noLabel}
+		<div class="form-field-content">
+			{#if label}
+				<p class="label">
+					<Translation key={label} />
+					{#if required}
+						<span class="required-sign">
+							<Translation key="common:form-required" />
+						</span>
+					{/if}
+				</p>
+			{/if}
+			<slot />
+		</div>
+	{:else}
+		<label class="form-field-content">
+			{#if label}
+				<p class="label">
+					<Translation key={label} />
+					{#if required}
+						<span class="required-sign">
+							<Translation key="common:form-required" />
+						</span>
+					{/if}
+				</p>
+			{/if}
+			<slot />
+		</label>
+	{/if}
 
 	<slot name="hints">
 		{#if error}

@@ -1,3 +1,4 @@
+import trash from './trash.svg?url'
 import topLeft from './topLeft.svg?url'
 import tag from './tag.svg?url'
 import steam from './steam.svg?url'
@@ -16,6 +17,7 @@ import profile from './profile.svg?url'
 import plusFilled from './plusFilled.svg?url'
 import playOutlined from './playOutlined.svg?url'
 import playFilled from './playFilled.svg?url'
+import pencil from './pencil.svg?url'
 import minusFilled from './minusFilled.svg?url'
 import list from './list.svg?url'
 import identityCard from './identityCard.svg?url'
@@ -41,6 +43,7 @@ import bottomArrowCircleOutlined from './bottomArrowCircleOutlined.svg?url'
 import accuracy from './accuracy.svg?url'
 
 export const iconUrls: Record<string, string> = {
+	trash,
 	topLeft,
 	tag,
 	steam,
@@ -59,6 +62,7 @@ export const iconUrls: Record<string, string> = {
 	plusFilled,
 	playOutlined,
 	playFilled,
+	pencil,
 	minusFilled,
 	list,
 	identityCard,
@@ -85,6 +89,7 @@ export const iconUrls: Record<string, string> = {
 }
 
 export const iconNames: string[] = [
+	'trash',
 	'topLeft',
 	'tag',
 	'steam',
@@ -103,6 +108,7 @@ export const iconNames: string[] = [
 	'plusFilled',
 	'playOutlined',
 	'playFilled',
+	'pencil',
 	'minusFilled',
 	'list',
 	'identityCard',

@@ -47,3 +47,8 @@ export { default as Checkbox } from './components/form/Checkbox.svelte'
 export { default as LabeledCheckbox } from './components/form/LabeledCheckbox.svelte'
 export { default as FormHintArea } from './components/form/FormHintArea.svelte'
 export { default as FormHint } from './components/form/FormHint.svelte'
+export { default as ImageSelector } from './components/form/ImageSelector.svelte'
+
+// Menu
+export { default as Menu } from './components/menu/Menu.svelte'
+export { default as MenuItem } from './components/menu/MenuItem.svelte'
