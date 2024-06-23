@@ -32,8 +32,10 @@
 		</FormHintArea>
 	{/if}
 
-	<div class="hints">
-		<slot name="hints" />
+	<div class="hints-container">
+		<div class="hints">
+			<slot name="hints" />
+		</div>
 	</div>
 </div>
 
@@ -64,9 +66,16 @@
 
 	.hints {
 		display: none;
+		position: absolute;
+		top: 0;
+		width: 100%;
 	}
 
 	.form-field:has(input:focus) .hints {
 		display: block;
+	}
+
+	.hints-container {
+		position: relative;
 	}
 </style>
