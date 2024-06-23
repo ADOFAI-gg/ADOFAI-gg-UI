@@ -9,8 +9,8 @@
 	export let required: boolean = false
 </script>
 
-<div class="form-field">
-	<div class="form-field-content">
+<div class="form-field {$$props.class || ''}" {...$$restProps}>
+	<label class="form-field-content">
 		{#if label}
 			<p class="label">
 				<Translation key={label} />
@@ -22,17 +22,19 @@
 			</p>
 		{/if}
 		<slot />
-	</div>
+	</label>
 
-	<slot name="hints">
-		{#if error}
-			<FormHintArea>
-				<FormHint type="error">
-					<Translation key={error} />
-				</FormHint>
-			</FormHintArea>
-		{/if}
-	</slot>
+	{#if error}
+		<FormHintArea>
+			<FormHint type="error">
+				<Translation key={error} />
+			</FormHint>
+		</FormHintArea>
+	{/if}
+
+	<div class="hints">
+		<slot name="hints" />
+	</div>
 </div>
 
 <style lang="scss">
@@ -58,5 +60,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2px;
+	}
+
+	.hints {
+		display: none;
+	}
+
+	.form-field:has(input:focus) .hints {
+		display: block;
 	}
 </style>
