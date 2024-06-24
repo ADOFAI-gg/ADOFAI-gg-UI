@@ -8,6 +8,7 @@
 	export let error: TranslationKey | null = null
 	export let required: boolean = false
 	export let noLabel: boolean = false
+	export let helpText: TranslationKey | null = null
 </script>
 
 <div class="form-field">
@@ -39,6 +40,12 @@
 			{/if}
 			<slot />
 		</label>
+	{/if}
+
+	{#if helpText}
+		<div class="form-help-text">
+			<Translation key={helpText} />
+		</div>
 	{/if}
 
 	<slot name="hints">
@@ -75,5 +82,12 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2px;
+	}
+
+	.form-help-text {
+		font-size: 12px;
+		color: rgba(255, 255, 255, 0.6);
+		line-height: 12px;
+		margin-top: 4px;
 	}
 </style>
