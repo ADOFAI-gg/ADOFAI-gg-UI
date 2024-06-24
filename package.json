@@ -21,7 +21,7 @@
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
 		},
-		"./stylesheets/*": {
+		"./dist/stylesheets/*": {
 			"import": "./dist/stylesheets/*",
 			"require": "./dist/stylesheets/*"
 		}
