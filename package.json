@@ -20,6 +20,10 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
+		},
+		"./stylesheets/*": {
+			"import": "./dist/stylesheets/*",
+			"require": "./dist/stylesheets/*"
 		}
 	},
 	"files": [
