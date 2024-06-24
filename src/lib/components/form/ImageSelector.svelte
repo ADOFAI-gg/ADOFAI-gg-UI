@@ -6,6 +6,7 @@
 
 	export let src = ''
 	export let loading = false
+	export let disabled = false
 
 	const dispatch = createEventDispatcher()
 
@@ -27,7 +28,7 @@
 	}
 </script>
 
-<div class="image-selector" style="aspect-ratio: {aspectRatio};">
+<div class="image-selector {disabled ? 'disabled' : ''}" style="aspect-ratio: {aspectRatio};">
 	<input type="file" accept="image/*" bind:files hidden bind:this={inputRef} />
 
 	{#if src}
@@ -79,6 +80,10 @@
 		position: relative;
 
 		border-radius: 8px;
+
+		&.disabled .edit-icon {
+			display: none;
+		}
 	}
 
 	.edit-icon {

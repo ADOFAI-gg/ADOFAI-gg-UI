@@ -24,3 +24,5 @@
 <Story name="With Image" args={{ src: ganjangFactory }} />
 
 <Story name="Loading" args={{ loading: true, src: ganjangFactory }} />
+
+<Story name="Disabled" args={{ disabled: true, src: ganjangFactory }} />
