@@ -19,6 +19,7 @@ import playOutlined from './playOutlined.svg?url'
 import playFilled from './playFilled.svg?url'
 import pencil from './pencil.svg?url'
 import minusFilled from './minusFilled.svg?url'
+import loading from './loading.svg?url'
 import list from './list.svg?url'
 import identityCard from './identityCard.svg?url'
 import hide from './hide.svg?url'
@@ -64,6 +65,7 @@ export const iconUrls: Record<string, string> = {
 	playFilled,
 	pencil,
 	minusFilled,
+	loading,
 	list,
 	identityCard,
 	hide,
@@ -110,6 +112,7 @@ export const iconNames: string[] = [
 	'playFilled',
 	'pencil',
 	'minusFilled',
+	'loading',
 	'list',
 	'identityCard',
 	'hide',

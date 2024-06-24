@@ -5,6 +5,7 @@
 	export let aspectRatio = 1
 
 	export let src = ''
+	export let loading = false
 
 	const dispatch = createEventDispatcher()
 
@@ -34,8 +35,14 @@
 	{/if}
 
 	<Menu placement="bottom" let:close>
-		<button slot="button" let:buttonRef use:buttonRef class="edit-icon">
-			<Icon icon="pencil" size={18} alt="edit" />
+		<button slot="button" let:buttonRef use:buttonRef class="edit-icon" disabled={loading}>
+			{#if loading}
+				<span class="loading-icon">
+					<Icon icon="loading" size={24} alt="loading" />
+				</span>
+			{:else}
+				<Icon icon="pencil" size={18} alt="edit" />
+			{/if}
 		</button>
 
 		<MenuItem
@@ -91,8 +98,12 @@
 		transition: background-color ease 0.2s;
 		z-index: 100;
 
-		&:hover {
+		&:not(:disabled):hover {
 			background-color: rgba(var(--color-darkblue), 0.6);
+		}
+
+		&:disabled {
+			cursor: inherit;
 		}
 	}
 
@@ -105,5 +116,18 @@
 		border-radius: 8px;
 		z-index: 10;
 		position: absolute;
+	}
+
+	.loading-icon {
+		animation: spin 0.5s linear infinite;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
 	}
 </style>
