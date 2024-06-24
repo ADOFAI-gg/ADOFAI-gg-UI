@@ -6,7 +6,9 @@
 </script>
 
 <Popover let:close {placement}>
-	<slot slot="button" name="button" let:buttonRef {buttonRef} />
+	<svelte:fragment slot="button" let:buttonRef>
+		<slot name="button" {buttonRef} />
+	</svelte:fragment>
 
 	<div class="menu">
 		<slot {close} />
