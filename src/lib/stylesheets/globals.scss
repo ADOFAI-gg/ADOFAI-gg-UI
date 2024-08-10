@@ -3,6 +3,7 @@
 @import 'tippy.scss';
 
 @import 'components/button';
+@import 'components/icon-button';
 
 :root {
 	--color-yellow: 255, 231, 110;
@@ -19,7 +20,7 @@
 }
 
 body {
-	font-family: var(--font-normal);
+	font-family: var(--font-normal), sans-serif;
 	background-color: rgba(var(--color-bg-solid), 1);
 	background-image: url(../assets/images/background.webp);
 	background-attachment: fixed;
