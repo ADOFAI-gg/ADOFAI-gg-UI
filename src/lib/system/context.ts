@@ -1,5 +1,6 @@
 import { getContext, setContext } from 'svelte'
 import type { Readable } from 'svelte/store'
+import type { TranslationKey } from '$lib/utils/translation.js'
 
 export const globalContextName = 'adofaigg-ui-global-context'
 
@@ -8,6 +9,7 @@ export type GlobalContext = {
 	setLanguage: (lang: string) => void
 
 	urls: {
+		main: string
 		levels: string
 		rankings: string
 		references: string
@@ -15,6 +17,11 @@ export type GlobalContext = {
 		signUp: string
 		userSettings: string
 	}
+
+	links: {
+		key: TranslationKey
+		href: string
+	}[]
 }
 
 export const setGlobalContext = (context: GlobalContext) => setContext(globalContextName, context)

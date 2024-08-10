@@ -1,16 +1,38 @@
 <script lang="ts">
-	import { Button, Logo, NavSignArea, type User } from '$lib/index.js'
+	import { getGlobalContext, Logo, NavSignArea, type User } from '$lib/index.js'
 	import Container from '$lib/components/Container.svelte'
 	import NavUserArea from './NavUserArea.svelte'
 	import IconButton from '$lib/components/IconButton.svelte'
+	import LogoIcon from '$lib/components/nav/LogoIcon.svelte'
+	import NavLink from '$lib/components/nav/NavLink.svelte'
 
 	export let user: User | null
+
+	const ctx = getGlobalContext()
+
+	$: mainUrl = ctx.urls.main
 </script>
 
 <nav class="nav-container">
 	<Container>
 		<div class="nav-content">
-			<Logo height={20} width={140} />
+			<div class="start-area">
+				<a href={mainUrl}>
+					<div class="logo-icon">
+						<LogoIcon />
+					</div>
+					<div class="logo-text">
+						<Logo height={16} width={134} />
+					</div>
+				</a>
+
+				<div class="nav-links">
+					{#each ctx.links as link}
+						<NavLink key={link.key} href={link.href} />
+					{/each}
+				</div>
+			</div>
+
 			<div class="spacer"></div>
 
 			{#if user}
@@ -39,6 +61,8 @@
 </nav>
 
 <style lang="scss">
+	@import '../../stylesheets/system/breakpoints';
+
 	.nav-container {
 		background-color: rgba(var(--color-darkblue), 0.2);
 	}
@@ -58,5 +82,40 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	.logo-icon {
+		display: block;
+	}
+
+	.logo-text {
+		display: none;
+	}
+
+	@include breakpoint('md') {
+		.logo-icon {
+			display: none;
+		}
+
+		.logo-text {
+			display: block;
+		}
+	}
+
+	.start-area {
+		display: flex;
+		gap: 32px;
+		align-items: center;
+	}
+
+	.nav-links {
+		gap: 24px;
+		align-items: center;
+
+		display: none;
+
+		@include breakpoint('md') {
+			display: flex;
+		}
 	}
 </style>
