@@ -8,13 +8,20 @@
 </script>
 
 <script lang="ts">
-	import { Button } from '$lib/index.js'
+	import { Button, PopoverContentPanel } from '$lib/index.js'
 	import { Story } from '@storybook/addon-svelte-csf'
 </script>
 
 <Story name="Default">
-	<Popover placement="bottom-start">
-		<Button variant="outlined" slot="button" let:buttonRef use={[buttonRef]}>Click me!</Button>
-		Content
+	<Popover open let:close placement="bottom-start">
+		<svelte:fragment slot="button" let:trigger>
+			<Button variant="outlined" meltElement={trigger}>Click me!</Button>
+		</svelte:fragment>
+
+		<PopoverContentPanel>
+			Content
+
+			<Button size="sm" on:click={close}>close</Button>
+		</PopoverContentPanel>
 	</Popover>
 </Story>

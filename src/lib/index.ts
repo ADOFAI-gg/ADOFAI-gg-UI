@@ -20,6 +20,7 @@ export { default as Icon } from './components/Icon.svelte'
 export { default as IconProvider } from './components/IconProvider.svelte'
 export { default as Logo } from './components/Logo.svelte'
 export { default as Popover } from './components/Popover.svelte'
+export { default as PopoverContentPanel } from './components/PopoverContentPanel.svelte'
 
 // Buttons
 export { default as Button } from './components/Button.svelte'

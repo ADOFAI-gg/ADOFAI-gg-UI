@@ -7,6 +7,8 @@
 		"dist",
 		"src/lib/stylesheets"
 	],
+	"main": "dist/main.js",
+	"typings": "dist/main.d.ts",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
@@ -20,6 +22,8 @@
 		"@chromatic-com/storybook": "^1.6.1",
 		"@fluent/bundle": "^0.18.0",
 		"@laynezh/vite-plugin-lib-assets": "^0.5.23",
+		"@melt-ui/pp": "^0.3.2",
+		"@melt-ui/svelte": "^0.83.0",
 		"@storybook/addon-essentials": "^8.2.9",
 		"@storybook/addon-interactions": "^8.2.9",
 		"@storybook/addon-links": "^8.2.9",

@@ -15,7 +15,9 @@
 
 <Template let:args>
 	<Menu {...args}>
-		<Button variant="outlined" size="md" slot="button" let:buttonRef use={[buttonRef]}>Menu</Button>
+		<Button variant="outlined" size="md" slot="button" let:trigger meltElement={trigger}>
+			Menu
+		</Button>
 
 		<MenuItem>
 			<Icon slot="icon" icon="pencil" size={16} alt="icon" />

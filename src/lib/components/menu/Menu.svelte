@@ -1,13 +1,12 @@
 <script lang="ts">
-	import { Popover } from '$lib/index.js'
-	import type { Placement } from 'tippy.js'
+	import { Popover, type FloatingPlacement } from '$lib/index.js'
 
-	export let placement: Placement = 'bottom'
+	export let placement: FloatingPlacement = 'bottom'
 </script>
 
 <Popover let:close {placement}>
-	<svelte:fragment slot="button" let:buttonRef>
-		<slot name="button" {buttonRef} />
+	<svelte:fragment slot="button" let:trigger>
+		<slot name="button" {trigger} />
 	</svelte:fragment>
 
 	<div class="menu">

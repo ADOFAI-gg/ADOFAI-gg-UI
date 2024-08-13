@@ -2,6 +2,10 @@
 	import type { ButtonSize, ButtonStyle } from '$lib/types.js'
 	import { useActions, type ActionArray } from 'svelte-component-actions'
 	import Icon from './Icon.svelte'
+	import { emptyMeltElement, melt, type AnyMeltElement } from '@melt-ui/svelte'
+
+	// @ts-expect-error invalid type
+	export let meltElement: AnyMeltElement = emptyMeltElement
 
 	export let use: ActionArray = []
 
@@ -15,6 +19,7 @@
 
 <button
 	use:useActions={use}
+	use:melt={$meltElement}
 	class="button button-style-{variant} button-size-{size}"
 	class:icon-only={iconOnly}
 	on:click
