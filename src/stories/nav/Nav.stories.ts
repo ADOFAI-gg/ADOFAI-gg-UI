@@ -3,10 +3,9 @@ import { Nav } from '$lib/index.js'
 import { dummyAdminUser, dummyUser } from '../dummyData.js'
 
 const meta = {
-	// @ts-expect-error type issue
 	component: Nav,
 	title: 'Components/Nav'
-} satisfies Meta<typeof Nav>
+} satisfies Meta
 
 export default meta
 

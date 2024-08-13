@@ -1,5 +1,4 @@
 // Reexport your entry components here
-import './stylesheets/globals.scss'
 
 // System / Utils
 export * from './system/context.js'

@@ -30,15 +30,17 @@
 			color: rgba(var(--color-red), 1);
 		}
 
-		padding: 12px;
+		& {
+			padding: 12px;
 
-		display: flex;
+			display: flex;
 
-		font-weight: 500;
-		font-size: 14px;
-		line-height: 14px;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 14px;
 
-		align-items: center;
-		gap: 8px;
+			align-items: center;
+			gap: 8px;
+		}
 	}
 </style>
