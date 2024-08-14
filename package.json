@@ -16,10 +16,11 @@
 		}
 	},
 	"scripts": {
+		"gen": "node scripts/generateGlobImports.mjs",
 		"check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
-		"storybook": "storybook dev -p 6006",
+		"storybook": "pnpm gen && storybook dev -p 6006",
 		"build-storybook": "storybook build",
-		"prepack": "svelte-package"
+		"prepack": "pnpm gen && svelte-package"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.6.1",
@@ -39,6 +40,7 @@
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
 		"@tsconfig/svelte": "^5.0.4",
 		"@types/js-cookie": "^3.0.6",
+		"glob": "^11.0.0",
 		"prettier-plugin-svelte": "^3.2.6",
 		"sass-embedded": "^1.77.8",
 		"semantic-release": "^24.0.0",
