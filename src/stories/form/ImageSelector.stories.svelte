@@ -1,28 +1,24 @@
 <script lang="ts" context="module">
-	import type { Meta } from '@storybook/svelte'
 	import { ImageSelector } from '$lib/index.js'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 	import ganjangFactory from '../assets/ganjangfactory.png'
 
-	export const meta: Meta = {
+	export const { Story } = defineMeta({
 		component: ImageSelector,
 		title: 'Components/Form/Image Selector'
-	}
+	})
 </script>
 
-<script>
-	import { Story, Template } from '@storybook/addon-svelte-csf'
-</script>
-
-<Template let:args>
+{#snippet template(args: any)}
 	<div style="width: 128px;">
 		<ImageSelector {...args} />
 	</div>
-</Template>
+{/snippet}
 
-<Story name="Default" args={{}} />
+<Story name="Default" args={{}} children={template} />
 
-<Story name="With Image" args={{ src: ganjangFactory, canRemove: true }} />
+<Story name="With Image" args={{ src: ganjangFactory, canRemove: true }} children={template} />
 
-<Story name="Loading" args={{ loading: true, src: ganjangFactory }} />
+<Story name="Loading" args={{ loading: true, src: ganjangFactory }} children={template} />
 
-<Story name="Disabled" args={{ disabled: true, src: ganjangFactory }} />
+<Story name="Disabled" args={{ disabled: true, src: ganjangFactory }} children={template} />

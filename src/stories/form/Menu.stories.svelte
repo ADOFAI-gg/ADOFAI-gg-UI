@@ -1,19 +1,14 @@
 <script lang="ts" context="module">
-	import type { Meta } from '@storybook/svelte'
-	import { Menu } from '$lib/index.js'
+	import { Button, Icon, Menu, MenuItem } from '$lib/index.js'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta: Meta = {
+	export const { Story } = defineMeta({
 		component: Menu,
 		title: 'Components/Menu'
-	}
+	})
 </script>
 
-<script>
-	import { Story, Template } from '@storybook/addon-svelte-csf'
-	import { Button, Icon, MenuItem } from '$lib/index.js'
-</script>
-
-<Template let:args>
+{#snippet template(args: any)}
 	<Menu {...args}>
 		<Button variant="outlined" size="md" slot="button" let:trigger meltElement={trigger}>
 			Menu
@@ -30,6 +25,6 @@
 		</MenuItem>
 		<MenuItem noIcon>Item 4 - No Icon Space</MenuItem>
 	</Menu>
-</Template>
+{/snippet}
 
-<Story name="Default" args={{}} />
+<Story name="Default" args={{}} children={template} />

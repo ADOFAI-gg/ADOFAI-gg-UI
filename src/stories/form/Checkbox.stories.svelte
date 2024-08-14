@@ -1,25 +1,24 @@
 <script lang="ts" context="module">
 	import { Checkbox } from '$lib/index.js'
-	import { Story, Template } from '@storybook/addon-svelte-csf'
-	import type { Meta } from '@storybook/svelte'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta: Meta = {
+	export const { Story } = defineMeta({
 		component: Checkbox,
 		title: 'Components/Form/Controls/Checkbox'
-	}
+	})
 </script>
 
-<Template let:args>
+{#snippet template(args: any)}
 	<div class="checkboxes">
 		<Checkbox {...args} size="sm" />
 		<Checkbox {...args} size="md" />
 		<Checkbox {...args} size="lg" />
 	</div>
-</Template>
+{/snippet}
 
-<Story name="Default" args={{}} />
+<Story name="Default" args={{}} children={template} />
 
-<Story name="Checked" args={{ checked: true }} />
+<Story name="Checked" args={{ checked: true }} children={template} />
 
 <style lang="scss">
 	.checkboxes {

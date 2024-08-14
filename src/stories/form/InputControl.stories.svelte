@@ -1,18 +1,21 @@
 <script lang="ts" context="module">
 	import { InputControl } from '$lib/index.js'
-	import { Story, Template } from '@storybook/addon-svelte-csf'
-	import type { Meta } from '@storybook/svelte'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta: Meta = {
+	export const { Story } = defineMeta({
 		component: InputControl,
 		title: 'Components/Form/Controls/Input Control'
-	}
+	})
 </script>
 
-<Template let:args>
+{#snippet template(args: any)}
 	<InputControl {...args} />
-</Template>
+{/snippet}
 
-<Story name="Default" args={{}} />
+<Story name="Default" args={{}} children={template} />
 
-<Story name="With Placeholder" args={{ placeholder: 'custom:Wow Placeholder' }} />
+<Story
+	name="With Placeholder"
+	args={{ placeholder: 'custom:Wow Placeholder' }}
+	children={template}
+/>

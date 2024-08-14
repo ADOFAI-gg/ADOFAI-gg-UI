@@ -27,13 +27,7 @@ export { default as Button } from './components/Button.svelte'
 
 // Nav
 export { default as Nav } from './components/nav/Nav.svelte'
-export { default as NavPopup } from './components/nav/NavPopup.svelte'
-export { default as NavPopupItem } from './components/nav/NavPopupItem.svelte'
-export { default as NavPopupLink } from './components/nav/NavPopupLink.svelte'
-export { default as NavPopupSection } from './components/nav/NavPopupSection.svelte'
 export { default as NavSignArea } from './components/nav/NavSignArea.svelte'
-export { default as NavLanguageSelector } from './components/nav/NavLanguageSelector.svelte'
-export { default as NavAccessibilitySettings } from './components/nav/NavAccessibilitySettings.svelte'
 
 // Footer
 export { default as Footer } from './components/footer/Footer.svelte'

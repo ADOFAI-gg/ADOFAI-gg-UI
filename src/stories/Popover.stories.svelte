@@ -1,15 +1,11 @@
 <script lang="ts" context="module">
-	import { Popover } from '$lib/index.js'
+	import { Popover, Button, PopoverContentPanel } from '$lib/index.js'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta = {
+	export const { Story } = defineMeta({
 		title: 'Components/Popover',
-		components: Popover
-	}
-</script>
-
-<script lang="ts">
-	import { Button, PopoverContentPanel } from '$lib/index.js'
-	import { Story } from '@storybook/addon-svelte-csf'
+		component: Popover
+	})
 </script>
 
 <Story name="Default">

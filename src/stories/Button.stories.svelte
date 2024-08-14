@@ -1,15 +1,14 @@
 <script lang="ts" context="module">
-	import type { Meta } from '@storybook/svelte'
-	import { Template, Story } from '@storybook/addon-svelte-csf'
 	import { Button } from '$lib/index.js'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta: Meta = {
+	export const { Story } = defineMeta({
 		title: 'Components/Button',
 		component: Button
-	}
+	})
 </script>
 
-<Template let:args>
+{#snippet template(args: any)}
 	<div class="buttons">
 		<section>
 			<div class="style-name">Default</div>
@@ -51,17 +50,17 @@
 			</div>
 		</section>
 	</div>
-</Template>
+{/snippet}
 
-<Story name="Primary" args={{ variant: 'primary' }} />
+<Story name="Primary" args={{ variant: 'primary' }} children={template} />
 
-<Story name="Danger" args={{ variant: 'danger' }} />
+<Story name="Danger" args={{ variant: 'danger' }} children={template} />
 
-<Story name="Light Ghost" args={{ variant: 'ghost-light' }} />
+<Story name="Light Ghost" args={{ variant: 'ghost-light' }} children={template} />
 
-<Story name="Dark Ghost" args={{ variant: 'ghost-dark' }} />
+<Story name="Dark Ghost" args={{ variant: 'ghost-dark' }} children={template} />
 
-<Story name="Outlined" args={{ variant: 'outlined' }} />
+<Story name="Outlined" args={{ variant: 'outlined' }} children={template} />
 
 <style lang="scss">
 	.style-name {
