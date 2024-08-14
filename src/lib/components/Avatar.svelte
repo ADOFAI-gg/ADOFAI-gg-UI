@@ -1,27 +1,20 @@
 <script lang="ts">
-	export let size: number
-	export let src: string | null
-
-	let loaded = false
-
-	$: {
-		src // watch for change
-		loaded = false
+	interface Props {
+		size: number
+		src: string | null
 	}
+
+	const { src, size }: Props = $props()
+
+	// $: {
+	// 	src // watch for change
+	// 	loaded = false
+	// }
 </script>
 
 <div style="--avatar-size: {size}px;" class="avatar">
 	{#if src}
-		<img
-			class:loaded
-			{src}
-			on:load={() => {
-				loaded = true
-			}}
-			class="image"
-			alt="Avatar"
-			draggable="false"
-		/>
+		<img {src} class="image" alt="Avatar" draggable="false" />
 	{:else}
 		<div class="avatar-placeholder"></div>
 	{/if}
@@ -47,12 +40,12 @@
 		width: var(--avatar-size);
 		height: var(--avatar-size);
 
-		opacity: 0;
-		transition: opacity ease 0.2s;
+		/* opacity: 0;
+		transition: opacity ease 0.2s; */
 		user-select: none;
 
-		&.loaded {
+		/* &.loaded {
 			opacity: 1;
-		}
+		} */
 	}
 </style>
