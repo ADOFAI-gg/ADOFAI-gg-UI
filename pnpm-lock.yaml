@@ -60,9 +60,6 @@ importers:
       '@types/js-cookie':
         specifier: ^3.0.6
         version: 3.0.6
-      esm-env:
-        specifier: ^1.0.0
-        version: 1.0.0
       js-cookie:
         specifier: ^3.0.5
         version: 3.0.5
@@ -2217,9 +2214,6 @@ packages:
     resolution: {integrity: sha512-TxU/p7LB1KxQ6+7aztTnO7K0i+h0tDi81YRY9VzB6Id71kNz+fFYnf5HD5UOQmxkzcoa0TlVZf9dpMtUv0GpWg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     hasBin: true
-
-  esm-env@1.0.0:
-    resolution: {integrity: sha512-Cf6VksWPsTuW01vU9Mk/3vRue91Zevka5SjyNf3nEpokFRuqt/KjUQoGAwq9qMmhpLTHmXzSIrFRw8zxWzmFBA==}
 
   espree@9.2.0:
     resolution: {integrity: sha512-oP3utRkynpZWF/F2x/HZJ+AGtnIclaR7z1pYPxy7NYM2fSO6LgK/Rkny8anRSPK/VwEA1eqm2squui0T7ZMOBg==}
@@ -6917,8 +6911,6 @@ snapshots:
       v8-compile-cache: 2.4.0
     transitivePeerDependencies:
       - supports-color
-
-  esm-env@1.0.0: {}
 
   espree@9.2.0:
     dependencies:

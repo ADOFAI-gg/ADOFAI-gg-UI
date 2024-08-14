@@ -3,7 +3,6 @@
 import { writable, type Readable, derived } from 'svelte/store'
 
 import langs from '../localization/langs.json'
-import { BROWSER } from 'esm-env'
 import Cookies from 'js-cookie'
 
 import { FluentBundle, FluentResource, type FluentVariable } from '@fluent/bundle'
@@ -73,7 +72,11 @@ export const getLangCode = (code: string) => {
 }
 
 export const currentLang = writable<string>(
-	getLangCode(BROWSER ? Cookies.get('_adofaigg-lang') || window.navigator.language : 'en')
+	getLangCode(
+		typeof window !== 'undefined'
+			? Cookies.get('_adofaigg-lang') || window.navigator.language
+			: 'en'
+	)
 )
 
 type LangResponse = {
