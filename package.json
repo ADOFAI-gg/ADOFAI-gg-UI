@@ -3,19 +3,23 @@
 	"version": "0.0.0",
 	"type": "module",
 	"files": [
-		"dist",
-		"src/lib/stylesheets"
+		"dist"
 	],
-	"main": "dist/main.js",
-	"typings": "dist/main.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		},
+		"./dist/stylesheets/*": {
+			"import": "./dist/stylesheets/*",
+			"require": "./dist/stylesheets/*"
+		}
+	},
 	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-		"prepack": "pnpm build"
+		"prepack": "svelte-package"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.6.1",
@@ -31,6 +35,7 @@
 		"@storybook/svelte": "^8.2.9",
 		"@storybook/svelte-vite": "^8.2.9",
 		"@storybook/test": "^8.2.9",
+		"@sveltejs/package": "^2.3.4",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
 		"@tsconfig/svelte": "^5.0.4",
 		"@types/js-cookie": "^3.0.6",
@@ -49,8 +54,8 @@
 		"vite-tsconfig-paths": "^5.0.1"
 	},
 	"peerDependencies": {
-		"svelte": "5",
-		"@melt-ui/svelte": "*"
+		"@melt-ui/svelte": "*",
+		"svelte": "5"
 	},
 	"dependencies": {
 		"@fontsource/ibm-plex-sans-kr": "^5.0.13"
