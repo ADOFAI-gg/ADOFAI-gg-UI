@@ -19,8 +19,9 @@
 		"gen": "node scripts/generateGlobImports.mjs",
 		"check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
 		"storybook": "pnpm gen && storybook dev -p 6006",
-		"build-storybook": "storybook build",
-		"prepack": "pnpm gen && svelte-package"
+		"build-storybook": "pnpm gen && storybook build",
+		"build": "pnpm gen && svelte-package",
+		"prepack": "pnpm build"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.6.1",
