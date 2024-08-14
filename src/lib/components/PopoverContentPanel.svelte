@@ -10,7 +10,7 @@
 		flex-direction: column;
 		gap: 8px;
 
-		background: #12152c;
+		background: rgba(var(--color-dropdown), 1);
 		box-shadow:
 			0px 0px 12px rgba(0, 0, 0, 0.2),
 			0px 0px 24px rgba(0, 0, 0, 0.2);

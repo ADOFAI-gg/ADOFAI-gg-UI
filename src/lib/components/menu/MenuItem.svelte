@@ -1,9 +1,19 @@
 <script lang="ts">
+	import { createEventDispatcher, getContext } from 'svelte'
+	import { MenuContext, type MenuContextData } from './symbols'
+	import { melt } from '@melt-ui/svelte'
+
 	export let noIcon = false
 	export let variant: 'default' | 'danger' = 'default'
+
+	const {
+		elements: { item }
+	} = getContext<MenuContextData>(MenuContext)
+
+	const dispatch = createEventDispatcher()
 </script>
 
-<button on:click class="menu-item menu-{variant}">
+<div use:melt={$item} on:m-click={() => dispatch('click')} class="menu-item menu-{variant}">
 	{#if !noIcon}
 		<div class="icon">
 			<slot name="icon" />
@@ -11,7 +21,7 @@
 	{/if}
 
 	<slot />
-</button>
+</div>
 
 <style lang="scss">
 	.menu-default {
@@ -38,7 +48,7 @@
 
 		background-color: rgba(var(--menu-item-color), 0);
 
-		&:hover {
+		&[data-highlighted] {
 			background-color: rgba(var(--menu-item-color), 0.2);
 		}
 	}

@@ -21,7 +21,7 @@
 
 <Story name="Default" args={{}} />
 
-<Story name="With Image" args={{ src: ganjangFactory }} />
+<Story name="With Image" args={{ src: ganjangFactory, canRemove: true }} />
 
 <Story name="Loading" args={{ loading: true, src: ganjangFactory }} />
 
