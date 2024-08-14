@@ -26,7 +26,7 @@
 		"@storybook/addon-essentials": "^8.2.9",
 		"@storybook/addon-interactions": "^8.2.9",
 		"@storybook/addon-links": "^8.2.9",
-		"@storybook/addon-svelte-csf": "5.0.0-next.1",
+		"@storybook/addon-svelte-csf": "^4.1.5",
 		"@storybook/blocks": "^8.2.9",
 		"@storybook/svelte": "^8.2.9",
 		"@storybook/svelte-vite": "^8.2.9",
@@ -49,7 +49,8 @@
 		"vite-tsconfig-paths": "^5.0.1"
 	},
 	"peerDependencies": {
-		"svelte": "5"
+		"svelte": "5",
+		"@melt-ui/svelte": "*"
 	},
 	"dependencies": {
 		"@fontsource/ibm-plex-sans-kr": "^5.0.13"
