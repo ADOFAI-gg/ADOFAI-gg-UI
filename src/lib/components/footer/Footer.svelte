@@ -8,31 +8,31 @@
 	<Container>
 		<div class="footer-content">
 			<h2 class="footer-title">
-				<Translation key="footer:title" />
+				<Translation key="ui-footer:title" />
 			</h2>
 			<section class="footer-links">
-				<FooterSection title="footer:contact">
+				<FooterSection title="ui-footer:contact">
 					<FooterLink href="mailto:support@adofai.gg" target="_blank" rel="noreferrer">
-						<Translation key="footer:contact-email" />
+						<Translation key="ui-footer:contact-email" />
 					</FooterLink>
 					<FooterLink href="https://adofai.gg/discord" target="_blank" rel="noreferrer">
-						<Translation key="footer:contact-discord" />
+						<Translation key="ui-footer:contact-discord" />
 					</FooterLink>
 				</FooterSection>
-				<FooterSection title="footer:legal">
+				<FooterSection title="ui-footer:legal">
 					<FooterLink href="https://adofai.gg/docs/legal-notice" target="_blank" rel="noreferrer">
-						<Translation key="footer:legal-notice" />
+						<Translation key="ui-footer:legal-notice" />
 					</FooterLink>
 					<FooterLink href="https://adofai.gg/docs/terms" target="_blank" rel="noreferrer">
-						<Translation key="footer:legal-terms" />
+						<Translation key="ui-footer:legal-terms" />
 					</FooterLink>
 					<FooterLink href="https://adofai.gg/docs/privacy" target="_blank" rel="noreferrer">
-						<Translation key="footer:legal-privacy" />
+						<Translation key="ui-footer:legal-privacy" />
 					</FooterLink>
 				</FooterSection>
 			</section>
 			<p class="footer-copyright">
-				&copy; <Translation key="footer:copyright" />
+				&copy; <Translation key="ui-footer:copyright" />
 			</p>
 		</div>
 	</Container>

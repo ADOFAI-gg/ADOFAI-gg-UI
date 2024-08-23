@@ -12,7 +12,7 @@
 	<span class="label">
 		{#if required}
 			<span class="required">
-				<Translation key="common:form-required" />
+				<Translation key="ui-common:form-required" />
 			</span>
 		{/if}
 		<slot />

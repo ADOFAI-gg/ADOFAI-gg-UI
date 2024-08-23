@@ -7,13 +7,13 @@
 <div class="nav-sign-area">
 	<a href={ctx.urls.signIn}>
 		<Button variant="ghost-light" size="md">
-			<Translation key="common:sign-in" />
+			<Translation key="ui-common:sign-in" />
 		</Button>
 	</a>
 
 	<a href={ctx.urls.signUp}>
 		<Button variant="outlined" size="md">
-			<Translation key="common:sign-up" />
+			<Translation key="ui-common:sign-up" />
 		</Button>
 	</a>
 </div>

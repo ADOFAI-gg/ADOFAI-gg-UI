@@ -19,7 +19,7 @@
 					<Translation key={label} />
 					{#if required}
 						<span class="required-sign">
-							<Translation key="common:form-required" />
+							<Translation key="ui-common:form-required" />
 						</span>
 					{/if}
 				</p>
@@ -33,7 +33,7 @@
 					<Translation key={label} />
 					{#if required}
 						<span class="required-sign">
-							<Translation key="common:form-required" />
+							<Translation key="ui-common:form-required" />
 						</span>
 					{/if}
 				</p>

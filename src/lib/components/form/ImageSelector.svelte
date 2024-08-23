@@ -51,7 +51,7 @@
 		<MenuItem on:click={edit}>
 			<Icon slot="icon" size={16} alt="icon" icon="pencil" />
 
-			<Translation key="common:edit" />
+			<Translation key="ui-common:edit" />
 		</MenuItem>
 
 		{#if canRemove}
@@ -64,7 +64,7 @@
 			>
 				<Icon slot="icon" size={16} alt="icon" icon="trash" />
 
-				<Translation key="common:delete" />
+				<Translation key="ui-common:delete" />
 			</MenuItem>
 		{/if}
 	</Menu>
