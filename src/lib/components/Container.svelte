@@ -6,6 +6,7 @@
 		class: className,
 		noPadding = false,
 		topMargin = false,
+		children,
 		...props
 	}: {
 		noPadding?: boolean
@@ -23,7 +24,11 @@
 			className
 		)}
 		{...props}
-	></div>
+	>
+		{#if children}
+			{@render children()}
+		{/if}
+	</div>
 {/snippet}
 
 {#if noPadding}
