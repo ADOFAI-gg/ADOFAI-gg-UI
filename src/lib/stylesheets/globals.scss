@@ -5,6 +5,8 @@
 @import 'components/button';
 @import 'components/icon-button';
 
+$normal_font: 'IBM Plex Sans KR', sans-serif;
+
 :root {
 	--color-yellow: 255, 231, 110;
 	--color-red: 245, 79, 81;
@@ -14,13 +16,11 @@
 	--color-dropdown: 18, 21, 44;
 	--color-bg-solid: 35, 43, 90;
 
-	--font-normal: 'IBM Plex Sans KR', sans-serif;
-
 	color-scheme: dark;
 }
 
 body {
-	font-family: var(--font-normal), sans-serif;
+	font-family: $normal_font;
 	background-color: rgba(var(--color-bg-solid), 1);
 	background-image: url(../assets/images/background.webp);
 	background-attachment: fixed;
