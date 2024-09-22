@@ -13,7 +13,7 @@
 	role="img"
 	style="width: {size}px; height: {size}px; {style}"
 	class="icon {getIconClass(icon)}"
-/>
+></div>
 
 <style lang="scss">
 	.icon {

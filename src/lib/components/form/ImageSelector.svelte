@@ -34,7 +34,7 @@
 	<input type="file" accept="image/*" bind:files hidden bind:this={inputRef} />
 
 	{#if src}
-		<div class="image" style="--url: url('{src}');" />
+		<div class="image" style="--url: url('{src}');"></div>
 	{/if}
 
 	<Menu placement="bottom-start">

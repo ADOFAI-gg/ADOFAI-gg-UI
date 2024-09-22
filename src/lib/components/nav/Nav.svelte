@@ -6,11 +6,18 @@
 	import LogoIcon from '$lib/components/nav/LogoIcon.svelte'
 	import NavLink from '$lib/components/nav/NavLink.svelte'
 
-	export let user: User | null
+	interface Props {
+		user: User | null
+	}
+
+	const { user }: Props = $props()
+
+	// export let user: User | null
 
 	const ctx = getGlobalContext()
 
-	$: mainUrl = ctx.urls.main
+	// $: mainUrl = ctx.urls.main
+	const mainUrl = $derived(ctx.urls.main)
 </script>
 
 <nav class="nav-container">
