@@ -49,3 +49,6 @@ export { default as MenuItem } from './components/menu/MenuItem.svelte'
 
 // Tag
 export { default as Tag } from './components/Tag.svelte'
+
+// Panel
+export { default as Panel } from './components/Panel.svelte'
