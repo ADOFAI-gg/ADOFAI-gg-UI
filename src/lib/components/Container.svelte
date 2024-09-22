@@ -1,8 +1,38 @@
-<div class="container-padder">
-	<div class="container" {...$$restProps}>
-		<slot />
+<script lang="ts">
+	import clsx from 'clsx'
+	import type { HTMLAttributes } from 'svelte/elements'
+
+	const {
+		class: className,
+		noPadding = false,
+		topMargin = false,
+		...props
+	}: {
+		noPadding?: boolean
+		topMargin?: boolean
+	} & HTMLAttributes<HTMLDivElement> = $props()
+</script>
+
+{#snippet content()}
+	<div
+		class={clsx(
+			'container',
+			{
+				'top-margin': topMargin
+			},
+			className
+		)}
+		{...props}
+	></div>
+{/snippet}
+
+{#if noPadding}
+	{@render content()}
+{:else}
+	<div class="container-padder">
+		{@render content()}
 	</div>
-</div>
+{/if}
 
 <style lang="scss">
 	@import '../stylesheets/system/breakpoints';
@@ -19,6 +49,10 @@
 				max-width: map-get($data, 'min-width');
 			}
 		}
+	}
+
+	.top-margin {
+		margin-top: 32px;
 	}
 
 	.container-padder {
