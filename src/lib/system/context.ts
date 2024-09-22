@@ -10,12 +10,8 @@ export type GlobalContext = {
 
 	urls: {
 		main: string
-		levels: string
-		rankings: string
-		references: string
 		signIn: string
 		signUp: string
-		userSettings: string
 	}
 
 	links: {
