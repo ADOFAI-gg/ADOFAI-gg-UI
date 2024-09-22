@@ -73,6 +73,7 @@
 
 	.nav-container {
 		background-color: rgba($darkblue, 0.2);
+		z-index: 1000;
 	}
 
 	.nav-content {
