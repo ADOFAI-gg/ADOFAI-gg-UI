@@ -1,0 +1,31 @@
+@import '../system/colors';
+
+.tag {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 140%;
+	text-transform: uppercase;
+	border-radius: 8px;
+	padding: 0 8px;
+	display: inline-flex;
+}
+
+.tag-yellow {
+	color: #3a3208;
+	background-color: $yellow;
+}
+
+.tag-blue {
+	color: white;
+	background-color: $blue;
+}
+
+.tag-white {
+	color: black;
+	background-color: white;
+}
+
+.tag-gray {
+	color: white;
+	background-color: $gray;
+}

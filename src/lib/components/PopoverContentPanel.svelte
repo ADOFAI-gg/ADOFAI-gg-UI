@@ -3,6 +3,8 @@
 </div>
 
 <style lang="scss">
+	@import '../stylesheets/system/colors';
+
 	.popover-content-panel {
 		padding: 18px;
 
@@ -10,7 +12,7 @@
 		flex-direction: column;
 		gap: 8px;
 
-		background: rgba(var(--color-dropdown), 1);
+		background: rgba($overlay, 1);
 		box-shadow:
 			0px 0px 12px rgba(0, 0, 0, 0.2),
 			0px 0px 24px rgba(0, 0, 0, 0.2);

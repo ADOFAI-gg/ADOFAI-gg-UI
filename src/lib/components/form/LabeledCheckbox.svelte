@@ -20,6 +20,8 @@
 </label>
 
 <style lang="scss">
+	@import '../../stylesheets/system/colors';
+
 	.labeled-checkbox-sm {
 		--label-size: 14px;
 	}
@@ -40,6 +42,6 @@
 	}
 
 	.required {
-		color: rgba(var(--color-red), 1);
+		color: rgba($red, 1);
 	}
 </style>

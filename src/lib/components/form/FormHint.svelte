@@ -8,6 +8,8 @@
 </div>
 
 <style lang="scss">
+	@import '../../stylesheets/system/colors';
+
 	.dot {
 		width: 8px;
 		height: 8px;
@@ -19,7 +21,7 @@
 	}
 
 	.error .dot {
-		background-color: rgba(var(--color-red), 1);
+		background-color: rgba($red, 1);
 	}
 
 	.hint-container {
@@ -27,7 +29,7 @@
 			color: white;
 		}
 		&.error {
-			color: rgba(var(--color-red), 1);
+			color: rgba($red, 1);
 		}
 
 		& {

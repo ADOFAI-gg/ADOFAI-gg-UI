@@ -10,11 +10,13 @@
 </button>
 
 <style lang="scss">
+	@import '../../stylesheets/system/colors';
+
 	.image-selector-edit-icon {
 		position: absolute;
 		top: 8px;
 		right: 8px;
-		background-color: rgba(var(--color-darkblue), 0.4);
+		background-color: rgba($darkblue, 0.4);
 		width: 36px;
 		height: 36px;
 		border-radius: 38px;
@@ -28,7 +30,7 @@
 		z-index: 100;
 
 		&:not(:disabled):hover {
-			background-color: rgba(var(--color-darkblue), 0.6);
+			background-color: rgba($darkblue, 0.6);
 		}
 
 		&:disabled {

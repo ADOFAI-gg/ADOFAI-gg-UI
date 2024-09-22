@@ -60,6 +60,8 @@
 </div>
 
 <style lang="scss">
+	@import '../../stylesheets/system/colors';
+
 	.label {
 		font-size: 16px;
 		font-weight: 500;
@@ -67,7 +69,7 @@
 	}
 
 	.required-sign {
-		color: rgba(var(--color-red), 1);
+		color: rgba($red, 1);
 		font-size: 12px;
 		font-weight: 500;
 		margin-left: 4px;

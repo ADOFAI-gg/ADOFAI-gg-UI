@@ -24,14 +24,16 @@
 </div>
 
 <style lang="scss">
+	@import '../../stylesheets/system/colors';
+
 	.menu-default {
 		--menu-item-color: 255, 255, 255;
 		color: white;
 	}
 
 	.menu-danger {
-		--menu-item-color: var(--color-red);
-		color: rgba(var(--color-red), 1);
+		--menu-item-color: $red;
+		color: rgba($red, 1);
 	}
 
 	.menu-item {

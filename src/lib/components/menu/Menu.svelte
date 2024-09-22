@@ -42,9 +42,11 @@
 	</div> -->
 
 <style lang="scss">
+	@import '../../stylesheets/system/colors';
+
 	.menu-popup {
 		padding: 8px 0;
-		background-color: rgba(var(--color-dropdown), 1);
+		background-color: rgba($overlay, 1);
 		width: 100%;
 		max-width: 180px;
 
