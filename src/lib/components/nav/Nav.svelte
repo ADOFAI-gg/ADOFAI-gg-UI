@@ -74,6 +74,9 @@
 	.nav-container {
 		background-color: rgba($darkblue, 0.2);
 		z-index: 1000;
+		position: sticky;
+		top: 0;
+		width: 100%;
 	}
 
 	.nav-content {
