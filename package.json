@@ -5,16 +5,8 @@
 	"files": [
 		"dist"
 	],
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js"
-		},
-		"./dist/stylesheets/*": {
-			"import": "./dist/stylesheets/*",
-			"require": "./dist/stylesheets/*"
-		}
-	},
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"scripts": {
 		"gen": "node scripts/generateGlobImports.mjs",
 		"check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
