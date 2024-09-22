@@ -62,6 +62,7 @@
 
 <style lang="scss">
 	@import '../../stylesheets/system/breakpoints';
+	@import '../../stylesheets/system/colors';
 
 	.nav-container {
 		background-color: rgba($darkblue, 0.2);
