@@ -38,7 +38,7 @@ const generateTranslations = async () => {
 	const translationData = []
 
 	for await (const i of globIterate('src/lib/localization/translations/*/*.ftl')) {
-		const name = i.slice(prefix.length, i.length - 4)
+		const name = i.slice(prefix.length, i.length - 4).replace('\\', '/')
 		// const importName = name.replace(/\//g, '_')
 
 		// lines.push(`import ${importName} from './${name}.ftl?raw'`)

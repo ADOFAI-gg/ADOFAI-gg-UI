@@ -14,7 +14,7 @@ export const fallbackLang = 'ko'
 
 const registeredLangSections: string[] = []
 
-const langSections = ['common', 'footer', 'nav'] as const
+const langSections = ['ui-common', 'ui-footer'] as const
 
 export type LangSection = (typeof langSections)[number] | ADOFAIGG_UI.ExtraLangSections[number]
 export type LangData = Record<string, FluentBundle>
