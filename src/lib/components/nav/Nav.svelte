@@ -64,7 +64,7 @@
 	@import '../../stylesheets/system/breakpoints';
 
 	.nav-container {
-		background-color: rgba(var(--color-darkblue), 0.2);
+		background-color: rgba($darkblue, 0.2);
 	}
 
 	.nav-content {
