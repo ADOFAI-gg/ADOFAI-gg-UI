@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+	import PanelTitle from '$lib/components/PanelTitle.svelte'
 	import { Panel } from '$lib/index'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 
@@ -9,5 +10,9 @@
 </script>
 
 <Story name="Default">
-	<Panel>Hello</Panel>
+	<Panel>
+		<PanelTitle>Title</PanelTitle>
+
+		Hello</Panel
+	>
 </Story>
