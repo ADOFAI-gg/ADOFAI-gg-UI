@@ -2,4 +2,8 @@
 	border-radius: 12px;
 	background-color: rgba($darkblue, 0.2);
 	padding: 16px;
+
+	&.no-padding {
+		padding: 0;
+	}
 }

@@ -4,10 +4,14 @@
 	import clsx from 'clsx'
 
 	interface Props extends HTMLAttributes<HTMLDivElement> {
-		children: Snippet
+		noPadding?: boolean
 	}
 
-	const { children, class: className, ...props }: Props = $props()
+	const { children, noPadding, class: className, ...props }: Props = $props()
 </script>
 
-<div {...props} class={clsx('panel', className)}>{@render children()}</div>
+<div {...props} class={clsx('panel', { 'no-padding': noPadding }, className)}>
+	{#if children}
+		{@render children()}
+	{/if}
+</div>
