@@ -1,5 +1,15 @@
+<script lang="ts">
+	import type { Snippet } from 'svelte'
+
+	interface Props {
+		children: Snippet
+	}
+
+	const { children }: Props = $props()
+</script>
+
 <div class="popover-content-panel">
-	<slot />
+	{@render children()}
 </div>
 
 <style lang="scss">

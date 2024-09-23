@@ -55,3 +55,8 @@ export { default as Panel } from './components/Panel.svelte'
 
 // Container
 export { default as Container } from './components/Container.svelte'
+
+// Tooltip
+export { default as Tooltip } from './components/Tooltip.svelte'
+export { default as TooltipTitle } from './components/TooltipTitle.svelte'
+export { default as TooltipDescription } from './components/TooltipDescription.svelte'
