@@ -11,7 +11,7 @@
 <Story name="Default">
 	<UserList
 		items={[
-			{ type: 'user', data: dummyUser },
+			{ type: 'user', data: dummyUser, href: '/' },
 			{ type: 'user', data: dummyAdminUser },
 			{ type: 'user', data: dummyUser },
 			{ type: 'user', data: dummyUser },

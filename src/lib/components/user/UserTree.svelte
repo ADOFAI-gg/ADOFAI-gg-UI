@@ -24,22 +24,29 @@
 
 	{#if x.type === 'user'}
 		{@const user = x.data}
-		<div
-			class="user-list-item"
-			style="--depth: {depth};"
-			use:melt={$item({
-				id: itemId,
-				hasChildren
-			})}
-		>
-			<Avatar size={20} src={user.avatarURL} />
-			<div class="username">{user.displayName || user.username}</div>
-			{#if user.isAdmin}
-				<div class="admin-sign">
-					<Icon icon="wrench" alt="admin" size={18} />
-				</div>
-			{/if}
-		</div>
+		{#snippet template()}
+			<div
+				class="user-list-item"
+				style="--depth: {depth};"
+				use:melt={$item({
+					id: itemId,
+					hasChildren
+				})}
+			>
+				<Avatar size={20} src={user.avatarURL} />
+				<div class="username">{user.displayName || user.username}</div>
+				{#if user.isAdmin}
+					<div class="admin-sign">
+						<Icon icon="wrench" alt="admin" size={18} />
+					</div>
+				{/if}
+			</div>
+		{/snippet}
+		{#if x.href}
+			<a href={x.href}>{@render template()}</a>
+		{:else}
+			{@render template()}
+		{/if}
 	{:else if x.type === 'group'}
 		<button
 			class="user-collapse"

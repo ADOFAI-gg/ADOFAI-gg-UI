@@ -62,5 +62,4 @@ export { default as TooltipTitle } from './components/TooltipTitle.svelte'
 export { default as TooltipDescription } from './components/TooltipDescription.svelte'
 
 // UserList
-export { default as UserListItem } from './components/user/UserListItem.svelte'
 export { default as UserList } from './components/user/UserList.svelte'
