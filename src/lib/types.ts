@@ -1,7 +1,18 @@
 import type { FloatingConfig } from '@melt-ui/svelte/internal/actions'
 
+export type UserListItemModel =
+	| {
+			type: 'user'
+			data: User
+			href?: string
+	  }
+	| {
+			type: 'group'
+			name: string
+			data: UserListItemModel[]
+	  }
+
 export interface User {
-	id: string
 	username: string
 	displayName: string | null
 	avatarURL: string | null
