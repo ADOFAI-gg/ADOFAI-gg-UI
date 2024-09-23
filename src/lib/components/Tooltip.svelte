@@ -40,7 +40,15 @@
 {#if $open}
 	<div transition:fly={{ y: 12 }} use:melt={$content}>
 		<PopoverContentPanel>
-			{@render children()}
+			<div class="tooltip-panel">
+				{@render children()}
+			</div>
 		</PopoverContentPanel>
 	</div>
 {/if}
+
+<style lang="scss">
+	.tooltip-panel {
+		max-width: 240px;
+	}
+</style>
