@@ -34,7 +34,7 @@
 				})}
 			>
 				<Avatar size={20} src={user.avatarURL} />
-				<div class="username">{user.displayName || user.username}</div>
+				<div class="username">{user.displayName}</div>
 				{#if user.isAdmin}
 					<div class="admin-sign">
 						<Icon icon="wrench" alt="admin" size={18} />
@@ -81,6 +81,9 @@
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 140%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.admin-sign {

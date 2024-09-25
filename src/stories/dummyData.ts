@@ -3,7 +3,6 @@ import GanjangFactory from './assets/ganjangfactory.png'
 
 export const dummyUser: User = {
 	avatarURL: GanjangFactory,
-	username: 'GanjangFactory',
 	isAdmin: false,
 	displayName: 'GanjangFactory'
 }

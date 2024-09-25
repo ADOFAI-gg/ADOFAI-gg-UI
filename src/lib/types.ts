@@ -13,8 +13,7 @@ export type UserListItemModel =
 	  }
 
 export interface User {
-	username: string
-	displayName: string | null
+	displayName: string
 	avatarURL: string | null
 	isAdmin: boolean
 }

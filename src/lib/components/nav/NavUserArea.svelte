@@ -7,7 +7,7 @@
 
 <section class="nav-user-area">
 	<Avatar size={24} src={user.avatarURL} />
-	<span class="username-text">{user.displayName || user.username}</span>
+	<span class="username-text">{user.displayName}</span>
 </section>
 
 <style lang="scss">

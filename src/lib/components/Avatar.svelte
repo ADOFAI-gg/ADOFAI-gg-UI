@@ -25,6 +25,7 @@
 		width: var(--avatar-size);
 		height: var(--avatar-size);
 		border-radius: calc(var(--avatar-size) / 2);
+		flex-shrink: 0;
 
 		overflow: hidden;
 	}
