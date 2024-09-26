@@ -33,13 +33,17 @@
 					hasChildren
 				})}
 			>
-				<Avatar size={20} src={user.avatarURL} />
-				<div class="username">{user.displayName}</div>
-				{#if user.isAdmin}
-					<div class="admin-sign">
-						<Icon icon="wrench" alt="admin" size={18} />
-					</div>
-				{/if}
+				<div class="user-avatar">
+					<Avatar size={20} src={user.avatarURL} />
+				</div>
+				<div class="username">
+					{user.displayName}
+					{#if user.isAdmin}
+						<div class="admin-sign">
+							<Icon icon="wrench" alt="admin" size={18} />
+						</div>
+					{/if}
+				</div>
 			</div>
 		{/snippet}
 		{#if x.href}
@@ -59,7 +63,7 @@
 			<div class="more-icon" class:open={$isExpanded(itemId)}>
 				<Icon size={18} icon="showMore" alt={$isExpanded(itemId) ? 'collapse' : 'expand'} />
 			</div>
-			<div>{x.name}</div>
+			<div class="group-name">{x.name}</div>
 		</button>
 		<div class="group" use:melt={$group({ id: itemId })}>
 			<Self items={x.data} depth={depth + 1} />
@@ -73,7 +77,6 @@
 	.user-list-item {
 		display: flex;
 		margin-left: calc(var(--depth) * 24px);
-		align-items: center;
 		gap: 4px;
 	}
 
@@ -81,13 +84,12 @@
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 140%;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
 	}
 
 	.admin-sign {
 		color: $blue;
+		display: inline-block;
+		transform: translateY(25%);
 	}
 
 	.user-collapse {
@@ -105,6 +107,7 @@
 		justify-content: center;
 		align-items: center;
 		width: 20px;
+		height: 22px;
 		transition:
 			opacity ease 0.2s,
 			transform ease 0.4s;
@@ -123,5 +126,13 @@
 		gap: 8px;
 		font-size: 16px;
 		line-height: 140%;
+	}
+
+	.group-name {
+		text-align: left;
+	}
+
+	.user-avatar {
+		height: 22px;
 	}
 </style>
