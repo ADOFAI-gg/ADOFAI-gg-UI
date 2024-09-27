@@ -14,7 +14,7 @@ export const fallbackLang = 'ko'
 
 const registeredLangSections: string[] = []
 
-const langSections = ['ui-common', 'ui-footer'] as const
+const langSections = ['ui-common', 'ui-footer', 'ui-search'] as const
 
 export type LangSection = (typeof langSections)[number] | ADOFAIGG_UI.ExtraLangSections[number]
 export type LangData = Record<string, FluentBundle>
@@ -93,6 +93,34 @@ const escapeHtmlTags = (str: string) =>
 		.replace(/"/g, '&quot;')
 		.replace(/'/g, '&#039;')
 
+export const translateKey = (
+	language: string,
+	rawKey: TranslationKey,
+	args: Record<string, FluentVariable>,
+	escape = true
+) => {
+	let key: string
+	let sectionName: LangSection
+
+	if (typeof rawKey === 'string') {
+		;[sectionName, key] = rawKey.split(':') as ArrayTranslationKey
+	} else {
+		;[sectionName, key] = rawKey
+	}
+
+	if (!language) return key
+	const lang = langData[language]
+	if (!lang) return key
+	const section = lang[sectionName]
+	if (!section) return key
+	let message = section.getMessage(key)
+	if (!message?.value) message = langData[fallbackLang][sectionName].getMessage(key)
+	if (!message?.value) return key
+	const result = section.formatPattern(message.value, args)
+	if (escape) escapeHtmlTags(result)
+	return result
+}
+
 export const translate = (
 	language: Readable<string>,
 	rawKey: TranslationKey,
@@ -100,26 +128,7 @@ export const translate = (
 	escape = true
 ) => {
 	return derived(language, (l) => {
-		let key: string
-		let sectionName: LangSection
-
-		if (typeof rawKey === 'string') {
-			;[sectionName, key] = rawKey.split(':') as ArrayTranslationKey
-		} else {
-			;[sectionName, key] = rawKey
-		}
-
-		if (!l) return key
-		const lang = langData[l]
-		if (!lang) return key
-		const section = lang[sectionName]
-		if (!section) return key
-		let message = section.getMessage(key)
-		if (!message?.value) message = langData[fallbackLang][sectionName].getMessage(key)
-		if (!message?.value) return key
-		const result = section.formatPattern(message.value, args)
-		if (escape) escapeHtmlTags(result)
-		return result
+		return translateKey(l, rawKey, args, escape)
 	})
 }
 

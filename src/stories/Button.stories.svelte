@@ -60,6 +60,8 @@
 
 <Story name="Dark Ghost" args={{ variant: 'ghost-dark' }} children={template} />
 
+<Story name="Danger Ghost" args={{ variant: 'ghost-danger' }} children={template} />
+
 <Story name="Outlined" args={{ variant: 'outlined' }} children={template} />
 
 <style lang="scss">

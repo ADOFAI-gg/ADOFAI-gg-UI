@@ -9,15 +9,17 @@
 </script>
 
 <Story name="Default">
-	<Popover open let:close placement="bottom-start">
-		<svelte:fragment slot="button" let:trigger>
-			<Button variant="outlined" meltElement={trigger}>Click me!</Button>
-		</svelte:fragment>
+	<Popover open placement="bottom-start">
+		{#snippet trigger(el)}
+			<Button variant="outlined" meltElement={el}>Click me!</Button>
+		{/snippet}
 
-		<PopoverContentPanel>
-			Content
+		{#snippet children({ close })}
+			<PopoverContentPanel>
+				Content
 
-			<Button size="sm" on:click={close}>close</Button>
-		</PopoverContentPanel>
+				<Button size="sm" on:click={close}>close</Button>
+			</PopoverContentPanel>
+		{/snippet}
 	</Popover>
 </Story>

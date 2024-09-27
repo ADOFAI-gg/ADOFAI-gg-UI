@@ -1,10 +1,17 @@
 <script lang="ts">
 	import { createPopover, createSync, melt } from '@melt-ui/svelte'
 	import type { FloatingConfig } from '@melt-ui/svelte/internal/actions'
+	import type { Snippet } from 'svelte'
 	import { fly } from 'svelte/transition'
 
-	export let placement: Exclude<FloatingConfig, null>['placement'] = 'bottom'
-	export let open = false
+	interface Props {
+		placement?: Exclude<FloatingConfig, null>['placement']
+		open?: boolean
+		trigger: Snippet<[typeof trigger]>
+		children: Snippet<[{ close: () => void }]>
+	}
+
+	let { placement, open = $bindable(false), trigger: triggerSnippet, children }: Props = $props()
 
 	const {
 		elements: { trigger, content },
@@ -18,15 +25,17 @@
 
 	const sync = createSync(states)
 
-	$: sync.open(open, (v) => (open = v))
+	$effect(() => {
+		sync.open(open, (v) => (open = v))
+	})
 
 	const close = () => (open = false)
 </script>
 
-<slot name="button" {trigger} />
+{@render triggerSnippet(trigger)}
 
 {#if open}
 	<div use:melt={$content} transition:fly={{ y: 12 }}>
-		<slot {close} />
+		{@render children({ close })}
 	</div>
 {/if}

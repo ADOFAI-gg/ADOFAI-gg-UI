@@ -1,4 +1,6 @@
 import type { FloatingConfig } from '@melt-ui/svelte/internal/actions'
+import type { TranslationKey } from 'src/main'
+import type { Snippet } from 'svelte'
 
 export type UserListItemModel =
 	| {
@@ -18,9 +20,57 @@ export interface User {
 	isAdmin: boolean
 }
 
-export type ButtonStyle = 'primary' | 'danger' | 'ghost-light' | 'ghost-dark' | 'outlined'
+export type ButtonStyle =
+	| 'primary'
+	| 'danger'
+	| 'ghost-light'
+	| 'ghost-dark'
+	| 'ghost-danger'
+	| 'outlined'
 export type ButtonSize = 'lg' | 'md' | 'sm'
 
 export type CheckboxSize = 'lg' | 'md' | 'sm'
 
 export type FloatingPlacement = Exclude<FloatingConfig, null>['placement']
+
+export type SearchFilterScheme = (
+	| {
+			type: 'string'
+			label: TranslationKey
+	  }
+	| {
+			type: 'select'
+	  }
+) & {
+	icon: string
+	name: TranslationKey
+	default: unknown
+}
+
+export interface SearchSortScheme {
+	name: TranslationKey
+	icon?: Snippet
+
+	objective: string
+	direction: 'asc' | 'desc'
+}
+
+export interface SearchOptionScheme {
+	sort: SearchSortScheme[]
+	filter: Record<string, SearchFilterScheme>
+}
+
+export interface SearchFilter {
+	key: string
+	value: unknown
+}
+
+export interface SearchSort {
+	objective: string
+	order: 'asc' | 'desc'
+}
+
+export interface SearchOptionsData {
+	filter: SearchFilter[]
+	sort: SearchSort[]
+}

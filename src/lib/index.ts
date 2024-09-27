@@ -64,3 +64,7 @@ export { default as TooltipDescription } from './components/TooltipDescription.s
 
 // UserList
 export { default as UserList } from './components/user/UserList.svelte'
+
+// Search Options
+export { default as SearchOptionChip } from './components/search/SearchOptionChip.svelte'
+export { default as SearchOptionsBar } from './components/search/SearchOptionsBar.svelte'

@@ -65,7 +65,7 @@
 	.label {
 		font-size: 16px;
 		font-weight: 500;
-		line-height: 16px;
+		line-height: 140%;
 	}
 
 	.required-sign {
