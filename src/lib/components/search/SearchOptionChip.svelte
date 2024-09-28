@@ -18,7 +18,9 @@
 </script>
 
 <button class="search-option-chip" use:melt={$meltElement}>
-	<Icon alt="icon" {icon} size={16} />
+	<div class="icon">
+		<Icon alt="icon" {icon} size={16} />
+	</div>
 	<span class="objective">
 		<Translation key={objectiveKey} />
 	</span>
@@ -41,9 +43,22 @@
 		line-height: 140%;
 
 		font-size: 14px;
+		max-width: 320px;
+	}
+
+	.icon {
+		flex-shrink: 0;
 	}
 
 	.objective {
+		flex-shrink: 0;
 		font-weight: 700;
+	}
+
+	.value {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		flex-shrink: 1;
 	}
 </style>
