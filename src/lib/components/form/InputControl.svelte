@@ -36,6 +36,7 @@
 		flex-grow: 1;
 		background: transparent;
 		padding: 8px 0;
+		width: 100%;
 
 		&:focus {
 			outline: none;
