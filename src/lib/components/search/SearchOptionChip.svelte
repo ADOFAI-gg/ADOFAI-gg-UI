@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { TranslationKey } from 'src/main'
+	import type { TranslationKey } from '$lib/index'
 	import type { Snippet } from 'svelte'
 	import Icon from '../Icon.svelte'
 	import Translation from '$lib/utils/Translation.svelte'

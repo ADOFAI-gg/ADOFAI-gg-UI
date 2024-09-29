@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SearchOptionScheme, SearchOptionsData } from '$lib/types'
 	import Translation from '$lib/utils/Translation.svelte'
-	import { translateKey } from 'src/main'
+	import { translateKey } from '$lib/index'
 	import Icon from '../Icon.svelte'
 	import Popover from '../Popover.svelte'
 	import AddFilterButton from './AddFilterButton.svelte'

@@ -2,7 +2,7 @@
 	import Translation from '$lib/utils/Translation.svelte'
 	import Icon from '../Icon.svelte'
 	import PopoverContentPanel from '../PopoverContentPanel.svelte'
-	import { getGlobalContext, translateKey, type TranslationKey } from 'src/main'
+	import { getGlobalContext, translateKey, type TranslationKey } from '$lib/index'
 
 	interface Item {
 		label: TranslationKey

@@ -1,5 +1,5 @@
 import type { FloatingConfig } from '@melt-ui/svelte/internal/actions'
-import type { TranslationKey } from 'src/main'
+import type { TranslationKey } from '$lib/index'
 import type { Snippet } from 'svelte'
 
 export type UserListItemModel =
