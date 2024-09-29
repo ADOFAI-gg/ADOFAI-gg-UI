@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getGlobalContext, translate, type TranslationKey } from 'src/main'
+	import { getGlobalContext, translate, type TranslationKey } from '$lib/index'
 	import Icon from '../Icon.svelte'
 
 	interface Props {
