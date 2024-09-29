@@ -7,7 +7,7 @@
 		placeholder?: TranslationKey
 	}
 
-	const { value = $bindable(''), placeholder }: Props = $props()
+	let { value = $bindable(''), placeholder }: Props = $props()
 
 	const ctx = getGlobalContext()
 
@@ -20,7 +20,12 @@
 	<div class="icon">
 		<Icon alt="icon" size={24} icon="search" />
 	</div>
-	<input type="text" class="input" placeholder={placeholder ? $translatedPlaceholder : ''} />
+	<input
+		bind:value
+		type="text"
+		class="input"
+		placeholder={placeholder ? $translatedPlaceholder : ''}
+	/>
 </div>
 
 <style lang="scss">

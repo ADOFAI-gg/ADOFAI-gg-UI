@@ -7,6 +7,12 @@
 	})
 </script>
 
+<script lang="ts">
+	let query = $state('')
+</script>
+
 <Story name="Example">
-	<SearchBar placeholder="custom:Wow this is placeholder" />
+	<SearchBar bind:value={query} placeholder="custom:Wow this is placeholder" />
+
+	<div>{query}</div>
 </Story>
