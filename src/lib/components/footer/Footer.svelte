@@ -26,7 +26,12 @@
 					<FooterLink href="https://adofai.gg/docs/terms" target="_blank" rel="noreferrer">
 						<Translation key="ui-footer:legal-terms" />
 					</FooterLink>
-					<FooterLink href="https://adofai.gg/docs/privacy" target="_blank" rel="noreferrer">
+					<FooterLink
+						href="https://adofai.gg/docs/privacy"
+						target="_blank"
+						rel="noreferrer"
+						highlight
+					>
 						<Translation key="ui-footer:legal-privacy" />
 					</FooterLink>
 				</FooterSection>
