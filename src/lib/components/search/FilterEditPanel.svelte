@@ -36,13 +36,13 @@
 	{/if}
 
 	<div class="actions">
-		<Button size="sm" type="button" variant="ghost-light" on:click={close}>
+		<Button size="md" type="button" variant="ghost-light" on:click={close}>
 			<Translation key="ui-search:cancel" />
 		</Button>
-		<Button size="sm" type="button" variant="ghost-danger" on:click={onRemove}>
+		<Button size="md" type="button" variant="ghost-danger" on:click={onRemove}>
 			<Translation key="ui-search:remove-filter" />
 		</Button>
-		<Button size="sm" type="submit">
+		<Button size="md" type="submit">
 			<Translation key="ui-search:apply" />
 		</Button>
 	</div>
