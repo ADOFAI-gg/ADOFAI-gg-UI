@@ -10,7 +10,6 @@
 	let { value = $bindable(''), placeholder }: Props = $props()
 
 	const ctx = getGlobalContext()
-
 	const translatedPlaceholder = placeholder
 		? translate(ctx.language, placeholder, {}, false)
 		: undefined

@@ -69,3 +69,5 @@ export { default as UserList } from './components/user/UserList.svelte'
 export { default as SearchOptionChip } from './components/search/SearchOptionChip.svelte'
 export { default as SearchOptionsBar } from './components/search/SearchOptionsBar.svelte'
 export { default as SearchBar } from './components/search/SearchBar.svelte'
+
+export { default as LoadingSpinner } from './components/LoadingSpinner.svelte'
