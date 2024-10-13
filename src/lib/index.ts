@@ -71,3 +71,4 @@ export { default as SearchOptionsBar } from './components/search/SearchOptionsBa
 export { default as SearchBar } from './components/search/SearchBar.svelte'
 
 export { default as LoadingSpinner } from './components/LoadingSpinner.svelte'
+export { default as Pagination } from './components/Pagination.svelte'
