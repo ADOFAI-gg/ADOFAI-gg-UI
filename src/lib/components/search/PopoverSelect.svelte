@@ -83,6 +83,7 @@
 					}
 				} else if (e.key === 'Enter') {
 					e.preventDefault()
+					if (!filteredItems.length) return
 					if (!selected) return
 					onSelect?.(selected.value)
 				}

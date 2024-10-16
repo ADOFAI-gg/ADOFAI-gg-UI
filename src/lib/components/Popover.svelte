@@ -1,17 +1,26 @@
 <script lang="ts">
 	import { createPopover, createSync, melt } from '@melt-ui/svelte'
 	import type { FloatingConfig } from '@melt-ui/svelte/internal/actions'
-	import type { Snippet } from 'svelte'
-	import { fly } from 'svelte/transition'
+	import { onMount, tick, type Snippet } from 'svelte'
+	import { fly, type FlyParams, type TransitionConfig } from 'svelte/transition'
 
 	interface Props {
 		placement?: Exclude<FloatingConfig, null>['placement']
 		open?: boolean
 		trigger: Snippet<[typeof trigger]>
 		children: Snippet<[{ close: () => void; open: boolean }]>
+		defaultOpen?: boolean
+		lockOnClose?: boolean
 	}
 
-	let { placement, open = $bindable(false), trigger: triggerSnippet, children }: Props = $props()
+	let {
+		placement,
+		open = $bindable(false),
+		trigger: triggerSnippet,
+		children,
+		defaultOpen = false,
+		lockOnClose
+	}: Props = $props()
 
 	const {
 		elements: { trigger, content },
@@ -20,7 +29,9 @@
 		positioning: {
 			placement
 		},
-		forceVisible: true
+
+		forceVisible: true,
+		defaultOpen
 	})
 
 	const sync = createSync(states)
@@ -42,12 +53,45 @@
 			el?.focus()
 		}
 	})
+
+	onMount(() => {
+		if (defaultOpen) {
+			tick().then(() => {
+				states.open.set(true)
+			})
+		}
+	})
+
+	const out = (el: HTMLElement, params: FlyParams): TransitionConfig => {
+		const actualTransition = fly(el, params)
+
+		if (!lockOnClose) return actualTransition
+
+		const startTop = el.style.top
+		const startLeft = el.style.left
+
+		return {
+			css: actualTransition.css,
+			delay: actualTransition.delay,
+			duration: actualTransition.duration,
+			easing: actualTransition.easing,
+			tick: () => {
+				el.style.top = startTop
+				el.style.left = startLeft
+			}
+		}
+	}
 </script>
 
 {@render triggerSnippet(trigger)}
 
 {#if open}
-	<div bind:this={ref} use:melt={$content} transition:fly={{ y: 12 }}>
+	<div
+		bind:this={ref}
+		use:melt={$content}
+		in:fly={{ y: 12, duration: 400 }}
+		out:out={{ y: 12, duration: 400 }}
+	>
 		{@render children({ close, open })}
 	</div>
 {/if}

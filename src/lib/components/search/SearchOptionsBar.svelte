@@ -1,12 +1,16 @@
 <script lang="ts">
 	import type { SearchOptionScheme, SearchOptionsData } from '$lib/types'
-	import { getGlobalContext, translate, translateKey, Translation } from '$lib/index'
+	import { translateKey, Translation } from '$lib/index'
 	import Popover from '../Popover.svelte'
 	import AddFilterButton from './AddFilterButton.svelte'
 	import PopoverSelect from './PopoverSelect.svelte'
 	import SearchOptionChip from './SearchOptionChip.svelte'
 	import PopoverContentPanel from '../PopoverContentPanel.svelte'
 	import FilterEditPanel from './FilterEditPanel.svelte'
+	import { circOut } from 'svelte/easing'
+	import { flip } from 'svelte/animate'
+	import { tick } from 'svelte'
+	import { fade, fly, slide } from 'svelte/transition'
 
 	interface Props {
 		scheme: SearchOptionScheme
@@ -14,15 +18,30 @@
 	}
 
 	let { scheme, data = $bindable() }: Props = $props()
+	let defaultOpen = $state<string | null>(null)
+
+	const genKey = (key: string) => `${key}-${Date.now()}`
 
 	const addFilter = (key: string) => {
-		data.filter.push({
+		const id = genKey(key)
+		const newData = { ...data }
+		newData.filter = [...data.filter]
+		newData.filter.push({
 			key,
-			value: scheme.filter[key].default
+			value: scheme.filter[key].default,
+			id
 		})
+
+		data = newData
+
+		defaultOpen = id
 	}
 
-	const { language } = getGlobalContext()
+	$effect(() => {
+		for (const f of data.filter) {
+			if (!f.id) f.id = genKey(f.key)
+		}
+	})
 </script>
 
 <div class="search-options-bar">
@@ -55,41 +74,50 @@
 		<div class="divider"></div>
 	{/if}
 
-	{#each data.filter as filter, i}
+	{#each data.filter as filter, i (filter.id)}
 		{@const filterScheme = scheme.filter[filter.key]}
-		<Popover>
-			{#snippet trigger(el)}
-				<SearchOptionChip
-					icon={filterScheme.icon}
-					objectiveKey={filterScheme.name}
-					meltElement={el}
-					hasValue={!!filter.value}
-				>
-					{#if filterScheme.type === 'string'}
-						{filter.value}
-					{/if}
-				</SearchOptionChip>
-			{/snippet}
+		<div animate:flip={{ duration: 400 }}>
+			<Popover defaultOpen={defaultOpen === filter.id}>
+				{#snippet trigger(el)}
+					<div in:fade={{ duration: 400 }} out:fade={{ duration: 200 }}>
+						<SearchOptionChip
+							icon={filterScheme.icon}
+							objectiveKey={filterScheme.name}
+							meltElement={el}
+							hasValue={!!filter.value}
+						>
+							{#if filterScheme.type === 'string'}
+								{filter.value}
+							{/if}
+						</SearchOptionChip>
+					</div>
+				{/snippet}
 
-			{#snippet children({ close })}
-				<PopoverContentPanel>
-					<FilterEditPanel
-						onRemove={() => {
-							data.filter.splice(i, 1)
-						}}
-						{close}
-						scheme={filterScheme}
-						value={filter.value}
-						onSave={(value) => {
-							filter.value = value
-							close()
-						}}
-					/>
-				</PopoverContentPanel>
-			{/snippet}
-		</Popover>
+				{#snippet children({ close })}
+					<PopoverContentPanel>
+						<FilterEditPanel
+							onRemove={() => {
+								close()
+
+								tick().then(() => {
+									data.filter.splice(i, 1)
+								})
+							}}
+							{close}
+							scheme={filterScheme}
+							value={filter.value}
+							onSave={(value) => {
+								filter.value = value
+								close()
+							}}
+						/>
+					</PopoverContentPanel>
+				{/snippet}
+			</Popover>
+		</div>
 	{/each}
-	<Popover>
+
+	<Popover lockOnClose>
 		{#snippet trigger(el)}
 			<AddFilterButton meltElement={el} />
 		{/snippet}
@@ -97,8 +125,10 @@
 		{#snippet children({ close })}
 			<PopoverSelect
 				onSelect={(v) => {
-					addFilter(v)
 					close()
+					tick().then(() => {
+						addFilter(v)
+					})
 				}}
 				placeholder={(label, key, lang) =>
 					translateKey(lang, 'ui-search:add-filter-placeholder', { label: label || '...' })}

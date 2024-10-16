@@ -69,6 +69,7 @@ export type SearchOptionScheme = {
 )
 
 export interface SearchFilter {
+	id: string
 	key: string
 	value: unknown
 }
