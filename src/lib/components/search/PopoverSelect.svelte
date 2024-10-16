@@ -55,7 +55,7 @@
 	)
 </script>
 
-<div class="select-root">
+<div class="select-root" class:contains-value={value !== undefined}>
 	<PopoverContentPanel>
 		<input
 			type="text"
@@ -173,19 +173,41 @@
 		height: 42px;
 		align-items: center;
 		border-radius: 8px;
-		background-color: rgba(255, 255, 255, 0);
+		--item-bg: 255, 255, 255;
+		background-color: rgba(var(--item-bg), 0);
 		width: 100%;
 
 		transition: background-color ease 0.2s;
 		cursor: pointer;
 		user-select: none;
+	}
 
+	:not(.contains-value) .item {
+		&:hover,
 		&.focus {
-			background-color: rgba(255, 255, 255, 0.05);
+			background-color: rgba(var(--item-bg), 0.05);
 		}
 
-		&.selected {
-			background-color: rgba(255, 255, 255, 0.1);
+		&:active {
+			background-color: rgba(var(--item-bg), 0.1);
+		}
+	}
+
+	.contains-value {
+		.item {
+			--item-bg: 59, 132, 241;
+
+			&.focus {
+				background-color: rgba(var(--item-bg), 0.15);
+			}
+
+			&.selected {
+				background-color: rgba(var(--item-bg), 0.1);
+			}
+
+			&.selected.focus {
+				background-color: rgba(var(--item-bg), 0.2);
+			}
 		}
 	}
 </style>
