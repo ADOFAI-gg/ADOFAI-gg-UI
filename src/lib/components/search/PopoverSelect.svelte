@@ -3,18 +3,22 @@
 	import Icon from '../Icon.svelte'
 	import PopoverContentPanel from '../PopoverContentPanel.svelte'
 	import { getGlobalContext, translateKey, type TranslationKey } from '$lib/index'
+	import type { FluentVariable } from '@fluent/bundle'
+
+	type T = $$Generic
 
 	interface Item {
 		label: TranslationKey
-		icon: string
-		value: string
+		labelParams?: Record<string, FluentVariable>
+		icon?: string
+		value: T
 	}
 
 	interface Props {
 		items: Item[]
 		placeholder?: (label: string | null, value: string | null, lang: string) => string
-		value?: string
-		onSelect?: (value: string) => void
+		value?: T
+		onSelect?: (value: T) => void
 	}
 
 	const { items, value, onSelect, placeholder = (v) => v || '' }: Props = $props()
@@ -25,7 +29,7 @@
 	let translatedItems = $derived.by(() => {
 		return items.map((x) => ({
 			...x,
-			translatedLabel: translateKey($lang, x.label, {})
+			translatedLabel: translateKey($lang, x.label, x.labelParams || {})
 		}))
 	})
 
@@ -39,7 +43,7 @@
 	})
 
 	let convertedPlaceholder = $derived(
-		placeholder(selected?.translatedLabel || null, selected?.value || null, $lang)
+		placeholder(selected?.translatedLabel || null, selected?.value?.toString() || null, $lang)
 	)
 
 	let search = $state('')
@@ -103,7 +107,9 @@
 					}}
 				>
 					<div class="icon">
-						<Icon size={18} alt="icon" icon={item.icon} />
+						{#if item.icon}
+							<Icon size={18} alt="icon" icon={item.icon} />
+						{/if}
 					</div>
 
 					<div class="label">
@@ -153,6 +159,11 @@
 			max-width: 240px;
 			width: 100vw;
 		}
+	}
+
+	.icon {
+		width: 18px;
+		height: 18px;
 	}
 
 	.item {

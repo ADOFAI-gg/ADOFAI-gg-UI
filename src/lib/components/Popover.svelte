@@ -8,7 +8,7 @@
 		placement?: Exclude<FloatingConfig, null>['placement']
 		open?: boolean
 		trigger: Snippet<[typeof trigger]>
-		children: Snippet<[{ close: () => void }]>
+		children: Snippet<[{ close: () => void; open: boolean }]>
 	}
 
 	let { placement, open = $bindable(false), trigger: triggerSnippet, children }: Props = $props()
@@ -30,12 +30,24 @@
 	})
 
 	const close = () => (open = false)
+
+	let ref: HTMLElement | null = $state(null)
+
+	$effect(() => {
+		if (open && ref) {
+			let el: HTMLElement | null = ref.querySelector('[autofocus]')
+
+			if (!el) el = ref.querySelector('input')
+
+			el?.focus()
+		}
+	})
 </script>
 
 {@render triggerSnippet(trigger)}
 
 {#if open}
-	<div use:melt={$content} transition:fly={{ y: 12 }}>
-		{@render children({ close })}
+	<div bind:this={ref} use:melt={$content} transition:fly={{ y: 12 }}>
+		{@render children({ close, open })}
 	</div>
 {/if}

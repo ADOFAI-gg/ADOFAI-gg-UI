@@ -55,10 +55,18 @@ export interface SearchSortScheme {
 	direction: 'asc' | 'desc'
 }
 
-export interface SearchOptionScheme {
+export type SearchOptionScheme = {
 	sort: SearchSortScheme[]
 	filter: Record<string, SearchFilterScheme>
-}
+} & (
+	| {
+			pageSize: number[]
+			defaultPageSize: number
+	  }
+	| {
+			pageSize?: false
+	  }
+)
 
 export interface SearchFilter {
 	key: string
@@ -73,4 +81,5 @@ export interface SearchSort {
 export interface SearchOptionsData {
 	filter: SearchFilter[]
 	sort: SearchSort[]
+	pageSize?: number
 }

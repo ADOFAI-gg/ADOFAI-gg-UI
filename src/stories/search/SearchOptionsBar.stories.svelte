@@ -24,14 +24,17 @@
 				default: ''
 			}
 		},
-		sort: []
+		sort: [],
+		pageSize: [15, 30, 50, 100, 200],
+		defaultPageSize: 50
 	} satisfies SearchOptionScheme
 </script>
 
 <script lang="ts">
 	let data = $state<SearchOptionsData>({
 		filter: [],
-		sort: []
+		sort: [],
+		pageSize: 50
 	})
 </script>
 

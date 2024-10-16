@@ -4,17 +4,18 @@
 	import Icon from '../Icon.svelte'
 	import Translation from '$lib/utils/Translation.svelte'
 	import type { AnyMeltElement } from '@melt-ui/svelte'
-	import { melt } from '@melt-ui/svelte'
+	import { emptyMeltElement, melt } from '@melt-ui/svelte'
 
 	interface Props {
 		icon: string
 		objectiveKey: TranslationKey
 		children?: Snippet
-		meltElement: AnyMeltElement
+		meltElement?: AnyMeltElement
 		hasValue?: boolean
 	}
 
-	const { icon, objectiveKey, children, meltElement, hasValue }: Props = $props()
+	// @ts-expect-error invalid typed
+	const { icon, objectiveKey, children, meltElement = emptyMeltElement, hasValue }: Props = $props()
 </script>
 
 <button class="search-option-chip" use:melt={$meltElement}>

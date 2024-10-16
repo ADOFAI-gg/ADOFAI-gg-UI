@@ -7,3 +7,6 @@ apply = 설정
 cancel = 취소
 
 remove-filter = 필터 없애기
+
+page-size = 개수
+page-size-value = { $count }개씩 보기

@@ -1,15 +1,12 @@
 <script lang="ts">
 	import type { SearchOptionScheme, SearchOptionsData } from '$lib/types'
-	import Translation from '$lib/utils/Translation.svelte'
-	import { translateKey } from '$lib/index'
-	import Icon from '../Icon.svelte'
+	import { getGlobalContext, translate, translateKey, Translation } from '$lib/index'
 	import Popover from '../Popover.svelte'
 	import AddFilterButton from './AddFilterButton.svelte'
 	import PopoverSelect from './PopoverSelect.svelte'
 	import SearchOptionChip from './SearchOptionChip.svelte'
 	import PopoverContentPanel from '../PopoverContentPanel.svelte'
 	import FilterEditPanel from './FilterEditPanel.svelte'
-	import MenuItem from '../menu/MenuItem.svelte'
 
 	interface Props {
 		scheme: SearchOptionScheme
@@ -24,9 +21,40 @@
 			value: scheme.filter[key].default
 		})
 	}
+
+	const { language } = getGlobalContext()
 </script>
 
 <div class="search-options-bar">
+	{#if scheme.pageSize}
+		<Popover>
+			{#snippet trigger(el)}
+				<SearchOptionChip meltElement={el} icon="view" objectiveKey="ui-search:page-size" hasValue>
+					<Translation key="ui-search:page-size-value" params={{ count: data.pageSize || 0 }} />
+				</SearchOptionChip>
+			{/snippet}
+
+			{#snippet children({ close })}
+				<PopoverSelect
+					items={scheme.pageSize.map((x) => ({
+						label: 'ui-search:page-size-value',
+						labelParams: { count: x },
+						value: x
+					}))}
+					value={data.pageSize}
+					onSelect={(v) => {
+						data.pageSize = v
+						close()
+					}}
+				/>
+			{/snippet}
+		</Popover>
+	{/if}
+
+	{#if scheme.pageSize}
+		<div class="divider"></div>
+	{/if}
+
 	{#each data.filter as filter, i}
 		{@const filterScheme = scheme.filter[filter.key]}
 		<Popover>
@@ -89,5 +117,14 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 8px;
+		align-items: center;
+	}
+
+	.divider {
+		width: 0px;
+		height: 18px;
+
+		opacity: 0.2;
+		border: 1px solid #ffffff;
 	}
 </style>
