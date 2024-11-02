@@ -20,7 +20,7 @@
 </label>
 
 <style lang="scss">
-	@import '../../stylesheets/system/colors';
+	@use '../../stylesheets/system/colors' as *;
 
 	.labeled-checkbox-sm {
 		--label-size: 14px;

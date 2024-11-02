@@ -1,4 +1,4 @@
-@import '../system/colors';
+@use '../system/colors' as *;
 
 .button {
 	display: flex;

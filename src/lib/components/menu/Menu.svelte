@@ -42,7 +42,7 @@
 	</div> -->
 
 <style lang="scss">
-	@import '../../stylesheets/system/colors';
+	@use '../../stylesheets/system/colors' as *;
 
 	.menu-popup {
 		padding: 8px 0;

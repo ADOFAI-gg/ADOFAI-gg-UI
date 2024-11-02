@@ -60,7 +60,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../stylesheets/system/colors';
+	@use '../../stylesheets/system/colors' as *;
 
 	.label {
 		font-size: 16px;

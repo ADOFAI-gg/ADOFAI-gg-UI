@@ -3,7 +3,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../stylesheets/system/colors';
+	@use '../../stylesheets/system/colors' as *;
 
 	.form-hint-area {
 		display: grid;

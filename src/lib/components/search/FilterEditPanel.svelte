@@ -49,7 +49,7 @@
 </form>
 
 <style lang="scss">
-	@import '../../stylesheets/system/colors';
+	@use '../../stylesheets/system/colors' as *;
 
 	.filter-edit-panel {
 		max-width: 240px;

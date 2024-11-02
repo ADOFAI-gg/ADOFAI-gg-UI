@@ -15,7 +15,7 @@
 </section>
 
 <style lang="scss">
-	@import '../../stylesheets/system/breakpoints';
+	@use '../../stylesheets/system/breakpoints' as *;
 
 	.footer-section {
 		display: flex;

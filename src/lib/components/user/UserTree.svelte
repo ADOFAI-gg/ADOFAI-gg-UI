@@ -72,7 +72,7 @@
 {/each}
 
 <style lang="scss">
-	@import '../../stylesheets/system/colors';
+	@use '../../stylesheets/system/colors' as *;
 
 	.user-list-item {
 		display: flex;

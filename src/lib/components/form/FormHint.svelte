@@ -8,7 +8,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../stylesheets/system/colors';
+	@use '../../stylesheets/system/colors' as *;
 
 	.dot {
 		width: 8px;

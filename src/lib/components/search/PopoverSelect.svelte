@@ -127,7 +127,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../stylesheets/system/colors';
+	@use '../../stylesheets/system/colors' as *;
 
 	.search-input {
 		&:focus {

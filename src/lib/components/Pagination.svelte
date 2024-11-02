@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { createPagination, melt } from '@melt-ui/svelte'
-	import type { CreatePaginationProps } from '@melt-ui/svelte/internal/types'
 	import { writable, type Writable } from 'svelte/store'
 	import Icon from './Icon.svelte'
 

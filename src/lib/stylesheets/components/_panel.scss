@@ -1,3 +1,5 @@
+@use '../system/colors' as *;
+
 .panel {
 	border-radius: 12px;
 	background-color: rgba($darkblue, 0.2);

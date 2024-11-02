@@ -13,7 +13,7 @@
 </div>
 
 <style lang="scss">
-	@import '../stylesheets/system/colors';
+	@use '../stylesheets/system/colors' as *;
 
 	.popover-content-panel {
 		padding: 18px;

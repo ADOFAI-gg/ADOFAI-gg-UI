@@ -24,7 +24,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../stylesheets/system/colors';
+	@use '../../stylesheets/system/colors' as *;
 
 	.menu-default {
 		--menu-item-color: 255, 255, 255;

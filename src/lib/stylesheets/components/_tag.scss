@@ -1,4 +1,4 @@
-@import '../system/colors';
+@use '../system/colors' as *;
 
 .tag {
 	font-size: 20px;

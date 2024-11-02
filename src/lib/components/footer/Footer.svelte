@@ -44,7 +44,7 @@
 </footer>
 
 <style lang="scss">
-	@import '../../stylesheets/system/breakpoints';
+	@use '../../stylesheets/system/breakpoints' as *;
 
 	.footer {
 		background-color: rgba(0, 0, 0, 0.2);
