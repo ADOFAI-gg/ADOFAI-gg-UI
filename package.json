@@ -11,9 +11,8 @@
 			"import": "./dist/index.js",
 			"svelte": "./dist/index.js"
 		},
-		"./dist/stylesheets/**/*": {
-			"import": "./dist/stylesheets/**/*"
-		}
+		"./style-system/*.scss": "./dist/stylesheets/system/*.scss",
+		"./globals.scss": "./dist/stylesheets/globals.scss"
 	},
 	"sideEffects": [
 		"**/*.css",
