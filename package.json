@@ -22,7 +22,7 @@
 		"storybook": "pnpm gen && storybook dev -p 6006",
 		"build-storybook": "pnpm gen && storybook build",
 		"build": "pnpm gen && svelte-package",
-		"prepack": "pnpm build"
+		"prepack": "pnpm build && publint"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^3.2.2",
@@ -44,6 +44,7 @@
 		"@types/js-cookie": "^3.0.6",
 		"glob": "^11.0.0",
 		"prettier-plugin-svelte": "^3.2.7",
+		"publint": "^0.2.12",
 		"sass-embedded": "^1.80.6",
 		"semantic-release": "^24.2.0",
 		"storybook": "^8.4.1",
