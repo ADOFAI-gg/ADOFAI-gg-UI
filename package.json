@@ -5,8 +5,17 @@
 	"files": [
 		"dist"
 	],
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"svelte": "./dist/index.js"
+		}
+	},
+	"sideEffects": [
+		"**/*.css",
+		"**/*.scss"
+	],
 	"scripts": {
 		"gen": "node scripts/generateGlobImports.mjs",
 		"check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
@@ -29,7 +38,7 @@
 		"@storybook/svelte": "^8.4.1",
 		"@storybook/svelte-vite": "^8.4.1",
 		"@storybook/test": "^8.4.1",
-		"@sveltejs/package": "^2.3.7",
+		"@sveltejs/package": "^2.3.5",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@tsconfig/svelte": "^5.0.4",
 		"@types/js-cookie": "^3.0.6",
@@ -78,5 +87,10 @@
 			]
 		]
 	},
-	"packageManager": "pnpm@9.4.0+sha256.b6fd0bfda555e7e584ad7e56b30c68b01d5a04f9ee93989f4b93ca8473c49c74"
+	"packageManager": "pnpm@9.4.0+sha256.b6fd0bfda555e7e584ad7e56b30c68b01d5a04f9ee93989f4b93ca8473c49c74",
+	"pnpm": {
+		"patchedDependencies": {
+			"@sveltejs/package@2.3.5": "patches/@sveltejs__package@2.3.5.patch"
+		}
+	}
 }

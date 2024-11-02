@@ -1,0 +1,13 @@
+diff --git a/src/cli.js b/src/cli.js
+index 4833dc489359f2fba202668672f3cd8e09c427d5..69f645027c7db66eb3a539ee724c6c3fd3eceb6e 100644
+--- a/src/cli.js
++++ b/src/cli.js
+@@ -52,6 +52,8 @@ prog
+ 			};
+ 
+ 			await (args.watch ? packaging.watch(options) : packaging.build(options));
++
++			process.exit(0)
+ 		} catch (error) {
+ 			handle_error(/** @type {Error} */ (error));
+ 		}
