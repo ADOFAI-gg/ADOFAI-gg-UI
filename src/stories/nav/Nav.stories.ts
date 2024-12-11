@@ -28,3 +28,9 @@ export const SignedInAsAdmin: Story = {
 		user: dummyAdminUser
 	}
 }
+
+export const Minimal: Story = {
+	args: {
+		minimal: true
+	}
+}

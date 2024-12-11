@@ -8,9 +8,10 @@
 
 	interface Props {
 		user: User | null
+		minimal?: boolean
 	}
 
-	const { user }: Props = $props()
+	const { user, minimal }: Props = $props()
 
 	// export let user: User | null
 
@@ -42,27 +43,29 @@
 
 			<div class="spacer"></div>
 
-			{#if user}
-				<NavUserArea {user} />
-			{:else}
-				<NavSignArea />
-			{/if}
+			{#if !minimal}
+				{#if user}
+					<NavUserArea {user} />
+				{:else}
+					<NavSignArea />
+				{/if}
 
-			<div class="menu-button">
-				<IconButton>
-					<svg
-						width="24"
-						height="25"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path d="M5 6.5H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-						<path d="M5 12.5H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-						<path d="M5 18.5H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-					</svg>
-				</IconButton>
-			</div>
+				<div class="menu-button">
+					<IconButton>
+						<svg
+							width="24"
+							height="25"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path d="M5 6.5H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+							<path d="M5 12.5H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+							<path d="M5 18.5H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+						</svg>
+					</IconButton>
+				</div>
+			{/if}
 		</div>
 	</Container>
 </nav>
