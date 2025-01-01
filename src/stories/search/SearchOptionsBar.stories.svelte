@@ -22,6 +22,17 @@
 				label: 'custom:와!',
 				name: 'custom:무언가',
 				default: ''
+			},
+			intRange: {
+				type: 'range',
+				icon: 'music',
+				min: 0,
+				max: 100,
+				float: false,
+				minLabel: 'custom:최소',
+				maxLabel: 'custom:최대',
+				default: [0, 100],
+				name: 'custom:대충정수범위'
 			}
 		},
 		sort: [],

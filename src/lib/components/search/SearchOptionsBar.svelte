@@ -42,6 +42,12 @@
 			if (!f.id) f.id = genKey(f.key)
 		}
 	})
+
+	const renderRange = (value: unknown): string => {
+		const [min, max] = value as [number, number]
+		if (min === max) return `${min}`
+		return `${min} - ${max}`
+	}
 </script>
 
 <div class="search-options-bar">
@@ -88,6 +94,8 @@
 						>
 							{#if filterScheme.type === 'string'}
 								{filter.value}
+							{:else if filterScheme.type === 'range'}
+								{renderRange(filter.value)}
 							{/if}
 						</SearchOptionChip>
 					</div>

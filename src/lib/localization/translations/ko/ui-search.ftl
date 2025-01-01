@@ -10,3 +10,6 @@ remove-filter = 필터 없애기
 
 page-size = 개수
 page-size-value = { $count }개씩 보기
+
+error-max-value = 값은 { $value }와 같거나 작아야 합니다
+error-min-value = 값은 { $value }와 같거나 커야 합니다

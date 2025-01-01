@@ -21,7 +21,8 @@
 
 <style lang="scss">
 	.input-control {
-		height: 32px;
+		min-height: 32px;
+		height: 100%;
 
 		display: flex;
 

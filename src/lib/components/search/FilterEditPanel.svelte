@@ -4,6 +4,9 @@
 	import Button from '../Button.svelte'
 	import FormField from '../form/FormField.svelte'
 	import InputControl from '../form/InputControl.svelte'
+	import { translateKey } from '$lib/utils/translation'
+	import { getGlobalContext } from '$lib/system/context'
+	import { FormHint } from '$lib/index'
 
 	interface Props {
 		scheme: SearchFilterScheme
@@ -13,26 +16,78 @@
 		onSave: (value: unknown) => void
 	}
 
-	const { scheme, close, onRemove, onSave, value: intiialValue }: Props = $props()
+	const { scheme, close, onRemove, onSave, value: initialValue }: Props = $props()
 
-	let value = $state(intiialValue)
+	let value = $state(initialValue)
 
 	$effect(() => {
-		value = intiialValue
+		if (scheme.type === 'range') value = [...(initialValue as number[])]
+		else value = initialValue
 	})
+
+	const { language } = getGlobalContext()
+
+	const rangeMinValueError = (v: unknown): string | undefined => {
+		if (scheme.type !== 'range') throw new Error('invalid scheme')
+
+		const [min, maxVal] = v as [number, number]
+		const max = Math.min(maxVal, scheme.max ?? Number.MAX_VALUE)
+
+		if (min > max) return translateKey($language, 'ui-search:error-max-value', { value: max })
+
+		return undefined
+	}
+
+	const rangeMaxValueError = (v: unknown): string | undefined => {
+		if (scheme.type !== 'range') throw new Error('invalid scheme')
+
+		const [minVal, max] = v as [number, number]
+		const min = Math.max(minVal, scheme.min ?? Number.MIN_VALUE)
+
+		if (min > max) return translateKey($language, 'ui-search:error-min-value', { value: min })
+
+		return undefined
+	}
 </script>
 
 <form
 	class="filter-edit-panel"
 	onsubmit={(e) => {
 		e.preventDefault()
+
+		if (scheme.type === 'range') {
+			if (rangeMinValueError(value) || rangeMaxValueError(value)) return
+		}
+
 		onSave(value)
 	}}
 >
-	{#if scheme.type == 'string'}
+	{#if scheme.type === 'string'}
 		<FormField label={scheme.label}>
 			<InputControl bind:value={value as string} />
 		</FormField>
+	{:else if scheme.type === 'range'}
+		{@const v = value as [number, number]}
+		<div class="form">
+			<FormField horizontal label={scheme.minLabel}>
+				<InputControl type="number" min={scheme.min} max={scheme.max} bind:value={v[0]} />
+				{#snippet hints()}
+					{@const err = rangeMinValueError(value)}
+					{#if err}
+						<FormHint type="error">{err}</FormHint>
+					{/if}
+				{/snippet}
+			</FormField>
+			<FormField horizontal label={scheme.maxLabel}>
+				<InputControl type="number" min={scheme.min} max={scheme.max} bind:value={v[1]} />
+				{#snippet hints()}
+					{@const err = rangeMaxValueError(value)}
+					{#if err}
+						<FormHint type="error">{err}</FormHint>
+					{/if}
+				{/snippet}
+			</FormField>
+		</div>
 	{/if}
 
 	<div class="actions">
@@ -63,5 +118,11 @@
 		gap: 8px;
 
 		justify-content: flex-end;
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
 	}
 </style>

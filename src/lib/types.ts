@@ -41,6 +41,13 @@ export type SearchFilterScheme = (
 	| {
 			type: 'select'
 	  }
+	| {
+			type: 'range'
+			min?: number
+			max?: number
+			minLabel: TranslationKey
+			maxLabel: TranslationKey
+	  }
 ) & {
 	icon: string
 	name: TranslationKey
