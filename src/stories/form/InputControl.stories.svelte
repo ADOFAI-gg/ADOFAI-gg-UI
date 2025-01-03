@@ -2,7 +2,7 @@
 	import { InputControl } from '$lib/index.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const { Story } = defineMeta({
+	const { Story } = defineMeta({
 		component: InputControl,
 		title: 'Components/Form/Controls/Input Control'
 	})

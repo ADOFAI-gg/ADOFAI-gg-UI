@@ -2,7 +2,7 @@
 	import { Popover, Button, PopoverContentPanel } from '$lib/index.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const { Story } = defineMeta({
+	const { Story } = defineMeta({
 		title: 'Components/Popover',
 		component: Popover
 	})
@@ -18,7 +18,7 @@
 			<PopoverContentPanel>
 				Content
 
-				<Button size="sm" on:click={close}>close</Button>
+				<Button size="sm" onclick={close}>close</Button>
 			</PopoverContentPanel>
 		{/snippet}
 	</Popover>

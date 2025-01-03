@@ -3,7 +3,7 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 	import ganjangFactory from '../assets/ganjangfactory.png'
 
-	export const { Story } = defineMeta({
+	const { Story } = defineMeta({
 		component: ImageSelector,
 		title: 'Components/Form/Image Selector'
 	})

@@ -2,7 +2,7 @@
 	import { FormField, InputControl } from '$lib/index.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const { Story } = defineMeta({
+	const { Story } = defineMeta({
 		component: FormField,
 		title: 'Components/Form/Form Field'
 	})

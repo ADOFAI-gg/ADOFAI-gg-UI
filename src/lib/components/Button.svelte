@@ -3,33 +3,51 @@
 	import { useActions, type ActionArray } from 'svelte-component-actions'
 	import Icon from './Icon.svelte'
 	import { emptyMeltElement, melt, type AnyMeltElement } from '@melt-ui/svelte'
+	import type { HTMLAnchorAttributes, HTMLAttributes } from 'svelte/elements'
 
-	// @ts-expect-error invalid type
-	export let meltElement: AnyMeltElement = emptyMeltElement
+	type BaseProps =
+		| ({ link?: false } & HTMLAttributes<HTMLButtonElement>)
+		| ({ link: true } & HTMLAnchorAttributes)
 
-	export let use: ActionArray = []
+	type Props = BaseProps & {
+		meltElement?: AnyMeltElement
+		use?: ActionArray
+		variant?: ButtonStyle
+		size?: ButtonSize
 
-	export let variant: ButtonStyle = 'primary'
-	export let size: ButtonSize = 'lg'
+		leftIcon?: string
+		rightIcon?: string
+		iconOnly?: boolean
+	}
 
-	export let leftIcon: string | null = null
-	export let rightIcon: string | null = null
-	export let iconOnly: boolean = false
+	const {
+		// @ts-expect-error invalid type
+		meltElement = emptyMeltElement,
+		use = [],
+		variant = 'primary',
+		size = 'lg',
+		leftIcon,
+		rightIcon,
+		children,
+		iconOnly = false,
+		link,
+		...rest
+	}: Props = $props()
 </script>
 
-<button
+<svelte:element
+	this={link ? 'a' : 'button'}
 	use:useActions={use}
 	use:melt={$meltElement}
 	class="button button-style-{variant} button-size-{size}"
 	class:icon-only={iconOnly}
-	on:click
-	{...$$restProps}
+	{...rest}
 >
 	{#if leftIcon}
 		<Icon alt="icon" icon={leftIcon} size={24} />
 	{/if}
-	<slot />
+	{@render children?.()}
 	{#if rightIcon}
 		<Icon alt="icon" icon={rightIcon} size={24} />
 	{/if}
-</button>
+</svelte:element>

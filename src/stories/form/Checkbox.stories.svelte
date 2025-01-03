@@ -2,7 +2,7 @@
 	import { Checkbox } from '$lib/index.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const { Story } = defineMeta({
+	const { Story } = defineMeta({
 		component: Checkbox,
 		title: 'Components/Form/Controls/Checkbox'
 	})

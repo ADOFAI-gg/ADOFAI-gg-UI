@@ -3,7 +3,7 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 	import type { Meta } from '@storybook/svelte'
 
-	export const { Story } = defineMeta({
+	const { Story } = defineMeta({
 		component: LabeledCheckbox,
 		title: 'Components/Form/Controls/Labeled Checkbox'
 	})

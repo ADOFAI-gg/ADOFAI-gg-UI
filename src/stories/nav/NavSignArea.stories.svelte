@@ -2,7 +2,7 @@
 	import { NavSignArea } from '$lib/index.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const { Story } = defineMeta({
+	const { Story } = defineMeta({
 		title: 'Components/Nav/Nav Sign Area',
 		component: NavSignArea
 	})

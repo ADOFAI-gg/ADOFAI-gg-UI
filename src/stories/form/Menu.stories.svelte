@@ -2,7 +2,7 @@
 	import { Button, Icon, Menu, MenuItem } from '$lib/index.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const { Story } = defineMeta({
+	const { Story } = defineMeta({
 		component: Menu,
 		title: 'Components/Menu'
 	})

@@ -2,7 +2,7 @@
 	import { Button } from '$lib/index.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const { Story } = defineMeta({
+	const { Story } = defineMeta({
 		title: 'Components/Button',
 		component: Button
 	})
@@ -37,6 +37,16 @@
 				<Button size="lg" {...args} rightIcon="profile">Large</Button>
 				<Button size="md" {...args} rightIcon="profile">Medium</Button>
 				<Button size="sm" {...args} rightIcon="profile">Small</Button>
+			</div>
+		</section>
+
+		<section>
+			<div class="style-name">Link</div>
+			<div class="button-row">
+				<Button href="" link size="lg" {...args} disabled rightIcon="profile">Disabled</Button>
+				<Button href="" link size="lg" {...args} rightIcon="profile">Large</Button>
+				<Button href="" link size="md" {...args} rightIcon="profile">Medium</Button>
+				<Button href="" link size="sm" {...args} rightIcon="profile">Small</Button>
 			</div>
 		</section>
 
