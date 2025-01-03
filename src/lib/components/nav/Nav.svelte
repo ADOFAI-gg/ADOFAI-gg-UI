@@ -5,13 +5,16 @@
 	import IconButton from '$lib/components/IconButton.svelte'
 	import LogoIcon from '$lib/components/nav/LogoIcon.svelte'
 	import NavLink from '$lib/components/nav/NavLink.svelte'
+	import type { Snippet } from 'svelte'
 
 	interface Props {
 		user: User | null
 		minimal?: boolean
+		leftSlot?: Snippet
+		rightSlot?: Snippet
 	}
 
-	const { user, minimal }: Props = $props()
+	const { user, minimal, leftSlot, rightSlot }: Props = $props()
 
 	// export let user: User | null
 
@@ -41,7 +44,11 @@
 				</div>
 			</div>
 
+			{@render leftSlot?.()}
+
 			<div class="spacer"></div>
+
+			{@render rightSlot?.()}
 
 			{#if !minimal}
 				{#if user}
