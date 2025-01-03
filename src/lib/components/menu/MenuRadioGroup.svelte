@@ -6,15 +6,22 @@
 	interface Props {
 		value?: string | null
 		defaultValue?: string
+		onchange?: (value: string | null) => void
 		children: Snippet
 	}
 
-	let { value = null, children, defaultValue }: Props = $props()
+	let { value = $bindable(null), onchange, children, defaultValue }: Props = $props()
 
 	const {
 		builders: { createMenuRadioGroup }
 	} = getContext<MenuContextData>(MenuContext)
-	const group = createMenuRadioGroup({ defaultValue })
+	const group = createMenuRadioGroup({
+		defaultValue,
+		onValueChange: (v) => {
+			onchange?.(v.next)
+			return v.next
+		}
+	})
 
 	setContext(MenuRadioContext, group)
 
