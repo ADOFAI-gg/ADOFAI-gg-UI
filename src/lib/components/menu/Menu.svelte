@@ -1,13 +1,25 @@
 <script lang="ts">
-	import { createDropdownMenu, createSync, melt } from '@melt-ui/svelte'
-	import { setContext } from 'svelte'
+	import { createDropdownMenu, createSync, melt, type AnyMeltElement } from '@melt-ui/svelte'
+	import { setContext, type Snippet } from 'svelte'
 	import { MenuContext, type MenuContextData } from './symbols'
 	import { fly } from 'svelte/transition'
 	import type { FloatingPlacement } from '$lib/types'
 
-	export let placement: FloatingPlacement = 'bottom'
-	export let closeOnItemClick = true
-	export let open = false
+	interface Props {
+		button: Snippet<[{ trigger: AnyMeltElement }]>
+		children: Snippet
+		placement?: FloatingPlacement
+		closeOnItemClick?: boolean
+		open?: boolean
+	}
+
+	let {
+		placement = 'bottom',
+		closeOnItemClick = true,
+		open = false,
+		button,
+		children
+	}: Props = $props()
 
 	const result = createDropdownMenu({
 		positioning: {
@@ -26,14 +38,16 @@
 
 	const sync = createSync(states)
 
-	$: sync.open(open, (v) => (open = v))
+	$effect(() => {
+		sync.open(open, (v) => (open = v))
+	})
 </script>
 
-<slot name="button" {trigger} />
+{@render button({ trigger })}
 
 {#if open}
 	<div transition:fly={{ y: 12 }} class="menu-popup" use:melt={$menu}>
-		<slot />
+		{@render children()}
 	</div>
 {/if}
 

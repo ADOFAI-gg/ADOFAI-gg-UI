@@ -16,11 +16,8 @@
 
 	const { user, minimal, leftSlot, rightSlot }: Props = $props()
 
-	// export let user: User | null
-
 	const ctx = getGlobalContext()
 
-	// $: mainUrl = ctx.urls.main
 	const mainUrl = $derived(ctx.urls.main)
 </script>
 
