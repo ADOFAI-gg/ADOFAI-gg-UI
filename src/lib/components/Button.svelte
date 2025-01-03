@@ -3,10 +3,10 @@
 	import { useActions, type ActionArray } from 'svelte-component-actions'
 	import Icon from './Icon.svelte'
 	import { emptyMeltElement, melt, type AnyMeltElement } from '@melt-ui/svelte'
-	import type { HTMLAnchorAttributes, HTMLAttributes } from 'svelte/elements'
+	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
 
 	type BaseProps =
-		| ({ link?: false } & HTMLAttributes<HTMLButtonElement>)
+		| ({ link?: false } & HTMLButtonAttributes)
 		| ({ link: true } & HTMLAnchorAttributes)
 
 	type Props = BaseProps & {
