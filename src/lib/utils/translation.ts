@@ -9,8 +9,16 @@ import { FluentBundle, FluentResource, type FluentVariable } from '@fluent/bundl
 import { translationData } from '$lib/localization/translations/index.js'
 
 export const availableLanguages: LangResponse[] = langs
-
 export const fallbackLang = 'ko'
+
+export const excludeLanguages = (...languages: string[]) => {
+	languages.forEach((l) => {
+		const index = availableLanguages.findIndex((x) => x.code === l)
+		if (index >= 0) {
+			availableLanguages.splice(index, 1)
+		}
+	})
+}
 
 const registeredLangSections: string[] = []
 
