@@ -74,6 +74,8 @@
 
 <Story name="Outlined" args={{ variant: 'outlined' }} children={template} />
 
+<Story name="Outlined Danger" args={{ variant: 'outlined-danger' }} children={template} />
+
 <style lang="scss">
 	.style-name {
 		margin-bottom: 8px;
