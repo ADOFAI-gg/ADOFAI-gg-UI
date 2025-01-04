@@ -75,3 +75,10 @@ export { default as SearchBar } from './components/search/SearchBar.svelte'
 
 export { default as LoadingSpinner } from './components/LoadingSpinner.svelte'
 export { default as Pagination } from './components/Pagination.svelte'
+
+// Modal
+export { default as Modal } from './components/modal/Modal.svelte'
+export { default as ModalOverlay } from './components/modal/ModalOverlay.svelte'
+export { default as ModalPopup } from './components/modal/ModalPopup.svelte'
+export { default as ModalTitle } from './components/modal/ModalTitle.svelte'
+export * from './components/modal/context.js'

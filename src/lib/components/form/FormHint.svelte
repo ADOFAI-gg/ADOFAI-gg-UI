@@ -1,10 +1,17 @@
 <script lang="ts">
-	export let type: 'hint' | 'error'
+	import type { Snippet } from 'svelte'
+
+	interface Props {
+		type: 'hint' | 'error'
+		children?: Snippet
+	}
+
+	const { type, children }: Props = $props()
 </script>
 
 <div class="hint-container {type}">
 	<div class="dot"></div>
-	<slot />
+	{@render children?.()}
 </div>
 
 <style lang="scss">

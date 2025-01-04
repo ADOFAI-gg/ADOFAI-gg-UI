@@ -14,6 +14,7 @@
 		use?: ActionArray
 		variant?: ButtonStyle
 		size?: ButtonSize
+		transparent?: boolean
 
 		leftIcon?: string
 		rightIcon?: string
@@ -31,6 +32,7 @@
 		children,
 		iconOnly = false,
 		link,
+		transparent = false,
 		...rest
 	}: Props = $props()
 </script>
@@ -41,6 +43,7 @@
 	use:melt={$meltElement}
 	class="button button-style-{variant} button-size-{size}"
 	class:icon-only={iconOnly}
+	class:transparent
 	{...rest}
 >
 	{#if leftIcon}

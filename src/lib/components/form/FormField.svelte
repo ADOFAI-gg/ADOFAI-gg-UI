@@ -12,6 +12,7 @@
 		noLabel?: boolean
 		helpText?: TranslationKey
 		horizontal?: boolean
+		modal?: boolean
 		children?: Snippet
 		hints?: Snippet
 	}
@@ -24,13 +25,14 @@
 		helpText,
 		required = false,
 		error,
+		modal = false,
 		hints
 	}: Props = $props()
 </script>
 
 {#snippet hintsFallback()}
 	{#if error}
-		<FormHintArea>
+		<FormHintArea {modal}>
 			<FormHint type="error">
 				<Translation key={error} />
 			</FormHint>
@@ -71,28 +73,28 @@
 </div>
 
 <style lang="scss">
-  @use '../../stylesheets/system/colors' as *;
+	@use '../../stylesheets/system/colors' as *;
 
-  .label {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 140%;
-  }
+	.label {
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 140%;
+	}
 
-  .required-sign {
-    color: rgba($red, 1);
-    font-size: 12px;
-    font-weight: 500;
-    margin-left: 4px;
-  }
+	.required-sign {
+		color: rgba($red, 1);
+		font-size: 12px;
+		font-weight: 500;
+		margin-left: 4px;
+	}
 
-  .form-field {
-    display: flex;
-    flex-direction: column;
-  }
+	.form-field {
+		display: flex;
+		flex-direction: column;
+	}
 
-  .horizontal {
-    .form-field-content {
+	.horizontal {
+		.form-field-content {
 			flex-direction: row;
 			min-height: 38px;
 			gap: 16px;
@@ -109,19 +111,19 @@
 				width: 0;
 				flex-grow: 1;
 			}
-    }
-  }
+		}
+	}
 
-  .form-field-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+	.form-field-content {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
 
-  .form-help-text {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 12px;
-    margin-top: 4px;
-  }
+	.form-help-text {
+		font-size: 12px;
+		color: rgba(255, 255, 255, 0.6);
+		line-height: 12px;
+		margin-top: 4px;
+	}
 </style>
