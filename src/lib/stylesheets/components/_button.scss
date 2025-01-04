@@ -8,7 +8,10 @@
 	font-weight: 600;
 	display: flex;
 	line-height: 20px;
-	cursor: pointer;
+
+	&:not(:disabled) {
+		cursor: pointer;
+	}
 }
 
 /* Styles */
