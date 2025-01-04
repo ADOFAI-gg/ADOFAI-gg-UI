@@ -4,12 +4,13 @@
 	interface Props {
 		modal?: boolean
 		children?: Snippet
+		columns?: number
 	}
 
-	const { modal, children }: Props = $props()
+	const { modal, children, columns }: Props = $props()
 </script>
 
-<div class="form-hint-area" class:modal>
+<div class="form-hint-area" class:modal style="--hint-columns: {columns};">
 	{@render children?.()}
 </div>
 
