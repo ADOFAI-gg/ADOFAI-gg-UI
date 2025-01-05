@@ -11,6 +11,7 @@
 		error?: TranslationKey
 		onfinish?: (value: string) => void
 		disabled?: boolean
+		autofocus?: boolean
 	}
 
 	let {
@@ -19,7 +20,8 @@
 		onfinish,
 		digitsOnly = true,
 		error,
-		value = $bindable([])
+		value = $bindable([]),
+		autofocus = false
 	}: Props = $props()
 
 	let inputs = $state<(HTMLInputElement | null)[]>([])
@@ -134,6 +136,7 @@
 				value={value[i]}
 				oninput={onInput}
 				onkeydown={onKeyDown}
+				autofocus={autofocus && i === 0}
 				{disabled}
 				bind:this={inputs[i]}
 			/>
