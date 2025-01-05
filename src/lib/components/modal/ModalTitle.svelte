@@ -37,6 +37,8 @@
 		font-size: 16px;
 		font-weight: 400;
 		line-height: 140%;
+		margin-top: 8px;
 		color: rgba(255, 255, 255, 0.8);
+		text-align: center;
 	}
 </style>
