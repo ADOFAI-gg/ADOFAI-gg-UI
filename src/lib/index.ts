@@ -42,6 +42,7 @@ export { default as LabeledCheckbox } from './components/form/LabeledCheckbox.sv
 export { default as FormHintArea } from './components/form/FormHintArea.svelte'
 export { default as FormHint } from './components/form/FormHint.svelte'
 export { default as ImageSelector } from './components/form/ImageSelector.svelte'
+export { default as PINInput } from './components/form/PINInput.svelte'
 
 // Menu
 export { default as Menu } from './components/menu/Menu.svelte'

@@ -4,12 +4,13 @@
 	interface Props {
 		type: 'hint' | 'error'
 		children?: Snippet
+		noPadding?: boolean
 	}
 
-	const { type, children }: Props = $props()
+	const { type, children, noPadding = false }: Props = $props()
 </script>
 
-<div class="hint-container {type}">
+<div class="hint-container {type}" class:noPadding>
 	<div class="dot"></div>
 	{@render children?.()}
 </div>
@@ -39,9 +40,11 @@
 			color: rgba($red, 1);
 		}
 
-		& {
+		&:not(.noPadding) {
 			padding: 12px;
+		}
 
+		& {
 			display: flex;
 
 			font-weight: 500;
