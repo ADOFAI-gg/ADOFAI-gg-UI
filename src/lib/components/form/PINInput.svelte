@@ -3,6 +3,7 @@
 	import type { FormEventHandler } from 'svelte/elements'
 	import FormHint from './FormHint.svelte'
 	import Translation from '$lib/utils/Translation.svelte'
+	import { tick } from 'svelte'
 
 	interface Props {
 		length: number
@@ -35,7 +36,9 @@
 			v += c
 		}
 
-		onfinish?.(v)
+		tick().then(() => {
+			onfinish?.(v)
+		})
 	}
 
 	const onKeyDown = (e: KeyboardEvent) => {
@@ -131,7 +134,7 @@
 		{#each Array.from({ length }) as _, i}
 			<input
 				class="item"
-				value={value[i]}
+				value={value[i] ?? ''}
 				oninput={onInput}
 				onkeydown={onKeyDown}
 				{disabled}
