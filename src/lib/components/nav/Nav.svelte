@@ -1,20 +1,22 @@
 <script lang="ts">
-	import { getGlobalContext, Logo, NavSignArea, type User } from '$lib/index.js'
 	import Container from '$lib/components/Container.svelte'
-	import NavUserArea from './NavUserArea.svelte'
 	import IconButton from '$lib/components/IconButton.svelte'
 	import LogoIcon from '$lib/components/nav/LogoIcon.svelte'
 	import NavLink from '$lib/components/nav/NavLink.svelte'
+	import { getGlobalContext, Logo, NavSignArea, type User } from '$lib/index.js'
 	import type { Snippet } from 'svelte'
+	import Menu from '../menu/Menu.svelte'
+	import NavUserArea from './NavUserArea.svelte'
 
 	interface Props {
 		user: User | null
 		minimal?: boolean
 		leftSlot?: Snippet
 		rightSlot?: Snippet
+		menu?: Snippet
 	}
 
-	const { user, minimal, leftSlot, rightSlot }: Props = $props()
+	const { user, minimal, menu, leftSlot, rightSlot }: Props = $props()
 
 	const ctx = getGlobalContext()
 
@@ -48,27 +50,47 @@
 			{@render rightSlot?.()}
 
 			{#if !minimal}
-				{#if user}
-					<NavUserArea {user} />
-				{:else}
-					<NavSignArea />
-				{/if}
+				<Menu placement="bottom-end">
+					{#snippet button({ trigger })}
+						{#if user}
+							<NavUserArea meltElement={trigger} {user} />
+						{:else}
+							<NavSignArea />
+							<div class="menu-icon">
+								<IconButton meltElement={trigger}>
+									<svg
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M5 6.5H19"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+										/>
+										<path
+											d="M5 12.5H19"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+										/>
+										<path
+											d="M5 18.5H19"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+										/>
+									</svg>
+								</IconButton>
+							</div>
+						{/if}
+					{/snippet}
 
-				<div class="menu-button">
-					<IconButton>
-						<svg
-							width="24"
-							height="25"
-							viewBox="0 0 24 24"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path d="M5 6.5H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-							<path d="M5 12.5H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-							<path d="M5 18.5H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-						</svg>
-					</IconButton>
-				</div>
+					{@render menu?.()}
+				</Menu>
 			{/if}
 		</div>
 	</Container>
@@ -96,19 +118,19 @@
 		flex-grow: 1;
 	}
 
-	.menu-button {
-		margin-left: 12px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
 	.logo-icon {
 		display: block;
 	}
 
 	.logo-text {
 		display: none;
+	}
+
+	.menu-icon {
+		margin-left: 12px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	@include breakpoint('md') {
