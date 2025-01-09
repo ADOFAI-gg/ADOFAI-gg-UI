@@ -27,6 +27,7 @@ export type ButtonStyle =
 	| 'ghost-dark'
 	| 'ghost-danger'
 	| 'outlined'
+	| 'outlined-danger'
 export type ButtonSize = 'lg' | 'md' | 'sm'
 
 export type CheckboxSize = 'lg' | 'md' | 'sm'

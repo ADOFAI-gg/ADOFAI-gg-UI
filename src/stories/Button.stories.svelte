@@ -43,7 +43,6 @@
 		<section>
 			<div class="style-name">Link</div>
 			<div class="button-row">
-				<Button href="" link size="lg" {...args} disabled rightIcon="profile">Disabled</Button>
 				<Button href="" link size="lg" {...args} rightIcon="profile">Large</Button>
 				<Button href="" link size="md" {...args} rightIcon="profile">Medium</Button>
 				<Button href="" link size="sm" {...args} rightIcon="profile">Small</Button>
@@ -73,6 +72,8 @@
 <Story name="Danger Ghost" args={{ variant: 'ghost-danger' }} children={template} />
 
 <Story name="Outlined" args={{ variant: 'outlined' }} children={template} />
+
+<Story name="Outlined Danger" args={{ variant: 'outlined-danger' }} children={template} />
 
 <style lang="scss">
 	.style-name {

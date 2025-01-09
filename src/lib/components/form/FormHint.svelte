@@ -1,10 +1,18 @@
 <script lang="ts">
-	export let type: 'hint' | 'error'
+	import type { Snippet } from 'svelte'
+
+	interface Props {
+		type: 'hint' | 'error'
+		children?: Snippet
+		noPadding?: boolean
+	}
+
+	const { type, children, noPadding = false }: Props = $props()
 </script>
 
-<div class="hint-container {type}">
+<div class="hint-container {type}" class:noPadding>
 	<div class="dot"></div>
-	<slot />
+	{@render children?.()}
 </div>
 
 <style lang="scss">
@@ -32,9 +40,11 @@
 			color: rgba($red, 1);
 		}
 
-		& {
+		&:not(.noPadding) {
 			padding: 12px;
+		}
 
+		& {
 			display: flex;
 
 			font-weight: 500;

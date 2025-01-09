@@ -42,6 +42,7 @@ export { default as LabeledCheckbox } from './components/form/LabeledCheckbox.sv
 export { default as FormHintArea } from './components/form/FormHintArea.svelte'
 export { default as FormHint } from './components/form/FormHint.svelte'
 export { default as ImageSelector } from './components/form/ImageSelector.svelte'
+export { default as PINInput } from './components/form/PINInput.svelte'
 
 // Menu
 export { default as Menu } from './components/menu/Menu.svelte'
@@ -75,3 +76,11 @@ export { default as SearchBar } from './components/search/SearchBar.svelte'
 
 export { default as LoadingSpinner } from './components/LoadingSpinner.svelte'
 export { default as Pagination } from './components/Pagination.svelte'
+
+// Modal
+export { default as Modal } from './components/modal/Modal.svelte'
+export { default as ModalOverlay } from './components/modal/ModalOverlay.svelte'
+export { default as ModalPopup } from './components/modal/ModalPopup.svelte'
+export { default as ModalTitle } from './components/modal/ModalTitle.svelte'
+export { default as ModalActions } from './components/modal/ModalActions.svelte'
+export * from './components/modal/context.js'
