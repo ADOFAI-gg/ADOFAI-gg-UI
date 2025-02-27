@@ -37,7 +37,7 @@
 	.labeled-checkbox {
 		display: flex;
 		align-items: center;
-		gap: 12px;
+		gap: 6px;
 		font-size: var(--label-size);
 	}
 
