@@ -116,17 +116,21 @@ export const translateKey = (
 		;[sectionName, key] = rawKey
 	}
 
-	if (!language) return key
+	if (!language) return tryEscapeHtmlTags(escape, key)
 	const lang = langData[language]
-	if (!lang) return key
+	if (!lang) return tryEscapeHtmlTags(escape, key)
 	const section = lang[sectionName]
-	if (!section) return key
+	if (!section) return tryEscapeHtmlTags(escape, key)
 	let message = section.getMessage(key)
 	if (!message?.value) message = langData[fallbackLang][sectionName].getMessage(key)
-	if (!message?.value) return key
+	if (!message?.value) return tryEscapeHtmlTags(escape, key)
 	const result = section.formatPattern(message.value, args)
-	if (escape) escapeHtmlTags(result)
-	return result
+	return tryEscapeHtmlTags(escape, result)
+}
+
+const tryEscapeHtmlTags = (escape: boolean, text: string) => {
+	if (escape) return escapeHtmlTags(text)
+	return text
 }
 
 export const translate = (
