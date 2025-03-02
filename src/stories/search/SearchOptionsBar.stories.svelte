@@ -37,7 +37,7 @@
 				type: 'select',
 				icon: 'tile',
 				name: 'custom:와샌즈',
-				default: 'NONE',
+				default: [],
 				label: 'custom:샌즈',
 				options: [
 					{
@@ -52,7 +52,8 @@
 						value: 'HYONSU',
 						label: '정현수'
 					}
-				]
+				],
+				multiple: true
 			},
 			select2: {
 				type: 'rangeSelect',

@@ -52,6 +52,7 @@ export type SearchFilterScheme = (
 			type: 'select'
 			label: TranslationKey
 			options: SelectOption[]
+			multiple?: boolean
 	  }
 	| {
 			type: 'range'

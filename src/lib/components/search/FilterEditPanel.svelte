@@ -113,7 +113,7 @@
 		</FormField>
 	{:else if scheme.type === 'select'}
 		<FormField label={scheme.label}>
-			<Combobox bind:value={value as string} items={scheme.options} />
+			<Combobox bind:value={value as string} items={scheme.options} multiple={scheme.multiple} />
 		</FormField>
 	{:else if scheme.type === 'range'}
 		{@const v = value as [number, number]}
@@ -160,7 +160,6 @@
 					bind:value={v[0] as string}
 					items={scheme.options}
 				/>
-				<!-- <InputControl type="number"  bind:value={v[0]} /> -->
 			</FormField>
 			<FormField label={scheme.maxLabel}>
 				<Combobox

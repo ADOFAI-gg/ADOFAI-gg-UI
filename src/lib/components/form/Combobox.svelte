@@ -4,22 +4,24 @@
 	import { fly } from 'svelte/transition'
 	import Icon from '../Icon.svelte'
 	import Translation from '$lib/utils/Translation.svelte'
-	import type { Snippet } from 'svelte'
+	import { untrack, type Snippet } from 'svelte'
 	import type { ListboxOption } from 'node_modules/@melt-ui/svelte/dist/builders/listbox/types'
 
 	type T = $$Generic
+	type Multiple = $$Generic<boolean>
 
 	type Item = SelectOption<T>
 
-	type Props = Omit<CreateComboboxProps<string>, 'open' | 'selected'> & {
+	type Props = Omit<CreateComboboxProps<string, Multiple>, 'open' | 'selected' | 'multiple'> & {
 		items: Item[]
 		open?: boolean
-		value?: string | null
+		value?: string[] | string | null
 		placeholder?: string
 		subtitleTemplate?: Snippet<[Item]>
 		iconTemplate?: Snippet<[Item]>
 		labelTemplate?: (item: Item) => string
 		clearable?: boolean
+		multiple?: Multiple
 	}
 
 	let {
@@ -31,6 +33,7 @@
 		subtitleTemplate,
 		iconTemplate,
 		clearable,
+		multiple,
 		...props
 	}: Props = $props()
 
@@ -40,6 +43,7 @@
 	} = createCombobox({
 		forceVisible: true,
 		...props,
+		multiple,
 		positioning: {
 			sameWidth: false,
 			placement: 'bottom-start',
@@ -53,14 +57,46 @@
 
 	const sync = createSync(states)
 
-	let currentItem = $derived(items.find((x) => x.value === value))
+	let currentItem = $derived.by(() => {
+		if (!value) return undefined
+		return items.find((x) => x.value === value)
+	})
+
+	let currentItemMulti = $derived.by(() => {
+		if (!multiple) return []
+
+		return items.filter((x) => (value as string[]).includes(x.value))
+	})
 
 	$effect(() => sync.open(open, (v) => (open = v)))
 	$effect(() => {
-		sync.selected(
-			currentItem ? { label: labelTemplate(currentItem), value: currentItem.value } : undefined,
-			(v) => (value = v?.value)
-		)
+		if (!multiple) {
+			sync.selected(
+				// @ts-expect-error why???
+				currentItem ? { label: labelTemplate(currentItem), value: currentItem.value } : undefined,
+				// @ts-expect-error why???
+				(v) => (value = v?.value)
+			)
+		} else {
+		}
+	})
+
+	$effect(() => {
+		if (multiple) {
+			sync.selected(
+				// @ts-expect-error why???
+				currentItemMulti.map((x) => ({ label: labelTemplate(x.label), value: x.value })),
+				// currentItem ? { label: labelTemplate(currentItem), value: currentItem.value } : undefined,
+				(v) => {
+					if (!v) {
+						value = []
+						return
+					}
+					value = (v as Item[]).map((x) => x.value)
+					untrack(() => currentItemMulti)
+				}
+			)
+		}
 	})
 
 	const filtered = $derived.by(() => {
@@ -74,20 +110,29 @@
 			$inputValue = currentItem?.label ?? ''
 		}
 	})
+
+	const currentPlaceholder = $derived.by(() => {
+		if (multiple && currentItemMulti.length) {
+			return currentItemMulti.map((x) => x.label).join(', ')
+		}
+		return placeholder
+	})
 </script>
 
 <div class="combobox-root" bind:offsetWidth={triggerWidth}>
-	{#if currentItem?.icon}
-		<div class="select-icon">
-			{#if iconTemplate}
-				{@render iconTemplate(currentItem)}
-			{:else if currentItem.icon}
-				<Icon alt="icon" size={18} icon={currentItem.icon} />
-			{/if}
-		</div>
+	{#if !multiple}
+		{#if currentItem?.icon}
+			<div class="select-icon">
+				{#if iconTemplate}
+					{@render iconTemplate(currentItem)}
+				{:else if currentItem.icon}
+					<Icon alt="icon" size={18} icon={currentItem.icon} />
+				{/if}
+			</div>
+		{/if}
 	{/if}
 
-	<input class="input" {placeholder} use:melt={$input} />
+	<input class="input" placeholder={currentPlaceholder} use:melt={$input} />
 	<div class="actions-area">
 		{#if clearable && currentItem}
 			<button
