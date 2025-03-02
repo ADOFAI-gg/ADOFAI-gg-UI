@@ -52,6 +52,7 @@
 	})
 
 	let triggerWidth = $state(0)
+	let actionsWidth = $state(0)
 
 	const { inputValue } = states
 
@@ -132,8 +133,13 @@
 		{/if}
 	{/if}
 
-	<input class="input" placeholder={currentPlaceholder} use:melt={$input} />
-	<div class="actions-area">
+	<input
+		class="input"
+		style="--actions-width: {actionsWidth}px;"
+		placeholder={currentPlaceholder}
+		use:melt={$input}
+	/>
+	<div class="actions-area" bind:offsetWidth={actionsWidth}>
 		{#if clearable && currentItem}
 			<button
 				class="clear-button"
@@ -293,7 +299,7 @@
 
 	.input {
 		padding-left: 16px;
-		padding-right: 16px;
+		padding-right: calc(var(--actions-width) + 16px);
 	}
 
 	.select-icon + .input {
