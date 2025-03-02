@@ -146,7 +146,7 @@
 						if (next?.value) {
 							const other = selectOptionIndexes[value[1]]
 
-							if (isNaN(other)) return
+							if (isNaN(other)) return next
 
 							const current = selectOptionIndexes[next.value]
 
@@ -156,6 +156,7 @@
 						}
 						return next
 					}}
+					clearable
 					bind:value={v[0] as string}
 					items={scheme.options}
 				/>
@@ -167,7 +168,7 @@
 						if (next?.value) {
 							const other = selectOptionIndexes[value[0]]
 
-							if (isNaN(other)) return
+							if (isNaN(other)) return next
 
 							const current = selectOptionIndexes[next.value]
 
@@ -177,6 +178,7 @@
 						}
 						return next
 					}}
+					clearable
 					bind:value={v[1] as string}
 					items={scheme.options}
 				/>

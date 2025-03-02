@@ -14,11 +14,12 @@
 	type Props = Omit<CreateComboboxProps<string>, 'open' | 'selected'> & {
 		items: Item[]
 		open?: boolean
-		value?: string
+		value?: string | null
 		placeholder?: string
 		subtitleTemplate?: Snippet<[Item]>
 		iconTemplate?: Snippet<[Item]>
 		labelTemplate?: (item: Item) => string
+		clearable?: boolean
 	}
 
 	let {
@@ -29,6 +30,7 @@
 		labelTemplate = (v) => v.label,
 		subtitleTemplate,
 		iconTemplate,
+		clearable,
 		...props
 	}: Props = $props()
 
@@ -86,6 +88,23 @@
 	{/if}
 
 	<input class="input" {placeholder} use:melt={$input} />
+	<div class="actions-area">
+		{#if clearable && currentItem}
+			<button
+				class="clear-button"
+				type="button"
+				onclick={() => {
+					value = null
+				}}
+			>
+				<Icon alt="clear" icon="close" size={16} />
+			</button>
+		{/if}
+
+		<div class="expand-icon">
+			<Icon alt="expand" icon="showMore" size={18} />
+		</div>
+	</div>
 </div>
 
 {#if open}
@@ -234,5 +253,28 @@
 
 	.select-icon + .input {
 		padding-left: 42px;
+	}
+
+	.actions-area {
+		position: absolute;
+		right: 16px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.clear-button {
+		width: 18px;
+		height: 18px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		--content-opacity: 0.6;
+	}
+
+	.expand-icon {
+		width: 18px;
+		height: 18px;
 	}
 </style>
