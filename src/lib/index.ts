@@ -84,3 +84,6 @@ export { default as ModalPopup } from './components/modal/ModalPopup.svelte'
 export { default as ModalTitle } from './components/modal/ModalTitle.svelte'
 export { default as ModalActions } from './components/modal/ModalActions.svelte'
 export * from './components/modal/context.js'
+
+// Combobox
+export { default as Combobox } from './components/form/Combobox.svelte'

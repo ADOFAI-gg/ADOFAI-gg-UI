@@ -28,11 +28,53 @@
 				icon: 'music',
 				min: 0,
 				max: 100,
-				float: false,
 				minLabel: 'custom:최소',
 				maxLabel: 'custom:최대',
 				default: [0, 100],
 				name: 'custom:대충정수범위'
+			},
+			select: {
+				type: 'select',
+				icon: 'tile',
+				name: 'custom:와샌즈',
+				default: 'NONE',
+				label: 'custom:샌즈',
+				options: [
+					{
+						value: 'NONE',
+						label: '없음'
+					},
+					{
+						value: 'SANS',
+						label: '샌즈'
+					},
+					{
+						value: 'HYONSU',
+						label: '정현수'
+					}
+				]
+			},
+			select2: {
+				type: 'rangeSelect',
+				icon: 'tile',
+				name: 'custom:범위 셀렉트',
+				default: ['item1', 'item3'],
+				minLabel: 'custom:최소',
+				maxLabel: 'custom:최대',
+				options: [
+					{
+						value: 'item1',
+						label: '아이템 1'
+					},
+					{
+						value: 'item2',
+						label: '아이템 2'
+					},
+					{
+						value: 'item3',
+						label: '아이템 3'
+					}
+				]
 			}
 		},
 		sort: [],

@@ -1,19 +1,32 @@
 <script lang="ts">
 	import { getGlobalContext, translate, type TranslationKey } from '$lib/index.js'
+	import { emptyMeltElement, type AnyMeltElement } from '@melt-ui/svelte'
+	import type { HTMLInputAttributes } from 'svelte/elements'
 
-	export let placeholder: TranslationKey | null = null
+	interface Props extends Omit<HTMLInputAttributes, 'placeholder'> {
+		placeholder?: TranslationKey
+		meltElement?: AnyMeltElement
+	}
 
-	export let value: string = ''
+	let {
+		placeholder,
+		value = $bindable(),
+		// @ts-expect-error invalid type
+		meltElement = emptyMeltElement,
+		...rest
+	}: Props = $props()
 
 	const ctx = getGlobalContext()
 
-	$: translatedPlaceholder = placeholder ? translate(ctx.language, placeholder, {}, false) : null
+	const translatedPlaceholder = $derived(
+		placeholder ? translate(ctx.language, placeholder, {}, false) : null
+	)
 </script>
 
 <div class="input-control">
 	<input
 		bind:value
-		{...$$restProps}
+		{...rest}
 		placeholder={translatedPlaceholder ? $translatedPlaceholder : null}
 		class="input"
 	/>

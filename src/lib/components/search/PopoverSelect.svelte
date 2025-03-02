@@ -154,10 +154,8 @@
 	}
 
 	.select-root {
-		max-width: 240px;
-
 		> :global(.popover-content-panel) {
-			max-width: 240px;
+			max-width: 312px;
 			width: 100vw;
 		}
 	}

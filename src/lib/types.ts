@@ -34,6 +34,15 @@ export type CheckboxSize = 'lg' | 'md' | 'sm'
 
 export type FloatingPlacement = Exclude<FloatingConfig, null>['placement']
 
+export type SelectOption<T = unknown> = {
+	value: string
+	label: string
+	subtitle?: string
+	icon?: string
+	disabled?: boolean
+	customData?: T
+}
+
 export type SearchFilterScheme = (
 	| {
 			type: 'string'
@@ -41,6 +50,8 @@ export type SearchFilterScheme = (
 	  }
 	| {
 			type: 'select'
+			label: TranslationKey
+			options: SelectOption[]
 	  }
 	| {
 			type: 'range'
@@ -48,6 +59,12 @@ export type SearchFilterScheme = (
 			max?: number
 			minLabel: TranslationKey
 			maxLabel: TranslationKey
+	  }
+	| {
+			type: 'rangeSelect'
+			minLabel: TranslationKey
+			maxLabel: TranslationKey
+			options: SelectOption[]
 	  }
 ) & {
 	icon: string

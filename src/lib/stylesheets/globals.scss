@@ -10,8 +10,9 @@
 @use 'utils/grid';
 @use 'utils/table';
 
-$normal_font: 'IBM Plex Sans KR', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-	'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+$normal_font:
+	'IBM Plex Sans KR', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+	'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
 
 :root {
 	--color-bg-solid: 35, 43, 90;
@@ -30,4 +31,5 @@ body {
 
 * {
 	letter-spacing: -0.011em;
+	line-height: 140%;
 }

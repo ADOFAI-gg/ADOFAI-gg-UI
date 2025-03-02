@@ -96,6 +96,18 @@
 								{filter.value}
 							{:else if filterScheme.type === 'range'}
 								{renderRange(filter.value)}
+							{:else if filterScheme.type === 'select'}
+								{filterScheme.options.find((x) => x.value === filter.value)?.label}
+							{:else if filterScheme.type === 'rangeSelect'}
+								{@const v = filter.value as string[]}
+								{@const min = filterScheme.options.find((x) => x.value === v[0])?.label}
+								{@const max = filterScheme.options.find((x) => x.value === v[1])?.label}
+
+								{#if min === max}
+									{min}
+								{:else}
+									<Translation key="ui-common:range" params={{ min: min || '', max: max || '' }} />
+								{/if}
 							{/if}
 						</SearchOptionChip>
 					</div>

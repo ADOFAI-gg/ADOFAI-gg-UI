@@ -7,6 +7,8 @@
 	import { translateKey } from '$lib/utils/translation'
 	import { getGlobalContext } from '$lib/system/context'
 	import { FormHint } from '$lib/index'
+	import Combobox from '../form/Combobox.svelte'
+	import { Previous } from 'runed'
 
 	interface Props {
 		scheme: SearchFilterScheme
@@ -18,35 +20,78 @@
 
 	const { scheme, close, onRemove, onSave, value: initialValue }: Props = $props()
 
-	let value = $state(initialValue)
+	let selectOptionIndexes: Record<string, number> = $derived.by(() => {
+		if (scheme.type !== 'rangeSelect') return {}
+
+		return Object.fromEntries(scheme.options.map((x, i) => [x.value, i]))
+	})
+
+	const getInitialValue = () => {
+		if (scheme.type === 'range' || scheme.type === 'rangeSelect') {
+			const snapshot = $state.snapshot(initialValue)
+			return [snapshot[0], snapshot[1]]
+		} else return $state.snapshot(initialValue)
+	}
+
+	let value: any = $state(getInitialValue())
 
 	$effect(() => {
-		if (scheme.type === 'range') value = [...(initialValue as number[])]
-		else value = initialValue
+		value = getInitialValue()
 	})
+
+	// const prevValue = new Previous(() => Array.from($state.snapshot(value)))
+
+	// $effect(() => {
+	// 	if (scheme.type !== 'rangeSelect') return
+	// 	if (!prevValue.current) return
+
+	// 	const minIdx = selectOptionIndexes[value[0]]
+	// 	const maxIdx = selectOptionIndexes[value[1]]
+	// 	console.log(selectOptionIndexes, value[0], value[1])
+
+	// 	if (prevValue.current[0] !== value[0]) {
+	// 		const target = Math.max(maxIdx, minIdx)
+	// 		// console.log(value, target)
+	// 		if (value[1] !== target) value[1] = target
+	// 	} else if (prevValue.current[1] !== value[1]) {
+	// 		const target = Math.min(minIdx, maxIdx)
+	// 		// console.log(value, target)
+
+	// 		if (value[0] !== target) value[0] = target
+	// 	}
+	// })
+
+	// $effect(() => {
+	// 	if (scheme.type === 'rangeSelect') {
+	// 	}
+	// })
 
 	const { language } = getGlobalContext()
 
 	const rangeMinValueError = (v: unknown): string | undefined => {
-		if (scheme.type !== 'range') throw new Error('invalid scheme')
+		if (scheme.type === 'range') {
+			const [min, maxVal] = v as [number, number]
+			const max = Math.min(maxVal, scheme.max ?? Number.MAX_VALUE)
 
-		const [min, maxVal] = v as [number, number]
-		const max = Math.min(maxVal, scheme.max ?? Number.MAX_VALUE)
+			if (min > max) return translateKey($language, 'ui-search:error-max-value', { value: max })
 
-		if (min > max) return translateKey($language, 'ui-search:error-max-value', { value: max })
+			return undefined
+		}
 
-		return undefined
+		throw new Error('invalid scheme')
 	}
 
 	const rangeMaxValueError = (v: unknown): string | undefined => {
-		if (scheme.type !== 'range') throw new Error('invalid scheme')
+		if (scheme.type === 'range') {
+			const [minVal, max] = v as [number, number]
+			const min = Math.max(minVal, scheme.min ?? Number.MIN_VALUE)
 
-		const [minVal, max] = v as [number, number]
-		const min = Math.max(minVal, scheme.min ?? Number.MIN_VALUE)
+			if (min > max) return translateKey($language, 'ui-search:error-min-value', { value: min })
 
-		if (min > max) return translateKey($language, 'ui-search:error-min-value', { value: min })
+			return undefined
+		}
 
-		return undefined
+		throw new Error('invalid scheme')
 	}
 </script>
 
@@ -65,6 +110,10 @@
 	{#if scheme.type === 'string'}
 		<FormField label={scheme.label}>
 			<InputControl bind:value={value as string} />
+		</FormField>
+	{:else if scheme.type === 'select'}
+		<FormField label={scheme.label}>
+			<Combobox bind:value={value as string} items={scheme.options} />
 		</FormField>
 	{:else if scheme.type === 'range'}
 		{@const v = value as [number, number]}
@@ -88,13 +137,59 @@
 				{/snippet}
 			</FormField>
 		</div>
+	{:else if scheme.type === 'rangeSelect'}
+		{@const v = value as [string, string]}
+		<div class="form">
+			<FormField label={scheme.minLabel}>
+				<Combobox
+					onSelectedChange={({ next }) => {
+						if (next?.value) {
+							const other = selectOptionIndexes[value[1]]
+
+							if (isNaN(other)) return
+
+							const current = selectOptionIndexes[next.value]
+
+							if (current > other) {
+								value[1] = next.value
+							}
+						}
+						return next
+					}}
+					bind:value={v[0] as string}
+					items={scheme.options}
+				/>
+				<!-- <InputControl type="number"  bind:value={v[0]} /> -->
+			</FormField>
+			<FormField label={scheme.maxLabel}>
+				<Combobox
+					onSelectedChange={({ next }) => {
+						if (next?.value) {
+							const other = selectOptionIndexes[value[0]]
+
+							if (isNaN(other)) return
+
+							const current = selectOptionIndexes[next.value]
+
+							if (current < other) {
+								value[0] = next.value
+							}
+						}
+						return next
+					}}
+					bind:value={v[1] as string}
+					items={scheme.options}
+				/>
+				<!-- <InputControl type="number" min={scheme.min} max={scheme.max} bind:value={v[1]} /> -->
+			</FormField>
+		</div>
 	{/if}
 
 	<div class="actions">
-		<Button size="md" type="button" variant="ghost-light" on:click={close}>
+		<Button size="md" type="button" variant="ghost-light" onclick={close}>
 			<Translation key="ui-search:cancel" />
 		</Button>
-		<Button size="md" type="button" variant="ghost-danger" on:click={onRemove}>
+		<Button size="md" type="button" variant="ghost-danger" onclick={onRemove}>
 			<Translation key="ui-search:remove-filter" />
 		</Button>
 		<Button size="md" type="submit">
