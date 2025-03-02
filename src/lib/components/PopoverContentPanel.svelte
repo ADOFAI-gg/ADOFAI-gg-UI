@@ -16,7 +16,7 @@
 	@use '../stylesheets/system/colors' as *;
 
 	.popover-content-panel {
-		padding: 18px;
+		padding: 16px;
 
 		display: flex;
 		flex-direction: column;
