@@ -116,6 +116,15 @@ export const translateKey = (
 		;[sectionName, key] = rawKey
 	}
 
+	const escapedArgs = Object.fromEntries(
+		Object.entries(args).map(([k, v]) => {
+			if (typeof v === 'string') {
+				return [k, v.replace(/\[/g, '&#x5B;').replace(/\]g/, '&#93;')]
+			}
+			return [k, v]
+		})
+	)
+
 	if (!language) return tryEscapeHtmlTags(escape, key)
 	const lang = langData[language]
 	if (!lang) return tryEscapeHtmlTags(escape, key)
@@ -124,7 +133,7 @@ export const translateKey = (
 	let message = section.getMessage(key)
 	if (!message?.value) message = langData[fallbackLang][sectionName].getMessage(key)
 	if (!message?.value) return tryEscapeHtmlTags(escape, key)
-	const result = section.formatPattern(message.value, args)
+	const result = section.formatPattern(message.value, escapedArgs)
 	return tryEscapeHtmlTags(escape, result)
 }
 

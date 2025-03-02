@@ -142,6 +142,7 @@
 		<div class="form">
 			<FormField label={scheme.minLabel}>
 				<Combobox
+					multiple={false}
 					onSelectedChange={({ next }) => {
 						if (next?.value) {
 							const other = selectOptionIndexes[value[1]]
@@ -163,6 +164,7 @@
 			</FormField>
 			<FormField label={scheme.maxLabel}>
 				<Combobox
+					multiple={false}
 					onSelectedChange={({ next }) => {
 						if (next?.value) {
 							const other = selectOptionIndexes[value[0]]

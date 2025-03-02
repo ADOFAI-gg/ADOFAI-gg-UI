@@ -97,7 +97,31 @@
 							{:else if filterScheme.type === 'range'}
 								{renderRange(filter.value)}
 							{:else if filterScheme.type === 'select'}
-								{filterScheme.options.find((x) => x.value === filter.value)?.label}
+								{#if filterScheme.multiple}
+									{@const item = filterScheme.options.filter((x) =>
+										(filter.value as string[])?.includes(x.value)
+									)}
+
+									{#if item.length === 1}
+										{item[0].label}
+									{:else if item.length > 1}
+										<Translation
+											key="ui-search:multi-select-summary"
+											params={{
+												first: item[0].label,
+												rest: item.length - 1
+											}}
+											htmlReplacer={(x) => {
+												return x.replace(
+													/\[rest\](.*)\[\/rest\]/,
+													'<span style="opacity: 0.4;">$1</span>'
+												)
+											}}
+										/>
+									{/if}
+								{:else}
+									{filterScheme.options.find((x) => x.value === filter.value)?.label}
+								{/if}
 							{:else if filterScheme.type === 'rangeSelect'}
 								{@const v = filter.value as string[]}
 								{@const min = filterScheme.options.find((x) => x.value === v[0])?.label}
