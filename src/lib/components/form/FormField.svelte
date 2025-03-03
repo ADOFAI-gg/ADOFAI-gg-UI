@@ -10,6 +10,7 @@
 		error?: TranslationKey
 		required?: boolean
 		noLabel?: boolean
+		subtitle?: TranslationKey
 		helpText?: TranslationKey
 		horizontal?: boolean
 		modal?: boolean
@@ -21,6 +22,7 @@
 		noLabel = false,
 		children,
 		horizontal,
+		subtitle,
 		label,
 		helpText,
 		required = false,
@@ -57,6 +59,11 @@
 					{/if}
 				</p>
 			{/if}
+			{#if subtitle}
+				<p class="subtitle">
+					<Translation key={subtitle} />
+				</p>
+			{/if}
 			<span class="content">
 				{@render children?.()}
 			</span>
@@ -79,6 +86,11 @@
 		font-size: 16px;
 		font-weight: 500;
 		line-height: 140%;
+	}
+
+	.subtitle {
+		font-size: 16px;
+		color: rgba(255, 255, 255, 0.6);
 	}
 
 	.required-sign {

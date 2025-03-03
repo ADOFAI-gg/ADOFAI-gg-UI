@@ -16,6 +16,12 @@
 
 <Story name="Default" args={{}} children={template} />
 
+<Story
+	name="With Subtitle"
+	args={{ label: 'custom:wow sans', subtitle: 'custom:wow subtitle' }}
+	children={template}
+/>
+
 <Story name="Labeled" args={{ label: 'custom:Label' }} children={template} />
 
 <Story name="Required" args={{ label: 'custom:Label', required: true }} children={template} />
