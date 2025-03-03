@@ -106,7 +106,11 @@
 					}
 					break
 				}
+				default:
+					return
 			}
+
+			e.preventDefault()
 		}
 	}
 
