@@ -22,7 +22,7 @@
 		flex-direction: column;
 		gap: 8px;
 
-		background: rgba($overlay, 1);
+		background: $overlay;
 		box-shadow:
 			0px 0px 12px rgba(0, 0, 0, 0.2),
 			0px 0px 24px rgba(0, 0, 0, 0.2);

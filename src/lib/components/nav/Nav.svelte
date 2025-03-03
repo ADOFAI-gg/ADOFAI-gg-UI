@@ -3,10 +3,11 @@
 	import IconButton from '$lib/components/IconButton.svelte'
 	import LogoIcon from '$lib/components/nav/LogoIcon.svelte'
 	import NavLink from '$lib/components/nav/NavLink.svelte'
-	import { getGlobalContext, Logo, NavSignArea, type User } from '$lib/index.js'
+	import { getGlobalContext, Logo, NavSignArea, Popover, type User } from '$lib/index.js'
 	import type { Snippet } from 'svelte'
 	import Menu from '../menu/Menu.svelte'
 	import NavUserArea from './NavUserArea.svelte'
+	import NavMenu from './menu/NavMenu.svelte'
 
 	interface Props {
 		user: User | null
@@ -50,8 +51,8 @@
 			{@render rightSlot?.()}
 
 			{#if !minimal}
-				<Menu placement="bottom-end">
-					{#snippet button({ trigger })}
+				<Popover placement="bottom-end">
+					{#snippet trigger(trigger)}
 						{#if user}
 							<NavUserArea meltElement={trigger} {user} />
 						{:else}
@@ -89,8 +90,8 @@
 						{/if}
 					{/snippet}
 
-					{@render menu?.()}
-				</Menu>
+					<NavMenu>{@render menu?.()}</NavMenu>
+				</Popover>
 			{/if}
 		</div>
 	</Container>

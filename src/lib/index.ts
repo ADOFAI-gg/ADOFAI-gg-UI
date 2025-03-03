@@ -28,6 +28,7 @@ export { default as Button } from './components/Button.svelte'
 // Nav
 export { default as Nav } from './components/nav/Nav.svelte'
 export { default as NavSignArea } from './components/nav/NavSignArea.svelte'
+export * from './components/nav/menu'
 
 // Footer
 export { default as Footer } from './components/footer/Footer.svelte'

@@ -91,6 +91,7 @@
 		use:melt={$content}
 		in:fly={{ y: 12, duration: 400 }}
 		out:out={{ y: 12, duration: 400 }}
+		style="z-index: 9999;"
 	>
 		{@render children({ close, open })}
 	</div>
