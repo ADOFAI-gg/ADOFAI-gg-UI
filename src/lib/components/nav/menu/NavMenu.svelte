@@ -1,13 +1,9 @@
 <script lang="ts">
 	import PopoverContentPanel from '$lib/components/PopoverContentPanel.svelte'
 	import { setContext, type Snippet } from 'svelte'
-	import NavMenuGroup from './NavMenuGroup.svelte'
-	import NavMenuItem from './NavMenuItem.svelte'
 	import { NavMenuContextKey, type NavMenuContext } from './state'
 	import { writable } from 'svelte/store'
 	import { Previous } from 'runed'
-	import NavMenuGroupHeader from './NavMenuGroupHeader.svelte'
-	import NavMenuDivider from './NavMenuDivider.svelte'
 
 	const groupStack = writable(['default'])
 

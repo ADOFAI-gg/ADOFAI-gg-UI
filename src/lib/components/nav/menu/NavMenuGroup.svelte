@@ -85,12 +85,12 @@
 					}
 					break
 				case 'ArrowUp':
-					if (idx > 0) {
+					if (idx > 0 && $items[idx - 1]?.el?.isConnected) {
 						$highlighted = idx - 1
 					}
 					break
 				case 'ArrowLeft':
-					if ($groupStack.length > 1) {
+					if ($groupStack.length > 1 && $items[idx + 1]?.el?.isConnected) {
 						groupStack.update((prev) => {
 							const newValue = [...prev]
 							newValue.pop()
