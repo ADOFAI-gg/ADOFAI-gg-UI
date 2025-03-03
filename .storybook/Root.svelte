@@ -9,16 +9,18 @@
 		language: lang,
 		setLanguage: (v) => lang.set(v),
 		urls: {
-			main: '/',
-			signIn: 'https://accounts.adofai.gg/auth/signin',
-			signUp: 'https://accounts.adofai.gg/autn/signup'
+			main: '/'
 		},
 		links: [
 			{
 				key: 'custom:Hello',
 				href: '/hello'
 			}
-		]
+		],
+		callbacks: {
+			signIn: () => {},
+			signUp: () => {}
+		}
 	})
 </script>
 

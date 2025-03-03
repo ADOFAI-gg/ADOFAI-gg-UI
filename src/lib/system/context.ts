@@ -10,14 +10,17 @@ export type GlobalContext = {
 
 	urls: {
 		main: string
-		signIn: string
-		signUp: string
 	}
 
 	links: {
 		key: TranslationKey
 		href: string
 	}[]
+
+	callbacks: {
+		signIn: () => void
+		signUp: () => void
+	}
 }
 
 export const setGlobalContext = (context: GlobalContext) => setContext(globalContextName, context)
