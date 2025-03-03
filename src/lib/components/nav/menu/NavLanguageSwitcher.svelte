@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Translation from '$lib/utils/Translation.svelte'
-	import { availableLanguages, getGlobalContext } from 'src/main'
+	import { availableLanguages, getGlobalContext } from '$lib/index'
 	import NavMenuDivider from './NavMenuDivider.svelte'
 	import NavMenuGroupHeader from './NavMenuGroupHeader.svelte'
 	import NavMenuItem from './NavMenuItem.svelte'
