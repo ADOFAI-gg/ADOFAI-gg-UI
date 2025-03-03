@@ -5,7 +5,7 @@
 	import Icon from '../Icon.svelte'
 	import Translation from '$lib/utils/Translation.svelte'
 	import { untrack, type Snippet } from 'svelte'
-	import type { ListboxOption } from 'node_modules/@melt-ui/svelte/dist/builders/listbox/types'
+	import LoadingSpinner from '../LoadingSpinner.svelte'
 
 	type T = $$Generic
 	type Multiple = $$Generic<boolean>
@@ -22,18 +22,22 @@
 		labelTemplate?: (item: Item) => string
 		clearable?: boolean
 		multiple?: Multiple
+		inputValue?: string
+		loading?: boolean
 	}
 
 	let {
 		placeholder,
 		open = $bindable(false),
 		value = $bindable(),
+		inputValue = $bindable(''),
 		items,
 		labelTemplate = (v) => v.label,
 		subtitleTemplate,
 		iconTemplate,
 		clearable,
 		multiple,
+		loading,
 		...props
 	}: Props = $props()
 
@@ -54,8 +58,6 @@
 	let triggerWidth = $state(0)
 	let actionsWidth = $state(0)
 
-	const { inputValue } = states
-
 	const sync = createSync(states)
 
 	let currentItem = $derived.by(() => {
@@ -70,6 +72,7 @@
 	})
 
 	$effect(() => sync.open(open, (v) => (open = v)))
+	$effect(() => sync.inputValue(inputValue, (v) => (inputValue = v)))
 	$effect(() => {
 		if (!multiple) {
 			sync.selected(
@@ -102,13 +105,13 @@
 
 	const filtered = $derived.by(() => {
 		if (!$touchedInput) return items
-		const q = $inputValue.toLowerCase()
+		const q = inputValue.toLowerCase()
 		return items.filter((x) => x.label.toLowerCase().includes(q))
 	})
 
 	$effect(() => {
 		if (!open) {
-			$inputValue = currentItem?.label ?? ''
+			inputValue = currentItem?.label ?? ''
 		}
 	})
 
@@ -153,7 +156,11 @@
 		{/if}
 
 		<div class="expand-icon">
-			<Icon alt="expand" icon="showMore" size={18} />
+			{#if loading}
+				<LoadingSpinner size={18} />
+			{:else}
+				<Icon alt="expand" icon="showMore" size={18} />
+			{/if}
 		</div>
 	</div>
 </div>
@@ -167,36 +174,42 @@
 	>
 		<PopoverContentPanel>
 			<div class="items">
-				{#each filtered as item, index (index)}
-					{@const label = labelTemplate?.(item) ?? item.label}
-					<div class="item" use:melt={$option(item)}>
-						<div class="item-icon">
-							{#if iconTemplate}
-								{@render iconTemplate(item)}
-							{:else if item.icon}
-								<Icon alt="icon" size={18} icon={item.icon} />
-							{/if}
-						</div>
-						<div class="item-text-area">
-							<div class="item-title">
-								{label}
-							</div>
-							{#if item.subtitle || subtitleTemplate}
-								<div class="item-subtitle">
-									{#if subtitleTemplate}
-										{@render subtitleTemplate(item)}
-									{:else}
-										{item.subtitle}
-									{/if}
-								</div>
-							{/if}
-						</div>
+				{#if loading}
+					<div class="loading">
+						<LoadingSpinner size={16} />
 					</div>
 				{:else}
-					<div class="no-options">
-						<Translation key="ui-common:no-options" />
-					</div>
-				{/each}
+					{#each filtered as item, index (index)}
+						{@const label = labelTemplate?.(item) ?? item.label}
+						<div class="item" use:melt={$option(item)}>
+							<div class="item-icon">
+								{#if iconTemplate}
+									{@render iconTemplate(item)}
+								{:else if item.icon}
+									<Icon alt="icon" size={18} icon={item.icon} />
+								{/if}
+							</div>
+							<div class="item-text-area">
+								<div class="item-title">
+									{label}
+								</div>
+								{#if item.subtitle || subtitleTemplate}
+									<div class="item-subtitle">
+										{#if subtitleTemplate}
+											{@render subtitleTemplate(item)}
+										{:else}
+											{item.subtitle}
+										{/if}
+									</div>
+								{/if}
+							</div>
+						</div>
+					{:else}
+						<div class="no-options">
+							<Translation key="ui-common:no-options" />
+						</div>
+					{/each}
+				{/if}
 			</div>
 		</PopoverContentPanel>
 	</div>

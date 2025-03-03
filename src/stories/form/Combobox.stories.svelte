@@ -26,3 +26,7 @@
 		placeholder="wow sans"
 	/>
 </Story>
+
+<Story name="Loading">
+	<Combobox items={[]} placeholder="wow sans" loading />
+</Story>
