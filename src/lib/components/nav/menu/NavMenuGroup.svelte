@@ -80,7 +80,7 @@
 		if (idx >= 0) {
 			switch (e.key) {
 				case 'ArrowDown':
-					if (idx < $items.length) {
+					if (idx < $items.length && $items[idx + 1]?.el?.isConnected) {
 						$highlighted = idx + 1
 					}
 					break
@@ -90,7 +90,7 @@
 					}
 					break
 				case 'ArrowLeft':
-					if ($groupStack.length > 1 && $items[idx + 1]?.el?.isConnected) {
+					if ($groupStack.length > 1) {
 						groupStack.update((prev) => {
 							const newValue = [...prev]
 							newValue.pop()
