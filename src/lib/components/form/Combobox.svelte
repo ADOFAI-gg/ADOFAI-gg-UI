@@ -251,6 +251,9 @@
 		display: flex;
 		flex-direction: column;
 		user-select: none;
+		overflow-y: auto;
+
+		max-height: 300px;
 	}
 
 	.item {
