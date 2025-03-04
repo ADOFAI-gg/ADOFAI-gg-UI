@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createPopover, createSync, melt } from '@melt-ui/svelte'
+	import { createPopover, createSync, melt, type AnyMeltElement } from '@melt-ui/svelte'
 	import type { FloatingConfig } from '@melt-ui/svelte/internal/actions'
 	import { onMount, tick, type Snippet } from 'svelte'
 	import { fly, type FlyParams, type TransitionConfig } from 'svelte/transition'
@@ -7,7 +7,7 @@
 	interface Props {
 		placement?: Exclude<FloatingConfig, null>['placement']
 		open?: boolean
-		trigger: Snippet<[typeof trigger]>
+		trigger: Snippet<[AnyMeltElement]>
 		children: Snippet<[{ close: () => void; open: boolean }]>
 		defaultOpen?: boolean
 	}

@@ -61,11 +61,8 @@
 				value: x
 			}))}
 			value={data.pageSize}
-			onSelectedChange={({ next }) => {
-				if (!next) return next
-				data.pageSize = next.value
-
-				return next
+			onSelect={(value) => {
+				data.pageSize = value
 			}}
 		>
 			{#snippet trigger(el)}
@@ -162,11 +159,9 @@
 	{/each}
 
 	<PopoverSelect
-		onSelectedChange={({ next }) => {
-			if (!next) return next
-			addFilter(next!.value)
-
-			return undefined
+		onSelect={(value) => {
+			console.log(value)
+			addFilter(value)
 		}}
 		placeholder={(label, key, lang) =>
 			translateKey(lang, 'ui-search:add-filter-placeholder', { label: label || '...' })}

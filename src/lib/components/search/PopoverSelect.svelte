@@ -1,21 +1,18 @@
 <script lang="ts">
-	import { getGlobalContext, type SelectOption } from '$lib/index'
+	import { getGlobalContext, Icon, type SelectOption } from '$lib/index'
 	import Translation from '$lib/utils/Translation.svelte'
-	import { createSync, INTERACTION_KEYS, melt, type AnyMeltElement } from '@melt-ui/svelte'
-	import { createListbox2 } from '$lib/builders/listbox2'
-	import { tick, type Snippet } from 'svelte'
-	import { fly } from 'svelte/transition'
+	import { type AnyMeltElement } from '@melt-ui/svelte/internal/helpers'
+	import { onMount, untrack, type Snippet } from 'svelte'
+	import Popover from '../Popover.svelte'
 	import PopoverContentPanel from '../PopoverContentPanel.svelte'
-	import ComboboxItem from './ComboboxItem.svelte'
-	import { getElementById, kbd } from '@melt-ui/svelte/internal/helpers'
-	import type { CreateListboxProps } from 'node_modules/@melt-ui/svelte/dist/builders/listbox/types'
+	import { Command } from 'cmdk-sv'
 
 	type T = $$Generic
 	type Value = $$Generic
 
 	type Item = SelectOption<Value, T>
 
-	type Props = Omit<CreateListboxProps<Value>, 'open' | 'selected' | 'forceVisible'> & {
+	type Props = {
 		items: Item[]
 		placeholder?: (label: string | null, value: string | null, lang: string) => string
 		value?: Value
@@ -24,6 +21,7 @@
 		subtitleTemplate?: Snippet<[Item]>
 		iconTemplate?: Snippet<[Item]>
 		select?: boolean
+		onSelect?: (value: Value) => void
 
 		open?: boolean
 
@@ -39,46 +37,10 @@
 		placeholder = (v) => v || '',
 		select,
 		trigger: triggerSnippet,
-		...rest
+		onSelect
 	}: Props = $props()
 
-	const {
-		elements: { option, menu, trigger, input },
-		states: { highlighted, ...states }
-	} = createListbox2({
-		forceVisible: true,
-		...rest
-	})
-
-	const sync = createSync(states)
-
-	$effect(() => {
-		sync.open(open, (v) => (open = v))
-	})
-
-	let currentItem = $derived.by(() => {
-		if (!value) return undefined
-		return items.find((x) => x.value === value)
-	})
-
-	$effect(() => {
-		sync.selected(currentItem, (v) => (value = v?.value))
-	})
-
 	const { language: lang } = getGlobalContext()
-
-	// let selected = $state<(typeof translatedItems)[number] | null>()
-
-	// $effect(() => {
-	// 	if (!translatedItems.find((x) => x.value === selected?.value)) {
-	// 		selected =
-	// 			(value && translatedItems.find((x) => x.value === value)) || translatedItems[0] || null
-	// 	}
-	// })
-
-	let convertedPlaceholder = $derived(
-		placeholder($highlighted?.label || null, $highlighted?.value?.toString() || null, $lang)
-	)
 
 	let inputContent = $state('')
 
@@ -87,76 +49,160 @@
 	let filteredItems = $derived.by(() => {
 		return items.filter((x) => normalize(x.label).includes(normalize(inputContent)))
 	})
+
+	let current = $state('0')
+
+	$effect(() => {
+		if (!open) {
+			current = filteredItems.findIndex((x) => x.value === value).toString()
+		}
+	})
+
+	let currentItem = $derived(filteredItems[+current])
+
+	let convertedPlaceholder = $derived(
+		placeholder(currentItem?.label || null, currentItem?.value?.toString() || null, $lang)
+	)
 </script>
 
-{@render triggerSnippet(trigger)}
-
-{#if open}
-	<div
-		class="select-root"
-		transition:fly={{ y: 12, duration: 400 }}
-		class:contains-value={value !== undefined}
-		use:melt={$menu}
-	>
+<Popover trigger={triggerSnippet} bind:open>
+	<div class="select-root" class:contains-value={value !== undefined}>
 		<PopoverContentPanel>
-			<input
+			<Command.Root bind:value={current} shouldFilter={false}>
+				<Command.Input placeholder={convertedPlaceholder} />
+
+				<div class="list">
+					{#each filteredItems as item, i (i)}
+						<Command.Item
+							onSelect={() => {
+								open = false
+								onSelect?.(item.value)
+							}}
+							class={select ? 'select' : ''}
+							value={`${i}`}
+						>
+							<div class="item-icon">
+								{#if iconTemplate}
+									{@render iconTemplate(item)}
+								{:else if item.icon}
+									<Icon alt="icon" size={18} icon={item.icon} />
+								{/if}
+							</div>
+
+							<div class="item-text-area">
+								<div class="item-title">
+									{item.label}
+								</div>
+
+								{#if item.subtitle || subtitleTemplate}
+									<div class="item-subtitle">
+										{#if subtitleTemplate}
+											{@render subtitleTemplate(item)}
+										{:else}
+											{item.subtitle}
+										{/if}
+									</div>
+								{/if}
+							</div>
+						</Command.Item>
+					{/each}
+				</div>
+			</Command.Root>
+			<!-- <input
 				placeholder={convertedPlaceholder}
 				type="text"
 				class="search-input"
-				use:melt={$input}
 				bind:value={inputContent}
 			/>
 
 			<div class="list">
 				{#each filteredItems as item (item.value)}
-					<ComboboxItem
-						{select}
-						{iconTemplate}
-						{subtitleTemplate}
-						meltElement={option}
-						option={item}
-					/>
+					TODO
 				{:else}
 					<div class="empty-sign">
 						<Translation key="ui-search:options-empty" />
 					</div>
 				{/each}
-			</div>
+			</div> -->
 		</PopoverContentPanel>
 	</div>
-{/if}
+</Popover>
 
 <style lang="scss">
 	@use '../../stylesheets/system/colors' as *;
-
-	.search-input {
-		&:focus {
-			outline: none;
-		}
-
-		& {
-			width: 100%;
-			background-color: transparent;
-			height: 38px;
-			font-size: 16px;
-			padding: 8px 16px;
-			line-height: 140%;
-
-			border: 1px solid rgba(255, 255, 255, 0.2);
-			border-radius: 8px;
-		}
-
-		&::placeholder {
-			font-size: 16px;
-			line-height: 140%;
-			color: rgba(255, 255, 255, 0.8);
-		}
-	}
 
 	.select-root {
 		> :global(.popover-content-panel) {
 			max-width: 312px;
 			width: 100vw;
 		}
+
+		:global([data-cmdk-root]) {
+			display: flex;
+			flex-direction: column;
+		}
+
+		:global([data-cmdk-input]) {
+			&:focus {
+				outline: none;
+			}
+
+			& {
+				width: 100%;
+				background-color: transparent;
+				height: 38px;
+				font-size: 16px;
+				padding: 8px 16px;
+				line-height: 140%;
+
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 8px;
+			}
+
+			&::placeholder {
+				font-size: 16px;
+				line-height: 140%;
+				color: rgba(255, 255, 255, 0.8);
+			}
+		}
+
+		:global([data-cmdk-item]) {
+			--bg-opacity: 0;
+
+			display: flex;
+			padding: 10px 16px;
+			align-items: center;
+			gap: 8px;
+			cursor: pointer;
+			border-radius: 8px;
+
+			background-color: rgba(white, var(--bg-opacity));
+			transition: background-color ease 0.2s;
+			user-select: none;
+		}
+
+		:global(.select[data-cmdk-item]) {
+			background-color: rgba($blue, var(--bg-opacity));
+		}
+
+		:global([data-highlighted]) {
+			--bg-opacity: 0.1;
+		}
+
+		:global([data-cmdk-item][data-selected]) {
+			--bg-opacity: 0.15;
+		}
+
+		:global([data-cmdk-item]) {
+			&:active {
+				--bg-opacity: 0.2;
+			}
+		}
+	}
+
+	.list {
+		display: flex;
+		flex-direction: column;
+		margin-top: 8px;
 	}
 </style>

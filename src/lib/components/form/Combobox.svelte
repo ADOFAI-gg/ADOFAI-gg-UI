@@ -91,8 +91,7 @@
 		if (multiple) {
 			sync.selected(
 				// @ts-expect-error why???
-				currentItemMulti.map((x) => ({ label: labelTemplate(x.label), value: x.value })),
-				// currentItem ? { label: labelTemplate(currentItem), value: currentItem.value } : undefined,
+				currentItemMulti.map((x) => ({ label: x.label, value: x.value })),
 				(v) => {
 					if (!v) {
 						value = []
@@ -237,6 +236,7 @@
 	.menu {
 		max-width: var(--trigger-width) !important;
 		width: 100%;
+		z-index: 9999;
 	}
 
 	.select-icon {
