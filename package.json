@@ -100,9 +100,6 @@
 		],
 		"onlyBuiltDependencies": [
 			"svelte-preprocess"
-		],
-		"patchedDependencies": {
-			"@melt-ui/svelte": "patches/@melt-ui__svelte.patch"
-		}
+		]
 	}
 }

@@ -43,16 +43,16 @@ import {
 	getElementById,
 	generateIds
 } from '@melt-ui/svelte/internal/helpers'
-import { createHiddenInput } from '@melt-ui/svelte/builders/hidden-input'
+import { createHiddenInput } from 'node_modules/@melt-ui/svelte/dist/builders/hidden-input/create'
 import type { Defaults, MeltActionReturn } from '@melt-ui/svelte/internal/types'
 import { dequal as deepEqual } from 'dequal'
-import type { ListboxEvents } from '../../../node_modules/@melt-ui/svelte/dist/builders/listbox/events'
+import type { ListboxEvents } from 'node_modules/@melt-ui/svelte/dist/builders/listbox/events'
 import type {
 	CreateListboxProps,
 	ListboxOption,
 	ListboxOptionProps,
 	ListboxSelected
-} from '../../../node_modules/@melt-ui/svelte/dist/builders/listbox/types'
+} from 'node_modules/@melt-ui/svelte/dist/builders/listbox/types'
 import { tick } from 'svelte'
 import { derived, get, readonly, writable, type Readable } from 'svelte/store'
 
