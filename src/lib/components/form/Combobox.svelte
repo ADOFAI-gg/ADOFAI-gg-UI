@@ -9,13 +9,14 @@
 
 	type T = $$Generic
 	type Multiple = $$Generic<boolean>
+	type Value = $$Generic
 
-	type Item = SelectOption<T>
+	type Item = SelectOption<Value, T>
 
-	type Props = Omit<CreateComboboxProps<string, Multiple>, 'open' | 'selected' | 'multiple'> & {
+	type Props = Omit<CreateComboboxProps<Value, Multiple>, 'open' | 'selected' | 'multiple'> & {
 		items: Item[]
 		open?: boolean
-		value?: string[] | string | null
+		value?: Value[] | Value | null
 		placeholder?: string
 		subtitleTemplate?: Snippet<[Item]>
 		iconTemplate?: Snippet<[Item]>
@@ -68,7 +69,7 @@
 	let currentItemMulti = $derived.by(() => {
 		if (!multiple) return []
 
-		return items.filter((x) => (value as string[]).includes(x.value))
+		return items.filter((x) => (value as Value[]).includes(x.value))
 	})
 
 	$effect(() => sync.open(open, (v) => (open = v)))

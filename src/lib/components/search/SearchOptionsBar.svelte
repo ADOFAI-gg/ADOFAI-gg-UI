@@ -99,7 +99,7 @@
 							{:else if filterScheme.type === 'select'}
 								{#if filterScheme.multiple}
 									{@const item = filterScheme.options.filter((x) =>
-										(filter.value as string[])?.includes(x.value)
+										(filter.value as (string | number)[])?.includes(x.value)
 									)}
 
 									{#if item.length === 1}
