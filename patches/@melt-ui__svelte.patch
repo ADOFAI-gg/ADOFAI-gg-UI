@@ -1,0 +1,15 @@
+diff --git a/package.json b/package.json
+index c1b0fc4f80ade03d8a2bc6480d8518bc71657a0b..2f87911328bddae80847e26a0c8ba71ae9a50cc5 100644
+--- a/package.json
++++ b/package.json
+@@ -16,6 +16,10 @@
+     "./internal/types": {
+       "types": "./dist/internal/types.d.ts",
+       "svelte": "./dist/internal/types.js"
++    },
++    "./builders/*": {
++      "types": "./dist/builders/*/index.d.ts",
++      "svelte": "./dist/builders/*/index.d.ts"
+     }
+   },
+   "typesVersions": {

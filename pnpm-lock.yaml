@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@melt-ui/svelte':
+    hash: 71699309eba1a2148ca10472a16a4ede3b673497d42c3685641d49f4feef33c2
+    path: patches/@melt-ui__svelte.patch
+
 importers:
 
   .:
@@ -38,10 +43,10 @@ importers:
         version: 1.1.0(vite@6.2.0(@types/node@22.8.6)(sass-embedded@1.80.6))
       '@melt-ui/pp':
         specifier: ^0.3.2
-        version: 0.3.2(@melt-ui/svelte@0.86.3(svelte@5.20.5))(svelte@5.20.5)
+        version: 0.3.2(@melt-ui/svelte@0.86.3(patch_hash=71699309eba1a2148ca10472a16a4ede3b673497d42c3685641d49f4feef33c2)(svelte@5.20.5))(svelte@5.20.5)
       '@melt-ui/svelte':
         specifier: ^0.86.3
-        version: 0.86.3(svelte@5.20.5)
+        version: 0.86.3(patch_hash=71699309eba1a2148ca10472a16a4ede3b673497d42c3685641d49f4feef33c2)(svelte@5.20.5)
       '@storybook/addon-essentials':
         specifier: ^8.6.3
         version: 8.6.3(@types/react@18.3.12)(storybook@8.6.3(prettier@3.5.2))
@@ -3646,14 +3651,14 @@ snapshots:
       '@types/react': 18.3.12
       react: 19.0.0
 
-  '@melt-ui/pp@0.3.2(@melt-ui/svelte@0.86.3(svelte@5.20.5))(svelte@5.20.5)':
+  '@melt-ui/pp@0.3.2(@melt-ui/svelte@0.86.3(patch_hash=71699309eba1a2148ca10472a16a4ede3b673497d42c3685641d49f4feef33c2)(svelte@5.20.5))(svelte@5.20.5)':
     dependencies:
-      '@melt-ui/svelte': 0.86.3(svelte@5.20.5)
+      '@melt-ui/svelte': 0.86.3(patch_hash=71699309eba1a2148ca10472a16a4ede3b673497d42c3685641d49f4feef33c2)(svelte@5.20.5)
       estree-walker: 3.0.3
       magic-string: 0.30.17
       svelte: 5.20.5
 
-  '@melt-ui/svelte@0.86.3(svelte@5.20.5)':
+  '@melt-ui/svelte@0.86.3(patch_hash=71699309eba1a2148ca10472a16a4ede3b673497d42c3685641d49f4feef33c2)(svelte@5.20.5)':
     dependencies:
       '@floating-ui/core': 1.6.9
       '@floating-ui/dom': 1.6.13
