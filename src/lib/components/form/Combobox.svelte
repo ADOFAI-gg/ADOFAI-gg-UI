@@ -175,42 +175,36 @@
 	>
 		<PopoverContentPanel>
 			<div class="items">
-				{#if loading}
-					<div class="loading">
-						<LoadingSpinner size={16} />
+				{#each filtered as item, index (index)}
+					{@const label = labelTemplate?.(item) ?? item.label}
+					<div class="item item-{item.color || 'default'}" use:melt={$option(item)}>
+						<div class="item-icon">
+							{#if iconTemplate}
+								{@render iconTemplate(item)}
+							{:else if item.icon}
+								<Icon alt="icon" size={18} icon={item.icon} />
+							{/if}
+						</div>
+						<div class="item-text-area">
+							<div class="item-title">
+								{label}
+							</div>
+							{#if item.subtitle || subtitleTemplate}
+								<div class="item-subtitle">
+									{#if subtitleTemplate}
+										{@render subtitleTemplate(item)}
+									{:else}
+										{item.subtitle}
+									{/if}
+								</div>
+							{/if}
+						</div>
 					</div>
 				{:else}
-					{#each filtered as item, index (index)}
-						{@const label = labelTemplate?.(item) ?? item.label}
-						<div class="item item-{item.color || 'default'}" use:melt={$option(item)}>
-							<div class="item-icon">
-								{#if iconTemplate}
-									{@render iconTemplate(item)}
-								{:else if item.icon}
-									<Icon alt="icon" size={18} icon={item.icon} />
-								{/if}
-							</div>
-							<div class="item-text-area">
-								<div class="item-title">
-									{label}
-								</div>
-								{#if item.subtitle || subtitleTemplate}
-									<div class="item-subtitle">
-										{#if subtitleTemplate}
-											{@render subtitleTemplate(item)}
-										{:else}
-											{item.subtitle}
-										{/if}
-									</div>
-								{/if}
-							</div>
-						</div>
-					{:else}
-						<div class="no-options">
-							<Translation key="ui-common:no-options" />
-						</div>
-					{/each}
-				{/if}
+					<div class="no-options">
+						<Translation key="ui-common:no-options" />
+					</div>
+				{/each}
 			</div>
 		</PopoverContentPanel>
 	</div>
