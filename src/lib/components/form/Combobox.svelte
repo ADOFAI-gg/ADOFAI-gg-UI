@@ -25,6 +25,7 @@
 		multiple?: Multiple
 		inputValue?: string
 		loading?: boolean
+		customFilter?: boolean
 	}
 
 	let {
@@ -39,6 +40,7 @@
 		clearable,
 		multiple,
 		loading,
+		customFilter,
 		...props
 	}: Props = $props()
 
@@ -105,7 +107,7 @@
 	})
 
 	const filtered = $derived.by(() => {
-		if (!$touchedInput) return items
+		if (!$touchedInput || customFilter) return items
 		const q = inputValue.toLowerCase()
 		return items.filter((x) => x.label.toLowerCase().includes(q))
 	})
