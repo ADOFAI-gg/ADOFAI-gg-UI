@@ -16,7 +16,7 @@
 		items: Item[]
 		placeholder?: (label: string | null, value: string | null, lang: string) => string
 		value?: Value
-		inputValue?: boolean
+		inputValue?: string
 		customFilter?: boolean
 		subtitleTemplate?: Snippet<[Item]>
 		iconTemplate?: Snippet<[Item]>
@@ -40,18 +40,17 @@
 		loading,
 		customFilter,
 		trigger: triggerSnippet,
+		inputValue = $bindable(''),
 		onSelect
 	}: Props = $props()
 
 	const { language: lang } = getGlobalContext()
 
-	let inputContent = $state('')
-
 	const normalize = (v: string) => v.normalize().toLowerCase()
 
 	let filteredItems = $derived.by(() => {
 		if (customFilter) return items
-		return items.filter((x) => normalize(x.label).includes(normalize(inputContent)))
+		return items.filter((x) => normalize(x.label).includes(normalize(inputValue)))
 	})
 
 	let current = $state('0')
@@ -74,7 +73,7 @@
 		<PopoverContentPanel>
 			<Command.Root bind:value={current} shouldFilter={false}>
 				<div class="input-root">
-					<Command.Input placeholder={convertedPlaceholder} />
+					<Command.Input bind:value={inputValue} placeholder={convertedPlaceholder} />
 
 					{#if loading}
 						<div class="loading-spinner">
