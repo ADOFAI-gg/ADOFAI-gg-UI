@@ -43,32 +43,26 @@
 {/snippet}
 
 <div class="form-field" class:horizontal>
-	{#if noLabel}
-		<div class="form-field-content">
+	<svelte:element this={noLabel ? 'div' : 'label'} class="form-field-content">
+		{#if label}
+			<p class="label">
+				<Translation key={label} />
+				{#if required}
+					<span class="required-sign">
+						<Translation key="ui-common:form-required" />
+					</span>
+				{/if}
+			</p>
+		{/if}
+		{#if subtitle}
+			<p class="subtitle">
+				<Translation key={subtitle} />
+			</p>
+		{/if}
+		<span class="content">
 			{@render children?.()}
-		</div>
-	{:else}
-		<label class="form-field-content">
-			{#if label}
-				<p class="label">
-					<Translation key={label} />
-					{#if required}
-						<span class="required-sign">
-							<Translation key="ui-common:form-required" />
-						</span>
-					{/if}
-				</p>
-			{/if}
-			{#if subtitle}
-				<p class="subtitle">
-					<Translation key={subtitle} />
-				</p>
-			{/if}
-			<span class="content">
-				{@render children?.()}
-			</span>
-		</label>
-	{/if}
+		</span>
+	</svelte:element>
 
 	{#if helpText}
 		<div class="form-help-text">
