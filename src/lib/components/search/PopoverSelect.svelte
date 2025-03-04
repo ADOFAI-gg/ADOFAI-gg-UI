@@ -65,6 +65,8 @@
 		sync.selected(currentItem, (v) => (value = v?.value))
 	})
 
+	const { language: lang } = getGlobalContext()
+
 	// let selected = $state<(typeof translatedItems)[number] | null>()
 
 	// $effect(() => {
@@ -74,9 +76,9 @@
 	// 	}
 	// })
 
-	// let convertedPlaceholder = $derived(
-	// 	placeholder(selected?.label || null, selected?.value?.toString() || null, $lang)
-	// )
+	let convertedPlaceholder = $derived(
+		placeholder($highlighted?.label || null, $highlighted?.value?.toString() || null, $lang)
+	)
 
 	let inputContent = $state('')
 
@@ -97,7 +99,13 @@
 		use:melt={$menu}
 	>
 		<PopoverContentPanel>
-			<input type="text" class="search-input" use:melt={$input} bind:value={inputContent} />
+			<input
+				placeholder={convertedPlaceholder}
+				type="text"
+				class="search-input"
+				use:melt={$input}
+				bind:value={inputContent}
+			/>
 
 			<div class="list">
 				{#each filteredItems as item (item.value)}
