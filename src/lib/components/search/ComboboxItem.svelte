@@ -29,7 +29,7 @@
 		{#if iconTemplate}
 			{@render iconTemplate(option)}
 		{:else if option.icon}
-			<Icon alt="icon" size={18} icon={option.icon} />
+			<Icon alt="icon" size={16} icon={option.icon} />
 		{/if}
 	</div>
 	<div class="item-text-area">
@@ -95,6 +95,9 @@
 		&-icon {
 			width: 18px;
 			height: 18px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 
 		&-text-area {

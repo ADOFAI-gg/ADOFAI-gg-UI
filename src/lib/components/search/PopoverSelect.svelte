@@ -102,7 +102,7 @@
 								{#if iconTemplate}
 									{@render iconTemplate(item)}
 								{:else if item.icon}
-									<Icon alt="icon" size={18} icon={item.icon} />
+									<Icon alt="icon" size={16} icon={item.icon} />
 								{/if}
 							</div>
 
@@ -261,5 +261,29 @@
 		font-size: 16px;
 		color: rgba(255, 255, 255, 0.6);
 		user-select: none;
+	}
+
+	.item {
+		&-title {
+			font-size: 16px;
+		}
+
+		&-subtitle {
+			font-size: 14px;
+			color: rgba(255, 255, 255, 0.4);
+		}
+
+		&-icon {
+			width: 18px;
+			height: 18px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		&-text-area {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 </style>
