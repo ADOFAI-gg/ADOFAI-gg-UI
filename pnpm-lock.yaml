@@ -11,6 +11,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      dequal:
+        specifier: ^2.0.3
+        version: 2.0.3
       js-cookie:
         specifier: ^3.0.5
         version: 3.0.5

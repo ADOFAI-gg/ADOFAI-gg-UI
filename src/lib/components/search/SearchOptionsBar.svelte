@@ -1,21 +1,22 @@
 <script lang="ts">
+	import { getGlobalContext, translateKey, Translation } from '$lib/index'
 	import type { SearchOptionScheme, SearchOptionsData } from '$lib/types'
-	import { translateKey, Translation } from '$lib/index'
+	import { tick } from 'svelte'
+	import { flip } from 'svelte/animate'
+	import { fade } from 'svelte/transition'
 	import Popover from '../Popover.svelte'
+	import PopoverContentPanel from '../PopoverContentPanel.svelte'
 	import AddFilterButton from './AddFilterButton.svelte'
+	import FilterEditPanel from './FilterEditPanel.svelte'
 	import PopoverSelect from './PopoverSelect.svelte'
 	import SearchOptionChip from './SearchOptionChip.svelte'
-	import PopoverContentPanel from '../PopoverContentPanel.svelte'
-	import FilterEditPanel from './FilterEditPanel.svelte'
-	import { circOut } from 'svelte/easing'
-	import { flip } from 'svelte/animate'
-	import { tick } from 'svelte'
-	import { fade, fly, slide } from 'svelte/transition'
 
 	interface Props {
 		scheme: SearchOptionScheme
 		data: SearchOptionsData
 	}
+
+	const { language } = getGlobalContext()
 
 	let { scheme, data = $bindable() }: Props = $props()
 	let defaultOpen = $state<string | null>(null)
@@ -52,28 +53,27 @@
 
 <div class="search-options-bar">
 	{#if scheme.pageSize}
-		<Popover>
+		<PopoverSelect
+			select
+			items={scheme.pageSize.map((x) => ({
+				label: translateKey($language, 'ui-search:page-size-value', { count: x }),
+				labelParams: { count: x },
+				value: x
+			}))}
+			value={data.pageSize}
+			onSelectedChange={({ next }) => {
+				if (!next) return next
+				data.pageSize = next.value
+
+				return next
+			}}
+		>
 			{#snippet trigger(el)}
 				<SearchOptionChip meltElement={el} icon="view" objectiveKey="ui-search:page-size" hasValue>
 					<Translation key="ui-search:page-size-value" params={{ count: data.pageSize || 0 }} />
 				</SearchOptionChip>
 			{/snippet}
-
-			{#snippet children({ close })}
-				<PopoverSelect
-					items={scheme.pageSize.map((x) => ({
-						label: 'ui-search:page-size-value',
-						labelParams: { count: x },
-						value: x
-					}))}
-					value={data.pageSize}
-					onSelect={(v) => {
-						data.pageSize = v
-						close()
-					}}
-				/>
-			{/snippet}
-		</Popover>
+		</PopoverSelect>
 	{/if}
 
 	{#if scheme.pageSize}
@@ -161,29 +161,25 @@
 		</div>
 	{/each}
 
-	<Popover lockOnClose>
+	<PopoverSelect
+		onSelectedChange={({ next }) => {
+			if (!next) return next
+			addFilter(next!.value)
+
+			return undefined
+		}}
+		placeholder={(label, key, lang) =>
+			translateKey(lang, 'ui-search:add-filter-placeholder', { label: label || '...' })}
+		items={Object.entries(scheme.filter).map(([k, v]) => ({
+			icon: v.icon,
+			label: translateKey($language, v.name, {}),
+			value: k
+		}))}
+	>
 		{#snippet trigger(el)}
 			<AddFilterButton meltElement={el} />
 		{/snippet}
-
-		{#snippet children({ close })}
-			<PopoverSelect
-				onSelect={(v) => {
-					close()
-					tick().then(() => {
-						addFilter(v)
-					})
-				}}
-				placeholder={(label, key, lang) =>
-					translateKey(lang, 'ui-search:add-filter-placeholder', { label: label || '...' })}
-				items={Object.entries(scheme.filter).map(([k, v]) => ({
-					icon: v.icon,
-					label: v.name,
-					value: k
-				}))}
-			/>
-		{/snippet}
-	</Popover>
+	</PopoverSelect>
 </div>
 
 <style lang="scss">

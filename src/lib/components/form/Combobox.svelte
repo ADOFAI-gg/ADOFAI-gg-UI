@@ -6,6 +6,7 @@
 	import Translation from '$lib/utils/Translation.svelte'
 	import { untrack, type Snippet } from 'svelte'
 	import LoadingSpinner from '../LoadingSpinner.svelte'
+	import ComboboxItem from '../search/ComboboxItem.svelte'
 
 	type T = $$Generic
 	type Multiple = $$Generic<boolean>
@@ -20,7 +21,6 @@
 		placeholder?: string
 		subtitleTemplate?: Snippet<[Item]>
 		iconTemplate?: Snippet<[Item]>
-		labelTemplate?: (item: Item) => string
 		clearable?: boolean
 		multiple?: Multiple
 		inputValue?: string
@@ -34,7 +34,6 @@
 		value = $bindable(),
 		inputValue = $bindable(''),
 		items,
-		labelTemplate = (v) => v.label,
 		subtitleTemplate,
 		iconTemplate,
 		clearable,
@@ -80,7 +79,7 @@
 		if (!multiple) {
 			sync.selected(
 				// @ts-expect-error why???
-				currentItem ? { label: labelTemplate(currentItem), value: currentItem.value } : undefined,
+				currentItem ? { label: currentItem.label, value: currentItem.value } : undefined,
 				// @ts-expect-error why???
 				(v) => (value = v?.value)
 			)
@@ -178,30 +177,13 @@
 		<PopoverContentPanel>
 			<div class="items">
 				{#each filtered as item, index (index)}
-					{@const label = labelTemplate?.(item) ?? item.label}
-					<div class="item item-{item.color || 'default'}" use:melt={$option(item)}>
-						<div class="item-icon">
-							{#if iconTemplate}
-								{@render iconTemplate(item)}
-							{:else if item.icon}
-								<Icon alt="icon" size={18} icon={item.icon} />
-							{/if}
-						</div>
-						<div class="item-text-area">
-							<div class="item-title">
-								{label}
-							</div>
-							{#if item.subtitle || subtitleTemplate}
-								<div class="item-subtitle">
-									{#if subtitleTemplate}
-										{@render subtitleTemplate(item)}
-									{:else}
-										{item.subtitle}
-									{/if}
-								</div>
-							{/if}
-						</div>
-					</div>
+					<ComboboxItem
+						select
+						{iconTemplate}
+						{subtitleTemplate}
+						meltElement={option}
+						option={item}
+					/>
 				{:else}
 					<div class="no-options">
 						<Translation key="ui-common:no-options" />
@@ -250,55 +232,6 @@
 		overflow-y: auto;
 
 		max-height: 300px;
-	}
-
-	.item {
-		--bg-opacity: 0;
-
-		display: flex;
-		padding: 10px 16px;
-		align-items: center;
-		gap: 8px;
-		cursor: pointer;
-		border-radius: 8px;
-
-		background-color: rgba(colors.$blue, var(--bg-opacity));
-		transition: background-color ease 0.2s;
-
-		&.item-blue {
-			color: colors.$blue;
-		}
-
-		&[data-selected] {
-			--bg-opacity: 0.1;
-		}
-
-		&[data-highlighted] {
-			--bg-opacity: 0.15;
-		}
-
-		&:active {
-			--bg-opacity: 0.2;
-		}
-
-		&-title {
-			font-size: 16px;
-		}
-
-		&-subtitle {
-			font-size: 14px;
-			color: rgba(255, 255, 255, 0.4);
-		}
-
-		&-icon {
-			width: 18px;
-			height: 18px;
-		}
-
-		&-text-area {
-			display: flex;
-			flex-direction: column;
-		}
 	}
 
 	.menu {

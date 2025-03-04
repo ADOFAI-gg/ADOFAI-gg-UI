@@ -10,7 +10,6 @@
 		trigger: Snippet<[typeof trigger]>
 		children: Snippet<[{ close: () => void; open: boolean }]>
 		defaultOpen?: boolean
-		lockOnClose?: boolean
 	}
 
 	let {
@@ -18,8 +17,7 @@
 		open = $bindable(false),
 		trigger: triggerSnippet,
 		children,
-		defaultOpen = false,
-		lockOnClose
+		defaultOpen = false
 	}: Props = $props()
 
 	const {
@@ -61,26 +59,6 @@
 			})
 		}
 	})
-
-	const out = (el: HTMLElement, params: FlyParams): TransitionConfig => {
-		const actualTransition = fly(el, params)
-
-		if (!lockOnClose) return actualTransition
-
-		const startTop = el.style.top
-		const startLeft = el.style.left
-
-		return {
-			css: actualTransition.css,
-			delay: actualTransition.delay,
-			duration: actualTransition.duration,
-			easing: actualTransition.easing,
-			tick: () => {
-				el.style.top = startTop
-				el.style.left = startLeft
-			}
-		}
-	}
 </script>
 
 {@render triggerSnippet(trigger)}
@@ -89,8 +67,7 @@
 	<div
 		bind:this={ref}
 		use:melt={$content}
-		in:fly={{ y: 12, duration: 400 }}
-		out:out={{ y: 12, duration: 400 }}
+		transition:fly={{ y: 12, duration: 400 }}
 		style="z-index: 9999;"
 	>
 		{@render children({ close, open })}
