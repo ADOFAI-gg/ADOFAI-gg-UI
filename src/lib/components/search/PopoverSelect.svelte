@@ -83,6 +83,12 @@
 				</div>
 
 				<div class="list">
+					<Command.Empty>
+						<div class="no-options">
+							<Translation key="ui-common:no-options" />
+						</div>
+					</Command.Empty>
+
 					{#each filteredItems as item, i (i)}
 						<Command.Item
 							onSelect={() => {
@@ -244,5 +250,16 @@
 		display: flex;
 		flex-direction: column;
 		margin-top: 8px;
+	}
+
+	.no-options {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 8px;
+		text-align: center;
+		font-size: 16px;
+		color: rgba(255, 255, 255, 0.6);
+		user-select: none;
 	}
 </style>
