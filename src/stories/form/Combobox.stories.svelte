@@ -14,7 +14,8 @@
 				value: 'sans',
 				label: 'Hello',
 				subtitle: 'Sans',
-				icon: 'add'
+				icon: 'add',
+				color: 'blue'
 			},
 			{
 				value: 'wow',

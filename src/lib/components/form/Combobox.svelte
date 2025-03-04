@@ -182,7 +182,7 @@
 				{:else}
 					{#each filtered as item, index (index)}
 						{@const label = labelTemplate?.(item) ?? item.label}
-						<div class="item" use:melt={$option(item)}>
+						<div class="item item-{item.color || 'default'}" use:melt={$option(item)}>
 							<div class="item-icon">
 								{#if iconTemplate}
 									{@render iconTemplate(item)}
@@ -268,6 +268,10 @@
 
 		background-color: rgba(colors.$blue, var(--bg-opacity));
 		transition: background-color ease 0.2s;
+
+		&.item-blue {
+			color: colors.$blue;
+		}
 
 		&[data-selected] {
 			--bg-opacity: 0.1;

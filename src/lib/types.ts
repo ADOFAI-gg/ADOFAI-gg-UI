@@ -41,6 +41,8 @@ export type SelectOption<Value, CustomData = unknown> = {
 	icon?: string
 	disabled?: boolean
 	customData?: CustomData
+
+	color?: 'default' | 'blue'
 }
 
 export type SearchFilterScheme = (
