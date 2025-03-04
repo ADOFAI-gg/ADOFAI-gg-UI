@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getGlobalContext, Icon, type SelectOption } from '$lib/index'
+	import { getGlobalContext, Icon, LoadingSpinner, type SelectOption } from '$lib/index'
 	import Translation from '$lib/utils/Translation.svelte'
 	import { type AnyMeltElement } from '@melt-ui/svelte/internal/helpers'
 	import { onMount, untrack, type Snippet } from 'svelte'
@@ -22,6 +22,7 @@
 		iconTemplate?: Snippet<[Item]>
 		select?: boolean
 		onSelect?: (value: Value) => void
+		loading?: boolean
 
 		open?: boolean
 
@@ -36,6 +37,8 @@
 		open = $bindable(false),
 		placeholder = (v) => v || '',
 		select,
+		loading,
+		customFilter,
 		trigger: triggerSnippet,
 		onSelect
 	}: Props = $props()
@@ -47,6 +50,7 @@
 	const normalize = (v: string) => v.normalize().toLowerCase()
 
 	let filteredItems = $derived.by(() => {
+		if (customFilter) return items
 		return items.filter((x) => normalize(x.label).includes(normalize(inputContent)))
 	})
 
@@ -69,7 +73,15 @@
 	<div class="select-root" class:contains-value={value !== undefined}>
 		<PopoverContentPanel>
 			<Command.Root bind:value={current} shouldFilter={false}>
-				<Command.Input placeholder={convertedPlaceholder} />
+				<div class="input-root">
+					<Command.Input placeholder={convertedPlaceholder} />
+
+					{#if loading}
+						<div class="loading-spinner">
+							<LoadingSpinner size={18} />
+						</div>
+					{/if}
+				</div>
 
 				<div class="list">
 					{#each filteredItems as item, i (i)}
@@ -78,7 +90,7 @@
 								open = false
 								onSelect?.(item.value)
 							}}
-							class={select ? 'select' : ''}
+							class="{select ? 'select' : ''} item-{item.color || 'default'}"
 							value={`${i}`}
 						>
 							<div class="item-icon">
@@ -142,18 +154,27 @@
 			flex-direction: column;
 		}
 
-		:global([data-cmdk-input]) {
+		.loading-spinner {
+			pointer-events: none;
+		}
+
+		.input-root {
 			&:focus {
 				outline: none;
 			}
 
 			& {
+				position: relative;
 				width: 100%;
 				background-color: transparent;
 				height: 38px;
 				font-size: 16px;
 				padding: 8px 16px;
 				line-height: 140%;
+				display: flex;
+				gap: 12px;
+				align-items: center;
+				justify-content: flex-end;
 
 				border: 1px solid rgba(255, 255, 255, 0.2);
 				border-radius: 8px;
@@ -164,6 +185,22 @@
 				line-height: 140%;
 				color: rgba(255, 255, 255, 0.8);
 			}
+		}
+
+		:global([data-cmdk-input]) {
+			width: 0;
+			flex-grow: 1;
+			height: 100%;
+			width: 100%;
+			height: 100%;
+			inset: 0;
+			padding: 0 16px;
+
+			position: absolute;
+
+			padding-right: 48px;
+			outline: none;
+			background: transparent;
 		}
 
 		:global([data-cmdk-item]) {
@@ -197,6 +234,10 @@
 			&:active {
 				--bg-opacity: 0.2;
 			}
+		}
+
+		:global(.item-blue) {
+			color: $blue;
 		}
 	}
 
