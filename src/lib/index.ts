@@ -91,4 +91,5 @@ export { default as Combobox } from './components/form/Combobox.svelte'
 export { default as PopoverSelect } from './components/search/PopoverSelect.svelte'
 
 // re-export svelte-sonner
-export * from 'svelte-sonner'
+export type { ToastOptions, ExternalToast, ToastT } from 'svelte-sonner'
+export { default as Toaster } from './components/CustomToaster.svelte'
