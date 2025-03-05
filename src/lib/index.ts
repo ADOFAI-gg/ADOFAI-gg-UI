@@ -92,4 +92,5 @@ export { default as PopoverSelect } from './components/search/PopoverSelect.svel
 
 // re-export svelte-sonner
 export type { ToastOptions, ExternalToast, ToastT } from 'svelte-sonner'
+export { toast } from 'svelte-sonner'
 export { default as Toaster } from './components/CustomToaster.svelte'
