@@ -89,3 +89,6 @@ export * from './components/modal/context.js'
 // Combobox
 export { default as Combobox } from './components/form/Combobox.svelte'
 export { default as PopoverSelect } from './components/search/PopoverSelect.svelte'
+
+// re-export svelte-sonner
+export * from 'svelte-sonner'
