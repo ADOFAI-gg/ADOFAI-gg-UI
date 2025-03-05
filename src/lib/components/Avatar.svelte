@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { createAvatar, melt } from '@melt-ui/svelte'
+	import { writable } from 'svelte/store'
+
 	interface Props {
 		size: number
 		src: string | null
@@ -10,14 +13,17 @@
 	// 	src // watch for change
 	// 	loaded = false
 	// }
+
+	const {
+		elements: { image, fallback }
+	} = createAvatar({
+		src: src || ''
+	})
 </script>
 
 <div style="--avatar-size: {size}px;" class="avatar">
-	{#if src}
-		<img {src} class="image" alt="Avatar" draggable="false" />
-	{:else}
-		<div class="avatar-placeholder"></div>
-	{/if}
+	<img use:melt={$image} {src} class="image" alt="Avatar" draggable="false" />
+	<div use:melt={$fallback} class="avatar-placeholder"></div>
 </div>
 
 <style lang="scss">
