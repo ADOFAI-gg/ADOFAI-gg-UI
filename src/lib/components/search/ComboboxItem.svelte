@@ -98,11 +98,14 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			flex-shrink: 0;
 		}
 
 		&-text-area {
 			display: flex;
 			flex-direction: column;
+			width: 0;
+			flex-grow: 1;
 		}
 	}
 </style>
