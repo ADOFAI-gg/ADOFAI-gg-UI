@@ -125,22 +125,6 @@
 					{/each}
 				</div>
 			</Command.Root>
-			<!-- <input
-				placeholder={convertedPlaceholder}
-				type="text"
-				class="search-input"
-				bind:value={inputContent}
-			/>
-
-			<div class="list">
-				{#each filteredItems as item (item.value)}
-					TODO
-				{:else}
-					<div class="empty-sign">
-						<Translation key="ui-search:options-empty" />
-					</div>
-				{/each}
-			</div> -->
 		</PopoverContentPanel>
 	</div>
 </Popover>

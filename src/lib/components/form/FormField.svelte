@@ -16,6 +16,7 @@
 		modal?: boolean
 		children?: Snippet
 		hints?: Snippet
+		noHintsArea?: boolean
 	}
 
 	const {
@@ -28,17 +29,24 @@
 		required = false,
 		error,
 		modal = false,
-		hints
+		hints,
+		noHintsArea
 	}: Props = $props()
 </script>
 
 {#snippet hintsFallback()}
 	{#if error}
-		<FormHintArea {modal}>
+		{#if noHintsArea}
 			<FormHint type="error">
 				<Translation key={error} />
 			</FormHint>
-		</FormHintArea>
+		{:else}
+			<FormHintArea {modal}>
+				<FormHint type="error">
+					<Translation key={error} />
+				</FormHint>
+			</FormHintArea>
+		{/if}
 	{/if}
 {/snippet}
 
