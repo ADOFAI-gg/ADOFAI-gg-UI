@@ -127,7 +127,9 @@
 <div class="combobox-root" bind:offsetWidth={triggerWidth}>
 	{#if !multiple}
 		{#if iconTemplate && currentItem}
-			{@render iconTemplate(currentItem)}
+			<div class="select-icon">
+				{@render iconTemplate(currentItem)}
+			</div>
 		{:else if currentItem?.icon}
 			<div class="select-icon">
 				<Icon alt="icon" size={18} icon={currentItem.icon} />
