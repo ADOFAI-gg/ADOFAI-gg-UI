@@ -126,13 +126,11 @@
 
 <div class="combobox-root" bind:offsetWidth={triggerWidth}>
 	{#if !multiple}
-		{#if currentItem?.icon}
+		{#if iconTemplate && currentItem}
+			{@render iconTemplate(currentItem)}
+		{:else if currentItem?.icon}
 			<div class="select-icon">
-				{#if iconTemplate}
-					{@render iconTemplate(currentItem)}
-				{:else if currentItem.icon}
-					<Icon alt="icon" size={18} icon={currentItem.icon} />
-				{/if}
+				<Icon alt="icon" size={18} icon={currentItem.icon} />
 			</div>
 		{/if}
 	{/if}
