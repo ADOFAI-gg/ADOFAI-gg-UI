@@ -1,11 +1,15 @@
-remove-filter = 필터 없애기
-apply = 설정
-add-filter-placeholder = { $label }에 대한 필터 추가
-error-max-value = 값은 { $value }와 같거나 작아야 합니다
-cancel = 취소
-error-min-value = 값은 { $value }와 같거나 커야 합니다
-page-size-value = { $count }개씩 보기
-add-filter = 필터 추가
-page-size = 개수
-multi-select-summary = { $first } [rest]외 { $rest }[/rest]
-options-empty = 사용 가능한 옵션이 없습니다.
+remove-filter = Remove filters
+apply = Apply
+add-filter-placeholder = Add filter for { $label }
+error-max-value = Value must be equal or smaller than { $value }
+cancel = Cancel
+error-min-value = Value must be equal or bigger than { $value }
+page-size-value = View { $count } each
+add-filter = Add filter
+page-size = Size
+multi-select-summary =
+    { $first } [rest]and { $rest ->
+        [one] { $rest } other
+       *[other] { $rest } others
+    }[/rest]
+options-empty = No options available.
