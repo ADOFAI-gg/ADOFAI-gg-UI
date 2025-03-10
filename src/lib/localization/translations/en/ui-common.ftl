@@ -1,9 +1,9 @@
 sign-in = Login
 sign-up = Register
-sign-out = 로그아웃
-form-required = (필수)
-edit = 수정
-delete = 삭제
-no-options = 옵션이 없습니다
-range = { $min } ~ { $max }
-language = 언어 (Language)
+sign-out = Logout
+form-required = (required)
+edit = Edit
+delete = Delete
+no-options = No options available
+range = { $min } - { $max }
+language = Language
