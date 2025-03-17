@@ -9,3 +9,4 @@ add-filter = 필터 추가
 page-size = 개수
 multi-select-summary = { $first } [rest]외 { $rest }[/rest]
 options-empty = 사용 가능한 옵션이 없습니다.
+sort = 정렬
