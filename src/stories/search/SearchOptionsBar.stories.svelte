@@ -78,7 +78,16 @@
 				]
 			}
 		},
-		sort: [],
+		sort: [
+			{
+				name: '최신순',
+				objective: 'recent-asc'
+			},
+			{
+				name: '과거순',
+				objective: 'recent-desc'
+			}
+		],
 		pageSize: [15, 30, 50, 100, 200],
 		defaultPageSize: 50
 	} satisfies SearchOptionScheme
@@ -87,7 +96,7 @@
 <script lang="ts">
 	let data = $state<SearchOptionsData>({
 		filter: [],
-		sort: [],
+		sort: 'recent-asc',
 		pageSize: 50
 	})
 </script>

@@ -52,6 +52,27 @@
 </script>
 
 <div class="search-options-bar">
+	{#if scheme.sort}
+		<PopoverSelect
+			select
+			items={scheme.sort.map((x) => ({
+				label: x.name,
+				value: x.objective,
+				icon: x.icon
+			}))}
+			value={data.sort}
+			onSelect={(value) => {
+				data.sort = value
+			}}
+		>
+			{#snippet trigger(el)}
+				<SearchOptionChip meltElement={el} icon="sort" objectiveKey="ui-search:sort" hasValue>
+					{scheme.sort.find((x) => x.objective === data.sort)?.name}
+				</SearchOptionChip>
+			{/snippet}
+		</PopoverSelect>
+	{/if}
+
 	{#if scheme.pageSize}
 		<PopoverSelect
 			select
@@ -160,7 +181,6 @@
 
 	<PopoverSelect
 		onSelect={(value) => {
-			console.log(value)
 			addFilter(value)
 		}}
 		placeholder={(label, key, lang) =>

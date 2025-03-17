@@ -76,11 +76,10 @@ export type SearchFilterScheme = (
 }
 
 export interface SearchSortScheme {
-	name: TranslationKey
-	icon?: Snippet
+	name: string
+	icon?: string
 
 	objective: string
-	direction: 'asc' | 'desc'
 }
 
 export type SearchOptionScheme = {
@@ -102,13 +101,8 @@ export interface SearchFilter {
 	value: unknown
 }
 
-export interface SearchSort {
-	objective: string
-	order: 'asc' | 'desc'
-}
-
 export interface SearchOptionsData {
 	filter: SearchFilter[]
-	sort: SearchSort[]
+	sort: string
 	pageSize?: number
 }

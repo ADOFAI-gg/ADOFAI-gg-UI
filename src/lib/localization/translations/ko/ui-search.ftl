@@ -15,3 +15,5 @@ error-max-value = 값은 { $value }와 같거나 작아야 합니다
 error-min-value = 값은 { $value }와 같거나 커야 합니다
 
 multi-select-summary = { $first } [rest]외 { $rest }[/rest]
+
+sort = 정렬
