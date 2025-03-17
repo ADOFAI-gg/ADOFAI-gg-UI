@@ -13,3 +13,4 @@ multi-select-summary =
        *[other] { $rest } others
     }[/rest]
 options-empty = No options available.
+sort = 정렬
