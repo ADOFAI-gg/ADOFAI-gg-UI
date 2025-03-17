@@ -14,3 +14,4 @@ multi-select-summary =
     }[/rest]
 options-empty = No options available.
 sort = 정렬
+reset-filter = 필터 초기화
