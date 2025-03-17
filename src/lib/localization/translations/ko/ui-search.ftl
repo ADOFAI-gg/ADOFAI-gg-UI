@@ -17,3 +17,4 @@ error-min-value = 값은 { $value }와 같거나 커야 합니다
 multi-select-summary = { $first } [rest]외 { $rest }[/rest]
 
 sort = 정렬
+reset-filter = 필터 초기화

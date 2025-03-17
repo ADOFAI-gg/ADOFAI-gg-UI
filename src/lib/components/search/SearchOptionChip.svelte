@@ -12,13 +12,23 @@
 		children?: Snippet
 		meltElement?: AnyMeltElement
 		hasValue?: boolean
+		danger?: boolean
+		onclick?: () => void
 	}
 
-	// @ts-expect-error invalid typed
-	const { icon, objectiveKey, children, meltElement = emptyMeltElement, hasValue }: Props = $props()
+	const {
+		icon,
+		objectiveKey,
+		children,
+		// @ts-expect-error invalid typed
+		meltElement = emptyMeltElement,
+		onclick,
+		hasValue,
+		danger
+	}: Props = $props()
 </script>
 
-<button class="search-option-chip" use:melt={$meltElement}>
+<button class="search-option-chip" use:melt={$meltElement} class:danger {onclick}>
 	<div class="icon">
 		<Icon alt="icon" {icon} size={16} />
 	</div>
@@ -33,6 +43,8 @@
 </button>
 
 <style lang="scss">
+	@use '../../stylesheets/system/colors' as *;
+
 	.search-option-chip {
 		height: 24px;
 		padding: 0 12px;
@@ -45,6 +57,11 @@
 
 		font-size: 14px;
 		max-width: 320px;
+
+		&.danger {
+			color: $red;
+			background-color: rgba($red, 0.2);
+		}
 	}
 
 	.icon {

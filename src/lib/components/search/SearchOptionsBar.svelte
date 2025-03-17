@@ -179,6 +179,17 @@
 		</div>
 	{/each}
 
+	{#if data.filter.length}
+		<SearchOptionChip
+			onclick={() => {
+				data.filter = []
+			}}
+			danger
+			objectiveKey="ui-search:reset-filter"
+			icon="refresh"
+		/>
+	{/if}
+
 	<PopoverSelect
 		onSelect={(value) => {
 			addFilter(value)
