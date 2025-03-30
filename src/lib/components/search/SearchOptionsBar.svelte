@@ -94,7 +94,7 @@
 		</PopoverSelect>
 	{/if}
 
-	{#if scheme.pageSize}
+	{#if scheme.pageSize || scheme.sort}
 		<div class="divider"></div>
 	{/if}
 
