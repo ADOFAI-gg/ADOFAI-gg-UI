@@ -209,11 +209,17 @@
 </div>
 
 <style lang="scss">
+	@use '../../stylesheets/system/breakpoints' as *;
+
 	.search-options-bar {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 8px;
 		align-items: center;
+
+		@include breakpoint('lg') {
+			padding: 0 16px;
+		}
 	}
 
 	.divider {
