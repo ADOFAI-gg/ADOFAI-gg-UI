@@ -101,6 +101,7 @@
 		padding: 10px 16px;
 		border-radius: 8px;
 		transition: background-color ease 0.2s;
+		outline: none;
 
 		--bg-opacity: 0;
 
@@ -116,8 +117,6 @@
 			background-color: rgba(colors.$red, var(--bg-opacity));
 			color: colors.$red;
 		}
-
-		outline: none;
 
 		&:global([data-selected]) {
 			--bg-opacity: 0.1;
