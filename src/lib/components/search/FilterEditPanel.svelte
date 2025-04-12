@@ -8,7 +8,6 @@
 	import { getGlobalContext } from '$lib/system/context'
 	import { FormHint } from '$lib/index'
 	import Combobox from '../form/Combobox.svelte'
-	import { Previous } from 'runed'
 
 	interface Props {
 		scheme: SearchFilterScheme
@@ -38,33 +37,6 @@
 	$effect(() => {
 		value = getInitialValue()
 	})
-
-	// const prevValue = new Previous(() => Array.from($state.snapshot(value)))
-
-	// $effect(() => {
-	// 	if (scheme.type !== 'rangeSelect') return
-	// 	if (!prevValue.current) return
-
-	// 	const minIdx = selectOptionIndexes[value[0]]
-	// 	const maxIdx = selectOptionIndexes[value[1]]
-	// 	console.log(selectOptionIndexes, value[0], value[1])
-
-	// 	if (prevValue.current[0] !== value[0]) {
-	// 		const target = Math.max(maxIdx, minIdx)
-	// 		// console.log(value, target)
-	// 		if (value[1] !== target) value[1] = target
-	// 	} else if (prevValue.current[1] !== value[1]) {
-	// 		const target = Math.min(minIdx, maxIdx)
-	// 		// console.log(value, target)
-
-	// 		if (value[0] !== target) value[0] = target
-	// 	}
-	// })
-
-	// $effect(() => {
-	// 	if (scheme.type === 'rangeSelect') {
-	// 	}
-	// })
 
 	const { language } = getGlobalContext()
 

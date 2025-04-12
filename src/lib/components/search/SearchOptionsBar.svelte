@@ -46,8 +46,8 @@
 
 	const renderRange = (value: unknown): string => {
 		const [min, max] = value as [number, number]
-		if (min === max) return `${min}`
-		return `${min} - ${max}`
+		if (min === max) return `${min ?? ''}`
+		return `${min ?? ''} - ${max ?? ''}`
 	}
 </script>
 
