@@ -212,7 +212,6 @@
 	@use '../../stylesheets/system/colors' as *;
 
 	.filter-edit-panel {
-		max-width: 240px;
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
