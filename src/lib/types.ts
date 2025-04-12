@@ -55,6 +55,7 @@ export type SearchFilterScheme = (
 			label: TranslationKey
 			options: SelectOption<string | number>[]
 			multiple?: boolean
+			optionIconSnippet?: Snippet<[SelectOption<string | number>]>
 	  }
 	| {
 			type: 'range'
@@ -68,6 +69,7 @@ export type SearchFilterScheme = (
 			minLabel: TranslationKey
 			maxLabel: TranslationKey
 			options: SelectOption<string | number>[]
+			optionIconSnippet?: Snippet<[SelectOption<string | number>]>
 	  }
 ) & {
 	icon: string

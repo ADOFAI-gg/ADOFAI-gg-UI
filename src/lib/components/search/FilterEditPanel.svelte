@@ -113,7 +113,12 @@
 		</FormField>
 	{:else if scheme.type === 'select'}
 		<FormField label={scheme.label}>
-			<Combobox bind:value={value as string} items={scheme.options} multiple={scheme.multiple} />
+			<Combobox
+				bind:value={value as string}
+				items={scheme.options}
+				multiple={scheme.multiple}
+				iconTemplate={scheme.optionIconSnippet}
+			/>
 		</FormField>
 	{:else if scheme.type === 'range'}
 		{@const v = value as [number, number]}
@@ -160,6 +165,7 @@
 					clearable
 					bind:value={v[0] as string}
 					items={scheme.options}
+					iconTemplate={scheme.optionIconSnippet}
 				/>
 			</FormField>
 			<FormField label={scheme.maxLabel}>
