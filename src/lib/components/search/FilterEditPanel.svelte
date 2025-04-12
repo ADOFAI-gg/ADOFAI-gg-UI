@@ -171,6 +171,7 @@
 			<FormField label={scheme.maxLabel}>
 				<Combobox
 					multiple={false}
+					iconTemplate={scheme.optionIconSnippet}
 					onSelectedChange={({ next }) => {
 						if (next?.value) {
 							const other = selectOptionIndexes[value[0]]
