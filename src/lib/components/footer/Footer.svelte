@@ -23,7 +23,7 @@
 					<FooterLink href="https://adofai.gg/docs/legal-notice" target="_blank" rel="noreferrer">
 						<Translation key="ui-footer:legal-notice" />
 					</FooterLink>
-					<FooterLink href="https://adofai.gg/docs/terms" target="_blank" rel="noreferrer">
+					<FooterLink href="https://adofai.gg/docs/general-terms" target="_blank" rel="noreferrer">
 						<Translation key="ui-footer:legal-terms" />
 					</FooterLink>
 					<FooterLink
