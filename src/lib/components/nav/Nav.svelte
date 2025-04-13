@@ -107,6 +107,8 @@
 		position: sticky;
 		top: 0;
 		width: 100%;
+
+		backdrop-filter: blur(16px);
 	}
 
 	.nav-content {
