@@ -1,4 +1,4 @@
-remove-filter = Remove filters
+remove-filter = Remove filter
 apply = Apply
 add-filter-placeholder = Add filter for { $label }
 error-max-value = Value must be equal or smaller than { $value }
@@ -13,5 +13,5 @@ multi-select-summary =
        *[other] { $rest } others
     }[/rest]
 options-empty = No options available.
-sort = 정렬
-reset-filter = 필터 초기화
+sort = Sort
+reset-filter = Reset Filters
