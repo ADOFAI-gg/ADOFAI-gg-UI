@@ -37,7 +37,7 @@
 				</FooterSection>
 			</section>
 			<p class="footer-copyright">
-				&copy; <Translation key="ui-footer:copyright" />
+				&copy; 2025 ADOFAI.gg. <Translation key="ui-footer:copyright" />
 			</p>
 		</div>
 	</Container>

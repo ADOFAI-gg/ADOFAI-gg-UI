@@ -5,5 +5,5 @@ contact-discord = Discord 커뮤니티 가입
 contact = 연락
 contact-email = 문의 메일 전송
 legal-terms = 서비스 이용 약관
-copyright = 2024 ADOFAI.gg.   ADOFAI.gg는 7th Beat Games가 제작하거나 승인한 서비스가 아닙니다.
+copyright = ADOFAI.gg는 7th Beat Games가 제작하거나 승인한 서비스가 아닙니다.
 legal-notice = 법적 고지

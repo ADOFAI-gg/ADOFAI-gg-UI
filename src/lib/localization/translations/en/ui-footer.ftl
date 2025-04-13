@@ -6,4 +6,4 @@ legal = Legal Documents
 legal-notice = Legal notice
 legal-terms = Terms of Service
 legal-privacy = Privacy Policy
-copyright = 2024 ADOFAI.gg.   ADOFAI.gg is not created or endorsed by 7th Beat Games.
+copyright = ADOFAI.gg is not created or endorsed by 7th Beat Games.
