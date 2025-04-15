@@ -1,9 +1,9 @@
-legal-privacy = 개인정보 처리방침
+legal-privacy = 隐私政策
 title = ADOFAI.gg
-legal = 법적 문서
-contact-discord = Discord 커뮤니티 가입
-contact = 연락
-contact-email = 문의 메일 전송
-legal-terms = 서비스 이용 약관
-copyright = ADOFAI.gg는 7th Beat Games가 제작하거나 승인한 서비스가 아닙니다.
-legal-notice = 법적 고지
+legal = 法律文件
+contact-discord = 加入我们的Discord社区
+contact = 联系我们
+contact-email = 发送咨询邮件
+legal-terms = 服务条款
+copyright = ADOFAI.gg不是7th Beat Games官方创建和认定的论坛。
+legal-notice = 法律声明
