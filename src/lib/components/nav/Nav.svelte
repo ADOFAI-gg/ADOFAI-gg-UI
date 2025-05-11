@@ -5,19 +5,19 @@
 	import NavLink from '$lib/components/nav/NavLink.svelte'
 	import { getGlobalContext, Logo, NavSignArea, Popover, type User } from '$lib/index.js'
 	import type { Snippet } from 'svelte'
-	import Menu from '../menu/Menu.svelte'
 	import NavUserArea from './NavUserArea.svelte'
 	import NavMenu from './menu/NavMenu.svelte'
 
 	interface Props {
 		user: User | null
 		minimal?: boolean
+		appendLogo?: Snippet
 		leftSlot?: Snippet
 		rightSlot?: Snippet
 		menu?: Snippet
 	}
 
-	const { user, minimal, menu, leftSlot, rightSlot }: Props = $props()
+	const { user, minimal, menu, leftSlot, rightSlot, appendLogo }: Props = $props()
 
 	const ctx = getGlobalContext()
 
@@ -28,13 +28,18 @@
 	<Container>
 		<div class="nav-content">
 			<div class="start-area">
-				<a href={mainUrl}>
+				<a href={mainUrl} class="logo-link">
 					<div class="logo-icon">
 						<LogoIcon />
 					</div>
 					<div class="logo-text">
 						<Logo height={16} width={134} />
 					</div>
+					{#if appendLogo}
+						<div class="append-logo">
+							{@render appendLogo()}
+						</div>
+					{/if}
 				</a>
 
 				<div class="nav-links">
@@ -117,6 +122,10 @@
 		align-items: center;
 	}
 
+	.append-logo {
+		padding-left: 8px;
+	}
+
 	.spacer {
 		flex-grow: 1;
 	}
@@ -161,5 +170,10 @@
 		@include breakpoint('md') {
 			display: flex;
 		}
+	}
+
+	.logo-link {
+		display: flex;
+		align-items: center;
 	}
 </style>

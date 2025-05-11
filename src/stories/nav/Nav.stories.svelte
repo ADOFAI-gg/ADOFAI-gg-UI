@@ -28,7 +28,11 @@
 {/snippet}
 
 <Story name="Default">
-	<Nav user={null} {menu}></Nav>
+	<Nav user={null} {menu}>
+		{#snippet appendLogo()}
+			wow
+		{/snippet}
+	</Nav>
 </Story>
 
 <Story name="Signed In">
