@@ -15,17 +15,26 @@
 		leftSlot?: Snippet
 		rightSlot?: Snippet
 		menu?: Snippet
+		fullWidth?: boolean
 	}
 
-	const { user, minimal, menu, leftSlot, rightSlot, appendLogo }: Props = $props()
+	const {
+		user,
+		minimal,
+		fullWidth = false,
+		menu,
+		leftSlot,
+		rightSlot,
+		appendLogo
+	}: Props = $props()
 
 	const ctx = getGlobalContext()
 
 	const mainUrl = $derived(ctx.urls.main)
 </script>
 
-<nav class="nav-container">
-	<Container>
+<nav class="nav-container" class:full-width={fullWidth}>
+	{#snippet content()}
 		<div class="nav-content">
 			<div class="start-area">
 				<a href={mainUrl} class="logo-link">
@@ -99,7 +108,14 @@
 				</Popover>
 			{/if}
 		</div>
-	</Container>
+	{/snippet}
+	{#if fullWidth}
+		{@render content()}
+	{:else}
+		<Container>
+			{@render content()}
+		</Container>
+	{/if}
 </nav>
 
 <style lang="scss">
@@ -114,6 +130,10 @@
 		width: 100%;
 
 		backdrop-filter: blur(16px);
+
+		&.full-width {
+			padding: 0 24px;
+		}
 	}
 
 	.nav-content {

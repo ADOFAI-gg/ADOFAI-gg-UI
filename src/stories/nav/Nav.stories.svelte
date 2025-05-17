@@ -15,9 +15,9 @@
 		<NavMenuItem switchGroup="language">
 			<Translation key="ui-common:language" />
 		</NavMenuItem>
-		<NavMenuItem link href="https://adofai.gg" target="_blank" rel="noreferrer"
-			>Something</NavMenuItem
-		>
+		<NavMenuItem link href="https://adofai.gg" target="_blank" rel="noreferrer">
+			Something
+		</NavMenuItem>
 		<NavMenuItem type="danger">
 			<Translation key="ui-common:sign-out" />
 		</NavMenuItem>
@@ -33,6 +33,10 @@
 			wow
 		{/snippet}
 	</Nav>
+</Story>
+
+<Story name="Full Width">
+	<Nav user={null} fullWidth {menu}></Nav>
 </Story>
 
 <Story name="Signed In">
