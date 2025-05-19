@@ -14,5 +14,8 @@
 <style lang="scss">
 	.comment-list {
 		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
 	}
 </style>
