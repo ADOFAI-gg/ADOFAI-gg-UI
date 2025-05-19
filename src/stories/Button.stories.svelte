@@ -63,6 +63,8 @@
 
 <Story name="Primary" args={{ variant: 'primary' }} children={template} />
 
+<Story name="Ghost Primary" args={{ variant: 'ghost-primary' }} children={template} />
+
 <Story name="Danger" args={{ variant: 'danger' }} children={template} />
 
 <Story name="Light Ghost" args={{ variant: 'ghost-light' }} children={template} />

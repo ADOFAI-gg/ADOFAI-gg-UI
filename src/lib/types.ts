@@ -26,6 +26,7 @@ export type ButtonStyle =
 	| 'ghost-light'
 	| 'ghost-dark'
 	| 'ghost-danger'
+	| 'ghost-primary'
 	| 'outlined'
 	| 'outlined-danger'
 export type ButtonSize = 'lg' | 'md' | 'sm'
