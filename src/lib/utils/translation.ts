@@ -153,6 +153,7 @@ export const getTranslationData = (
 	const lang = langData[language]
 	if (!lang) return null
 	const section = lang[sectionName]
+	if (!section) return null
 
 	const data = section.getMessage(key)
 
