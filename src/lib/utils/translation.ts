@@ -106,7 +106,8 @@ export const translateKey = (
 	language: string,
 	rawKey: TranslationKey,
 	args: Record<string, FluentVariable> = {},
-	escape = true
+	escape = true,
+	attribute?: string
 ) => {
 	const key = getKey(rawKey)
 	const fb = key.join(':')
@@ -123,8 +124,11 @@ export const translateKey = (
 		})
 	)
 
-	if (!message?.value) return tryEscapeHtmlTags(escape, fb)
-	return translateStr(section, message.value, args, escape)
+	let pattern = message.value
+	if (!pattern && attribute) pattern = message.attributes[attribute]
+
+	if (!pattern) return tryEscapeHtmlTags(escape, fb)
+	return translateStr(section, pattern, args, escape)
 }
 
 export const getKey = (rawKey: TranslationKey): ArrayTranslationKey => {
@@ -176,10 +180,11 @@ export const translate = (
 	language: Readable<string>,
 	rawKey: TranslationKey,
 	args: Record<string, FluentVariable>,
-	escape = true
+	escape = true,
+	attribute?: string
 ) => {
 	return derived(language, (l) => {
-		return translateKey(l, rawKey, args, escape)
+		return translateKey(l, rawKey, args, escape, attribute)
 	})
 }
 

@@ -11,12 +11,13 @@
 	interface Props {
 		key: TranslationKey
 		params?: Record<string, FluentVariable>
+		attribute?: string
 		htmlReplacer?: (value: string) => string
 	}
 
-	const { key, params = {}, htmlReplacer = (v) => v }: Props = $props()
+	const { key, params = {}, htmlReplacer = (v) => v, attribute }: Props = $props()
 
-	const htmlValue = derived(translate(currentLang, key, params, true), (v) => {
+	const htmlValue = derived(translate(currentLang, key, params, true, attribute), (v) => {
 		return htmlReplacer(v)
 	})
 </script>
