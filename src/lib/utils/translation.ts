@@ -5,8 +5,9 @@ import { writable, type Readable, derived } from 'svelte/store'
 import langs from '../localization/langs.json'
 import Cookies from 'js-cookie'
 
-import { FluentBundle, FluentResource, type FluentVariable } from '@fluent/bundle'
+import { FluentBundle, FluentResource, type FluentVariable, type Message } from '@fluent/bundle'
 import { translationData } from '$lib/localization/translations/index.js'
+import type { Pattern } from '@fluent/bundle/esm/ast'
 
 export const availableLanguages: LangResponse[] = langs
 export const fallbackLang = 'ko'
@@ -104,17 +105,14 @@ const escapeHtmlTags = (str: string) =>
 export const translateKey = (
 	language: string,
 	rawKey: TranslationKey,
-	args: Record<string, FluentVariable>,
+	args: Record<string, FluentVariable> = {},
 	escape = true
 ) => {
-	let key: string
-	let sectionName: LangSection
-
-	if (typeof rawKey === 'string') {
-		;[sectionName, key] = rawKey.split(':') as ArrayTranslationKey
-	} else {
-		;[sectionName, key] = rawKey
-	}
+	const key = getKey(rawKey)
+	const fb = key.join(':')
+	let res = getTranslationData(language, key)
+	if (!res) return tryEscapeHtmlTags(escape, fb)
+	const [message, section] = res
 
 	const escapedArgs = Object.fromEntries(
 		Object.entries(args).map(([k, v]) => {
@@ -125,15 +123,47 @@ export const translateKey = (
 		})
 	)
 
-	if (!language) return tryEscapeHtmlTags(escape, key)
+	if (!message?.value) return tryEscapeHtmlTags(escape, fb)
+	return translateStr(section, message.value, args, escape)
+}
+
+export const getKey = (rawKey: TranslationKey): ArrayTranslationKey => {
+	let key: string
+	let sectionName: LangSection
+
+	if (typeof rawKey === 'string') {
+		;[sectionName, key] = rawKey.split(':') as ArrayTranslationKey
+	} else {
+		;[sectionName, key] = rawKey
+	}
+
+	return [sectionName, key]
+}
+
+export const getTranslationData = (
+	language: string,
+	rawKey: TranslationKey
+): [Message, FluentBundle] | null => {
+	const [sectionName, key] = getKey(rawKey)
+
 	const lang = langData[language]
-	if (!lang) return tryEscapeHtmlTags(escape, key)
+	if (!lang) return null
 	const section = lang[sectionName]
-	if (!section) return tryEscapeHtmlTags(escape, key)
-	let message = section.getMessage(key)
-	if (!message?.value) message = langData[fallbackLang][sectionName].getMessage(key)
-	if (!message?.value) return tryEscapeHtmlTags(escape, key)
-	const result = section.formatPattern(message.value, escapedArgs)
+
+	const data = section.getMessage(key)
+
+	if (!data) return null
+
+	return [data, section]
+}
+
+export const translateStr = (
+	bundle: FluentBundle,
+	pattern: Pattern,
+	args: Record<string, FluentVariable> = {},
+	escape: boolean = true
+) => {
+	const result = bundle.formatPattern(pattern, args)
 	return tryEscapeHtmlTags(escape, result)
 }
 

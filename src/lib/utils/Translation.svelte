@@ -1,8 +1,6 @@
-<script lang="ts" context="module">
-	/* eslint svelte/no-at-html-tags: 0 */
-</script>
-
 <script lang="ts">
+	/* eslint svelte/no-at-html-tags: 0 */
+
 	import { getGlobalContext } from '$lib/index.js'
 	import { derived } from 'svelte/store'
 
@@ -10,13 +8,15 @@
 	import type { FluentVariable } from '@fluent/bundle'
 
 	const currentLang = getGlobalContext().language
+	interface Props {
+		key: TranslationKey
+		params?: Record<string, FluentVariable>
+		htmlReplacer?: (value: string) => string
+	}
 
-	export let key: TranslationKey
-	export let params: Record<string, FluentVariable> = {}
+	const { key, params = {}, htmlReplacer = (v) => v }: Props = $props()
 
-	export let htmlReplacer: (value: string) => string = (v) => v
-
-	$: htmlValue = derived(translate(currentLang, key, params, true), (v) => {
+	const htmlValue = derived(translate(currentLang, key, params, true), (v) => {
 		return htmlReplacer(v)
 	})
 </script>
