@@ -234,6 +234,9 @@
 		display: flex;
 		flex-direction: column;
 		margin-top: 8px;
+
+		max-height: 400px;
+		overflow-y: auto;
 	}
 
 	.no-options {
