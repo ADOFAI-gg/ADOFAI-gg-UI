@@ -197,12 +197,12 @@
 
 		:global([data-cmdk-group-heading]) {
 			padding: 16px 16px 2px 16px;
-			opacity: 0.6;
+			color: rgba(255, 255, 255, 0.6);
 			font-size: 14px;
 			font-weight: 600;
 			position: sticky;
 			top: 0;
-			background-color: inherit;
+			background-color: $overlay;
 		}
 
 		:global([data-cmdk-input]) {
