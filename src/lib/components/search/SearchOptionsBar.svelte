@@ -55,11 +55,15 @@
 	{#if scheme.sort}
 		<PopoverSelect
 			select
-			items={scheme.sort.map((x) => ({
-				label: x.name,
-				value: x.objective,
-				icon: x.icon
-			}))}
+			items={[
+				{
+					options: scheme.sort.map((x) => ({
+						label: x.name,
+						value: x.objective,
+						icon: x.icon
+					}))
+				}
+			]}
 			value={data.sort}
 			onSelect={(value) => {
 				data.sort = value
@@ -76,14 +80,18 @@
 	{#if scheme.pageSize}
 		<PopoverSelect
 			select
-			items={scheme.pageSize.map((x) => ({
-				label: translateKey($language, 'ui-search:page-size-value', { count: x }),
-				labelParams: { count: x },
-				value: x
-			}))}
-			value={data.pageSize}
+			items={[
+				{
+					options: scheme.pageSize.map((x) => ({
+						label: translateKey($language, 'ui-search:page-size-value', { count: x }),
+						labelParams: { count: x },
+						value: x.toString()
+					}))
+				}
+			]}
+			value={data.pageSize?.toString()}
 			onSelect={(value) => {
-				data.pageSize = value
+				data.pageSize = parseInt(value)
 			}}
 		>
 			{#snippet trigger(el)}
@@ -196,11 +204,15 @@
 		}}
 		placeholder={(label, key, lang) =>
 			translateKey(lang, 'ui-search:add-filter-placeholder', { label: label || '...' })}
-		items={Object.entries(scheme.filter).map(([k, v]) => ({
-			icon: v.icon,
-			label: translateKey($language, v.name, {}),
-			value: k
-		}))}
+		items={[
+			{
+				options: Object.entries(scheme.filter).map(([k, v]) => ({
+					icon: v.icon,
+					label: translateKey($language, v.name, {}),
+					value: k
+				}))
+			}
+		]}
 	>
 		{#snippet trigger(el)}
 			<AddFilterButton meltElement={el} />
