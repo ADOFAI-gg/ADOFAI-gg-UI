@@ -17,7 +17,7 @@
 		{#snippet children({ close })}
 			<ModalTitle>Example Modal</ModalTitle>
 
-			<FormField label="custom:Wow Field" error="custom:wow sans" modal>
+			<FormField label="Wow Field" error="wow sans" modal>
 				<InputControl />
 			</FormField>
 

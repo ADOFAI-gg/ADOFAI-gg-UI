@@ -12,7 +12,7 @@
 </script>
 
 <Story name="Example">
-	<SearchBar bind:value={query} placeholder="custom:Wow this is placeholder" />
+	<SearchBar bind:value={query} placeholder="Wow this is placeholder" />
 
 	<div>{query}</div>
 </Story>

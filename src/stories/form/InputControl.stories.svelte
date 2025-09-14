@@ -14,8 +14,4 @@
 
 <Story name="Default" args={{}} children={template} />
 
-<Story
-	name="With Placeholder"
-	args={{ placeholder: 'custom:Wow Placeholder' }}
-	children={template}
-/>
+<Story name="With Placeholder" args={{ placeholder: 'Wow Placeholder' }} children={template} />

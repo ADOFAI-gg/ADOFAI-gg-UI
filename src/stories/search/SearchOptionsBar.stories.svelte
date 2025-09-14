@@ -12,15 +12,15 @@
 			title: {
 				type: 'string',
 				icon: 'music',
-				label: 'custom:이것은 인풋필드 이다 !',
-				name: 'custom:제목',
+				label: '이것은 인풋필드 이다 !',
+				name: '제목',
 				default: ''
 			},
 			something: {
 				type: 'string',
 				icon: 'tile',
-				label: 'custom:와!',
-				name: 'custom:무언가',
+				label: '와!',
+				name: '무언가',
 				default: ''
 			},
 			intRange: {
@@ -28,17 +28,17 @@
 				icon: 'music',
 				min: 0,
 				max: 100,
-				minLabel: 'custom:최소',
-				maxLabel: 'custom:최대',
+				minLabel: '최소',
+				maxLabel: '최대',
 				default: [0, 100],
-				name: 'custom:대충정수범위'
+				name: '대충정수범위'
 			},
 			select: {
 				type: 'select',
 				icon: 'tile',
-				name: 'custom:와샌즈',
+				name: '와샌즈',
 				default: [],
-				label: 'custom:샌즈',
+				label: '샌즈',
 				options: [
 					{
 						value: 'NONE',
@@ -58,10 +58,10 @@
 			select2: {
 				type: 'rangeSelect',
 				icon: 'tile',
-				name: 'custom:범위 셀렉트',
+				name: '범위 셀렉트',
 				default: ['item1', 'item3'],
-				minLabel: 'custom:최소',
-				maxLabel: 'custom:최대',
+				minLabel: '최소',
+				maxLabel: '최대',
 				options: [
 					{
 						value: 'item1',

@@ -13,7 +13,7 @@
 		},
 		links: [
 			{
-				key: 'custom:Hello',
+				key: 'Hello',
 				href: '/hello'
 			}
 		],

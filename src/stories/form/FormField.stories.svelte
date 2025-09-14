@@ -10,7 +10,7 @@
 
 {#snippet template(args: any)}
 	<FormField {...args}>
-		<InputControl placeholder="custom:Wow sans" />
+		<InputControl placeholder="Wow sans" />
 	</FormField>
 {/snippet}
 
@@ -18,18 +18,18 @@
 
 <Story
 	name="With Subtitle"
-	args={{ label: 'custom:wow sans', subtitle: 'custom:wow subtitle' }}
+	args={{ label: 'wow sans', subtitle: 'wow subtitle' }}
 	children={template}
 />
 
-<Story name="Labeled" args={{ label: 'custom:Label' }} children={template} />
+<Story name="Labeled" args={{ label: 'Label' }} children={template} />
 
-<Story name="Required" args={{ label: 'custom:Label', required: true }} children={template} />
+<Story name="Required" args={{ label: 'Label', required: true }} children={template} />
 
-<Story name="With Help Text" args={{ helpText: 'custom:Wow this is help' }} children={template} />
+<Story name="With Help Text" args={{ helpText: 'Wow this is help' }} children={template} />
 
 <Story
 	name="With Error"
-	args={{ label: 'custom:Label', error: 'custom:Wow this is error' }}
+	args={{ label: 'Label', error: 'Wow this is error' }}
 	children={template}
 />

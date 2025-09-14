@@ -14,5 +14,5 @@
 </Story>
 
 <Story name="Error">
-	<PINInput error="custom:wow im error" length={6} />
+	<PINInput error="wow im error" length={6} />
 </Story>
