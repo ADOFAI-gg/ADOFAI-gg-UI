@@ -7,9 +7,12 @@
 		component: PopoverSelect
 	})
 
-	const items = new Array(100).fill(0).map((x, i) => ({
-		label: `Item ${i}`,
-		value: i
+	const items = new Array(10).fill(0).map((x, i) => ({
+		title: `야호 ${i}`,
+		options: new Array(10).fill(0).map((y, j) => ({
+			label: `Item ${i * 10 + j}`,
+			value: `${i}-${j}`
+		}))
 	}))
 </script>
 

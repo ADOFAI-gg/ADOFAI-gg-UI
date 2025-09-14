@@ -35,6 +35,11 @@ export type CheckboxSize = 'lg' | 'md' | 'sm'
 
 export type FloatingPlacement = Exclude<FloatingConfig, null>['placement']
 
+export type SelectGroup<Value, CustomData = unknown> = {
+	title?: string
+	options: SelectOption<Value, CustomData>[]
+}
+
 export type SelectOption<Value, CustomData = unknown> = {
 	value: Value
 	label: string

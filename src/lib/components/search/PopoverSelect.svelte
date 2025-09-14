@@ -1,25 +1,32 @@
 <script lang="ts">
-	import { getGlobalContext, Icon, LoadingSpinner, type SelectOption } from '$lib/index'
+	import {
+		getGlobalContext,
+		Icon,
+		LoadingSpinner,
+		type SelectGroup,
+		type SelectOption
+	} from '$lib/index'
 	import Translation from '$lib/utils/Translation.svelte'
 	import { type AnyMeltElement } from '@melt-ui/svelte/internal/helpers'
-	import { onMount, untrack, type Snippet } from 'svelte'
+	import { type Snippet } from 'svelte'
 	import Popover from '../Popover.svelte'
 	import PopoverContentPanel from '../PopoverContentPanel.svelte'
 	import { Command } from 'cmdk-sv'
 
 	type T = $$Generic
-	type Value = $$Generic
+	type Value = string
 
-	type Item = SelectOption<Value, T>
+	type Group = SelectGroup<Value, T>
+	type Option = SelectOption<Value, T>
 
 	type Props = {
-		items: Item[]
+		items: Group[]
 		placeholder?: (label: string | null, value: string | null, lang: string) => string
 		value?: Value
 		inputValue?: string
 		customFilter?: boolean
-		subtitleTemplate?: Snippet<[Item]>
-		iconTemplate?: Snippet<[Item]>
+		subtitleTemplate?: Snippet<[Option]>
+		iconTemplate?: Snippet<[Option]>
 		select?: boolean
 		onSelect?: (value: Value) => void
 		loading?: boolean
@@ -50,18 +57,18 @@
 
 	let filteredItems = $derived.by(() => {
 		if (customFilter) return items
-		return items.filter((x) => normalize(x.label).includes(normalize(inputValue)))
+		return items
+			.map(
+				(x) =>
+					({
+						title: x.title,
+						options: x.options.filter((y) => normalize(y.label).includes(normalize(inputValue)))
+					}) as Group
+			)
+			.filter((x) => x.options.length > 0)
 	})
 
-	let current = $state('0')
-
-	$effect(() => {
-		if (!open) {
-			current = filteredItems.findIndex((x) => x.value === value).toString()
-		}
-	})
-
-	let currentItem = $derived(filteredItems[+current])
+	let currentItem = $derived(filteredItems.flatMap((x) => x.options).find((x) => x.value === value))
 
 	let convertedPlaceholder = $derived(
 		placeholder(currentItem?.label || null, currentItem?.value?.toString() || null, $lang)
@@ -71,7 +78,7 @@
 <Popover trigger={triggerSnippet} bind:open>
 	<div class="select-root" class:contains-value={value !== undefined}>
 		<PopoverContentPanel>
-			<Command.Root bind:value={current} shouldFilter={false}>
+			<Command.Root bind:value shouldFilter={false}>
 				<div class="input-root">
 					<Command.Input bind:value={inputValue} placeholder={convertedPlaceholder} />
 
@@ -89,39 +96,51 @@
 						</div>
 					</Command.Empty>
 
-					{#each filteredItems as item, i (i)}
-						<Command.Item
-							onSelect={() => {
-								open = false
-								onSelect?.(item.value)
-							}}
-							class="{select ? 'select' : ''} item-{item.color || 'default'}"
-							value={`${i}`}
-						>
-							<div class="item-icon">
-								{#if iconTemplate}
-									{@render iconTemplate(item)}
-								{:else if item.icon}
-									<Icon alt="icon" size={16} icon={item.icon} />
-								{/if}
-							</div>
-
-							<div class="item-text-area">
-								<div class="item-title">
-									{item.label}
-								</div>
-
-								{#if item.subtitle || subtitleTemplate}
-									<div class="item-subtitle">
-										{#if subtitleTemplate}
-											{@render subtitleTemplate(item)}
-										{:else}
-											{item.subtitle}
+					{#each filteredItems as group, i (i)}
+						{#snippet content()}
+							{#each group.options as item, j (j)}
+								<Command.Item
+									onSelect={() => {
+										open = false
+										onSelect?.(item.value)
+									}}
+									class="{select ? 'select' : ''} item-{item.color || 'default'}"
+									value={item.value}
+								>
+									<div class="item-icon">
+										{#if iconTemplate}
+											{@render iconTemplate(item)}
+										{:else if item.icon}
+											<Icon alt="icon" size={16} icon={item.icon} />
 										{/if}
 									</div>
-								{/if}
-							</div>
-						</Command.Item>
+
+									<div class="item-text-area">
+										<div class="item-title">
+											{item.label}
+										</div>
+
+										{#if item.subtitle || subtitleTemplate}
+											<div class="item-subtitle">
+												{#if subtitleTemplate}
+													{@render subtitleTemplate(item)}
+												{:else}
+													{item.subtitle}
+												{/if}
+											</div>
+										{/if}
+									</div>
+								</Command.Item>
+							{/each}
+						{/snippet}
+
+						{#if group.title}
+							<Command.Group heading={group.title}>
+								{@render content()}
+							</Command.Group>
+						{:else}
+							{@render content()}
+						{/if}
 					{/each}
 				</div>
 			</Command.Root>
@@ -174,6 +193,16 @@
 				line-height: 140%;
 				color: rgba(255, 255, 255, 0.8);
 			}
+		}
+
+		:global([data-cmdk-group-heading]) {
+			padding: 16px 16px 2px 16px;
+			opacity: 0.6;
+			font-size: 14px;
+			font-weight: 600;
+			position: sticky;
+			top: 0;
+			background-color: inherit;
 		}
 
 		:global([data-cmdk-input]) {
