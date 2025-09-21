@@ -7,3 +7,4 @@ contact-email = 发送咨询邮件
 legal-terms = 服务条款
 copyright = ADOFAI.gg不是7th Beat Games官方创建和认定的论坛。
 legal-notice = 法律声明
+update = 업데이트
