@@ -1,4 +1,9 @@
 <script lang="ts">
+	interface Props {
+		date?: string
+	}
+
+	const { date }: Props = $props()
 	import { FooterLink, FooterSection } from '$lib/index.js'
 	import Translation from '$lib/utils/Translation.svelte'
 	import Container from '../Container.svelte'
@@ -38,6 +43,12 @@
 			</section>
 			<p class="footer-copyright">
 				&copy; 2025 ADOFAI.gg. <Translation key="ui-footer:copyright" />
+				{#if date}
+					<span class="footer-update">
+						{date}
+						<span><Translation key="ui-footer:update" /></span>
+					</span>
+				{/if}
 			</p>
 		</div>
 	</Container>
@@ -66,6 +77,19 @@
 	.footer-copyright {
 		font-size: 14px;
 		opacity: 0.6;
+	}
+
+	.footer-update {
+		display: inline;
+		margin-left: 8px;
+	}
+
+	.footer-update span {
+		display: none;
+		margin-left: 0px;
+		@include breakpoint('md') {
+			display: inline;
+		}
 	}
 
 	.footer-links {
