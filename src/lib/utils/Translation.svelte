@@ -17,9 +17,11 @@
 
 	const { key, params = {}, htmlReplacer = (v) => v, attribute }: Props = $props()
 
-	const htmlValue = derived(translate(currentLang, key, params, true, attribute), (v) => {
-		return htmlReplacer(v)
-	})
+	const htmlValue = $derived(
+		derived(translate(currentLang, key, params, true, attribute), (v) => {
+			return htmlReplacer(v)
+		})
+	)
 </script>
 
 {@html $htmlValue}
