@@ -1,8 +1,6 @@
 legal-privacy = 隐私政策
 title = ADOFAI.gg
-legal = 法律文件
 contact-discord = 加入我们的Discord社区
-contact = 联系我们
 contact-email = 发送咨询邮件
 legal-terms = 服务条款
 copyright = ADOFAI.gg不是7th Beat Games官方创建和认定的论坛。
