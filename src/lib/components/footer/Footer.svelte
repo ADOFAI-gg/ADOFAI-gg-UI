@@ -16,7 +16,7 @@
 				<Translation key="ui-footer:title" />
 			</h2>
 			<section class="footer-links">
-				<FooterSection title="ui-footer:contact">
+				<FooterSection>
 					<FooterLink href="mailto:support@adofai.gg" target="_blank" rel="noreferrer">
 						<Translation key="ui-footer:contact-email" />
 					</FooterLink>
@@ -24,7 +24,7 @@
 						<Translation key="ui-footer:contact-discord" />
 					</FooterLink>
 				</FooterSection>
-				<FooterSection title="ui-footer:legal">
+				<FooterSection>
 					<FooterLink href="https://adofai.gg/docs/legal-notice" target="_blank" rel="noreferrer">
 						<Translation key="ui-footer:legal-notice" />
 					</FooterLink>
