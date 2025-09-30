@@ -23,7 +23,7 @@ export const excludeLanguages = (...languages: string[]) => {
 
 const registeredLangSections: string[] = []
 
-const langSections = ['ui-common', 'ui-footer', 'ui-search'] as const
+const langSections = ['ui-common', 'ui-footer', 'ui-search', 'custom'] as const
 
 export type LangSection = (typeof langSections)[number] | ADOFAIGG_UI.ExtraLangSections[number]
 export type LangData = Record<string, FluentBundle>
@@ -110,6 +110,7 @@ export const translateKey = (
 	attribute?: string
 ) => {
 	const key = getKey(rawKey)
+	if (key[0] === 'custom') return key[1]
 	const fb = key.join(':')
 	let res = getTranslationData(language, key)
 	if (!res) return tryEscapeHtmlTags(escape, fb)
