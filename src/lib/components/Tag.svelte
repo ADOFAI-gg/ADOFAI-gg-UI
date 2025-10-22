@@ -3,7 +3,7 @@
 
 	interface Props {
 		children: Snippet
-		color: 'yellow' | 'blue' | 'white' | 'gray'
+		color: 'yellow' | 'blue' | 'white' | 'gray' | 'darkblue'
 	}
 
 	const { children, color }: Props = $props()
