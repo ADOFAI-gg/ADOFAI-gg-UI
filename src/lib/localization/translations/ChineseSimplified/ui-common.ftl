@@ -1,9 +1,9 @@
-sign-out = 로그아웃
-form-required = (필수)
-no-options = 옵션이 없습니다
-edit = 수정
+sign-out = 登出
+form-required = （需求）
+no-options = 没有可用项
+edit = 编辑
 range = { $min } ~ { $max }
-delete = 삭제
-sign-up = 가입
-sign-in = 로그인
-language = 언어 (Language)
+delete = 删除
+sign-up = 注册
+sign-in = 登录
+language = 语言(Language)
