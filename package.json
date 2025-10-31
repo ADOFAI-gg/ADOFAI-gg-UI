@@ -1,107 +1,79 @@
 {
-	"name": "@adofai-gg/ui",
-	"version": "0.0.0",
-	"type": "module",
+	"name": "adofai-gg-ui",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build && npm run prepack",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"prepack": "svelte-kit sync && svelte-package && publint",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint .",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build"
+	},
 	"files": [
-		"dist"
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
 	],
+	"sideEffects": [
+		"**/*.css"
+	],
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
 			"svelte": "./dist/index.js"
-		},
-		"./style-system/*": "./dist/stylesheets/system/*.scss",
-		"./globals.scss": "./dist/stylesheets/globals.scss"
-	},
-	"sideEffects": [
-		"**/*.css",
-		"**/*.scss"
-	],
-	"scripts": {
-		"gen": "node scripts/generateGlobImports.mjs",
-		"check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
-		"storybook": "pnpm gen && storybook dev -p 6006",
-		"build-storybook": "pnpm gen && storybook build --debug",
-		"build": "pnpm gen && svelte-package",
-		"prepack": "pnpm build && publint"
-	},
-	"devDependencies": {
-		"@chromatic-com/storybook": "^3.2.5",
-		"@fluent/bundle": "^0.18.0",
-		"@fontsource/ibm-plex-sans-kr": "^5.1.1",
-		"@laynezh/vite-plugin-lib-assets": "^1.1.0",
-		"@melt-ui/pp": "^0.3.2",
-		"@melt-ui/svelte": "^0.86.3",
-		"@storybook/addon-essentials": "^8.6.3",
-		"@storybook/addon-interactions": "^8.6.3",
-		"@storybook/addon-links": "^8.6.3",
-		"@storybook/addon-svelte-csf": "5.0.0-next.27",
-		"@storybook/blocks": "^8.6.3",
-		"@storybook/svelte": "^8.6.3",
-		"@storybook/svelte-vite": "^8.6.3",
-		"@storybook/test": "^8.6.3",
-		"@sveltejs/package": "^2.3.10",
-		"@sveltejs/vite-plugin-svelte": "^5.0.3",
-		"@tsconfig/svelte": "^5.0.4",
-		"@types/js-cookie": "^3.0.6",
-		"glob": "^11.0.1",
-		"prettier": "^3.5.2",
-		"prettier-plugin-svelte": "^3.3.3",
-		"publint": "^0.3.7",
-		"semantic-release": "^24.2.3",
-		"storybook": "^8.6.3",
-		"svelte": "5.20.5",
-		"svelte-check": "^4.1.4",
-		"svelte-toolbelt": "^0.7.1",
-		"tslib": "^2.8.1",
-		"typescript": "^5.8.2",
-		"vite": "^6.2.0",
-		"vite-plugin-dts": "^4.5.1",
-		"vite-tsconfig-paths": "^5.1.4"
+		}
 	},
 	"peerDependencies": {
-		"@melt-ui/svelte": "*",
-		"svelte": "5"
+		"svelte": "^5.0.0"
 	},
+	"devDependencies": {
+		"@chromatic-com/storybook": "^4.1.2",
+		"@eslint/compat": "^1.4.0",
+		"@eslint/js": "^9.38.0",
+		"@storybook/addon-a11y": "^10.0.2",
+		"@storybook/addon-docs": "^10.0.2",
+		"@storybook/addon-svelte-csf": "^5.0.10",
+		"@storybook/addon-vitest": "^10.0.2",
+		"@storybook/sveltekit": "^10.0.2",
+		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/kit": "^2.47.1",
+		"@sveltejs/package": "^2.5.4",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@tailwindcss/forms": "^0.5.10",
+		"@tailwindcss/vite": "^4.1.14",
+		"@types/node": "^22",
+		"eslint": "^9.38.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-storybook": "^10.0.2",
+		"eslint-plugin-svelte": "^3.12.4",
+		"globals": "^16.4.0",
+		"prettier": "^3.6.2",
+		"prettier-plugin-svelte": "^3.4.0",
+		"prettier-plugin-tailwindcss": "^0.7.1",
+		"publint": "^0.3.14",
+		"storybook": "^10.0.2",
+		"svelte": "^5.41.0",
+		"svelte-check": "^4.3.3",
+		"tailwindcss": "^4.1.14",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.46.1",
+		"vite": "^7.1.10"
+	},
+	"keywords": [
+		"svelte"
+	],
 	"dependencies": {
+		"bits-ui": "^2.14.1",
 		"clsx": "^2.1.1",
-		"cmdk-sv": "^0.0.18",
-		"dequal": "^2.0.3",
-		"js-cookie": "^3.0.5",
-		"runed": "^0.23.4",
-		"svelte-component-actions": "^1.1.0",
-		"svelte-sonner": "^0.3.28"
-	},
-	"release": {
-		"branches": [
-			"+([0-9])?(.{+([0-9]),x}).x",
-			"master",
-			{
-				"name": "beta",
-				"prerelease": true
-			}
-		],
-		"plugins": [
-			"@semantic-release/commit-analyzer",
-			"@semantic-release/release-notes-generator",
-			"@semantic-release/npm",
-			[
-				"@semantic-release/github",
-				{
-					"successComment": false,
-					"failTitle": false
-				}
-			]
-		]
-	},
-	"packageManager": "pnpm@10.5.2",
-	"pnpm": {
-		"ignoredBuiltDependencies": [
-			"svelte-preprocess"
-		],
-		"onlyBuiltDependencies": [
-			"svelte-preprocess"
-		]
+		"tailwind-merge": "^3.3.1",
+		"tailwind-variants": "^3.1.1"
 	}
 }
