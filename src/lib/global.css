@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@theme {
+	--color-gg-blue: #3b84f1;
+	--color-gg-blue-hover: #337ae3;
+	--color-gg-blue-active: #276bcf;
+
+	--color-gg-red: #f54f51;
+	--color-gg-red-hover: #de4446;
+	--color-gg-red-active: #cb393b;
+
+	--color-gg-gray: #666666;
+	--color-gg-cyan: #2fbaaf;
+	--color-gg-yellow: #ecce23;
+	--color-gg-dropdown: #0b1823;
+
+	--font-sans:
+		'IBM Plex Sans KR', 'IBM Plex Sans JP', ui-sans-serif, system-ui, sans-serif,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+}
+
+:root {
+	color-scheme: dark;
+}
+
+body {
+	background-color: #232b5a;
+	background-image: url(./assets/background.webp);
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+
+	font-family: var(--font-sans);
+}
