@@ -1,2 +1,2 @@
-export { default as Button } from './button.svelte';
-export type { ButtonProps, ButtonSize, ButtonVariant } from './button.svelte';
+export { default as Button } from './component.svelte';
+export type { ButtonProps, ButtonSize, ButtonVariant } from './component.svelte';
