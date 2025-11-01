@@ -16,6 +16,8 @@
 	--color-gg-dropdown: #0b1823;
 	--color-gg-darkblue: #03061c;
 
+	--shadow-popover: 0px 0px 12px rgba(0, 0, 0, 0.2), 0px 0px 24px rgba(0, 0, 0, 0.2);
+
 	--font-sans:
 		'IBM Plex Sans KR', 'IBM Plex Sans JP', ui-sans-serif, system-ui, sans-serif,
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
