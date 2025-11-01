@@ -1,0 +1,40 @@
+import { listIcons } from '@iconify/svelte';
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../lib/icons';
+import { getIcon } from '@iconify/svelte';
+
+<Meta title="Misc/Icons" />
+
+# Icons
+
+Prefix: `gg`  
+(use icon component from `@iconify/svelte`)
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Icon</th>
+		</tr>
+	</thead>
+	<tbody>
+		{listIcons('', 'gg').map((name) => {
+			const icon = getIcon(name);
+			return (
+				<tr key={name}>
+					<th>{name.slice(3)}</th>
+					<td valign="middle">
+						<div style={{ width: 24, height: 24 }}>
+							<svg
+								width={24}
+								height={24}
+								viewBox={`${icon.left} ${icon.top} ${icon.width} ${icon.height}`}
+								dangerouslySetInnerHTML={{ __html: icon.body }}
+							></svg>
+						</div>
+					</td>
+				</tr>
+			);
+		})}
+	</tbody>
+</table>
