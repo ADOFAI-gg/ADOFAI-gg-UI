@@ -6,11 +6,10 @@
 </script>
 
 <script lang="ts">
-	let { ref = $bindable(null), children, ...restProps }: ContentProps = $props();
-	let sans = $state(false);
+	let { ref = $bindable(null), children, sideOffset = 8, ...restProps }: ContentProps = $props();
 </script>
 
-<PopoverPrimitive.Content bind:ref {...restProps} forceMount>
+<PopoverPrimitive.Content bind:ref {...restProps} {sideOffset} forceMount>
 	{#snippet child({ open, props, wrapperProps })}
 		<div {...wrapperProps}>
 			{#if open}
@@ -20,7 +19,7 @@
 						duration: 200,
 						y: 10
 					}}
-					class="p-4 rounded-2xl bg-gg-darkblue shadow-popover z-50"
+					class="p-4 rounded-2xl bg-gg-darkblue shadow-gg-popover z-50"
 				>
 					{@render children?.()}
 				</div>
