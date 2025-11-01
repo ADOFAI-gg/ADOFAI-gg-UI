@@ -27,6 +27,7 @@ import { promises as fs } from 'fs';
 			parseColors(svg, {
 				defaultColor: 'currentColor',
 				callback: (attr, colorStr, color) => {
+					if (colorStr.startsWith('!')) return colorStr.slice(1);
 					return !color || isEmptyColor(color) ? colorStr : 'currentColor';
 				}
 			});

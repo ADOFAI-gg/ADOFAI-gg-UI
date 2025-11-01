@@ -1,6 +1,6 @@
 {
 	"prefix": "gg",
-	"lastModified": 1761999760,
+	"lastModified": 1762011332,
 	"icons": {
 		"add": {
 			"body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"2\" d=\"M3 8h10M8 3v10\"/>"
@@ -21,6 +21,11 @@
 			"body": "<g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M8 12.083 10.947 15 16 10\"/></g>",
 			"width": 24,
 			"height": 24
+		},
+		"checkfilled": {
+			"body": "<g fill=\"none\"><rect width=\"20\" height=\"20\" fill=\"currentColor\" rx=\"10\"/><path stroke=\"#fff\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M5 11.2 7.857 14 15 7\"/></g>",
+			"width": 20,
+			"height": 20
 		},
 		"chevronleft": {
 			"body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 4 5 8l4 4\"/>"
@@ -93,6 +98,11 @@
 		},
 		"id": {
 			"body": "<g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"2\"><path d=\"M3 4h1.5M6 4H4.5m0 0v8m0 0H3m1.5 0H6\"/><path stroke-linejoin=\"round\" d=\"M9 12V4c2 0 4 1 4 4s-2 4-4 4\"/></g>"
+		},
+		"infofilled": {
+			"body": "<g fill=\"none\"><rect width=\"20\" height=\"20\" fill=\"currentColor\" rx=\"10\"/><path stroke=\"#fff\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 9h1v5a1 1 0 001 1\"/><path fill=\"#fff\" d=\"M11.5 5.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0\"/></g>",
+			"width": 20,
+			"height": 20
 		},
 		"key": {
 			"body": "<g fill=\"none\"><circle cx=\"19\" cy=\"13\" r=\"2\" stroke=\"currentColor\" stroke-width=\"2\"/><path fill=\"currentColor\" d=\"M18 21a1 1 0 102 0zm0-6v6h2v-6z\"/><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"2\" d=\"M20 18h1\"/><circle cx=\"12\" cy=\"7\" r=\"4\" stroke=\"currentColor\" stroke-width=\"2\"/><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M7.667 13S4 15.75 4 21h11\"/></g>",
@@ -168,6 +178,16 @@
 		},
 		"view": {
 			"body": "<g fill=\"currentColor\" fill-rule=\"evenodd\" clip-rule=\"evenodd\"><path d=\"M1.247 7.072a2.06 2.06 0 000 1.856C2.463 11.338 5.03 13 8 13s5.537-1.662 6.752-4.072a2.06 2.06 0 000-1.856C13.537 4.662 10.97 3 8 3S2.463 4.662 1.247 7.072M8 12a4 4 0 100-8 4 4 0 000 8\"/><path d=\"M10.474 7.64A1.5 1.5 0 018.36 5.526a2.5 2.5 0 102.115 2.115\"/></g>"
+		},
+		"warningfilled": {
+			"body": "<g fill=\"none\"><rect width=\"20\" height=\"20\" fill=\"currentColor\" rx=\"10\"/><path stroke=\"#fff\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M10 11V5\"/><path fill=\"#fff\" d=\"M8.5 14.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0\"/></g>",
+			"width": 20,
+			"height": 20
+		},
+		"xfilled": {
+			"body": "<g fill=\"none\"><rect width=\"20\" height=\"20\" fill=\"currentColor\" rx=\"10\"/><path stroke=\"#fff\" stroke-linecap=\"round\" stroke-width=\"2\" d=\"m6 6 8 8m0-8-8 8\"/></g>",
+			"width": 20,
+			"height": 20
 		}
 	}
 }
