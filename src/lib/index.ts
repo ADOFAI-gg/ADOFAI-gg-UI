@@ -6,6 +6,7 @@ export * from './components/avatar/index.js';
 export * from './components/loading-spinner/index.js';
 export * from './components/panel/index.js';
 export * from './components/tooltip/index.js';
+export * from './components/toaster/index.js';
 
 export * as Popover from './components/popover/index.js';
 export * as Table from './components/table/index.js';

@@ -36,3 +36,4 @@ Currently rewriting the entire library with tailwind-variants
 - [ ] User List
 - [x] Table
 - [x] ~~Grid (included in tailwindcss)~~
+- [x] Sonner(Toast)
