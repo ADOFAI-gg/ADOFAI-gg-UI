@@ -10,7 +10,15 @@ const preview: Preview = {
 		},
 		docs: {
 			codePanel: true
+		},
+		backgrounds: {
+			options: {
+				dark: { name: 'Dark', value: '#232b5a' }
+			}
 		}
+	},
+	initialGlobals: {
+		backgrounds: { value: 'dark' }
 	}
 };
 
