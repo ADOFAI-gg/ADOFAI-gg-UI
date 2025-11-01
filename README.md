@@ -10,10 +10,10 @@ Svelte UI components made for ADOFAI.gg frontends
 - [x] Loading Spinner
 - [ ] Pagination
 - [x] Panel
-- [ ] Popover
+- [x] Popover
 - [ ] Popover Select
 - [ ] Tag
-- [ ] Tooltip
+- [x] Tooltip
 - [ ] Comment List
 - [ ] Footer
 - [ ] Form
