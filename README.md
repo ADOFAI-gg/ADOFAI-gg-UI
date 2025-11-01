@@ -7,9 +7,9 @@ Svelte UI components made for ADOFAI.gg frontends
 - [x] Avatar
 - [x] Button
 - [ ] Icon
-- [ ] Loading Spinner
+- [x] Loading Spinner
 - [ ] Pagination
-- [ ] Panel
+- [x] Panel
 - [ ] Popover
 - [ ] Popover Select
 - [ ] Tag
