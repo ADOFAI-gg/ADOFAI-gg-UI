@@ -4,9 +4,11 @@ Svelte UI components made for ADOFAI.gg frontends
 
 ## Rewrite status
 
+Currently rewriting the entire library with tailwind-variants
+
 - [x] Avatar
 - [x] Button
-- [ ] Icon
+- [x] Icon
 - [x] Loading Spinner
 - [ ] Pagination
 - [x] Panel
@@ -32,5 +34,5 @@ Svelte UI components made for ADOFAI.gg frontends
   - [ ] Search Bar
   - [ ] Search Options Bar
 - [ ] User List
-- [ ] Table
-- [ ] Grid
+- [x] Table
+- [x] ~~Grid (included in tailwindcss)~~
