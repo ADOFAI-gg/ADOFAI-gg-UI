@@ -7,6 +7,11 @@ export * from './components/loading-spinner/index.js';
 export * from './components/panel/index.js';
 export * from './components/tooltip/index.js';
 export * from './components/toaster/index.js';
+export * from './components/logo/index.js';
 
+export * from './utils/context.js';
+export * from './l10n/index.svelte.js';
+
+export * as Nav from './components/nav/index.js';
 export * as Popover from './components/popover/index.js';
 export * as Table from './components/table/index.js';
