@@ -29,7 +29,7 @@ Currently rewriting the entire library with tailwind-variants
     - [ ] Labeled Checkbox
 - [ ] Menu
 - [ ] Modal
-- [ ] Nav
+- [x] Nav
 - [ ] Search
   - [ ] Search Bar
   - [ ] Search Options Bar

@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { Localized } from '@nubolab-ffwd/svelte-fluent';
-	import { Avatar } from '../avatar/index.js';
 	import { Button } from '../button/index.js';
 	import { Logo } from '../logo/index.js';
 	import Link from './link.svelte';
 	import type { RootProps } from './props.js';
 	import { Popover } from '$lib/index.js';
-	import Menu from './menu.svelte';
+	import Menu from './menu/menu.svelte';
 
 	const { links, logo }: RootProps = $props();
 </script>
