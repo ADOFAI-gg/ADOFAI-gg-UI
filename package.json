@@ -32,15 +32,19 @@
 		}
 	},
 	"peerDependencies": {
+		"@fluent/bundle": "^0.19.1",
 		"@iconify/svelte": "^5.0.0",
+		"@nubolab-ffwd/svelte-fluent": "^1.0.5",
 		"svelte": "^5.0.0"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^4.1.2",
 		"@eslint/compat": "^1.4.0",
 		"@eslint/js": "^9.38.0",
+		"@fluent/bundle": "^0.19.1",
 		"@iconify/svelte": "^5.0.2",
 		"@iconify/tools": "^4.1.4",
+		"@nubolab-ffwd/svelte-fluent": "^1.0.5",
 		"@storybook/addon-a11y": "^10.0.2",
 		"@storybook/addon-docs": "^10.0.2",
 		"@storybook/addon-svelte-csf": "^5.0.10",
@@ -74,6 +78,7 @@
 		"svelte"
 	],
 	"dependencies": {
+		"@fluent/langneg": "^0.7.0",
 		"bits-ui": "^2.14.1",
 		"clsx": "^2.1.1",
 		"svelte-sonner": "^1.0.5",

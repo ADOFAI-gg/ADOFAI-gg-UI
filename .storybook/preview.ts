@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/sveltekit';
+import Root from './preview-root.svelte';
 
 const preview: Preview = {
 	parameters: {
@@ -19,7 +20,8 @@ const preview: Preview = {
 	},
 	initialGlobals: {
 		backgrounds: { value: 'dark' }
-	}
+	},
+	decorators: [() => Root]
 };
 
 export default preview;
