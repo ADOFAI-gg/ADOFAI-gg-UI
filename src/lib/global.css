@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
+@source not inline('container');
 
 @theme {
 	--color-gg-blue: #3b84f1;
@@ -39,4 +40,8 @@ body {
 
 * {
 	line-height: 140%;
+}
+
+@utility gg-container {
+	@apply max-w-6xl;
 }

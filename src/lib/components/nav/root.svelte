@@ -7,15 +7,15 @@
 	import { Popover } from '$lib/index.js';
 	import Menu from './menu/menu.svelte';
 
-	const { links, logo }: RootProps = $props();
+	const { links, logo, menuPopupExtra }: RootProps = $props();
 </script>
 
 {#snippet logoContent()}
 	<Logo height={16} />
 {/snippet}
 
-<nav class="h-14 bg-gg-darkblue/20 px-6">
-	<div class="max-w-6xl mx-auto flex h-full items-center justify-between">
+<nav class="h-14 bg-gg-darkblue/20 px-6 backdrop-blur-lg">
+	<div class="gg-container mx-auto flex h-full items-center justify-between">
 		<div class="gap-8 flex h-full items-center">
 			{#if logo}
 				{@render logo({ content: logoContent })}
@@ -66,7 +66,7 @@
 				</Popover.Trigger>
 				<Popover.Portal>
 					<Popover.Content align="end" sideOffset={16}>
-						<Menu />
+						<Menu extraItems={menuPopupExtra}></Menu>
 					</Popover.Content>
 				</Popover.Portal>
 			</Popover.Root>

@@ -8,6 +8,8 @@ export * from './components/panel/index.js';
 export * from './components/tooltip/index.js';
 export * from './components/toaster/index.js';
 export * from './components/logo/index.js';
+export * from './components/footer/index.js';
+export * from './components/scaffolding/index.js';
 
 export * from './utils/context.js';
 export * from './l10n/index.svelte.js';
