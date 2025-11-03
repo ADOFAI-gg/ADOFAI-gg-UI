@@ -13,4 +13,5 @@ export type LinkProps = {
 export type RootProps = {
 	links?: NavLinkItem[];
 	logo?: Snippet<[{ content: Snippet }]>;
+	menuPopupExtra?: Snippet;
 };

@@ -37,3 +37,7 @@ Currently rewriting the entire library with tailwind-variants
 - [x] Table
 - [x] ~~Grid (included in tailwindcss)~~
 - [x] Sonner(Toast)
+
+## TODO
+
+- [ ] fix nav menu
