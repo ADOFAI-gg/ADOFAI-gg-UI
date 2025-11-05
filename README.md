@@ -28,7 +28,7 @@ Currently rewriting the entire library with tailwind-variants
     - [ ] Text Field
     - [ ] Labeled Checkbox
 - [ ] Menu
-- [ ] Dialog
+- [x] Dialog
 - [x] Alert Dialog
 - [x] Nav
 - [ ] Search
