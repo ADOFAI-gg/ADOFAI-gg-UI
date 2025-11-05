@@ -15,9 +15,9 @@
 					'border-white/20 hover:bg-white/10 active:bg-white active:text-black inset-ring inset-ring-white/20'
 			},
 			size: {
-				sm: 'px-3 py-1.5',
-				md: 'px-4 py-2',
-				lg: 'px-6 py-3'
+				sm: 'px-3 py-1.5 text-xs',
+				md: 'px-4 py-2 text-sm',
+				lg: 'px-6 py-3 text-base'
 			}
 		},
 		defaultVariants: {
@@ -32,6 +32,7 @@
 	export type ButtonProps = {
 		size?: ButtonSize;
 		variant?: ButtonVariant;
+		transparent?: boolean;
 	} & Button.RootProps;
 </script>
 
@@ -40,10 +41,16 @@
 		ref = $bindable(null),
 		disabled = false,
 		class: className,
+		transparent,
 		size,
 		variant,
 		...restProps
 	}: ButtonProps = $props();
 </script>
 
-<Button.Root bind:ref {disabled} class={cn(button({ size, variant }), className)} {...restProps} />
+<Button.Root
+	bind:ref
+	{disabled}
+	class={cn(button({ size, variant }), transparent && 'text-white/60', className)}
+	{...restProps}
+/>

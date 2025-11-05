@@ -1,3 +1,4 @@
+import type { UserProp } from '$lib/utils/types.js';
 import type { Snippet } from 'svelte';
 
 export type NavLinkItem = {
@@ -13,5 +14,8 @@ export type LinkProps = {
 export type RootProps = {
 	links?: NavLinkItem[];
 	logo?: Snippet<[{ content: Snippet }]>;
+	user?: UserProp | null;
 	menuPopupExtra?: Snippet;
+	signInUrl?: string;
+	signUpUrl?: string;
 };
