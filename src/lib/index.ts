@@ -11,9 +11,12 @@ export * from './components/logo/index.js';
 export * from './components/footer/index.js';
 export * from './components/scaffolding/index.js';
 
+export * from './utils/types.js';
+
 export * from './utils/context.js';
 export * from './l10n/index.svelte.js';
 
 export * as Nav from './components/nav/index.js';
 export * as Popover from './components/popover/index.js';
 export * as Table from './components/table/index.js';
+export * as AlertDialog from './components/alert-dialog/index.js';

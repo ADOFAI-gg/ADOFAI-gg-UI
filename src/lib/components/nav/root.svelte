@@ -4,10 +4,10 @@
 	import { Logo } from '../logo/index.js';
 	import Link from './link.svelte';
 	import type { RootProps } from './props.js';
-	import { Popover } from '$lib/index.js';
+	import { Avatar, Popover } from '$lib/index.js';
 	import Menu from './menu/menu.svelte';
 
-	const { links, logo, menuPopupExtra }: RootProps = $props();
+	const { links, logo, menuPopupExtra, user, signInUrl, signUpUrl }: RootProps = $props();
 </script>
 
 {#snippet logoContent()}
@@ -35,33 +35,49 @@
 		</div>
 
 		<div class="gap-3 flex items-center">
-			<Button size="md" variant="ghostLight">
-				<Localized id="lib-sign-in" />
-			</Button>
-			<Button size="md" variant="outlined">
-				<Localized id="lib-sign-up" />
-			</Button>
+			{#if !user}
+				{#if signInUrl}
+					<a href={signInUrl}>
+						<Button size="md" variant="ghostLight">
+							<Localized id="lib-sign-in" />
+						</Button>
+					</a>
+				{/if}
+				{#if signUpUrl}
+					<a href={signUpUrl}>
+						<Button size="md" variant="outlined">
+							<Localized id="lib-sign-up" />
+						</Button>
+					</a>
+				{/if}
+			{/if}
 
 			<Popover.Root>
 				<Popover.Trigger>
 					{#snippet child({ props })}
-						<button
-							{...props}
-							class="hover:bg-gg-darkblue/20 cursor-pointer rounded-full transition-colors"
-							aria-label="menu"
-						>
-							<svg
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
+						{#if user}
+							<button {...props} class="cursor-pointer">
+								<Avatar class="size-8" src={user.avatar ?? undefined} />
+							</button>
+						{:else}
+							<button
+								{...props}
+								class="hover:bg-gg-darkblue/20 cursor-pointer rounded-full transition-colors"
+								aria-label="menu"
 							>
-								<path d="M5 6H19" stroke="white" stroke-width="2" stroke-linecap="round" />
-								<path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" />
-								<path d="M5 18H19" stroke="white" stroke-width="2" stroke-linecap="round" />
-							</svg>
-						</button>
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path d="M5 6H19" stroke="white" stroke-width="2" stroke-linecap="round" />
+									<path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" />
+									<path d="M5 18H19" stroke="white" stroke-width="2" stroke-linecap="round" />
+								</svg>
+							</button>
+						{/if}
 					{/snippet}
 				</Popover.Trigger>
 				<Popover.Portal>

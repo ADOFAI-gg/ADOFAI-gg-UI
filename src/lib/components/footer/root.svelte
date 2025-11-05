@@ -12,7 +12,7 @@
 
 <footer class="bg-gg-darkblue/20 p-6">
 	<div class="gg-container mx-auto">
-		<h2 class="font-bold text-[22px]">ADOFAI.gg</h2>
+		<h2 class="font-bold text-[1.375rem]">ADOFAI.gg</h2>
 
 		<div class="mt-2 gap-1 md:grid-cols-2 grid">
 			<LinkSection>

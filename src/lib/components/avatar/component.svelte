@@ -12,6 +12,6 @@
 	const { class: className, src, alt, ...restProps }: AvatarProps = $props();
 </script>
 
-<Avatar.Root {...restProps} class={cn('bg-white/20 size-[32px] rounded-full', className)}>
+<Avatar.Root {...restProps} class={cn('bg-white/20 size-8 rounded-full', className)}>
 	<Avatar.Image class="aspect-square size-full rounded-full" {src} {alt} />
 </Avatar.Root>

@@ -6,8 +6,8 @@
 
 	const panel = tv({
 		slots: {
-			base: 'bg-gg-darkblue/20 grid gap-[8px] rounded-[12px] p-[16px]',
-			title: 'font-semibold text-[14px] opacity-60'
+			base: 'bg-gg-darkblue/20 grid gap-2 rounded-xl p-4',
+			title: 'font-semibold text-sm opacity-60'
 		},
 		variants: {
 			variant: {

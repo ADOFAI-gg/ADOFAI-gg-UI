@@ -17,7 +17,7 @@ Currently rewriting the entire library with tailwind-variants
 - [ ] Tag
 - [x] Tooltip
 - [ ] Comment List
-- [ ] Footer
+- [x] Footer
 - [ ] Form
   - [ ] Field
   - [ ] Image Selector
@@ -28,7 +28,8 @@ Currently rewriting the entire library with tailwind-variants
     - [ ] Text Field
     - [ ] Labeled Checkbox
 - [ ] Menu
-- [ ] Modal
+- [ ] Dialog
+- [x] Alert Dialog
 - [x] Nav
 - [ ] Search
   - [ ] Search Bar

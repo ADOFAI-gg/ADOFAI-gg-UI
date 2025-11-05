@@ -13,6 +13,6 @@
 		{@render children?.()}
 	</div>
 	{#if icon}
-		<Icon {icon} class="size-[18px]" />
+		<Icon {icon} class="size-4.5" />
 	{/if}
 </Command.Item>
