@@ -20,3 +20,4 @@ export * as Nav from './components/nav/index.js';
 export * as Popover from './components/popover/index.js';
 export * as Table from './components/table/index.js';
 export * as AlertDialog from './components/alert-dialog/index.js';
+export * as Dialog from './components/dialog/index.js';

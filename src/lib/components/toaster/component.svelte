@@ -21,11 +21,11 @@
 <Toaster
 	toastOptions={{
 		classes: {
-			default: cn(classes()),
-			success: cn(classes({ style: 'success' })),
-			warning: cn(classes({ style: 'warning' })),
-			info: cn(classes({ style: 'info' })),
-			error: cn(classes({ style: 'error' }))
+			default: classes({ style: 'default' }),
+			success: classes({ style: 'success' }),
+			warning: classes({ style: 'warning' }),
+			info: classes({ style: 'info' }),
+			error: classes({ style: 'error' })
 		},
 		unstyled: true
 	}}

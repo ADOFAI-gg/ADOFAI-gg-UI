@@ -1,0 +1,10 @@
+export { default as Root, type RootProps } from './root.svelte';
+export { default as Portal, type PortalProps } from './portal.svelte';
+export { default as Content, type ContentProps } from './content.svelte';
+export { default as Trigger, type TriggerProps } from './trigger.svelte';
+export { default as Overlay, type OverlayProps } from './overlay.svelte';
+export { default as Title, type TitleProps } from './title.svelte';
+export { default as TitleArea, type TitleAreaProps } from './title-area.svelte';
+export { default as Description, type DescriptionProps } from './description.svelte';
+export { default as ActionsArea, type ActionsAreaProps } from './actions-area.svelte';
+export { default as Close, type CloseProps } from './close.svelte';

@@ -19,7 +19,7 @@
 			<AlertDialog.Overlay />
 			<AlertDialog.Content>
 				<AlertDialog.TitleArea>
-					<AlertDialog.Title>WOOOOW I'm modal</AlertDialog.Title>
+					<AlertDialog.Title>Are you sure?</AlertDialog.Title>
 					<AlertDialog.Description>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum quibusdam beatae velit
 						corrupti quae quidem porro quaerat culpa, ad praesentium debitis in unde, quisquam
@@ -37,7 +37,7 @@
 					{#snippet right()}
 						<AlertDialog.Action>
 							{#snippet child({ props })}
-								<Button {...props} size="sm">OK</Button>
+								<Button {...props} variant="danger" size="sm">OK</Button>
 							{/snippet}
 						</AlertDialog.Action>
 					{/snippet}
