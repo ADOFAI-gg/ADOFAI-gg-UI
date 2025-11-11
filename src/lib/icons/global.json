@@ -1,6 +1,6 @@
 {
 	"prefix": "gg",
-	"lastModified": 1762874398,
+	"lastModified": 1762874549,
 	"icons": {
 		"add": {
 			"body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"2\" d=\"M3 8h10M8 3v10\"/>"
@@ -97,11 +97,6 @@
 		"eye-slashed": {
 			"body": "<g fill=\"none\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"2\" d=\"m3 3 10 10\"/><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M4.468 3.882a7.53 7.53 0 00-3.274 3.463 1.56 1.56 0 000 1.309 7.5 7.5 0 0011.066 3.02l-1.447-1.447A5.5 5.5 0 013.1 8a5.52 5.52 0 012.873-2.613zm7.852 5.024q.333-.422.58-.905a5.5 5.5 0 00-4.47-2.984L6.554 3.139Q7.256 3.001 8 3a7.5 7.5 0 016.806 4.346c.193.415.193.894 0 1.31a7.5 7.5 0 01-1.065 1.67zM6.91 6.323A2 2 0 109.676 9.09z\" clip-rule=\"evenodd\"/></g>"
 		},
-		"floor2": {
-			"body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3 5h12M3 13h12M5 5v8m8 0V5\"/>",
-			"width": 18,
-			"height": 18
-		},
 		"globe": {
 			"body": "<g fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M12 4c.227 0 .518.1.867.432.355.337.72.872 1.048 1.61C14.57 7.515 15 9.622 15 12s-.43 4.485-1.085 5.958c-.328.738-.693 1.273-1.048 1.61-.349.332-.64.432-.867.432s-.518-.1-.867-.432c-.355-.337-.72-.872-1.048-1.61C9.43 16.485 9 14.378 9 12s.43-4.485 1.085-5.958c.328-.738.693-1.273 1.048-1.61.349-.333.64-.432.867-.432Zm-8 8h16\"/></g>",
 			"width": 24,
@@ -167,6 +162,11 @@
 		},
 		"tile": {
 			"body": "<g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"M3 13h10V3\"/><path d=\"M3 8h5V3M6 8v5m6-7H8\"/></g>"
+		},
+		"tile2": {
+			"body": "<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3 5h12M3 13h12M5 5v8m8 0V5\"/>",
+			"width": 18,
+			"height": 18
 		},
 		"toast-check": {
 			"body": "<g fill=\"none\"><rect width=\"20\" height=\"20\" fill=\"currentColor\" rx=\"10\"/><path stroke=\"#fff\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M5 11.2 7.857 14 15 7\"/></g>",
