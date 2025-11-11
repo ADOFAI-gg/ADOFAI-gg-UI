@@ -6,7 +6,7 @@ export * from './components/loading-spinner/index.js';
 export * from './components/panel/index.js';
 export * from './components/tooltip/index.js';
 export * from './components/toaster/index.js';
-export * from './components/logo/index.js';
+export * from './components/misc/index.js';
 export * from './components/footer/index.js';
 export * from './components/scaffolding/index.js';
 
