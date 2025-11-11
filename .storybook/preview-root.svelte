@@ -6,6 +6,7 @@
 		type GlobalContext,
 		libLanguageNames,
 		libTranslationResources,
+		negotiateLanguages,
 		setGlobalContext
 	} from '../src/lib';
 
@@ -23,7 +24,13 @@
 		createSvelteFluent(
 			createBundles(
 				libTranslationResources,
-				globalContext.currentLanguage ? [globalContext.currentLanguage] : navigator.languages
+				negotiateLanguages(
+					globalContext.currentLanguage ? [globalContext.currentLanguage] : navigator.languages,
+					Object.keys(libTranslationResources),
+					{
+						defaultLocale: 'ko'
+					}
+				)
 			)
 		)
 	);

@@ -1,4 +1,4 @@
-import { negotiateLanguages } from '@fluent/langneg';
+export { acceptedLanguages, negotiateLanguages } from '@fluent/langneg';
 import { FluentBundle, FluentResource } from '@fluent/bundle';
 
 // LOCALES
@@ -26,13 +26,7 @@ export const createBundles = (
 	resources: Record<string, readonly string[]>,
 	userLocales: readonly string[]
 ) => {
-	const supportedLanguages = Object.keys(resources);
-
-	const selectedLocales = negotiateLanguages(userLocales, supportedLanguages, {
-		defaultLocale: 'ko'
-	});
-
-	return selectedLocales.map((locale) => {
+	return userLocales.map((locale) => {
 		const bundle = new FluentBundle(locale);
 
 		const langResources = resources[locale];
