@@ -1,6 +1,12 @@
 import type { Preview } from '@storybook/sveltekit';
 import Root from './preview-root.svelte';
 
+import '@fontsource/ibm-plex-sans-kr/300.css';
+import '@fontsource/ibm-plex-sans-kr/400.css';
+import '@fontsource/ibm-plex-sans-kr/500.css';
+import '@fontsource/ibm-plex-sans-kr/600.css';
+import '@fontsource/ibm-plex-sans-kr/700.css';
+
 const preview: Preview = {
 	parameters: {
 		controls: {

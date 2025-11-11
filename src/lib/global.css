@@ -37,6 +37,10 @@ body {
 	background-position: center;
 
 	font-family: var(--font-sans);
+
+	font-feature-settings:
+		'ss01' on,
+		'ss02' on;
 }
 
 * {
