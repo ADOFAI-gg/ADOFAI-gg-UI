@@ -19,9 +19,15 @@
 
 	--shadow-gg-popover: 0px 0px 12px rgba(0, 0, 0, 0.2), 0px 0px 24px rgba(0, 0, 0, 0.2);
 
+	--leading-normal: 1.4;
+
 	--font-sans:
 		'IBM Plex Sans KR', 'IBM Plex Sans JP', ui-sans-serif, system-ui, sans-serif,
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+}
+
+* {
+	@apply leading-normal;
 }
 
 :root {
@@ -40,10 +46,6 @@ body {
 	font-feature-settings:
 		'ss01' on,
 		'ss02' on;
-}
-
-* {
-	line-height: 140%;
 }
 
 @utility gg-container {
