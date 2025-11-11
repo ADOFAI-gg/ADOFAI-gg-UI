@@ -22,6 +22,21 @@ export const libLanguageNames: Record<string, string> = {
 	vi: 'Vietnamese'
 };
 
+export const mergeLocalizationResources = (
+	...resourcesArr: Record<string, readonly string[]>[]
+): Record<string, readonly string[]> => {
+	const result = {} as Record<string, string[]>;
+
+	for (const resources of resourcesArr) {
+		for (const [lang, contents] of Object.entries(resources)) {
+			result[lang] ??= [];
+			result[lang].push(...contents);
+		}
+	}
+
+	return result;
+};
+
 export const createBundles = (
 	resources: Record<string, readonly string[]>,
 	userLocales: readonly string[]
