@@ -48,7 +48,7 @@
 							<div
 								{...props}
 								transition:fly={{ duration: 200, y: 8 }}
-								class="p-4 rounded-2xl bg-gg-darkblue shadow-gg-popover gap-1 text-sm pointer-events-none grid"
+								class="p-4 rounded-2xl bg-gg-darkblue shadow-gg-popover gap-1 text-sm grid"
 							>
 								{#if title}
 									<div class="text-sm font-semibold">
