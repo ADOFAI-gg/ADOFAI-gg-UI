@@ -1,21 +1,22 @@
 <script lang="ts" module>
-	export type LogoProps = {
-		width?: number | string;
-		height?: number | string;
-	};
+	import { cn } from '$lib/utils/ui.js';
+	import type { SVGAttributes } from 'svelte/elements';
+
+	export type LogoProps = {} & Omit<SVGAttributes<SVGElement>, 'viewBox' | 'fill' | 'xmlns'>;
 </script>
 
 <script lang="ts">
-	const { width, height }: LogoProps = $props();
+	const { width, height, className, ...rest }: LogoProps = $props();
 </script>
 
 <svg
 	{width}
 	{height}
-	class="aspect-134/16"
+	class={cn('aspect-134/16')}
 	viewBox="0 0 134 16"
 	fill="none"
 	xmlns="http://www.w3.org/2000/svg"
+	{...rest}
 >
 	<path
 		d="M0.511627 15.0574L5.79844 5.60725L7.9424 9.42598L4.45846 15.6858L4.28792 16H0L0.511627 15.0574ZM18.1018 15.0574L18.6135 16H14.3256L14.155 15.6858L9.35546 7.10574L9.30674 7.00906L7.16278 3.16616L7.33332 2.85196L8.72202 0.33837L8.89256 0H9.72091L9.86709 0.33837L11.2802 2.85196L18.1018 15.0574Z"
