@@ -12,7 +12,7 @@
 	const { class: className, icon, children, ...rest }: SectionTitleLinkProps = $props();
 </script>
 
-<a {...rest} class={cn('gap-1 flex items-center', className)}>
+<a {...rest} class={cn('gap-1 font-semibold text-base flex items-center', className)}>
 	{@render children?.()}
 	{#if icon}
 		<Icon {icon} class="size-4.5" />

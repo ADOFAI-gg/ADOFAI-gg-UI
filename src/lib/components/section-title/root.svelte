@@ -8,9 +8,11 @@
 </script>
 
 <script lang="ts">
-	const { children }: SectionTitleProps = $props();
+	const { children, link }: SectionTitleProps = $props();
 </script>
 
-<header class="flex justify-between">
-	<h2>{@render children?.()}</h2>
+<header class="gap-8 pb-2 border-b-white/20 flex items-end justify-between border-b-2">
+	<h2 class="text-2xl font-semibold">{@render children?.()}</h2>
+
+	{@render link?.()}
 </header>

@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { Localized } from '@nubolab-ffwd/svelte-fluent';
 	import { Button } from '../button/index.js';
-	import { Logo } from '../logo/index.js';
 	import Link from './link.svelte';
 	import type { RootProps } from './props.js';
-	import { Avatar, Popover } from '$lib/index.js';
+	import { Avatar, Popover, Logo } from '$lib/index.js';
 	import Menu from './menu/menu.svelte';
 
 	const { links, logo, menuPopupExtra, user, signInUrl, signUpUrl }: RootProps = $props();
