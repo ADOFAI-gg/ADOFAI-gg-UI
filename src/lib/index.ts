@@ -1,4 +1,3 @@
-import './global.css';
 import './icons/index.js';
 
 export * from './components/button/index.js';

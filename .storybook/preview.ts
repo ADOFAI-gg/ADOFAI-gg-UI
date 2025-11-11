@@ -1,6 +1,8 @@
 import type { Preview } from '@storybook/sveltekit';
 import Root from './preview-root.svelte';
 
+import '../src/lib/global.css';
+
 import '@fontsource/ibm-plex-sans-kr/300.css';
 import '@fontsource/ibm-plex-sans-kr/400.css';
 import '@fontsource/ibm-plex-sans-kr/500.css';
