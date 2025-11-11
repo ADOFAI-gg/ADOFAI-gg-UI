@@ -5,17 +5,13 @@
 </script>
 
 <div class="nav-sign-area">
-	<a href={ctx.urls.signIn}>
-		<Button variant="ghost-light" size="md">
-			<Translation key="common:sign-in" />
-		</Button>
-	</a>
+	<Button variant="ghost-light" size="md" onclick={ctx.callbacks.signIn}>
+		<Translation key="ui-common:sign-in" />
+	</Button>
 
-	<a href={ctx.urls.signUp}>
-		<Button variant="outlined" size="md">
-			<Translation key="common:sign-up" />
-		</Button>
-	</a>
+	<Button variant="outlined" size="md" onclick={ctx.callbacks.signUp}>
+		<Translation key="ui-common:sign-up" />
+	</Button>
 </div>
 
 <style lang="scss">

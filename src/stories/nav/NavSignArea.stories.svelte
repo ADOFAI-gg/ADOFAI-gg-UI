@@ -1,18 +1,15 @@
 <script lang="ts" context="module">
 	import { NavSignArea } from '$lib/index.js'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta = {
+	const { Story } = defineMeta({
 		title: 'Components/Nav/Nav Sign Area',
 		component: NavSignArea
-	}
+	})
 </script>
 
-<script lang="ts">
-	import { Story, Template } from '@storybook/addon-svelte-csf'
-</script>
-
-<Template let:args>
+{#snippet template(args: any)}
 	<NavSignArea {...args} />
-</Template>
+{/snippet}
 
 <Story name="Default" />

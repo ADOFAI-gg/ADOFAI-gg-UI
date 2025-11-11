@@ -3,44 +3,74 @@
 	import Translation from '$lib/utils/Translation.svelte'
 	import FormHint from './FormHint.svelte'
 	import FormHintArea from './FormHintArea.svelte'
+	import type { Snippet } from 'svelte'
 
-	export let label: TranslationKey | null = null
-	export let error: TranslationKey | null = null
-	export let required: boolean = false
-	export let noLabel: boolean = false
-	export let helpText: TranslationKey | null = null
+	interface Props {
+		label?: TranslationKey
+		error?: TranslationKey
+		required?: boolean
+		noLabel?: boolean
+		subtitle?: TranslationKey
+		helpText?: TranslationKey
+		horizontal?: boolean
+		modal?: boolean
+		children?: Snippet
+		hints?: Snippet
+		noHintsArea?: boolean
+	}
+
+	const {
+		noLabel = false,
+		children,
+		horizontal,
+		subtitle,
+		label,
+		helpText,
+		required = false,
+		error,
+		modal = false,
+		hints,
+		noHintsArea
+	}: Props = $props()
 </script>
 
-<div class="form-field">
-	{#if noLabel}
-		<div class="form-field-content">
-			{#if label}
-				<p class="label">
-					<Translation key={label} />
-					{#if required}
-						<span class="required-sign">
-							<Translation key="common:form-required" />
-						</span>
-					{/if}
-				</p>
-			{/if}
-			<slot />
-		</div>
-	{:else}
-		<label class="form-field-content">
-			{#if label}
-				<p class="label">
-					<Translation key={label} />
-					{#if required}
-						<span class="required-sign">
-							<Translation key="common:form-required" />
-						</span>
-					{/if}
-				</p>
-			{/if}
-			<slot />
-		</label>
+{#snippet hintsFallback()}
+	{#if error}
+		{#if noHintsArea}
+			<FormHint type="error">
+				<Translation key={error} />
+			</FormHint>
+		{:else}
+			<FormHintArea {modal}>
+				<FormHint type="error">
+					<Translation key={error} />
+				</FormHint>
+			</FormHintArea>
+		{/if}
 	{/if}
+{/snippet}
+
+<div class="form-field" class:horizontal>
+	<svelte:element this={noLabel ? 'div' : 'label'} class="form-field-content">
+		{#if label}
+			<p class="label">
+				<Translation key={label} />
+				{#if required}
+					<span class="required-sign">
+						<Translation key="ui-common:form-required" />
+					</span>
+				{/if}
+			</p>
+		{/if}
+		{#if subtitle}
+			<p class="subtitle">
+				<Translation key={subtitle} />
+			</p>
+		{/if}
+		<span class="content">
+			{@render children?.()}
+		</span>
+	</svelte:element>
 
 	{#if helpText}
 		<div class="form-help-text">
@@ -48,26 +78,25 @@
 		</div>
 	{/if}
 
-	<slot name="hints">
-		{#if error}
-			<FormHintArea>
-				<FormHint type="error">
-					<Translation key={error} />
-				</FormHint>
-			</FormHintArea>
-		{/if}
-	</slot>
+	{@render (hints || hintsFallback)()}
 </div>
 
 <style lang="scss">
+	@use '../../stylesheets/system/colors' as *;
+
 	.label {
 		font-size: 16px;
 		font-weight: 500;
-		line-height: 16px;
+		line-height: 140%;
+	}
+
+	.subtitle {
+		font-size: 16px;
+		color: rgba(255, 255, 255, 0.6);
 	}
 
 	.required-sign {
-		color: rgba(var(--color-red), 1);
+		color: rgba($red, 1);
 		font-size: 12px;
 		font-weight: 500;
 		margin-left: 4px;
@@ -76,6 +105,27 @@
 	.form-field {
 		display: flex;
 		flex-direction: column;
+	}
+
+	.horizontal {
+		.form-field-content {
+			flex-direction: row;
+			min-height: 38px;
+			gap: 16px;
+
+			.label {
+				width: 40px;
+				display: flex;
+				height: 38px;
+				align-items: center;
+			}
+
+			.content {
+				padding-left: 16px;
+				width: 0;
+				flex-grow: 1;
+			}
+		}
 	}
 
 	.form-field-content {

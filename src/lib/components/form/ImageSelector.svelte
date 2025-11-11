@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { Icon, Menu, MenuItem, Translation } from '$lib/index.js'
 	import { createEventDispatcher } from 'svelte'
+	import ImageSelectorEditIcon from './ImageSelectorEditIcon.svelte'
 
 	export let aspectRatio = 1
 
 	export let src = ''
 	export let loading = false
 	export let disabled = false
+	export let canRemove = false
 
 	const dispatch = createEventDispatcher()
 
@@ -32,11 +34,11 @@
 	<input type="file" accept="image/*" bind:files hidden bind:this={inputRef} />
 
 	{#if src}
-		<div class="image" style="--url: url('{src}');" />
+		<div class="image" style="--url: url('{src}');"></div>
 	{/if}
 
-	<Menu placement="bottom" let:close>
-		<button slot="button" let:buttonRef use:buttonRef class="edit-icon" disabled={loading}>
+	<Menu placement="bottom-start">
+		<ImageSelectorEditIcon slot="button" let:trigger meltElement={trigger} disabled={loading}>
 			{#if loading}
 				<span class="loading-icon">
 					<Icon icon="loading" size={24} alt="loading" />
@@ -44,20 +46,15 @@
 			{:else}
 				<Icon icon="pencil" size={18} alt="edit" />
 			{/if}
-		</button>
+		</ImageSelectorEditIcon>
 
-		<MenuItem
-			on:click={() => {
-				edit()
-				close()
-			}}
-		>
+		<MenuItem on:click={edit}>
 			<Icon slot="icon" size={16} alt="icon" icon="pencil" />
 
-			<Translation key="common:edit" />
+			<Translation key="ui-common:edit" />
 		</MenuItem>
 
-		{#if src}
+		{#if canRemove}
 			<MenuItem
 				variant="danger"
 				on:click={() => {
@@ -67,7 +64,7 @@
 			>
 				<Icon slot="icon" size={16} alt="icon" icon="trash" />
 
-				<Translation key="common:delete" />
+				<Translation key="ui-common:delete" />
 			</MenuItem>
 		{/if}
 	</Menu>
@@ -81,34 +78,8 @@
 
 		border-radius: 8px;
 
-		&.disabled .edit-icon {
+		&.disabled :global(.image-selector-edit-icon) {
 			display: none;
-		}
-	}
-
-	.edit-icon {
-		position: absolute;
-		top: 8px;
-		right: 8px;
-		background-color: rgba(var(--color-darkblue), 0.4);
-		width: 36px;
-		height: 36px;
-		border-radius: 38px;
-
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-		cursor: pointer;
-		transition: background-color ease 0.2s;
-		z-index: 100;
-
-		&:not(:disabled):hover {
-			background-color: rgba(var(--color-darkblue), 0.6);
-		}
-
-		&:disabled {
-			cursor: inherit;
 		}
 	}
 

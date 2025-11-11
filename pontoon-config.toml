@@ -1,0 +1,4 @@
+[[paths]]
+reference = "src/lib/localization/translations/ko/**"
+l10n = "src/lib/localization/translations/{locale}/**"
+locales = ["ko", "en", "ja", "zh-CN", "vi"]

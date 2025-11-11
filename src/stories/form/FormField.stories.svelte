@@ -1,26 +1,35 @@
 <script lang="ts" context="module">
 	import { FormField, InputControl } from '$lib/index.js'
-	import { Story, Template } from '@storybook/addon-svelte-csf'
-	import type { Meta } from '@storybook/svelte'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta: Meta = {
+	const { Story } = defineMeta({
 		component: FormField,
 		title: 'Components/Form/Form Field'
-	}
+	})
 </script>
 
-<Template let:args>
+{#snippet template(args: any)}
 	<FormField {...args}>
-		<InputControl placeholder="custom:Wow sans" />
+		<InputControl placeholder="Wow sans" />
 	</FormField>
-</Template>
+{/snippet}
 
-<Story name="Default" args={{}} />
+<Story name="Default" args={{}} children={template} />
 
-<Story name="Labeled" args={{ label: 'custom:Label' }} />
+<Story
+	name="With Subtitle"
+	args={{ label: 'wow sans', subtitle: 'wow subtitle' }}
+	children={template}
+/>
 
-<Story name="Required" args={{ label: 'custom:Label', required: true }} />
+<Story name="Labeled" args={{ label: 'Label' }} children={template} />
 
-<Story name="With Help Text" args={{ helpText: 'custom:Wow this is help' }} />
+<Story name="Required" args={{ label: 'Label', required: true }} children={template} />
 
-<Story name="With Error" args={{ label: 'custom:Label', error: 'custom:Wow this is error' }} />
+<Story name="With Help Text" args={{ helpText: 'Wow this is help' }} children={template} />
+
+<Story
+	name="With Error"
+	args={{ label: 'Label', error: 'Wow this is error' }}
+	children={template}
+/>

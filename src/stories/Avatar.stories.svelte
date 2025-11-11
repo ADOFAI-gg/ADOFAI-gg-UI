@@ -1,22 +1,23 @@
 <script lang="ts" context="module">
 	import { Avatar } from '$lib/index.js'
 	import GanjangFactory from './assets/ganjangfactory.png'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta = {
+	const { Story } = defineMeta({
 		title: 'Components/Avatar',
 		component: Avatar
-	}
+	})
 </script>
 
 <script lang="ts">
-	import { Story, Template } from '@storybook/addon-svelte-csf'
 </script>
 
-<Template let:args>
-	<Avatar {...args} />
-</Template>
+{#snippet template(props: any)}
+	<Avatar {...props} />
+{/snippet}
 
 <Story
+	children={template}
 	name="Without Image"
 	args={{
 		size: 24,
@@ -25,6 +26,7 @@
 />
 
 <Story
+	children={template}
 	name="With Image"
 	args={{
 		size: 24,

@@ -1,15 +1,14 @@
 <script lang="ts" context="module">
-	import type { Meta } from '@storybook/svelte'
-	import { Template, Story } from '@storybook/addon-svelte-csf'
 	import { Button } from '$lib/index.js'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta: Meta = {
+	const { Story } = defineMeta({
 		title: 'Components/Button',
 		component: Button
-	}
+	})
 </script>
 
-<Template let:args>
+{#snippet template(args: any)}
 	<div class="buttons">
 		<section>
 			<div class="style-name">Default</div>
@@ -42,6 +41,15 @@
 		</section>
 
 		<section>
+			<div class="style-name">Link</div>
+			<div class="button-row">
+				<Button href="" link size="lg" {...args} rightIcon="profile">Large</Button>
+				<Button href="" link size="md" {...args} rightIcon="profile">Medium</Button>
+				<Button href="" link size="sm" {...args} rightIcon="profile">Small</Button>
+			</div>
+		</section>
+
+		<section>
 			<div class="style-name">Icon Only</div>
 			<div class="button-row">
 				<Button size="lg" {...args} disabled iconOnly leftIcon="profile" />
@@ -51,17 +59,23 @@
 			</div>
 		</section>
 	</div>
-</Template>
+{/snippet}
 
-<Story name="Primary" args={{ variant: 'primary' }} />
+<Story name="Primary" args={{ variant: 'primary' }} children={template} />
 
-<Story name="Danger" args={{ variant: 'danger' }} />
+<Story name="Ghost Primary" args={{ variant: 'ghost-primary' }} children={template} />
 
-<Story name="Light Ghost" args={{ variant: 'ghost-light' }} />
+<Story name="Danger" args={{ variant: 'danger' }} children={template} />
 
-<Story name="Dark Ghost" args={{ variant: 'ghost-dark' }} />
+<Story name="Light Ghost" args={{ variant: 'ghost-light' }} children={template} />
 
-<Story name="Outlined" args={{ variant: 'outlined' }} />
+<Story name="Dark Ghost" args={{ variant: 'ghost-dark' }} children={template} />
+
+<Story name="Danger Ghost" args={{ variant: 'ghost-danger' }} children={template} />
+
+<Story name="Outlined" args={{ variant: 'outlined' }} children={template} />
+
+<Story name="Outlined Danger" args={{ variant: 'outlined-danger' }} children={template} />
 
 <style lang="scss">
 	.style-name {

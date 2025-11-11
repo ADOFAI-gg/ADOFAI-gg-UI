@@ -1,19 +1,12 @@
 <script lang="ts" context="module">
-	import { Avatar, Icon, iconNames } from '$lib/index.js'
+	import { Icon, iconNames } from '$lib/index.js'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta = {
+	const { Story } = defineMeta({
 		title: 'Components/Icon',
 		component: Icon
-	}
+	})
 </script>
-
-<script lang="ts">
-	import { Story, Template } from '@storybook/addon-svelte-csf'
-</script>
-
-<Template let:args>
-	<Avatar {...args} />
-</Template>
 
 <Story name="All Icons">
 	{#each iconNames as icon}

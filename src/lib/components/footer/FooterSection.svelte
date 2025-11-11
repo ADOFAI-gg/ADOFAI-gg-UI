@@ -1,21 +1,11 @@
-<script lang="ts">
-	import Translation from '$lib/utils/Translation.svelte'
-	import type { TranslationKey } from '$lib/utils/translation.js'
-
-	export let title: TranslationKey
-</script>
-
 <section class="footer-section">
-	<div class="title">
-		<Translation key={title} />
-	</div>
 	<div class="content">
 		<slot />
 	</div>
 </section>
 
 <style lang="scss">
-	@import '../../stylesheets/system/breakpoints';
+	@use '../../stylesheets/system/breakpoints' as *;
 
 	.footer-section {
 		display: flex;
@@ -27,11 +17,6 @@
 			align-items: center;
 			gap: 8px;
 		}
-	}
-
-	.title {
-		font-size: 14px;
-		font-weight: 500;
 	}
 
 	.content {

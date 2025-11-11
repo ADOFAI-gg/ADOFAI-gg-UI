@@ -1,33 +1,50 @@
 <script lang="ts" context="module">
-	import type { Meta } from '@storybook/svelte'
-	import { Menu } from '$lib/index.js'
+	import MenuRadioItem from '$lib/components/menu/MenuRadioItem.svelte'
+	import { Button, Icon, Menu, MenuRadioGroup, MenuItem } from '$lib/index.js'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta: Meta = {
+	const { Story } = defineMeta({
 		component: Menu,
 		title: 'Components/Menu'
-	}
+	})
 </script>
 
-<script>
-	import { Story, Template } from '@storybook/addon-svelte-csf'
-	import { Button, Icon, MenuItem } from '$lib/index.js'
-</script>
-
-<Template let:args>
+{#snippet template(args: any)}
 	<Menu {...args}>
-		<Button variant="outlined" size="md" slot="button" let:buttonRef use={[buttonRef]}>Menu</Button>
+		{#snippet button({ trigger })}
+			<Button variant="outlined" size="md" meltElement={trigger}>Menu</Button>
+		{/snippet}
 
 		<MenuItem>
-			<Icon slot="icon" icon="pencil" size={16} alt="icon" />
+			{#snippet icon()}
+				<Icon icon="pencil" size={16} alt="icon" />
+			{/snippet}
 			Item 1
 		</MenuItem>
 		<MenuItem>Item 2</MenuItem>
 		<MenuItem variant="danger">
-			<Icon slot="icon" icon="trash" size={16} alt="icon" />
+			{#snippet icon()}
+				<Icon icon="trash" size={16} alt="icon" />
+			{/snippet}
 			Item 3
 		</MenuItem>
 		<MenuItem noIcon>Item 4 - No Icon Space</MenuItem>
 	</Menu>
-</Template>
+{/snippet}
 
-<Story name="Default" args={{}} />
+<Story name="Default" args={{}} children={template} />
+
+<Story name="Radio">
+	<Menu>
+		{#snippet button({ trigger })}
+			<Button variant="outlined" size="md" meltElement={trigger}>Menu</Button>
+		{/snippet}
+
+		<MenuRadioGroup>
+			<MenuRadioItem value="a">A</MenuRadioItem>
+			<MenuRadioItem value="b">B</MenuRadioItem>
+			<MenuRadioItem value="c">C</MenuRadioItem>
+			<MenuRadioItem value="d">D</MenuRadioItem>
+		</MenuRadioGroup>
+	</Menu>
+</Story>

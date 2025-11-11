@@ -12,7 +12,7 @@
 	<span class="label">
 		{#if required}
 			<span class="required">
-				<Translation key="common:form-required" />
+				<Translation key="ui-common:form-required" />
 			</span>
 		{/if}
 		<slot />
@@ -20,6 +20,8 @@
 </label>
 
 <style lang="scss">
+	@use '../../stylesheets/system/colors' as *;
+
 	.labeled-checkbox-sm {
 		--label-size: 14px;
 	}
@@ -35,11 +37,11 @@
 	.labeled-checkbox {
 		display: flex;
 		align-items: center;
-		gap: 12px;
+		gap: 6px;
 		font-size: var(--label-size);
 	}
 
 	.required {
-		color: rgba(var(--color-red), 1);
+		color: rgba($red, 1);
 	}
 </style>

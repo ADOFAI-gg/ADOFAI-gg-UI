@@ -9,20 +9,18 @@
 		language: lang,
 		setLanguage: (v) => lang.set(v),
 		urls: {
-			main: '/',
-			levels: 'https://adofai.gg/levels',
-			rankings: 'https://adofai.gg/rankings',
-			references: 'https://adofai.gg/references',
-			signIn: 'https://accounts.adofai.gg/auth/signin',
-			signUp: 'https://accounts.adofai.gg/autn/signup',
-			userSettings: 'https://accounts.adofai.gg/settings'
+			main: '/'
 		},
 		links: [
 			{
-				key: 'custom:Hello',
+				key: 'Hello',
 				href: '/hello'
 			}
-		]
+		],
+		callbacks: {
+			signIn: () => {},
+			signUp: () => {}
+		}
 	})
 </script>
 

@@ -1,15 +1,15 @@
 <script lang="ts" context="module">
 	import { LabeledCheckbox } from '$lib/index.js'
-	import { Story, Template } from '@storybook/addon-svelte-csf'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 	import type { Meta } from '@storybook/svelte'
 
-	export const meta: Meta = {
+	const { Story } = defineMeta({
 		component: LabeledCheckbox,
 		title: 'Components/Form/Controls/Labeled Checkbox'
-	}
+	})
 </script>
 
-<Template let:args>
+{#snippet template(args: any)}
 	<div class="labeled-checkboxes">
 		<LabeledCheckbox {...args} size="sm">
 			<span>Label</span>
@@ -21,13 +21,13 @@
 			<span>Label</span>
 		</LabeledCheckbox>
 	</div>
-</Template>
+{/snippet}
 
-<Story name="Default" args={{}} />
+<Story name="Default" args={{}} children={template} />
 
-<Story name="Checked" args={{ checked: true }} />
+<Story name="Checked" args={{ checked: true }} children={template} />
 
-<Story name="Required" args={{ required: true }} />
+<Story name="Required" args={{ required: true }} children={template} />
 
 <style lang="scss">
 	.labeled-checkboxes {

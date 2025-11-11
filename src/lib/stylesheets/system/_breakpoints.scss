@@ -1,3 +1,6 @@
+@use 'sass:meta';
+@use 'sass:map';
+
 $breakpoints: (
 	// 'xs': (
 	// 	'min-width': 360px,
@@ -28,9 +31,9 @@ $breakpoints: (
 );
 
 @mixin breakpoint($name) {
-	$breakpoint: map-get($breakpoints, $name);
+	$breakpoint: map.get($breakpoints, $name);
 
-	@media screen and (min-width: #{inspect(map-get($breakpoint, 'min-width'))}) {
+	@media screen and (min-width: #{meta.inspect(map.get($breakpoint, 'min-width'))}) {
 		@content;
 	}
 }

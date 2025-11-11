@@ -30,5 +30,12 @@ export default defineConfig({
 				...pkg.peerDependencies
 			})
 		}
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				api: 'modern'
+			}
+		}
 	}
 })

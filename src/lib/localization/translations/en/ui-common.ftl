@@ -1,0 +1,9 @@
+sign-in = Login
+sign-up = Register
+sign-out = Logout
+form-required = (required)
+edit = Edit
+delete = Delete
+no-options = No options available
+range = { $min } - { $max }
+language = Language

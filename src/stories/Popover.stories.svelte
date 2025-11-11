@@ -1,20 +1,25 @@
 <script lang="ts" context="module">
-	import { Popover } from '$lib/index.js'
+	import { Popover, Button, PopoverContentPanel } from '$lib/index.js'
+	import { defineMeta } from '@storybook/addon-svelte-csf'
 
-	export const meta = {
+	const { Story } = defineMeta({
 		title: 'Components/Popover',
-		components: Popover
-	}
-</script>
-
-<script lang="ts">
-	import { Button } from '$lib/index.js'
-	import { Story } from '@storybook/addon-svelte-csf'
+		component: Popover
+	})
 </script>
 
 <Story name="Default">
-	<Popover placement="bottom-start">
-		<Button variant="outlined" slot="button" let:buttonRef use={[buttonRef]}>Click me!</Button>
-		Content
+	<Popover open placement="bottom-start">
+		{#snippet trigger(el)}
+			<Button variant="outlined" meltElement={el}>Click me!</Button>
+		{/snippet}
+
+		{#snippet children({ close })}
+			<PopoverContentPanel>
+				Content
+
+				<Button size="sm" onclick={close}>close</Button>
+			</PopoverContentPanel>
+		{/snippet}
 	</Popover>
 </Story>

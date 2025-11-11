@@ -1,4 +1,9 @@
 <script lang="ts">
+	interface Props {
+		date?: string
+	}
+
+	const { date }: Props = $props()
 	import { FooterLink, FooterSection } from '$lib/index.js'
 	import Translation from '$lib/utils/Translation.svelte'
 	import Container from '../Container.svelte'
@@ -8,38 +13,49 @@
 	<Container>
 		<div class="footer-content">
 			<h2 class="footer-title">
-				<Translation key="footer:title" />
+				<Translation key="ui-footer:title" />
 			</h2>
 			<section class="footer-links">
-				<FooterSection title="footer:contact">
+				<FooterSection>
 					<FooterLink href="mailto:support@adofai.gg" target="_blank" rel="noreferrer">
-						<Translation key="footer:contact-email" />
+						<Translation key="ui-footer:contact-email" />
 					</FooterLink>
 					<FooterLink href="https://adofai.gg/discord" target="_blank" rel="noreferrer">
-						<Translation key="footer:contact-discord" />
+						<Translation key="ui-footer:contact-discord" />
 					</FooterLink>
 				</FooterSection>
-				<FooterSection title="footer:legal">
+				<FooterSection>
 					<FooterLink href="https://adofai.gg/docs/legal-notice" target="_blank" rel="noreferrer">
-						<Translation key="footer:legal-notice" />
+						<Translation key="ui-footer:legal-notice" />
 					</FooterLink>
-					<FooterLink href="https://adofai.gg/docs/terms" target="_blank" rel="noreferrer">
-						<Translation key="footer:legal-terms" />
+					<FooterLink href="https://adofai.gg/docs/general-terms" target="_blank" rel="noreferrer">
+						<Translation key="ui-footer:legal-terms" />
 					</FooterLink>
-					<FooterLink href="https://adofai.gg/docs/privacy" target="_blank" rel="noreferrer">
-						<Translation key="footer:legal-privacy" />
+					<FooterLink
+						href="https://adofai.gg/docs/privacy"
+						target="_blank"
+						rel="noreferrer"
+						highlight
+					>
+						<Translation key="ui-footer:legal-privacy" />
 					</FooterLink>
 				</FooterSection>
 			</section>
 			<p class="footer-copyright">
-				&copy; <Translation key="footer:copyright" />
+				&copy; 2025 ADOFAI.gg. <Translation key="ui-footer:copyright" />
+				{#if date}
+					<span class="footer-update">
+						{date}
+						<span><Translation key="ui-footer:update" /></span>
+					</span>
+				{/if}
 			</p>
 		</div>
 	</Container>
 </footer>
 
 <style lang="scss">
-	@import '../../stylesheets/system/breakpoints';
+	@use '../../stylesheets/system/breakpoints' as *;
 
 	.footer {
 		background-color: rgba(0, 0, 0, 0.2);
@@ -61,6 +77,19 @@
 	.footer-copyright {
 		font-size: 14px;
 		opacity: 0.6;
+	}
+
+	.footer-update {
+		display: inline;
+		margin-left: 8px;
+	}
+
+	.footer-update span {
+		display: none;
+		margin-left: 0px;
+		@include breakpoint('md') {
+			display: inline;
+		}
 	}
 
 	.footer-links {

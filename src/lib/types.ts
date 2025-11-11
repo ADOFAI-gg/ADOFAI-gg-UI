@@ -1,12 +1,116 @@
+import type { FloatingConfig } from '@melt-ui/svelte/internal/actions'
+import type { TranslationKey } from '$lib/index'
+import type { Snippet } from 'svelte'
+
+export type UserListItemModel =
+	| {
+			type: 'user'
+			data: User
+			href?: string
+	  }
+	| {
+			type: 'group'
+			name: string
+			data: UserListItemModel[]
+	  }
+
 export interface User {
-	id: string
-	username: string
-	displayName: string | null
+	displayName: string
 	avatarURL: string | null
 	isAdmin: boolean
 }
 
-export type ButtonStyle = 'primary' | 'danger' | 'ghost-light' | 'ghost-dark' | 'outlined'
+export type ButtonStyle =
+	| 'primary'
+	| 'danger'
+	| 'ghost-light'
+	| 'ghost-dark'
+	| 'ghost-danger'
+	| 'ghost-primary'
+	| 'outlined'
+	| 'outlined-danger'
 export type ButtonSize = 'lg' | 'md' | 'sm'
 
 export type CheckboxSize = 'lg' | 'md' | 'sm'
+
+export type FloatingPlacement = Exclude<FloatingConfig, null>['placement']
+
+export type SelectGroup<Value, CustomData = unknown> = {
+	title?: string
+	options: SelectOption<Value, CustomData>[]
+}
+
+export type SelectOption<Value, CustomData = unknown> = {
+	value: Value
+	label: string
+	subtitle?: string
+	icon?: string
+	disabled?: boolean
+	customData?: CustomData
+
+	color?: 'default' | 'blue'
+}
+
+export type SearchFilterScheme = (
+	| {
+			type: 'string'
+			label: TranslationKey
+	  }
+	| {
+			type: 'select'
+			label: TranslationKey
+			options: SelectOption<string | number>[]
+			multiple?: boolean
+			optionIconSnippet?: Snippet<[SelectOption<string | number>]>
+	  }
+	| {
+			type: 'range'
+			min?: number
+			max?: number
+			minLabel: TranslationKey
+			maxLabel: TranslationKey
+	  }
+	| {
+			type: 'rangeSelect'
+			minLabel: TranslationKey
+			maxLabel: TranslationKey
+			options: SelectOption<string | number>[]
+			optionIconSnippet?: Snippet<[SelectOption<string | number>]>
+	  }
+) & {
+	icon: string
+	name: TranslationKey
+	default: unknown
+}
+
+export interface SearchSortScheme {
+	name: string
+	icon?: string
+
+	objective: string
+}
+
+export type SearchOptionScheme = {
+	sort: SearchSortScheme[]
+	filter: Record<string, SearchFilterScheme>
+} & (
+	| {
+			pageSize: number[]
+			defaultPageSize: number
+	  }
+	| {
+			pageSize?: false
+	  }
+)
+
+export interface SearchFilter {
+	id: string
+	key: string
+	value: unknown
+}
+
+export interface SearchOptionsData {
+	filter: SearchFilter[]
+	sort: string
+	pageSize?: number
+}
