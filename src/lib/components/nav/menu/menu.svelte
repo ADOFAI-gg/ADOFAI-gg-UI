@@ -69,7 +69,7 @@
 						langSelectionTarget = ctx.currentLanguage;
 						currentTab = 'language';
 					}}
-					icon="gg:chevronright"
+					icon="gg:chevron-right"
 				>
 					<Localized id="lib-language" />
 				</MenuItem>

@@ -31,15 +31,15 @@
 	}}
 >
 	{#snippet infoIcon()}
-		<Icon icon="gg:infofilled" class="size-5 text-gg-blue" />
+		<Icon icon="gg:toast-info" class="size-5 text-gg-blue" />
 	{/snippet}
 	{#snippet errorIcon()}
-		<Icon icon="gg:xfilled" class="size-5 text-gg-red" />
+		<Icon icon="gg:toast-error" class="size-5 text-gg-red" />
 	{/snippet}
 	{#snippet warningIcon()}
-		<Icon icon="gg:warningfilled" class="size-5 text-gg-yellow" />
+		<Icon icon="gg:toast-warning" class="size-5 text-gg-yellow" />
 	{/snippet}
 	{#snippet successIcon()}
-		<Icon icon="gg:checkfilled" class="size-5 text-gg-cyan" />
+		<Icon icon="gg:toast-check" class="size-5 text-gg-cyan" />
 	{/snippet}
 </Toaster>

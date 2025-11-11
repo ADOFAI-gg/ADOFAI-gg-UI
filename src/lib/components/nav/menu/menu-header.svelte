@@ -14,7 +14,7 @@
 
 <div class="py-2.5 px-4 gap-2 flex items-center">
 	<button class="size-4.5 cursor-pointer" onclick={onBack}>
-		<Icon icon="gg:chevronleft" class="size-4.5" />
+		<Icon icon="gg:chevron-left" class="size-4.5" />
 	</button>
 	<div class="font-semibold">
 		{@render children?.()}

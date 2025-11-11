@@ -15,7 +15,7 @@
 	<SectionTitle>
 		Title
 		{#snippet link()}
-			<SectionTitleLink icon="gg:chevronright">Link</SectionTitleLink>
+			<SectionTitleLink icon="gg:chevron-right">Link</SectionTitleLink>
 		{/snippet}
 	</SectionTitle>
 </Story>
