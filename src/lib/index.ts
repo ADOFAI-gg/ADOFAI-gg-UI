@@ -14,6 +14,7 @@ export * from './components/search/index.js';
 
 export * from './utils/types.js';
 export * from './utils/ui.js';
+export * from './utils/url.js';
 
 export * from './utils/context.js';
 export * from './l10n/index.svelte.js';
