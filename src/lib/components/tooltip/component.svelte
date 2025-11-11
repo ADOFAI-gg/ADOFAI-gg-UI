@@ -55,7 +55,11 @@
 										{@render title()}
 									</div>
 								{/if}
-								{@render children?.()}
+								{#if children}
+									<div class="text-white/60">
+										{@render children()}
+									</div>
+								{/if}
 							</div>
 						{/if}
 					</div>
