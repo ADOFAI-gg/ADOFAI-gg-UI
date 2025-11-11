@@ -42,6 +42,9 @@ importers:
       '@fluent/bundle':
         specifier: ^0.19.1
         version: 0.19.1
+      '@fontsource/ibm-plex-sans-kr':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@iconify/svelte':
         specifier: ^5.0.2
         version: 5.0.2(svelte@5.38.1)
@@ -468,6 +471,9 @@ packages:
     engines: {node: '>=14.0.0', npm: '>=7.0.0'}
     peerDependencies:
       '@fluent/bundle': '>= 0.13.0'
+
+  '@fontsource/ibm-plex-sans-kr@5.2.8':
+    resolution: {integrity: sha512-U16zCX5J3s8H6OVm7apRZnLU493VFbkh/kf8ZaSeb53XJQJKfDqgZODqta2TG2MwZC7043xihL7OwErTuEtjBQ==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -3895,6 +3901,8 @@ snapshots:
   '@fluent/sequence@0.8.0(@fluent/bundle@0.19.1)':
     dependencies:
       '@fluent/bundle': 0.19.1
+
+  '@fontsource/ibm-plex-sans-kr@5.2.8': {}
 
   '@humanfs/core@0.19.1': {}
 
