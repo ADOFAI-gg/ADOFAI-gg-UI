@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin 'tailwindcss-animate';
-@source not inline('container');
 
 @theme {
 	--color-gg-blue: #3b84f1;
@@ -48,5 +47,5 @@ body {
 }
 
 @utility gg-container {
-	@apply max-w-6xl;
+	@apply max-w-6xl w-full;
 }
