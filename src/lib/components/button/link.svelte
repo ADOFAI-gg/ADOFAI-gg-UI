@@ -1,26 +1,29 @@
 <script lang="ts" module>
-	export type ButtonProps = BaseButtonProps & Button.RootProps;
+	export type LinkButtonProps = BaseButtonProps &
+		WithElementRef<HTMLAnchorAttributes, HTMLAnchorElement>;
 </script>
 
 <script lang="ts">
-	import { Button } from 'bits-ui';
+	import { type WithElementRef } from 'bits-ui';
 	import { button, type BaseButtonProps } from './props.js';
+	import type { HTMLAnchorAttributes } from 'svelte/elements';
 	import { cn } from '$lib/index.js';
 
 	let {
 		ref = $bindable(null),
-		disabled = false,
 		class: className,
 		transparent,
 		size,
 		variant,
+		children,
 		...restProps
-	}: ButtonProps = $props();
+	}: LinkButtonProps = $props();
 </script>
 
-<Button.Root
-	bind:ref
-	{disabled}
+<a
+	bind:this={ref}
 	class={cn(button({ size, variant }), transparent && 'text-white/60', className)}
 	{...restProps}
-/>
+>
+	{@render children?.()}
+</a>
