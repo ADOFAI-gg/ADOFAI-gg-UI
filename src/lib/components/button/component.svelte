@@ -4,7 +4,7 @@
 	import { tv, type VariantProps } from 'tailwind-variants';
 
 	const button = tv({
-		base: 'rounded-lg font-semibold cursor-pointer transition-colors text-white',
+		base: 'rounded-lg font-semibold cursor-pointer transition-colors text-white flex gap-2 items-center',
 		variants: {
 			variant: {
 				primary: 'bg-gg-blue hover:bg-gg-blue-hover active:bg-gg-blue-active',
