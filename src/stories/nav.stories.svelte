@@ -10,8 +10,9 @@
 
 <Story name="Default">
 	<Nav.Root
-		signInUrl="/"
-		signUpUrl="/"
+		onSignIn={() => {}}
+		onSignUp={() => {}}
+		onSignOut={() => {}}
 		links={[
 			{
 				title: 'Levels',
@@ -27,8 +28,9 @@
 
 <Story name="With User">
 	<Nav.Root
-		signInUrl="/"
-		signUpUrl="/"
+		onSignIn={() => {}}
+		onSignUp={() => {}}
+		onSignOut={() => {}}
 		links={[
 			{
 				title: 'Levels',

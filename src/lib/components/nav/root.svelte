@@ -6,7 +6,7 @@
 	import { Avatar, Popover, Logo } from '$lib/index.js';
 	import Menu from './menu/menu.svelte';
 
-	const { links, logo, menuPopupExtra, user, signInUrl, signUpUrl }: RootProps = $props();
+	const { links, logo, menuPopupExtra, user, onSignIn, onSignUp, onSignOut }: RootProps = $props();
 </script>
 
 {#snippet logoContent()}
@@ -35,19 +35,15 @@
 
 		<div class="gap-3 flex items-center">
 			{#if !user}
-				{#if signInUrl}
-					<a href={signInUrl}>
-						<Button size="md" variant="ghostLight">
-							<Localized id="lib-sign-in" />
-						</Button>
-					</a>
+				{#if onSignIn}
+					<Button size="md" variant="ghostLight" onclick={onSignIn}>
+						<Localized id="lib-sign-in" />
+					</Button>
 				{/if}
-				{#if signUpUrl}
-					<a href={signUpUrl}>
-						<Button size="md" variant="outlined">
-							<Localized id="lib-sign-up" />
-						</Button>
-					</a>
+				{#if onSignUp}
+					<Button size="md" variant="outlined" onclick={onSignUp}>
+						<Localized id="lib-sign-up" />
+					</Button>
 				{/if}
 			{/if}
 
@@ -81,7 +77,7 @@
 				</Popover.Trigger>
 				<Popover.Portal>
 					<Popover.Content align="end" sideOffset={16}>
-						<Menu extraItems={menuPopupExtra}></Menu>
+						<Menu {user} {onSignOut} extraItems={menuPopupExtra}></Menu>
 					</Popover.Content>
 				</Popover.Portal>
 			</Popover.Root>

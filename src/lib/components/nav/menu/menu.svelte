@@ -6,15 +6,20 @@
 	import { onMount, tick, type Snippet } from 'svelte';
 	import MenuHeader from './menu-header.svelte';
 	import MenuDivider from './menu-divider.svelte';
+	import type { UserProp } from '$lib/utils/types.js';
 
 	let currentTab = $state('default');
 
 	const ctx = getGlobalContext();
 
 	const {
-		extraItems
+		extraItems,
+		onSignOut,
+		user
 	}: {
 		extraItems?: Snippet;
+		onSignOut?: () => void;
+		user?: UserProp | null;
 	} = $props();
 
 	let mounted = $state(false);
@@ -75,6 +80,12 @@
 				</MenuItem>
 
 				{@render extraItems?.()}
+
+				{#if onSignOut && user}
+					<MenuItem onSelect={onSignOut} variant="danger">
+						<Localized id="lib-sign-out" />
+					</MenuItem>
+				{/if}
 			{:else if currentTab === 'language'}
 				<MenuHeader onBack={() => (currentTab = 'default')}>
 					<Localized id="lib-language" />

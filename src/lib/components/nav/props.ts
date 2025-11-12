@@ -16,6 +16,8 @@ export type RootProps = {
 	logo?: Snippet<[{ content: Snippet }]>;
 	user?: UserProp | null;
 	menuPopupExtra?: Snippet;
-	signInUrl?: string;
-	signUpUrl?: string;
+
+	onSignIn?: () => void;
+	onSignUp?: () => void;
+	onSignOut?: () => void;
 };
