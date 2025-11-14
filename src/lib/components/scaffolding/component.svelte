@@ -14,7 +14,7 @@
 
 <div class="flex min-h-screen flex-col">
 	{#if nav}
-		<div class="top-0 left-0 sticky">
+		<div class="top-0 left-0 sticky z-50">
 			{@render nav()}
 		</div>
 	{/if}
