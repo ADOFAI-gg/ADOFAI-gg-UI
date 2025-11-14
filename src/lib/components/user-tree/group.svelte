@@ -6,14 +6,15 @@
 
 	export type GroupProps = WithChildren<{
 		name: string;
+		open?: boolean;
 	}>;
 </script>
 
 <script lang="ts">
-	const { name, children }: GroupProps = $props();
+	let { name, children, open = $bindable(false) }: GroupProps = $props();
 </script>
 
-<Collapsible.Root>
+<Collapsible.Root bind:open>
 	<Collapsible.Trigger>
 		{#snippet child({ props })}
 			<li class="gap-1 group flex cursor-pointer items-center select-none" {...props}>

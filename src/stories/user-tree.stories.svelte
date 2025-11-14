@@ -29,7 +29,7 @@
 			}}
 		/>
 
-		<UserTree.Group name="Group">
+		<UserTree.Group name="Group" open>
 			<UserTree.Item
 				user={{
 					name: 'GanjangFactory 4',
