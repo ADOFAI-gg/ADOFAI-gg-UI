@@ -13,7 +13,7 @@
 	<Logo height={16} />
 {/snippet}
 
-<nav class="h-14 bg-gg-darkblue/20 px-6 backdrop-blur-lg">
+<nav class="h-14 bg-gg-darkblue/20 px-6 backdrop-blur-lg z-50">
 	<div class="gg-container mx-auto flex h-full items-center justify-between">
 		<div class="gap-8 flex h-full items-center">
 			{#if logo}
