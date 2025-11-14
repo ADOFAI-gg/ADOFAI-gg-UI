@@ -17,6 +17,9 @@
 	--color-gg-dropdown: #0b1823;
 	--color-gg-darkblue: #03061c;
 
+	--animate-collapsible-in: collapsible-in 0.2s ease-out;
+	--animate-collapsible-out: collapsible-out 0.2s ease-out;
+
 	--shadow-gg-popover: 0px 0px 12px rgba(0, 0, 0, 0.2), 0px 0px 24px rgba(0, 0, 0, 0.2);
 
 	--leading-normal: 1.4;
@@ -24,6 +27,30 @@
 	--font-sans:
 		'IBM Plex Sans KR', 'IBM Plex Sans JP', ui-sans-serif, system-ui, sans-serif,
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+
+	@keyframes collapsible-in {
+		from {
+			height: 0;
+			opacity: 0;
+		}
+
+		to {
+			height: var(--bits-collapsible-content-height);
+			opacity: 1;
+		}
+	}
+
+	@keyframes collapsible-out {
+		from {
+			height: var(--bits-collapsible-content-height);
+			opacity: 1;
+		}
+
+		to {
+			height: 0;
+			opacity: 0;
+		}
+	}
 }
 
 * {
