@@ -1,11 +1,11 @@
 <script lang="ts" module>
+	import { cn } from '$lib/utils/ui.js';
 	import {
 		Tooltip as TooltipPrimitive,
 		type WithChildren,
 		type WithoutChildrenOrChild
 	} from 'bits-ui';
 	import type { Snippet } from 'svelte';
-	import { fly } from 'svelte/transition';
 
 	export type TooltipProps = WithChildren<{
 		rootProps?: WithoutChildrenOrChild<TooltipPrimitive.RootProps>;
@@ -26,6 +26,8 @@
 		delayDuration = 200,
 		...providerProps
 	}: TooltipProps = $props();
+
+	const { class: contentClass, ...restContentProps } = $derived(contentProps ?? {});
 </script>
 
 <TooltipPrimitive.Provider {...providerProps} {delayDuration}>
@@ -38,32 +40,26 @@
 
 		<TooltipPrimitive.Portal>
 			<TooltipPrimitive.Content
-				forceMount
-				{...contentProps}
+				class={cn(
+					'p-4 rounded-2xl bg-gg-darkblue shadow-gg-popover gap-1 text-sm grid',
+
+					'animate-in fade-in-0 zoom-in-90',
+					'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-90',
+					contentClass
+				)}
+				{...restContentProps}
 				sideOffset={contentProps?.sideOffset ?? 8}
 			>
-				{#snippet child({ open, wrapperProps, props })}
-					<div {...wrapperProps}>
-						{#if open}
-							<div
-								{...props}
-								transition:fly={{ duration: 200, y: 8 }}
-								class="p-4 rounded-2xl bg-gg-darkblue shadow-gg-popover gap-1 text-sm grid"
-							>
-								{#if title}
-									<div class="text-sm font-semibold">
-										{@render title()}
-									</div>
-								{/if}
-								{#if children}
-									<div class="text-white/60">
-										{@render children()}
-									</div>
-								{/if}
-							</div>
-						{/if}
+				{#if title}
+					<div class="text-sm font-semibold">
+						{@render title()}
 					</div>
-				{/snippet}
+				{/if}
+				{#if children}
+					<div class="text-white/60">
+						{@render children()}
+					</div>
+				{/if}
 			</TooltipPrimitive.Content>
 		</TooltipPrimitive.Portal>
 	</TooltipPrimitive.Root>
