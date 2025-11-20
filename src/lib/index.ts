@@ -11,6 +11,7 @@ export * from './components/footer/index.js';
 export * from './components/scaffolding/index.js';
 export * from './components/section-title/index.js';
 export * from './components/search/index.js';
+export * from './components/search-options/index.js';
 
 export * from './utils/types.js';
 export * from './utils/ui.js';
