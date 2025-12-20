@@ -25,6 +25,10 @@
 <Story name="Ghost Dark / Medium" args={{ variant: 'ghostDark', size: 'md' }}>Button</Story>
 <Story name="Ghost Dark / Large" args={{ variant: 'ghostDark', size: 'lg' }}>Button</Story>
 
+<Story name="Ghost Danger / Small" args={{ variant: 'ghostDanger', size: 'sm' }}>Button</Story>
+<Story name="Ghost Danger / Medium" args={{ variant: 'ghostDanger', size: 'md' }}>Button</Story>
+<Story name="Ghost Danger / Large" args={{ variant: 'ghostDanger', size: 'lg' }}>Button</Story>
+
 <Story name="Outlined / Small" args={{ variant: 'outlined', size: 'sm' }}>Button</Story>
 <Story name="Outlined / Medium" args={{ variant: 'outlined', size: 'md' }}>Button</Story>
 <Story name="Outlined / Large" args={{ variant: 'outlined', size: 'lg' }}>Button</Story>

@@ -1,16 +1,12 @@
 <script lang="ts" module>
-	import Self from './component.svelte';
 	import type { FilterControlProp } from '../../types.js';
+	import Control from './control.svelte';
 
 	export { popover, value };
 </script>
 
-<script lang="ts">
-	const { current }: FilterControlProp<string> = $props();
-</script>
-
 {#snippet popover(props: FilterControlProp<string>)}
-	<Self {...props} />
+	<Control {...props} />
 {/snippet}
 
 {#snippet value(value: string)}

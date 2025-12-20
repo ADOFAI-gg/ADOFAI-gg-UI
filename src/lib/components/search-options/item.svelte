@@ -25,8 +25,8 @@
 		name?: Snippet;
 		value?: Snippet;
 		extra?: Snippet;
-		onclick?: () => void;
-	};
+		popover?: Snippet;
+	} & Omit<WithoutChildren<HTMLButtonAttributes>, 'value' | 'name'>;
 </script>
 
 <script lang="ts">
@@ -35,12 +35,14 @@
 	import Icon from '@iconify/svelte';
 	import type { Snippet } from 'svelte';
 	import { tv, type VariantProps } from 'tailwind-variants';
+	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import type { WithoutChildren } from 'bits-ui';
 
-	const { variant, icon, onclick, extra, name, value }: SearchOptionsItemProps = $props();
+	const { variant, icon, extra, name, value, ...restProps }: SearchOptionsItemProps = $props();
 	const s = $derived(styles({ variant }));
 </script>
 
-<button class={cn(s.base({ variant }))} {onclick}>
+<button class={cn(s.base({ variant }))} {...restProps}>
 	{#if icon}
 		<Icon class="size-4" {icon} />
 	{/if}

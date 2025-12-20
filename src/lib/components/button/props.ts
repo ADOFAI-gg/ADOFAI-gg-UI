@@ -8,6 +8,7 @@ export const button = tv({
 			danger: 'bg-gg-red hover:bg-gg-red-hover active:bg-gg-red-active',
 			ghostLight: 'bg-transparent hover:bg-white/10 active:bg-white/20',
 			ghostDark: 'bg-transparent hover:bg-[#00020f]/10 active:bg-[#00020f]/20',
+			ghostDanger: 'text-gg-red bg-transparent hover:bg-gg-red/10 active:bg-gg-red/20',
 			outlined:
 				'border-white/20 hover:bg-white/10 active:bg-white active:text-black inset-ring inset-ring-white/20'
 		},

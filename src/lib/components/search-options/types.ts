@@ -1,12 +1,14 @@
 import type { Snippet } from 'svelte';
 
 export type FilterItem = {
+	id: string;
 	key: string;
 	value: unknown;
 };
 
-export type FilterControlProp<T> = {
-	current: T;
+export type FilterControlProp<T = unknown> = {
+	value: T;
+	setValue: (newValue: unknown) => void;
 };
 
 export type FilterTypeDefinition<T = unknown> = {
