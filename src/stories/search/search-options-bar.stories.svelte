@@ -10,6 +10,7 @@
 <script lang="ts">
 	let filters = $state([
 		{
+			id: crypto.randomUUID(),
 			key: 'name',
 			value: 'Hi'
 		}
@@ -20,7 +21,11 @@
 			type: 'text',
 			default: 'Hello',
 			name: 'Name',
-			icon: 'gg:music'
+			icon: 'gg:music',
+			options: {
+				label: 'YAHOOOOOOO',
+				placeholder: 'Placeholder'
+			}
 		}
 	} as FilterScheme;
 </script>

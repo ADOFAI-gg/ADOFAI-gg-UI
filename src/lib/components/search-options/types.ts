@@ -1,12 +1,22 @@
 import type { Snippet } from 'svelte';
 
+export type TextFilterTypeOptions = {
+	label: string;
+	placeholder?: string;
+};
+
+export type BuiltInFilterOptionTypes = {
+	text: TextFilterTypeOptions;
+};
+
 export type FilterItem = {
 	id: string;
 	key: string;
 	value: unknown;
 };
 
-export type FilterControlProp<T = unknown> = {
+export type FilterControlProp<T = unknown, TOptions = unknown> = {
+	options: TOptions;
 	value: T;
 	setValue: (newValue: unknown) => void;
 };
@@ -17,12 +27,13 @@ export type FilterTypeDefinition<T = unknown> = {
 	popover: Snippet<[FilterControlProp<T>]>;
 };
 
-export type FilterDefinition<T = unknown> = {
+export interface FilterDefinition<T = unknown> {
 	name: string;
-	type: string;
+	type: keyof BuiltInFilterOptionTypes;
+	options: BuiltInFilterOptionTypes[this['type']];
 	icon?: string;
 	default: T;
 	params?: unknown;
-};
+}
 
 export type FilterScheme = Record<string, FilterDefinition>;

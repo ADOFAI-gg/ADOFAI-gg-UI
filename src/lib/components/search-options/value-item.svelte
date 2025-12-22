@@ -53,16 +53,16 @@
 					open = false;
 					onChange(editingValue);
 				}}
+				class="gap-4 grid w-[280px]"
 			>
-				<div>
-					{@render typeDefinition.popover?.({
-						value: editingValue,
-						setValue: (v) => {
-							editingValue = v;
-						}
-					})}
-				</div>
-				<div class="gap-2 flex">
+				{@render typeDefinition.popover?.({
+					value: editingValue,
+					setValue: (v) => {
+						editingValue = v;
+					},
+					options: definition.options
+				})}
+				<div class="gap-2 flex justify-end">
 					<Button size="md" variant="ghostLight" type="button" onclick={() => (open = false)}>
 						<Localized id="lib-search-cancel" />
 					</Button>

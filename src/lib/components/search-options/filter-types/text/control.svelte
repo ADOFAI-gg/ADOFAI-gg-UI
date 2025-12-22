@@ -1,12 +1,18 @@
 <script lang="ts">
-	import type { FilterControlProp } from '../../types.js';
+	import { FormControl, Input, Label } from '$lib/components/form/index.js';
+	import type { FilterControlProp, TextFilterTypeOptions } from '../../types.js';
 
-	const { value, setValue }: FilterControlProp<string> = $props();
+	const { value, setValue, options }: FilterControlProp<string, TextFilterTypeOptions> = $props();
+
+	const id = $props.id();
 </script>
 
-<input
-	type="text"
-	{value}
-	oninput={(e) => setValue(e.currentTarget.value)}
-	class="text-white bg-transparent"
-/>
+<FormControl>
+	<Label for={id}>{options.label}</Label>
+	<Input
+		{id}
+		placeholder={options.placeholder}
+		{value}
+		oninput={(e) => setValue(e.currentTarget.value)}
+	/>
+</FormControl>
