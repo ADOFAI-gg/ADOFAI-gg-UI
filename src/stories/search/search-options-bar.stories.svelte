@@ -17,14 +17,16 @@
 	]);
 
 	const filterScheme = {
-		name: {
-			type: 'text',
-			default: 'Hello',
-			name: 'Name',
-			icon: 'gg:music',
-			options: {
-				label: 'YAHOOOOOOO',
-				placeholder: 'Placeholder'
+		filter: {
+			name: {
+				type: 'text',
+				default: 'Hello',
+				name: 'Name',
+				icon: 'gg:music',
+				options: {
+					label: 'YAHOOOOOOO',
+					placeholder: 'Placeholder'
+				}
 			}
 		}
 	} as FilterScheme;

@@ -36,4 +36,6 @@ export interface FilterDefinition<T = unknown> {
 	params?: unknown;
 }
 
-export type FilterScheme = Record<string, FilterDefinition>;
+export type FilterScheme = {
+	filter: Record<string, FilterDefinition>;
+};

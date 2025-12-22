@@ -27,14 +27,13 @@
 	import type { FilterItem, FilterScheme, FilterTypeDefinition } from './types.js';
 	import { filterTypes } from './filter-types/index.js';
 	import ValueItem from './value-item.svelte';
-	import { flip } from 'svelte/animate';
-	import { fade, fly } from 'svelte/transition';
-	import { flushSync } from 'svelte';
 	import { runViewTransition } from '$lib/utils/transition.svelte.js';
+	import AddButton from './add-button.svelte';
 
 	let { filterScheme, filters = $bindable([]), extraTypes = {} }: SearchOptionsBarProps = $props();
 
 	const types = $derived({ ...filterTypes, ...extraTypes });
+	let containerRef = $state<HTMLElement | null>(null);
 
 	const displayItems = $derived.by<FilterDisplayItem[]>(() => {
 		const result = filters.map(
@@ -53,6 +52,30 @@
 		});
 	};
 
+	const addFilter = (key: string) => {
+		if (!filterScheme) return;
+		const filterDef = filterScheme.filter[key];
+
+		setTimeout(() => {
+			const toAdd = {
+				id: crypto.randomUUID(),
+				key,
+				value: filterDef.default
+			};
+
+			runViewTransition(() => {
+				filters = [...filters, toAdd];
+			});
+
+			setTimeout(() => {
+				const el = containerRef?.querySelector(
+					`button[data-filter-id="${toAdd.id}"]`
+				) as HTMLButtonElement;
+				el?.click();
+			}, 100);
+		}, 100);
+	};
+
 	const resetFilters = () => {
 		runViewTransition(() => {
 			filters = [];
@@ -60,17 +83,18 @@
 	};
 </script>
 
-<div class="gap-2 flex flex-wrap">
+<div class="gap-2 flex flex-wrap" bind:this={containerRef}>
 	{#if filterScheme}
 		{#each displayItems as item (item.id)}
 			<div style="view-transition-name: chip-{item.id}">
 				{#if item.type === 'filter'}
 					{@const filter = item.filter}
-					{@const def = filterScheme[filter.key]}
+					{@const def = filterScheme.filter[filter.key]}
 					{@const type = types[def.type]}
 					{@const value = filter.value}
 
 					<ValueItem
+						id={filter.id}
 						onChange={(newValue) => {
 							const newFilters = [...filters];
 							const currentIdx = newFilters.indexOf(filter);
@@ -104,11 +128,7 @@
 						{/snippet}
 					</Item>
 				{:else if item.type === 'add'}
-					<Item variant="ghost" icon="gg:add">
-						{#snippet name()}
-							<Localized id="lib-search-add-filter" />
-						{/snippet}
-					</Item>
+					<AddButton {filterScheme} {filters} typeDefs={types} onAdd={addFilter} />
 				{/if}
 			</div>
 		{/each}

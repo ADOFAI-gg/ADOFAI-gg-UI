@@ -6,6 +6,7 @@
 	import { untrack } from 'svelte';
 
 	type Props = {
+		id: string;
 		definition: FilterDefinition;
 		typeDefinition: FilterTypeDefinition;
 		value: unknown;
@@ -13,7 +14,7 @@
 		onChange: (newValue: unknown) => void;
 	};
 
-	const { definition, typeDefinition, value, onDelete, onChange }: Props = $props();
+	const { id, definition, typeDefinition, value, onDelete, onChange }: Props = $props();
 
 	let open = $state(false);
 
@@ -35,6 +36,7 @@
 	<Popover.Trigger>
 		{#snippet child({ props })}
 			<Item
+				data-filter-id={id}
 				icon={definition.icon}
 				value={typeDefinition.value ? valueWrapper : undefined}
 				{...props}
