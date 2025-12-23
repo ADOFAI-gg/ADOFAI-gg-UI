@@ -1,25 +1,34 @@
 <script lang="ts" module>
-	import { Input, Popover } from '$lib/index.js';
+	import { Popover } from '$lib/index.js';
+	import { Localized } from '@nubolab-ffwd/svelte-fluent';
 	import { Command } from 'bits-ui';
 	import { setContext, type Snippet } from 'svelte';
-	import Item from './item.svelte';
 	import { inputStyles } from '../form/input.svelte';
 	import { PopoverSelectContext, type PopoverSelectContextType } from './context.js';
-	import { Localized } from '@nubolab-ffwd/svelte-fluent';
 
 	export type RootProps = {
 		trigger: Snippet<[{ props: any }]>;
+		open?: boolean;
+		value?: string;
+		hasValue?: boolean;
+		selectedValue?: string;
 		onSelect?: (value: string) => void;
 		children?: Snippet;
 	};
 </script>
 
 <script lang="ts">
-	const { trigger, onSelect, children }: RootProps = $props();
+	let {
+		trigger,
+		onSelect,
+		children,
+		hasValue = false,
+		open = $bindable(false),
+		value = $bindable(''),
+		selectedValue = ''
+	}: RootProps = $props();
 
-	let value = $state('');
 	let listRef = $state<HTMLElement | null>(null);
-	let open = $state(false);
 
 	const currentText = $derived.by(() => {
 		if (!listRef) return '';
@@ -28,11 +37,21 @@
 		return '';
 	});
 
+	let currentValue = $state({
+		current: ''
+	});
+
+	$effect(() => {
+		currentValue.current = selectedValue;
+	});
+
 	setContext(PopoverSelectContext, {
 		select: (value) => {
 			open = false;
 			onSelect?.(value);
-		}
+		},
+		hasValue,
+		value: currentValue
 	} as PopoverSelectContextType);
 </script>
 

@@ -36,6 +36,13 @@ export interface FilterDefinition<T = unknown> {
 	params?: unknown;
 }
 
+export type SortDefinition = {
+	id: string;
+	name: string;
+	icon?: string;
+};
+
 export type FilterScheme = {
 	filter: Record<string, FilterDefinition>;
+	sort?: SortDefinition[];
 };

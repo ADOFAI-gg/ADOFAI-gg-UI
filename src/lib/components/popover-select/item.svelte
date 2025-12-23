@@ -16,14 +16,22 @@
 
 	const { name, value, icon }: ItemProps = $props();
 
-	const { select } = getContext<PopoverSelectContextType>(PopoverSelectContext);
+	const {
+		select,
+		hasValue,
+		value: currentValue
+	} = getContext<PopoverSelectContextType>(PopoverSelectContext);
 </script>
 
 <Command.Item
 	class={cn(
-		'rounded-lg gap-2 flex cursor-pointer items-center select-none',
-		'data-selected:bg-white/5',
-		'hover:bg-white/5! active:bg-white/10! px-4 py-2.5 transition-colors'
+		'rounded-lg gap-2 px-4 py-2.5 flex cursor-pointer items-center transition-colors select-none',
+		hasValue
+			? [
+					'data-selected:bg-gg-blue/15 active:bg-gg-blue/20!',
+					currentValue.current === value && 'bg-gg-blue/10'
+				]
+			: ['data-selected:bg-white/5', 'hover:bg-white/5! active:bg-white/10!']
 	)}
 	data-name={name}
 	{value}

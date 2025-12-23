@@ -1,8 +1,9 @@
 <script lang="ts" module>
 	export type SearchOptionsBarProps = {
-		filters: FilterItem[];
-		filterScheme?: FilterScheme;
+		filterScheme: FilterScheme;
 		extraTypes?: Record<string, FilterTypeDefinition>;
+		filters?: FilterItem[];
+		sort?: string;
 	};
 
 	type FilterDisplayItem = {
@@ -29,8 +30,14 @@
 	import ValueItem from './value-item.svelte';
 	import { runViewTransition } from '$lib/utils/transition.svelte.js';
 	import AddButton from './add-button.svelte';
+	import SortButton from './sort-button.svelte';
 
-	let { filterScheme, filters = $bindable([]), extraTypes = {} }: SearchOptionsBarProps = $props();
+	let {
+		filterScheme,
+		sort = $bindable(''),
+		filters = $bindable([]),
+		extraTypes = {}
+	}: SearchOptionsBarProps = $props();
 
 	const types = $derived({ ...filterTypes, ...extraTypes });
 	let containerRef = $state<HTMLElement | null>(null);
@@ -53,7 +60,6 @@
 	};
 
 	const addFilter = (key: string) => {
-		if (!filterScheme) return;
 		const filterDef = filterScheme.filter[key];
 
 		setTimeout(() => {
@@ -83,54 +89,57 @@
 	};
 </script>
 
-<div class="gap-2 flex flex-wrap" bind:this={containerRef}>
-	{#if filterScheme}
-		{#each displayItems as item (item.id)}
-			<div style="view-transition-name: chip-{item.id}">
-				{#if item.type === 'filter'}
-					{@const filter = item.filter}
-					{@const def = filterScheme.filter[filter.key]}
-					{@const type = types[def.type]}
-					{@const value = filter.value}
-
-					<ValueItem
-						id={filter.id}
-						onChange={(newValue) => {
-							const newFilters = [...filters];
-							const currentIdx = newFilters.indexOf(filter);
-							if (currentIdx < 0) return;
-							const currentFilter = newFilters[currentIdx];
-
-							newFilters[currentIdx] = {
-								...currentFilter,
-								value: newValue
-							};
-
-							filters = newFilters;
-						}}
-						onDelete={() => {
-							deleteFilter(filter.id);
-						}}
-						definition={def}
-						typeDefinition={type}
-						{value}
-					/>
-				{:else if item.type === 'reset'}
-					<Item
-						variant="danger"
-						icon="gg:refresh"
-						onclick={() => {
-							resetFilters();
-						}}
-					>
-						{#snippet name()}
-							<Localized id="lib-search-reset-filter" />
-						{/snippet}
-					</Item>
-				{:else if item.type === 'add'}
-					<AddButton {filterScheme} {filters} typeDefs={types} onAdd={addFilter} />
-				{/if}
-			</div>
-		{/each}
+<div class="gap-2 flex flex-wrap items-center" bind:this={containerRef}>
+	{#if filterScheme.sort && filterScheme.sort.length > 0}
+		<SortButton scheme={filterScheme} bind:sort />
+		<div class="h-4.5 border-white/20 border-l"></div>
 	{/if}
+
+	{#each displayItems as item (item.id)}
+		<div style="view-transition-name: chip-{item.id}">
+			{#if item.type === 'filter'}
+				{@const filter = item.filter}
+				{@const def = filterScheme.filter[filter.key]}
+				{@const type = types[def.type]}
+				{@const value = filter.value}
+
+				<ValueItem
+					id={filter.id}
+					onChange={(newValue) => {
+						const newFilters = [...filters];
+						const currentIdx = newFilters.indexOf(filter);
+						if (currentIdx < 0) return;
+						const currentFilter = newFilters[currentIdx];
+
+						newFilters[currentIdx] = {
+							...currentFilter,
+							value: newValue
+						};
+
+						filters = newFilters;
+					}}
+					onDelete={() => {
+						deleteFilter(filter.id);
+					}}
+					definition={def}
+					typeDefinition={type}
+					{value}
+				/>
+			{:else if item.type === 'reset'}
+				<Item
+					variant="danger"
+					icon="gg:refresh"
+					onclick={() => {
+						resetFilters();
+					}}
+				>
+					{#snippet name()}
+						<Localized id="lib-search-reset-filter" />
+					{/snippet}
+				</Item>
+			{:else if item.type === 'add'}
+				<AddButton {filterScheme} {filters} typeDefs={types} onAdd={addFilter} />
+			{/if}
+		</div>
+	{/each}
 </div>

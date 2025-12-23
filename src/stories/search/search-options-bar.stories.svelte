@@ -16,6 +16,8 @@
 		}
 	]);
 
+	let sort = $state('sort1');
+
 	const filterScheme = {
 		filter: {
 			name: {
@@ -28,10 +30,29 @@
 					placeholder: 'Placeholder'
 				}
 			}
-		}
+		},
+		sort: [
+			{
+				id: 'sort1',
+				name: 'Sort 1'
+			},
+			{
+				id: 'sort2',
+				name: 'Sort 2'
+			},
+			{
+				id: 'sort3',
+				name: 'Sort 3'
+			}
+		]
 	} as FilterScheme;
 </script>
 
 <Story name="Default">
-	<SearchOptionsBar {filterScheme} {filters} />
+	<SearchOptionsBar {filterScheme} bind:filters bind:sort />
 </Story>
+
+<div class="mt-4">
+	<div>Sort: {sort}</div>
+	<pre><code>{JSON.stringify(filters, null, 2)}</code></pre>
+</div>
