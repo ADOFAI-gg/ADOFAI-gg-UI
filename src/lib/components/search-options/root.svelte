@@ -31,6 +31,7 @@
 	import { runViewTransition } from '$lib/utils/transition.svelte.js';
 	import AddButton from './add-button.svelte';
 	import SortButton from './sort-button.svelte';
+	import { Separator } from 'bits-ui';
 
 	let {
 		filterScheme,
@@ -92,7 +93,7 @@
 <div class="gap-2 flex flex-wrap items-center" bind:this={containerRef}>
 	{#if filterScheme.sort && filterScheme.sort.length > 0}
 		<SortButton scheme={filterScheme} bind:sort />
-		<div class="h-4.5 border-white/20 border-l"></div>
+		<Separator.Root decorative class="h-4.5 border-white/20 border-l" orientation="vertical" />
 	{/if}
 
 	{#each displayItems as item (item.id)}
