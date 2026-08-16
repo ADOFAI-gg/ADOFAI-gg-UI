@@ -7,7 +7,7 @@
 	import { PopoverSelectContext, type PopoverSelectContextType } from './context.js';
 
 	export type RootProps = {
-		trigger: Snippet<[{ props: any }]>;
+		trigger: Snippet<[{ props: Record<string, unknown> }]>;
 		open?: boolean;
 		value?: string;
 		hasValue?: boolean;

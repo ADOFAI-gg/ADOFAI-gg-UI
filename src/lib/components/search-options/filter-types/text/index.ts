@@ -1,7 +1,7 @@
-import type { FilterTypeDefinition } from '../../types.js';
+import type { FilterTypeDefinition, TextFilterTypeOptions } from '../../types.js';
 import { popover, value } from './component.svelte';
 
-export const definition: FilterTypeDefinition<string> = {
+export const definition: FilterTypeDefinition<string, TextFilterTypeOptions> = {
 	popover,
 	value
 };

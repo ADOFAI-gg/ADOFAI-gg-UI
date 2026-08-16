@@ -21,10 +21,10 @@ export type FilterControlProp<T = unknown, TOptions = unknown> = {
 	setValue: (newValue: unknown) => void;
 };
 
-export type FilterTypeDefinition<T = unknown> = {
+export type FilterTypeDefinition<T = unknown, TOptions = unknown> = {
 	value?: Snippet<[T]>;
 	extra?: Snippet<[T]>;
-	popover: Snippet<[FilterControlProp<T>]>;
+	popover: Snippet<[FilterControlProp<T, TOptions>]>;
 };
 
 export interface FilterDefinition<T = unknown> {
