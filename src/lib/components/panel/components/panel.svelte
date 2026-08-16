@@ -43,7 +43,9 @@
 	export type PanelProps = {
 		variant?: PanelVariant;
 		title?: Snippet;
-	} & Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
+		noPadding?: boolean;
+		children?: Snippet;
+	} & Omit<HTMLAttributes<HTMLElement>, 'title' | 'children'>;
 </script>
 
 <script lang="ts">
@@ -51,6 +53,7 @@
 		children,
 		title: titleSlot,
 		variant = 'default',
+		noPadding = false,
 		class: className,
 		...restProps
 	}: PanelProps = $props();
@@ -58,11 +61,14 @@
 	const { base, title } = panel();
 </script>
 
-<div {...restProps} class={cn(base({ variant }), className)}>
+<section
+	{...restProps}
+	class={cn(base({ variant }), noPadding && 'p-0', 'panel', noPadding && 'no-padding', className)}
+>
 	{#if titleSlot}
 		<div class={title({ variant })}>
 			{@render titleSlot()}
 		</div>
 	{/if}
 	{@render children?.()}
-</div>
+</section>
