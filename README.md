@@ -10,35 +10,35 @@ Currently rewriting the entire library with tailwind-variants
 - [x] Button
 - [x] Icon
 - [x] Loading Spinner
-- [ ] Pagination
+- [x] Pagination
 - [x] Panel
 - [x] Popover
-- [ ] Popover Select
-- [ ] Tag
+- [x] Popover Select
+- [x] Tag
 - [x] Tooltip
-- [ ] Comment List
+- [x] Comment List
 - [x] Footer
-- [ ] Form
-  - [ ] Field
-  - [ ] Image Selector
-  - [ ] PIN Input
-  - [ ] Controls
-    - [ ] Checkbox
-    - [ ] Combobox
-    - [ ] Text Field
-    - [ ] Labeled Checkbox
-- [ ] Menu
+- [x] Form
+  - [x] Field
+  - [x] Image Selector
+  - [x] PIN Input
+  - [x] Controls
+    - [x] Checkbox
+    - [x] Combobox
+    - [x] Text Field
+    - [x] Labeled Checkbox
+- [x] Menu
 - [x] Dialog
 - [x] Alert Dialog
 - [x] Nav
-- [ ] Search
-  - [ ] Search Bar
-  - [ ] Search Options Bar
-- [ ] User List
+- [x] Search
+  - [x] Search Bar
+  - [x] Search Options Bar
+- [x] User List
 - [x] Table
 - [x] ~~Grid (included in tailwindcss)~~
 - [x] Sonner(Toast)
 
 ## TODO
 
-- [ ] fix nav menu
+- [x] fix nav menu
