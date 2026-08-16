@@ -24,7 +24,7 @@
 
 			{#if links}
 				<div class="gap-6 flex">
-					{#each links as link}
+					{#each links as link (link.href)}
 						<Link href={link.href}>
 							{link.title}
 						</Link>

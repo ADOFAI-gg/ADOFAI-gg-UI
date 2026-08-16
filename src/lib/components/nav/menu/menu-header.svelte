@@ -6,7 +6,6 @@
 
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import { Localized } from '@nubolab-ffwd/svelte-fluent';
 	import type { WithChildren } from 'bits-ui';
 
 	const { onBack, children }: MenuHeaderProps = $props();
