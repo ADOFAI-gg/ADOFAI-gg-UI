@@ -6,7 +6,7 @@
 </script>
 
 <script lang="ts">
-	const { width, height, className, ...rest }: LogoProps = $props();
+	const { width, height, ...rest }: LogoProps = $props();
 </script>
 
 <svg
