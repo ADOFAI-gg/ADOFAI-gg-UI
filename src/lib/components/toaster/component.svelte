@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/ui.js';
 	import Icon from '@iconify/svelte';
 	import { Toaster } from 'svelte-sonner';
 	import { tv } from 'tailwind-variants';
