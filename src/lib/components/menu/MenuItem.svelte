@@ -16,6 +16,8 @@
 
 <script lang="ts">
 	import { cn } from '$lib/utils/ui.js';
+	import { getContext } from 'svelte';
+	import { MenuContext, type MenuContextData } from './symbols.js';
 
 	let {
 		ref = $bindable(null),
@@ -27,6 +29,8 @@
 		variant = 'default',
 		...restProps
 	}: MenuItemProps = $props();
+
+	const { closeOnItemClick } = getContext<MenuContextData>(MenuContext);
 </script>
 
 <DropdownMenu.Item
@@ -39,6 +43,7 @@
 			: 'text-white data-[highlighted]:bg-white/20',
 		className
 	)}
+	closeOnSelect={closeOnItemClick}
 	onSelect={() => onclick?.()}
 >
 	{#if !noIcon}

@@ -8,8 +8,6 @@
 	type MenuAlign = Exclude<NonNullable<DropdownMenuType.ContentProps['align']>, 'center'>;
 
 	export type MenuPlacement = MenuSide | `${MenuSide}-${MenuAlign}`;
-	export { MenuContext };
-	export type { MenuContextData };
 
 	export type MenuProps = {
 		button: Snippet<[{ trigger: Record<string, unknown> }]>;

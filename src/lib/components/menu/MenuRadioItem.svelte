@@ -40,10 +40,15 @@
 		...restProps
 	}: MenuRadioItemProps = $props();
 
-	const { RadioItem } = getContext<MenuRadioContextData>(MenuRadioContext);
+	const { RadioItem, closeOnItemClick } = getContext<MenuRadioContextData>(MenuRadioContext);
 </script>
 
-<RadioItem {...restProps} {value} class={cn(menuRadioItem({ variant }), className)}>
+<RadioItem
+	{...restProps}
+	{value}
+	closeOnSelect={closeOnItemClick}
+	class={cn(menuRadioItem({ variant }), className)}
+>
 	{#snippet children({ checked })}
 		<div class="size-4 relative shrink-0">
 			{#if checked}
