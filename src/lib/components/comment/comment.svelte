@@ -6,7 +6,7 @@
 	import Avatar from '../avatar/component.svelte';
 
 	export type CommentProps = Omit<HTMLAttributes<HTMLDivElement>, 'children'> & {
-		author: UserProp;
+		author: UserProp | { displayName: string; avatarURL: string | null; isAdmin: boolean };
 		timestamp?: Date;
 		avatarSize?: number;
 		children?: Snippet;
@@ -26,6 +26,9 @@
 		...restProps
 	}: CommentProps = $props();
 
+	const authorName = $derived('name' in author ? author.name : author.displayName);
+	const authorAvatar = $derived('avatar' in author ? author.avatar : author.avatarURL);
+
 	// Kept for API compatibility until timestamp rendering is implemented.
 	void _timestamp;
 </script>
@@ -33,13 +36,13 @@
 <div {...restProps} class={cn('gap-2 flex w-full', className)} {style}>
 	<Avatar
 		class="shrink-0"
-		src={author.avatar ?? undefined}
-		alt={author.name}
+		src={authorAvatar ?? undefined}
+		alt={authorName}
 		style={`width: ${avatarSize}px; height: ${avatarSize}px; ${style ?? ''}`}
 	/>
 	<div class="min-w-0 grow">
 		<div class="gap-1 flex">
-			<div class="text-sm font-semibold">{author.name}</div>
+			<div class="text-sm font-semibold">{authorName}</div>
 			<!-- TODO: timestamp -->
 		</div>
 		<div class="text-sm">

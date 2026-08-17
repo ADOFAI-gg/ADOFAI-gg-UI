@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { Popover } from '$lib/index.js';
+	import { Popover } from '../popover/index.js';
 	import { Localized } from '@nubolab-ffwd/svelte-fluent';
 	import { Command } from 'bits-ui';
 	import { setContext, type Snippet } from 'svelte';

@@ -15,7 +15,11 @@
 		type="select"
 		selected={context?.currentLanguage === language}
 		onclick={() => {
-			if (context) context.currentLanguage = language;
+			if (context) {
+				context.currentLanguage = language;
+				context.language?.set(language);
+				context.setLanguage?.(language);
+			}
 		}}
 	>
 		{context?.languageNames[language] ?? language}

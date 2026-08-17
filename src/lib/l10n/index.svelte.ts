@@ -22,6 +22,14 @@ export const libLanguageNames: Record<string, string> = {
 	vi: 'Vietnamese'
 };
 
+export const availableLanguages: { code: string; name: string; aliases: string[] }[] = [
+	{ code: 'en', name: 'English', aliases: ['en-US'] },
+	{ code: 'ko', name: '한국어', aliases: ['ko-KR'] },
+	{ code: 'ja', name: '日本語', aliases: [] },
+	{ code: 'zh-CN', name: '简体中文', aliases: [] },
+	{ code: 'vi', name: 'Vietnamese', aliases: [] }
+];
+
 export const mergeLocalizationResources = (
 	...resourcesArr: Record<string, readonly string[]>[]
 ): Record<string, readonly string[]> => {

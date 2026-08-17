@@ -37,6 +37,15 @@
 		},
 		"./global.css": {
 			"default": "./dist/global.css"
+		},
+		"./globals.css": {
+			"default": "./dist/global.css"
+		},
+		"./style-system/*": {
+			"default": "./dist/stylesheets/system/*.scss"
+		},
+		"./globals.scss": {
+			"default": "./dist/stylesheets/globals.scss"
 		}
 	},
 	"peerDependencies": {

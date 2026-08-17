@@ -28,6 +28,8 @@ export * from './utils/url.js';
 
 export * from './utils/context.js';
 export * from './l10n/index.svelte.js';
+export * from './legacy/translation.js';
+export { default as Translation } from './legacy/Translation.svelte';
 
 export { Nav } from './components/nav/index.js';
 export { NavSignArea, NavLink, NavUserArea } from './components/nav/index.js';
@@ -44,4 +46,4 @@ export * as Table from './components/table/index.js';
 export * as AlertDialog from './components/alert-dialog/index.js';
 export * as Dialog from './components/dialog/index.js';
 export * as UserTree from './components/user-tree/index.js';
-export * as PopoverSelect from './components/popover-select/index.js';
+export { PopoverSelect } from './components/popover-select/index.js';

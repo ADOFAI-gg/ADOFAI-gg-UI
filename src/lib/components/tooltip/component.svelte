@@ -14,7 +14,8 @@
 
 	export type TooltipTriggerSnippetProps = {
 		props: Record<string, unknown>;
-		trigger: Record<string, unknown>;
+		/** Kept broad so legacy melt-ui consumers can pass their trigger handle. */
+		trigger: any;
 	};
 
 	export type TooltipProps = WithChildren<{

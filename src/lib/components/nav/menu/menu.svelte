@@ -98,6 +98,8 @@
 						data-current-value={lang === ctx.currentLanguage}
 						onSelect={() => {
 							ctx.currentLanguage = lang;
+							ctx.language?.set(lang);
+							ctx.setLanguage?.(lang);
 						}}
 					>
 						{ctx.languageNames[lang] ?? lang}
