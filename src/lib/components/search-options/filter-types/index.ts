@@ -3,4 +3,4 @@ import { definition as textDef } from './text/index.js';
 
 export const filterTypes = {
 	text: textDef
-} as Record<string, FilterTypeDefinition<unknown>>;
+} as unknown as Record<string, FilterTypeDefinition<unknown, unknown>>;

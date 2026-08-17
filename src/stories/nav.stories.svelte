@@ -47,3 +47,14 @@
 		}}
 	></Nav.Root>
 </Story>
+
+<Story name="Master Compatibility">
+	<Nav
+		user={{
+			name: 'GanjangFactory',
+			avatar: ganjangFactory
+		}}
+		links={[{ title: 'Levels', href: '/levels' }]}
+		onSignOut={() => {}}
+	/>
+</Story>

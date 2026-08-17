@@ -46,7 +46,7 @@
 	bind:value
 	class="w-[280px]"
 	shouldFilter={false}
-	onValueChange={(v) => {
+	onValueChange={() => {
 		if (ctx.currentLanguage === ctx.availableLanguages[0]) {
 			langSelectionTarget = '';
 		} else {
@@ -91,7 +91,7 @@
 					<Localized id="lib-language" />
 				</MenuHeader>
 				<MenuDivider />
-				{#each ctx.availableLanguages as lang}
+				{#each ctx.availableLanguages as lang (lang)}
 					<MenuItem
 						value={lang}
 						variant="selection"

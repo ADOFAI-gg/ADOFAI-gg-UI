@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { Button, type ButtonProps } from '$lib/index.js';
+	import { Button } from '$lib/index.js';
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 
 	const { Story } = defineMeta({

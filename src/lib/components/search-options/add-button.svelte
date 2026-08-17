@@ -2,12 +2,10 @@
 	import { Localized } from '@nubolab-ffwd/svelte-fluent';
 	import Item from './item.svelte';
 	import * as PopoverSelect from '../popover-select/index.js';
-	import type { FilterItem, FilterScheme, FilterTypeDefinition } from './types.js';
+	import type { FilterScheme } from './types.js';
 
 	type Props = {
 		filterScheme: FilterScheme;
-		typeDefs: Record<string, FilterTypeDefinition>;
-		filters: FilterItem[];
 		onAdd: (id: string) => void;
 	};
 

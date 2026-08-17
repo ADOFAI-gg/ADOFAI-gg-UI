@@ -139,7 +139,7 @@
 					{/snippet}
 				</Item>
 			{:else if item.type === 'add'}
-				<AddButton {filterScheme} {filters} typeDefs={types} onAdd={addFilter} />
+				<AddButton {filterScheme} onAdd={addFilter} />
 			{/if}
 		</div>
 	{/each}

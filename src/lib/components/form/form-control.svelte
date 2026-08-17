@@ -1,7 +1,7 @@
 <script lang="ts" module>
 	import { cn } from '$lib/utils/ui.js';
 	import type { WithElementRef } from 'bits-ui';
-	import type { HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
+	import type { HTMLAttributes } from 'svelte/elements';
 
 	export type InputProps = WithElementRef<HTMLAttributes<HTMLDivElement>>;
 </script>

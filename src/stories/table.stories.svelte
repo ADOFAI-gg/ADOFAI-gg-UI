@@ -18,7 +18,7 @@
 			</Table.Row>
 		</Table.Header>
 		<Table.Body>
-			{#each new Array(30) as x, i}
+			{#each Array.from({ length: 30 }) as i (i)}
 				<Table.Row>
 					<Table.Cell>Item {i}</Table.Cell>
 					<Table.Cell>Hello</Table.Cell>

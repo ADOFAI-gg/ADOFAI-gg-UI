@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { Button, Tooltip } from '$lib/index.js';
+	import { Button, Tooltip, TooltipDescription, TooltipTitle } from '$lib/index.js';
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 
 	const { Story } = defineMeta({
@@ -18,5 +18,19 @@
 		{/snippet}
 
 		Hello I'm a tooltip content!
+	</Tooltip>
+</Story>
+
+<Story name="Compatibility Parts">
+	<Tooltip>
+		{#snippet trigger({ props })}
+			<Button {...props}>Hover for details</Button>
+		{/snippet}
+
+		{#snippet title()}
+			<TooltipTitle>Legacy-compatible title</TooltipTitle>
+		{/snippet}
+
+		<TooltipDescription>Title and description can be composed explicitly.</TooltipDescription>
 	</Tooltip>
 </Story>
