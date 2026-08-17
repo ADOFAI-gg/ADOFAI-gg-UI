@@ -2,6 +2,12 @@
 @plugin '@tailwindcss/forms';
 @plugin 'tailwindcss-animate';
 
+/*
+ * Consumers process this stylesheet with their own Tailwind build. Include
+ * the packaged components so their utility classes are generated there too.
+ */
+@source './';
+
 @theme {
 	--color-gg-blue: #3b84f1;
 	--color-gg-blue-hover: #337ae3;
@@ -53,8 +59,11 @@
 	}
 }
 
-* {
-	@apply leading-normal;
+@layer base {
+	* {
+		@apply leading-normal;
+		letter-spacing: -0.011em;
+	}
 }
 
 :root {
@@ -76,5 +85,29 @@ body {
 }
 
 @utility gg-container {
-	@apply max-w-6xl w-full;
+	@apply w-full;
+}
+
+@media (min-width: 640px) {
+	.gg-container {
+		max-width: 640px;
+	}
+}
+
+@media (min-width: 768px) {
+	.gg-container {
+		max-width: 768px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.gg-container {
+		max-width: 1024px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.gg-container {
+		max-width: 1200px;
+	}
 }

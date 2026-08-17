@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Button } from '../button/index.js';
 	import { Logo } from '../misc/index.js';
 	import * as Popover from '../popover/index.js';
 	import { getGlobalContext, type GlobalContext } from '$lib/utils/context.js';
@@ -106,7 +105,11 @@
 						{:else}
 							<NavSignArea {onSignIn} {onSignUp} />
 							<div class="ml-3 flex items-center justify-center">
-								<Button {...props} class="hover:bg-gg-darkblue/20 rounded-full" aria-label="menu">
+								<button
+									{...props}
+									class="hover:bg-gg-darkblue/20 p-0 cursor-pointer rounded-full"
+									aria-label="menu"
+								>
 									<svg
 										width="24"
 										height="24"
@@ -133,7 +136,7 @@
 											stroke-linecap="round"
 										/>
 									</svg>
-								</Button>
+								</button>
 							</div>
 						{/if}
 					{/snippet}
