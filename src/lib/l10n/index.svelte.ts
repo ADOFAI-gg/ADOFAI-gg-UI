@@ -52,7 +52,7 @@ export const createBundles = (
 	return userLocales.map((locale) => {
 		const bundle = new FluentBundle(locale);
 
-		const langResources = resources[locale];
+		const langResources = resources[locale] ?? [];
 
 		for (const resource of langResources) {
 			bundle.addResource(new FluentResource(resource));

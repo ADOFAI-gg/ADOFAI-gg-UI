@@ -11,6 +11,9 @@
 
 <script lang="ts">
 	import { getFluentContext } from '@nubolab-ffwd/svelte-fluent';
+	import { getGlobalContext } from '$lib/utils/context.js';
+	import { translateKey } from '$lib/legacy/translation.js';
+	import { writable } from 'svelte/store';
 
 	let {
 		containerClass,
@@ -21,7 +24,15 @@
 	}: SearchBarProps = $props();
 
 	const { localize } = getFluentContext();
-	const translatedPlaceholder = $derived(placeholder ? localize(placeholder) : undefined);
+	const language = getGlobalContext()?.language ?? writable('en');
+	const isLegacyKey = (value: string) => value.includes(':');
+	const translatedPlaceholder = $derived(
+		placeholder
+			? isLegacyKey(placeholder)
+				? translateKey($language, placeholder, {})
+				: localize(placeholder)
+			: undefined
+	);
 </script>
 
 <div

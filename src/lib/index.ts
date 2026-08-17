@@ -30,6 +30,7 @@ export * from './utils/context.js';
 export * from './l10n/index.svelte.js';
 export * from './legacy/translation.js';
 export { default as Translation } from './legacy/Translation.svelte';
+export { FluentProvider } from '@nubolab-ffwd/svelte-fluent';
 
 export { Nav } from './components/nav/index.js';
 export { NavSignArea, NavLink, NavUserArea } from './components/nav/index.js';
