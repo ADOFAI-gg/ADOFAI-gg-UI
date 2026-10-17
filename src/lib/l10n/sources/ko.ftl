@@ -11,7 +11,7 @@ lib-delete = 삭제
 lib-no-options = 옵션이 없습니다
 lib-range = { $min } ~ { $max }
 
-lib-language = 언어 (Language)
+lib-language = 언어
 
 
 # FOOTER ===============================
