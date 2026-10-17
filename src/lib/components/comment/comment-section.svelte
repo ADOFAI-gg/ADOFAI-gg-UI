@@ -171,7 +171,7 @@
 	{/if}
 {/snippet}
 
-{#snippet composer(parentId?: string)}
+{#snippet composer(parentId: string | undefined)}
 	<form
 		class="composer"
 		onsubmit={(event) => {
