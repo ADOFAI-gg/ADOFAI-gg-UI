@@ -15,6 +15,7 @@
 </script>
 
 <script lang="ts">
+	import { onMount } from 'svelte';
 	const {
 		author,
 		timestamp: _timestamp,
@@ -26,11 +27,21 @@
 		...restProps
 	}: CommentProps = $props();
 
-	const authorName = $derived('name' in author ? author.name : author.displayName);
+		const authorName = $derived('name' in author ? author.name : author.displayName);
 	const authorAvatar = $derived('avatar' in author ? author.avatar : author.avatarURL);
-
-	// Kept for API compatibility until timestamp rendering is implemented.
-	void _timestamp;
+	let now = $state(Date.now());
+	onMount(() => {
+		const timer = setInterval(() => (now = Date.now()), 60_000);
+		return () => clearInterval(timer);
+	});
+	const relativeTimestamp = $derived.by(() => {
+		if (!_timestamp || Number.isNaN(_timestamp.getTime())) return null;
+		const seconds = Math.round((_timestamp.getTime() - now) / 1000);
+		const abs = Math.abs(seconds);
+		const [unit, divisor]: [Intl.RelativeTimeFormatUnit, number] =
+			abs < 60 ? ['second', 1] : abs < 3600 ? ['minute', 60] : abs < 86400 ? ['hour', 3600] : abs < 2_592_000 ? ['day', 86400] : abs < 31_536_000 ? ['month', 2_592_000] : ['year', 31_536_000];
+		return new Intl.RelativeTimeFormat('ko', { numeric: 'always' }).format(Math.round(seconds / divisor), unit);
+	});
 </script>
 
 <div {...restProps} class={cn('gap-2 flex w-full', className)} {style}>
@@ -43,7 +54,7 @@
 	<div class="min-w-0 grow">
 		<div class="gap-1 flex">
 			<div class="text-sm font-semibold">{authorName}</div>
-			<!-- TODO: timestamp -->
+			{#if relativeTimestamp && _timestamp}<time datetime={_timestamp.toISOString()} title={new Intl.DateTimeFormat('ko-KR', { dateStyle: 'full', timeStyle: 'long' }).format(_timestamp)} class="text-xs text-muted-foreground">{relativeTimestamp}</time>{/if}
 		</div>
 		<div class="text-sm">
 			{@render children?.()}
